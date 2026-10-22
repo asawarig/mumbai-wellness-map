@@ -1,0 +1,268 @@
+---
+/* Everything on the map, as a page you can read.
+ *
+ * The map itself is two megabytes of JavaScript drawing nine hundred pins, and
+ * a crawler — or a model being asked what there is to do in Bengaluru — sees
+ * none of it: the list is built in the browser, so the document is a wrapper
+ * round an empty div. This page is the other half of that. No map, no
+ * MapLibre, no data bundle; just every entry as text, grouped the way the
+ * index groups them.
+ *
+ * It is also the honest thing to link when someone asks what is on the map.
+ * The map page links here, and here links back.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { DB, COUNTS } from '../lib/db.js';
+import { INTENTS, MAP_INTENTS, SUGGEST_FORM, intentMeta, iconUrl } from '../lib/intents.js';
+import { indexBodyHtml, hasPerkCallout, PERK_GLYPH,
+  PERKS_ONLINE_KEY, PERKS_ONLINE_LABEL, PERKS_PLACES_KEY, PERKS_PLACES_LABEL } from '../lib/index-card.js';
+import PERKS from '../data/perks.json';
+import '../styles/wellness-map.css';
+import '../styles/prompt-map.css';
+
+export const prerender = false;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const site = Astro.site ? Astro.site.href.replace(/\/$/, '') : '';
+const url = `${site}${base}list`;
+const mapUrl = `${site}${base.replace(/\/$/, '')}`;
+
+const title = `Every place on the Bengaluru Wellness Map — all ${COUNTS.listed}`;
+const description = `The full list behind the map: ${COUNTS.listed} places, routes, clinics, kitchens `
+  + `and communities in Bengaluru, grouped by what you want to do. `
+  + `${COUNTS.verified} verified, ${COUNTS.parks} of them BBMP parks. Compiled by hand at Plum.`;
+
+/* Counts per category, straight from the data. Counted through intentMeta, not
+   the sub-category list: a row can carry a category its sub-category would not
+   give it, and five sub-categories split across two or three categories. */
+const onlinePerks = PERKS.perks || [];
+const perkPlaces = DB.entries.filter(hasPerkCallout);
+const byIntent = MAP_INTENTS.map((i) => ({
+  k: i.k,
+  verb: i.verb,
+  blurb: i.blurb,
+  icon: iconUrl(i, base),
+  n: DB.entries.filter((r) => intentMeta(r)?.k === i.k).length,
+}));
+
+/* A Dataset says what this is in the one vocabulary a machine reading the page
+   already understands: who compiled it, what it covers, how big it is, and
+   that it is free to use. An ItemList of the categories carries the counts. */
+/* Every entry as a Place, in the order the page renders them, so position N in
+   the markup is the Nth card a reader sees.
+ *
+ * Deliberately lean. `description` is left out: it is already the visible text
+ * of the card, and repeating all 2,610 of them costs half a megabyte to tell a
+ * crawler something it has just read. addressRegion and addressCountry are left
+ * out too — the Dataset states the spatial coverage once, and repeating
+ * "Karnataka, IN" per entry is another hundred kilobytes of the same fact.
+ *
+ * No aggregateRating. Where a rating exists at all it is Google's, collected
+ * from Google's users; publishing it here as this site's own would misrepresent
+ * whose it is, and Google's own guidance is not to mark up ratings you did not
+ * collect.
+ *
+ * No openingHours either. The sheet keeps hours as prose — "5 AM – 11 PM
+ * (Daily)", "Check locally" — and the honest options are to parse it into a
+ * format it does not fit or to leave it out. */
+/* INTENTS, not MAP_INTENTS — indexBodyHtml groups by the full list, so the
+   seven mapped categories alone left out the 214 parked and community entries
+   the page renders, and every position after the first gap disagreed with the
+   card it was supposed to describe. */
+const placeOrder = [
+  ...INTENTS.map((i) => DB.entries.filter((r) => intentMeta(r)?.k === i.k)),
+  DB.entries.filter((r) => !intentMeta(r)),
+].flatMap((rows) => [...rows].sort((a, b) => a.n.localeCompare(b.n)));
+
+const realMap = (u) => u && !/goo\.gl\/example/.test(u);
+
+const placeNodes = placeOrder.map((r, n) => {
+  const place = { '@type': 'Place', name: r.n };
+  place.address = {
+    '@type': 'PostalAddress',
+    ...(r.ad ? { streetAddress: r.ad } : {}),
+    addressLocality: r.a || 'Bengaluru',
+  };
+  if (r.lat != null && r.lon != null) {
+    place.geo = { '@type': 'GeoCoordinates', latitude: r.lat, longitude: r.lon };
+  }
+  if (realMap(r.gm)) place.hasMap = r.gm;
+  if (r.w) place.url = r.w;
+  return { '@type': 'ListItem', position: n + 1, item: place };
+});
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Dataset',
+      '@id': `${url}#dataset`,
+      url,
+      name: 'Bengaluru Wellness Map',
+      description,
+      inLanguage: 'en-IN',
+      isAccessibleForFree: true,
+      creator: { '@type': 'Organization', name: 'Plum', url: site },
+      publisher: { '@type': 'Organization', name: 'Plum', url: site },
+      temporalCoverage: '2026',
+      spatialCoverage: {
+        '@type': 'Place',
+        name: 'Bengaluru',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Bengaluru',
+          addressRegion: 'Karnataka',
+          addressCountry: 'IN',
+        },
+      },
+      variableMeasured: byIntent.map((c) => ({
+        '@type': 'PropertyValue', name: c.verb, description: c.blurb, value: c.n,
+      })),
+      distribution: { '@type': 'DataDownload', encodingFormat: 'text/html', contentUrl: url },
+      mainEntityOfPage: mapUrl,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Plum', item: site },
+        { '@type': 'ListItem', position: 2, name: 'Bengaluru Wellness Map', item: mapUrl },
+        { '@type': 'ListItem', position: 3, name: 'Every place' },
+      ],
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${url}#places`,
+      name: 'Every place on the Bengaluru Wellness Map',
+      numberOfItems: placeNodes.length,
+      itemListElement: placeNodes,
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+  <main class="listing">
+    {/* The same chrome the map's own index view wears — the Plum mark, a
+        heading with its count line, the actions on the right, a hairline, then
+        the category chips. This page used to invent its own header, which made
+        the one page a crawler actually reads look like a different site. */}
+    <header class="index-head listing-head">
+      <a class="listing-brand" href="https://www.plumhq.com" aria-label="Plum">
+        <img src={`${base}plum-logo.svg`} alt="Plum" width="48" height="15" />
+      </a>
+      <div class="index-heading">
+        <h1>Every place on <img class="brand-mark" src={`${base}be-well-logo.svg`} alt="Be well, Bengaluru" width="195" height="64" /></h1>
+        <p class="index-sub">
+          {COUNTS.listed} entries · {COUNTS.onMap} pinned · {COUNTS.parks} BBMP parks · {COUNTS.verified} verified
+        </p>
+      </div>
+      <a class="listing-cta" href={base.replace(/\/$/, '') || '/'}>Open the map</a>
+      <a class="ghost listing-tell" href={SUGGEST_FORM} target="_blank" rel="noopener">Something missing?</a>
+    </header>
+
+    <p class="listing-lead">
+      Every place on the map, as a page you can read — no map to load, nothing built in
+      the browser. Compiled by hand by the marketing team at{' '}
+      <a href="https://www.plumhq.com">Plum</a>, and free to use.
+    </p>
+
+    {/* Chips in the index's own style. Anchors, not buttons: this page ships no
+        JavaScript, so each one jumps to its section rather than filtering. */}
+    <nav class="index-filters listing-filters" aria-label="Jump to a category">
+      {byIntent.map((c) => (
+        <a class="index-chip" href={`#${c.k}`}>
+          <img src={c.icon} alt="" width="24" height="24" />
+          {c.verb}
+          <em class="listing-chip-count">{c.n}</em>
+        </a>
+      ))}
+      {/* Plum Perks, both halves. Neither is a category — one is a set of
+          places that already sit in the categories above, the other ships to
+          the whole country — so the two sit at the end of the row, in the
+          gift rather than an illustrated mark. */}
+      <a class="index-chip index-chip-perk" href={`#${PERKS_PLACES_KEY}`}>
+        <Fragment set:html={PERK_GLYPH} />
+        {PERKS_PLACES_LABEL}
+        <em class="listing-chip-count">{perkPlaces.length}</em>
+      </a>
+      <a class="index-chip index-chip-perk" href={`#${PERKS_ONLINE_KEY}`}>
+        <Fragment set:html={PERK_GLYPH} />
+        {PERKS_ONLINE_LABEL}
+        <em class="listing-chip-count">{onlinePerks.length}</em>
+      </a>
+    </nav>
+
+    <div class="index-body" set:html={indexBodyHtml(DB.entries, base, onlinePerks)} />
+
+    <a class="legal-tab" href={`${base}disclaimers`}>Disclaimers</a>
+
+    <button type="button" class="to-top" id="list-to-top" aria-label="Back to the top"
+      set:html={'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>'} />
+
+    <script>
+      /* The card sizing the map's index view uses, so the two do not drift
+         apart — and the arrow back to the top, because this page is a quarter
+         of a million pixels of scroll with no other way out of it. Everything
+         else here is server rendered. */
+      import { mountIndexCards } from '../lib/index-cards.js';
+      mountIndexCards(document.querySelector('.listing .index-body'));
+
+      const top = document.getElementById('list-to-top');
+      if (top) {
+        const sync = () => top.classList.toggle('is-on', window.scrollY > 600);
+        window.addEventListener('scroll', sync, { passive: true });
+        top.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          top.classList.remove('is-on');
+        });
+        sync();
+      }
+    </script>
+
+    <footer class="listing-foot">
+      <p>
+        Basemap from OpenStreetMap via OpenFreeMap. Parks from the BBMP register.
+        Last reviewed September 2026. Not medical advice.
+      </p>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  /* The map's name as its logo, sitting on the heading's line at its cap height. */
+  .index-heading h1 .brand-mark { display: inline-block; height: 1.5em; width: auto; vertical-align: -0.42em; }
+
+  /* The map's index view is position:absolute inside the map frame, so this
+     page cannot reuse it wholesale — it borrows the surface and the parts. */
+  .listing { min-height: 100vh; background: var(--paper); }
+  .listing-head { padding-top: 22px; flex-wrap: wrap; }
+  .listing-brand { flex: none; display: grid; place-items: center; align-self: center;
+    padding: 0 10px 0 0; }
+  .listing-brand img { display: block; width: auto; height: 15px; }
+  .listing h1 { margin: 0; font: 400 26px/1.1 var(--display); color: var(--red); }
+  .listing-cta { margin-left: auto; flex: none; padding: 7px 14px; border-radius: 2.5px;
+    background: var(--red); color: var(--cream); font: 500 13px/1.2 var(--sans); text-decoration: none; }
+  .listing-tell { flex: none; text-decoration: none; }
+  .listing-lead { max-width: 66ch; margin: 16px 20px 0;
+    font: 400 14px/1.6 var(--sans); color: var(--text-2); }
+  .listing-filters { margin: 14px 20px 0; width: auto; }
+  /* The map's chips are buttons; these are anchors, so they arrive underlined
+     and blue-ish by default. Same chip, same silence. */
+  .listing-filters .index-chip { text-decoration: none; color: var(--text); }
+  /* Declared here as well as in the stylesheet: this block is injected after
+     it, so the rule above would otherwise repaint the Perks chips. */
+  .listing-filters .index-chip-perk { color: var(--perk); }
+  .listing-filters .index-chip:hover { background: rgba(35,34,30,.12); }
+  .listing-chip-count { margin-left: 2px; font: 400 12px/1 var(--sans); font-style: normal; color: var(--text-3); }
+  .index-chip:hover .listing-chip-count { color: inherit; }
+  .listing-foot { margin: 36px 20px 0; padding: 16px 0 40px; border-top: 1px solid var(--line);
+    font: 400 12.5px/1.6 var(--sans); color: var(--text-3); }
+  /* No JavaScript here, so a card is a link to nowhere — it reads, it does not click. */
+  .listing .index-card, .listing .index-open { cursor: default; }
+  @media (max-width: 700px) {
+    .listing-head { padding-top: 16px; gap: 10px; }
+    .listing h1 { font-size: 22px; }
+    .listing-cta { margin-left: 0; }
+  }
+</style>

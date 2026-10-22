@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc">
+  <title id="title">Work out</title>
+  <desc id="desc">Colourful climbing holds on a Bengaluru granite wall</desc>
+  <g stroke="#571541" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#571541" stroke="none" d="M3.6 3.5 20 4.2l.5 16.2-16.8.2Z"/>
+    <path fill="#FFEBDB" stroke="none" opacity=".18" d="m5 5.1 4.5-.4-1.7 2.5 3.8 1.4-2.1 2.3 3.1 2.3-3 2.1 1.2 3.6-5.4-.2Z"/>
+    <path fill="#FFBF21" stroke="none" d="M6 6.2h3.7l-1.2 2.7-3.1-.2Z"/>
+    <path fill="#FF4052" stroke="none" d="m14.2 6.5 3.3.4-.6 3.1-3.7-.2Z"/>
+    <path fill="#429CD8" stroke="none" d="m9.7 11.1 3.8-.4.7 3.1-3.9 1Z"/>
+    <path fill="#92BD33" stroke="none" d="m15.3 14.8 2.9.4-1.1 3.1-3.4-.2Z"/>
+    <path fill="none" stroke="#FFEBDB" d="M6.2 18.1c2.1-1 3.3-2.4 4.1-4.1 1-2.2 2.3-3.7 4.1-4.6"/>
+  </g>
+</svg>

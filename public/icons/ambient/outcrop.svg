@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc">
+  <title id="title">Granite outcrop</title>
+  <desc id="desc">Stacked Bengaluru gneiss boulders with a prickly pear at the base</desc>
+  <g stroke="#571541" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#8C6079" d="M2.6 19.9c-.7-3.6 1.6-6.7 5.2-7.1 3-.3 5.3 1.6 6 4.6.2 1.1.2 1.9 0 2.5Z"/>
+    <path fill="#FFEBDB" d="M13.4 19.9c-.4-2.8 1.3-5 4.1-5 2.5 0 4.1 1.8 4.1 4.3 0 .3 0 .5-.1.7Z"/>
+    <path fill="none" d="M5.6 19.8c-.2-2.2.6-3.8 2.4-4.8m8.9 4.9c-.1-1.5.4-2.6 1.6-3.2"/>
+    <ellipse cx="11.3" cy="17.9" rx="1.5" ry="2" fill="#92BD33" stroke="#571541"/>
+    <ellipse cx="12.9" cy="15.7" rx="1" ry="1.4" fill="#92BD33" stroke="#571541" transform="rotate(28 12.9 15.7)"/>
+    <circle cx="13.5" cy="14.4" r=".45" fill="#FFBF21" stroke="none"/>
+    <path fill="none" d="M2.2 20.6c5.2-.7 14.4-.7 19.6 0"/>
+  </g>
+</svg>

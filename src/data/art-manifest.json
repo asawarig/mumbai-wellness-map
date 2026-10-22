@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "palette": {
+    "cream": "#FFEBDB",
+    "surface": "#FFFCF9",
+    "plum": "#571541",
+    "coral": "#FF4052",
+    "marigold": "#FFBF21",
+    "sky": "#429CD8",
+    "leaf": "#92BD33",
+    "muted": "#8C6079"
+  },
+  "rules": [
+    "Flat marks for chips and pins; painterly only for hero, vignettes, cliff notes, empty state.",
+    "Painterly work keeps a plum contour line and flat lighting \u2014 no cast shadows.",
+    "Cut out on cream, never framed.",
+    "Lazy-load vignettes; keep hero under ~200KB."
+  ],
+  "marks": {
+    "source": "src/data/intent-icons.json",
+    "viewBox": "0 0 24 24",
+    "keys": [
+      "move",
+      "play",
+      "workout",
+      "eat",
+      "indulge",
+      "reset",
+      "clear",
+      "care",
+      "gear",
+      "wearable",
+      "people",
+      "pin"
+    ]
+  },
+  "art": {
+    "dir": "public/art/",
+    "hero": "public/art/hero-bengaluru.png",
+    "empty": "public/art/empty-state.png",
+    "specimen": "public/art/icon-specimen-handdrawn.png",
+    "cliff": [
+      "public/art/cliff-why.png",
+      "public/art/cliff-people.png",
+      "public/art/cliff-legend.png"
+    ],
+    "vignettes": {
+      "move": "public/art/vignette-move.png",
+      "play": "public/art/vignette-play.png",
+      "workout": "public/art/vignette-workout.png",
+      "eat": "public/art/vignette-eat.png",
+      "indulge": "public/art/vignette-indulge.png",
+      "reset": "public/art/vignette-reset.png",
+      "clear": "public/art/vignette-clear.png",
+      "care": "public/art/vignette-care.png",
+      "gear": "public/art/vignette-gear.png",
+      "wearable": "public/art/vignette-wearable.png"
+    }
+  }
+}

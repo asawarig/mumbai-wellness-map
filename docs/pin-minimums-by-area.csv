@@ -1,0 +1,93 @@
+area,tier,hipness,min_total,move,play,workout,eat,indulge,reset,clear,care,gear,wearable,have_total,gap_total
+"Basavanagudi",A,hero,32,4,4,6,5,2,2,2,3,3,1,5,28
+"Brigade Road",A,hero,32,4,4,6,5,2,2,2,3,3,1,5,28
+"Church Street",A,hero,32,4,4,6,5,2,2,2,3,3,1,3,29
+"Cubbon Park",A,hero,32,4,4,6,5,2,2,2,3,3,1,7,27
+"HSR Layout",A,hero,32,4,4,6,5,2,2,2,3,3,1,19,14
+"Indiranagar",A,hero,32,4,4,6,5,2,2,2,3,3,1,36,12
+"Jayanagar",A,hero,32,4,4,6,5,2,2,2,3,3,1,19,13
+"Koramangala",A,hero,32,4,4,6,5,2,2,2,3,3,1,26,14
+"Malleshwaram",A,hero,32,4,4,6,5,2,2,2,3,3,1,12,20
+"MG Road",A,hero,32,4,4,6,5,2,2,2,3,3,1,3,29
+"Sadashiva Nagar",A,hero,32,4,4,6,5,2,2,2,3,3,1,5,28
+"Whitefield",A,hero,32,4,4,6,5,2,2,2,3,3,1,21,14
+"Ashok Nagar",B,strong,22,3,3,4,3,1,1,2,2,2,1,7,19
+"Banashankari",B,strong,22,3,3,4,3,1,1,2,2,2,1,3,19
+"Bellandur",B,strong,22,3,3,4,3,1,1,2,2,2,1,6,17
+"Brookefield",B,strong,22,3,3,4,3,1,1,2,2,2,1,4,18
+"BTM Layout",B,strong,22,3,3,4,3,1,1,2,2,2,1,2,20
+"Domlur",B,strong,22,3,3,4,3,1,1,2,2,2,1,1,21
+"Fraser Town",B,strong,22,3,3,4,3,1,1,2,2,2,1,2,20
+"Hebbal",B,strong,22,3,3,4,3,1,1,2,2,2,1,3,19
+"JP Nagar",B,strong,22,3,3,4,3,1,1,2,2,2,1,9,13
+"Kadubeesanahalli",B,strong,22,3,3,4,3,1,1,2,2,2,1,2,20
+"Kalyan Nagar",B,strong,22,3,3,4,3,1,1,2,2,2,1,4,18
+"Koramangala S.T. Bed",B,strong,22,3,3,4,3,1,1,2,2,2,1,1,21
+"Lalbagh Road",B,strong,22,3,3,4,3,1,1,2,2,2,1,1,21
+"Langford Gardens",B,strong,22,3,3,4,3,1,1,2,2,2,1,1,21
+"Mahadevapura",B,strong,22,3,3,4,3,1,1,2,2,2,1,4,18
+"Marathahalli",B,strong,22,3,3,4,3,1,1,2,2,2,1,6,16
+"Rajajinagar",B,strong,22,3,3,4,3,1,1,2,2,2,1,2,20
+"Richmond Town",B,strong,22,3,3,4,3,1,1,2,2,2,1,4,18
+"Sarjapur Road",B,strong,22,3,3,4,3,1,1,2,2,2,1,5,17
+"St Mark's Road",B,strong,22,3,3,4,3,1,1,2,2,2,1,2,20
+"Ulsoor",B,strong,22,3,3,4,3,1,1,2,2,2,1,2,21
+"Vasanth Nagar",B,strong,22,3,3,4,3,1,1,2,2,2,1,3,19
+"Yeshwanthpur",B,strong,22,3,3,4,3,1,1,2,2,2,1,3,19
+"Agara",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Arekere",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Bannerghatta Road",C,solid,9,1,1,2,2,0,0,1,1,1,0,2,8
+"Basaveshwar Nagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Benson Town",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Bilekahalli",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Bommanahalli",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Challaghatta",C,solid,9,1,1,2,2,0,0,1,1,1,0,2,7
+"Cooke Town",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"CV Raman Nagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Ejipura",C,solid,9,1,1,2,2,0,0,1,1,1,0,2,7
+"Gandhi Nagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,2,8
+"HAL",C,solid,9,1,1,2,2,0,0,1,1,1,0,2,7
+"HBR Layout",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Hennur",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Hombegowda Nagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,2,8
+"Jakkur",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"JC Nagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Jeevan Bima Nagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Kadugodi",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Kaggadasapura",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Kasturi Nagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,2,8
+"Kodihalli",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Kothanur",C,solid,9,1,1,2,2,0,0,1,1,1,0,4,8
+"Kundalahalli",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Madiwala",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Mahalakshmi Layout",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Nagarbhavi",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Nagavara",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Narayanapura",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Nrupathunga Rd",C,solid,9,1,1,2,2,0,0,1,1,1,0,2,7
+"Panathur",C,solid,9,1,1,2,2,0,0,1,1,1,0,3,6
+"Ramamurthy Nagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,3,7
+"RK Hegde Nagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Sampigehalli",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Shivajinagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Singasandra",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Sivanchetti Gardens",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Tavarekere",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Thanisandra",C,solid,9,1,1,2,2,0,0,1,1,1,0,3,7
+"Uttarahalli",C,solid,9,1,1,2,2,0,0,1,1,1,0,2,7
+"Victoria Layout",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,8
+"Vijayanagar",C,solid,9,1,1,2,2,0,0,1,1,1,0,1,9
+"Yelahanka",C,solid,9,1,1,2,2,0,0,1,1,1,0,4,7
+"Bannerghatta",D,thin,2,0,0,1,0,0,0,0,1,0,0,1,2
+"Doddakannelli",D,thin,2,0,0,1,0,0,0,0,1,0,0,1,2
+"Kanakapura Road",D,thin,2,0,0,1,0,0,0,0,1,0,0,2,2
+"Kengeri",D,thin,2,0,0,1,0,0,0,0,1,0,0,2,1
+"Kogilu",D,thin,2,0,0,1,0,0,0,0,1,0,0,1,2
+"Mallathahalli",D,thin,2,0,0,1,0,0,0,0,1,0,0,1,2
+"Mangammanapalya",D,thin,2,0,0,1,0,0,0,0,1,0,0,1,2
+"Parappana Agrahara",D,thin,2,0,0,1,0,0,0,0,1,0,0,1,1
+"Subramanyapura",D,thin,2,0,0,1,0,0,0,0,1,0,0,1,2
+"Talaghattapura",D,thin,2,0,0,1,0,0,0,0,1,0,0,1,2
+"Turahalli",D,thin,2,0,0,1,0,0,0,0,1,0,0,1,2
+"Vajarahalli",D,thin,2,0,0,1,0,0,0,0,1,0,0,1,2
+"Vimanapura",D,thin,2,0,0,1,0,0,0,0,1,0,0,2,2

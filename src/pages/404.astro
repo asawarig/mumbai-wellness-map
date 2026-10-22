@@ -1,0 +1,136 @@
+---
+/* Not found. The planned day's circle (the lens on the map): the map is
+ * sharp inside it and softened and blurred outside, as on a planned day, and
+ * the words run round its rim the way a day's stops do. The map is a picture
+ * of the map itself (public/art/map-404.jpg, taken from the live page), so
+ * this page loads no map code. Served for any path under the map that has
+ * no page.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/wellness-map.css';
+import '../styles/prompt-map.css';
+
+export const prerender = false;
+Astro.response.status = 404;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const mapUrl = base.replace(/\/$/, '') || '/';
+const title = 'Not on the map — Bengaluru Wellness Map';
+const description = 'This page is not on the Bengaluru Wellness Map.';
+---
+
+<BaseLayout title={title} description={description} noindex>
+  {/* AVIF where the browser takes it (sharp at a third of the size), the
+      JPEG where it does not: the second declaration is dropped by browsers
+      that cannot read it, leaving the first. */}
+  <main class="nf" style={`background-image:url(${base}art/map-404.jpg);background-image:image-set(url(${base}art/map-404.avif) type("image/avif"),url(${base}art/map-404.jpg) type("image/jpeg"))`}>
+    <div class="nf-veil" aria-hidden="true"></div>
+    <a class="nf-brand" href={mapUrl} aria-label="Bengaluru Wellness Map">
+      <img src={`${base}be-well-logo.svg`} alt="Be well, Bengaluru" width="195" height="64" />
+    </a>
+    <div class="nf-lens">
+      <svg viewBox="0 0 400 400" role="img" aria-labelledby="nf-said">
+        <title id="nf-said">404: this page isn't on the map.</title>
+        <defs>
+          {/* Starts at the circle's foot, so the words centre a little west of north. */}
+          {/* Over the top, left to right, so it reads the right way up. */}
+          <path id="nf-top" d="M 60,200 a 140,140 0 0,1 280,0" />
+        </defs>
+        <circle class="nf-ring" id="nf-ring" cx="200" cy="200" r="122" />
+        {/* As a day's stops run round its circle: each item after a wide gap,
+            and a square drawn into each gap (the script below). */}
+        <g class="nf-words">
+          <text class="nf-text"><textPath href="#nf-top" startOffset="50%" text-anchor="middle">{'404\u2003\u2003\u2003this page isn’t on the map'}</textPath></text>
+        </g>
+      </svg>
+    </div>
+    <a class="nf-go" href={mapUrl}>back to the map &rarr;</a>
+  </main>
+  {/* The veil's clear hole follows the drawn circle wherever the layout puts it. */}
+  <script is:inline set:html={`(() => {
+    const ring = document.getElementById('nf-ring'), veil = document.querySelector('.nf-veil');
+    if (!ring || !veil) return;
+    /* The picture is the map at twice its pixels, taken on a 2048 x 1280
+       page, at zoom 10.5 on the city's centre with the pins, clusters and
+       running routes left
+       off: shown at that size, every road and lake is the size the map
+       draws it, and the centre sits at the circle's; only a screen wider
+       than the picture scales it up. */
+    const page = document.querySelector('.nf');
+    const IMG_W = 4096, IMG_H = 2560, TRUE_W = 2048, AT_X = 0.5, AT_Y = 0.5;
+    const fit = () => {
+      const b = ring.getBoundingClientRect();
+      const cx = b.left + b.width / 2, cy = b.top + b.height / 2, r = b.width / 2;
+      veil.style.setProperty('--cx', cx + 'px');
+      veil.style.setProperty('--cy', cy + 'px');
+      veil.style.setProperty('--r', r + 'px');
+      let w = TRUE_W;
+      w = Math.max(w, innerWidth / Math.min(AT_X, 1 - AT_X) * 0.5 + 2, innerHeight / Math.min(AT_Y, 1 - AT_Y) * 0.5 * IMG_W / IMG_H + 2);
+      const h = w * IMG_H / IMG_W;
+      page.style.backgroundSize = w + 'px ' + h + 'px';
+      page.style.backgroundPosition = (cx - AT_X * w) + 'px ' + (cy - AT_Y * h) + 'px';
+    };
+    fit();
+    addEventListener('resize', fit);
+    addEventListener('scroll', fit, { passive: true });
+    /* The squares, as the lens draws them: one in each gap, on the line's
+       middle and turned with it, in a pin's colours. */
+    const words = document.querySelector('.nf-words');
+    /* One square, after 404: black, at half a stop's size. */
+    const GAP = 3;
+    const squares = () => {
+      words.querySelectorAll('.nf-sq').forEach((q) => q.remove());
+      let k = 0;
+      document.querySelectorAll('.nf-text').forEach((text) => {
+      const full = text.textContent;
+      const fs = parseFloat(getComputedStyle(text).fontSize) || 22;
+      const side = Math.round(fs * 0.39);
+      for (let i = 0; i < full.length; i++) {
+        if (full[i] !== '\\u2003' || (i > 0 && full[i - 1] === '\\u2003')) continue;
+        try {
+          const p0 = text.getStartPositionOfChar(i), p1 = text.getEndPositionOfChar(i + GAP - 1);
+          const deg = text.getRotationOfChar(i + 1), t = deg * Math.PI / 180, h = fs * 0.34;
+          const cx = (p0.x + p1.x) / 2 + Math.sin(t) * h, cy = (p0.y + p1.y) / 2 - Math.cos(t) * h;
+          const sq = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          sq.setAttribute('class', 'nf-sq');
+          sq.setAttribute('x', cx - side / 2); sq.setAttribute('y', cy - side / 2);
+          sq.setAttribute('width', side); sq.setAttribute('height', side); sq.setAttribute('rx', side * 0.24);
+          sq.setAttribute('transform', 'rotate(' + deg + ' ' + cx + ' ' + cy + ')');
+          sq.style.fill = '#1E1B18';
+          words.appendChild(sq);
+        } catch (e) {}
+      }
+      });
+    };
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(squares);
+  })();`} />
+</BaseLayout>
+
+<style>
+  .nf{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+    padding:72px 16px 40px;box-sizing:border-box;position:relative;
+    background-color:#F1F0EC;background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed}
+  /* As the lens on the map: a pale wash and a 5px blur over everything but
+     the circle, which stays sharp. */
+  .nf-veil{position:fixed;inset:0;z-index:0;pointer-events:none;background:rgba(43,40,36,.24);
+    -webkit-backdrop-filter:blur(5px) saturate(.75);backdrop-filter:blur(5px) saturate(.75);
+    -webkit-mask:radial-gradient(circle at var(--cx,50%) var(--cy,50%),transparent calc(var(--r,0px) - .5px),#000 calc(var(--r,0px) + .5px));
+    mask:radial-gradient(circle at var(--cx,50%) var(--cy,50%),transparent calc(var(--r,0px) - .5px),#000 calc(var(--r,0px) + .5px))}
+  .nf > :not(.nf-veil){position:relative;z-index:1}
+  /* The map's name, back to the map: as the corner bar's tiles, at its top left. */
+  .nf > .nf-brand{position:absolute;top:12px;left:16px;display:grid;place-items:center;height:38px;padding:0 12px;
+    border:1px solid #9A948A;border-radius:10px;background:#E9E7E0}
+  .nf-brand img{display:block;width:auto;height:30px}
+  .nf-lens{width:min(420px,100%)}
+  .nf-lens svg{display:block;width:100%;height:auto;overflow:visible}
+  .nf-ring{fill:none;stroke:none}
+  .nf-words .nf-text{font:400 22px/1 var(--display, Georgia, serif);fill:#1E1B18;letter-spacing:.01em}
+  :global(.nf-sq){stroke:none}
+  .nf-go{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:8px;background:#1E1B18;color:#fff;
+    font:400 16px/1 var(--display, Georgia, serif);text-decoration:none}
+  .nf-go:hover{background:#F0525E}
+  @media (prefers-reduced-motion:no-preference){
+    .nf-words{animation:nf-turn 1s cubic-bezier(.22,1,.36,1) .45s both;transform-origin:200px 200px}
+    @keyframes nf-turn{from{opacity:0;transform:rotate(-28deg)}to{opacity:1;transform:none}}
+  }
+</style>

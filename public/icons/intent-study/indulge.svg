@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc">
+  <title id="title">Indulge</title>
+  <desc id="desc">A steel filter-coffee tumbler nested in its dabarah</desc>
+  <g stroke="#571541" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="12" cy="19.2" rx="7.6" ry="2.1" fill="#FFBF21" stroke="#571541"/>
+    <path fill="#FF4052" stroke="#571541" d="m7.2 7.1 9.7.1-1.1 8.1c-.3 2-2 3.4-4.1 3.3-2-.1-3.6-1.5-3.8-3.5Z"/>
+    <ellipse cx="12.1" cy="7.1" rx="4.9" ry="2.1" fill="#FFEBDB"/>
+    <path fill="none" d="M9.1 6.8c1.5.8 4.3.8 6 0"/>
+    <path fill="none" stroke="#429CD8" d="M10 4.8c-.8-1.1-.6-2 .5-2.8m3.1 2.7c.9-1.1.8-2.1-.2-3"/>
+  </g>
+</svg>

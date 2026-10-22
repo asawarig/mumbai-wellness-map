@@ -1,0 +1,4 @@
+slot,slot_type,status,title,host,day,start_time,venue,area,lat,lon,gm,price,signup_url,category_tag,notes
+1,Plum owned — always slot 1,template,<Plum weekly wellness event>,Plum,,,,,,,,Free,,,Standing slot. Fill weekly. Never sold.
+2,Partner — sellable,open,,,,,,,,,,,,,Open inventory. Tag with the map category it belongs to so it cross-lists.
+3,Partner — sellable,open,,,,,,,,,,,,,Open inventory. Falls back to a Communities row if unsold.

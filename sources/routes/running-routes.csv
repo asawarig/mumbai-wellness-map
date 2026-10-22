@@ -1,0 +1,834 @@
+route_id,master_id,name,display_name,area,ward,corporation,lat,lon,route_type,shape,distance_km,surface,access,elevation_profile,timings,price,description,tags,rating,reviews,quality_band,source,verified,needs_field_data,waypoints,trace_notes,geometry_source,heat_rank,osm_bbox,snap_radius_m,osm_tag_hints,overpass_query
+RT-001,,Cubbon Park loop run,Cubbon Park loop run,Cubbon Park,Sampangirama Nagar,Central,12.9763,77.5929,run,loop,4.0,paved,public,,Open daily; group runs Sat 6:00 AM,Free,Flat ~4 km paved loop through central Bangalore's oldest park. Popular Saturday morning meetup for Cubbon Runs.,outdoor|beginner-friendly|group-runs,,,curated,Personal + Cubbon Runs IG,Verified,,,,,,"12.96372,77.57999,12.98888,77.60581",1400.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.96372,77.57999,12.98888,77.60581);
+  relation[""leisure""=""park""](12.96372,77.57999,12.98888,77.60581);
+  way[""leisure""=""garden""](12.96372,77.57999,12.98888,77.60581);
+  relation[""leisure""=""garden""](12.96372,77.57999,12.98888,77.60581);
+  way[""highway""=""footway""](12.96372,77.57999,12.98888,77.60581);
+);
+out geom;"
+RT-002,,Jinke Park,Jinke Park,Chamrajpet,Kempambudhi Ward,West,12.9516245,77.5572848,run,,,,public,,5-10 AM & 4-8 PM (Daily),Free,"Large Chamrajpet park with shaded walking paths, two or three open-air gyms and a big children's play area with dinosaur statues. There is a lake inside, though a sewage smell drifts in at times. Split hours, shut through the middle of the day.",walk|run|park|chamrajpet|central|free|outdoor-gym|kids-play|lake|smell-flag,,,curated,Google Places,Verified,distance|surface|shape,,,,,"12.94354,77.54899,12.95971,77.56558",900.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.94354,77.54899,12.95971,77.56558);
+  relation[""natural""=""water""](12.94354,77.54899,12.95971,77.56558);
+  way[""leisure""=""park""](12.94354,77.54899,12.95971,77.56558);
+  relation[""leisure""=""park""](12.94354,77.54899,12.95971,77.56558);
+  way[""highway""=""footway""](12.94354,77.54899,12.95971,77.56558);
+);
+out geom;"
+RT-003,,Gul Mohar Park,Gul Mohar Park,Armane Nagar,Sadashiva Nagara,West,13.0223809,77.581846,run,,,,public,,Not published,Free,"Small, quiet park on the Air Force HQTC campus at Armane Nagar, used mainly by defence families. Shaded and calm, with little in the way of facilities. Thinly reviewed.",walk|park|armane-nagar|north|free|quiet|defence-campus|restricted-access,,,curated,Google Places,Needs check,distance|surface|shape,,,,,"13.01430,77.57355,13.03047,77.59014",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](13.01430,77.57355,13.03047,77.59014);
+  relation[""leisure""=""park""](13.01430,77.57355,13.03047,77.59014);
+  way[""leisure""=""garden""](13.01430,77.57355,13.03047,77.59014);
+  relation[""leisure""=""garden""](13.01430,77.57355,13.03047,77.59014);
+  way[""highway""=""footway""](13.01430,77.57355,13.03047,77.59014);
+);
+out geom;"
+RT-004,,Defence Colony Park loop,Defence Colony Park loop,Indiranagar,Indiranagar,Central,12.976282,77.644533,run,loop,,,public,,Best 5:00 AM – 9:00 AM; 4:00 PM – 8:00 PM,Free,Small shaded park loop — short enough per round that laps stack easily. Quiet before 7 AM.,outdoor|park-loop|beginner-friendly|shaded|free,,,curated,Google Places (resolved),Verified,distance|surface,,,,,"12.97089,77.63900,12.98167,77.65006",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.97089,77.63900,12.98167,77.65006);
+  relation[""leisure""=""park""](12.97089,77.63900,12.98167,77.65006);
+  way[""leisure""=""garden""](12.97089,77.63900,12.98167,77.65006);
+  relation[""leisure""=""garden""](12.97089,77.63900,12.98167,77.65006);
+  way[""highway""=""footway""](12.97089,77.63900,12.98167,77.65006);
+);
+out geom;"
+RT-005,,Indiranagar 100 Feet Road morning stretch,Indiranagar 100 Feet Road morning stretch,Indiranagar,Indiranagar,Central,12.9719,77.6412,run,linear/track,,,public,,Best 5:30 AM – 7:00 AM,Free,"Wide-footpath road run before traffic builds, with coffee stops at the far end.",outdoor|road-run|free|early-morning|coffee-stop,,,curated,Desk research — route,Needs check,distance|surface,,,,,"12.96382,77.63290,12.97998,77.64950",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.96382,77.63290,12.97998,77.64950);
+  relation[""leisure""=""park""](12.96382,77.63290,12.97998,77.64950);
+  way[""highway""=""footway""](12.96382,77.63290,12.97998,77.64950);
+  way[""natural""=""water""](12.96382,77.63290,12.97998,77.64950);
+  relation[""natural""=""water""](12.96382,77.63290,12.97998,77.64950);
+);
+out geom;"
+RT-006,,Indiranagar to Old Airport Road morning loop,Indiranagar to Old Airport Road morning loop,Indiranagar,Indiranagar,Central,12.9723,77.6428,cycle,loop,,,public,,Best 5:30 AM – 7:30 AM,Free,Short flat city loop via Old Airport Road and Domlur flyover. Common warm-up for riders heading further east.,outdoor|road-cycling|flat|beginner-friendly|free,,,curated,Desk research — route,Needs check,distance|surface,,,,,"12.96691,77.63727,12.97769,77.64833",600.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.96691,77.63727,12.97769,77.64833);
+  relation[""leisure""=""park""](12.96691,77.63727,12.97769,77.64833);
+  way[""highway""=""footway""](12.96691,77.63727,12.97769,77.64833);
+  way[""natural""=""water""](12.96691,77.63727,12.97769,77.64833);
+  relation[""natural""=""water""](12.96691,77.63727,12.97769,77.64833);
+);
+out geom;"
+RT-007,,Koramangala 6th Block inner-road loop,Koramangala 6th Block inner-road loop,Koramangala,Sri Lakshmi Devi Ward,South,12.9378,77.6244,run,loop,,,public,,Best 5:30 AM – 7:00 AM,Free,"Quiet residential grid that strings into a flat, well-lit loop before traffic starts. Easy to shorten or extend.",outdoor|road-run|flat|well-lit|free,,,curated,Desk research — route,Needs check,distance|surface,,,,,"12.93241,77.61887,12.94319,77.62993",600.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.93241,77.61887,12.94319,77.62993);
+  relation[""leisure""=""park""](12.93241,77.61887,12.94319,77.62993);
+  way[""highway""=""footway""](12.93241,77.61887,12.94319,77.62993);
+  way[""natural""=""water""](12.93241,77.61887,12.94319,77.62993);
+  relation[""natural""=""water""](12.93241,77.61887,12.94319,77.62993);
+);
+out geom;"
+RT-008,,27th Main Road HSR morning stretch,27th Main Road HSR morning stretch,HSR Layout,Agara,South,12.9117,77.6427,run,linear/track,,,public,,Best 5:30 AM – 6:30 AM,Free,The neighbourhood spine — wide and straight enough to use as a tempo stretch. Quiet before 6:30 AM.,outdoor|road-run|tempo|flat|free,,,curated,Desk research — route,Needs check,distance|surface,,,,,"12.90362,77.63441,12.91978,77.65099",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.90362,77.63441,12.91978,77.65099);
+  relation[""leisure""=""park""](12.90362,77.63441,12.91978,77.65099);
+  way[""highway""=""footway""](12.90362,77.63441,12.91978,77.65099);
+  way[""natural""=""water""](12.90362,77.63441,12.91978,77.65099);
+  relation[""natural""=""water""](12.90362,77.63441,12.91978,77.65099);
+);
+out geom;"
+RT-009,,HSR to Sarjapur Road morning ride,HSR to Sarjapur Road morning ride,HSR Layout,HSR Layout,South,12.9139,77.6385,cycle,out-and-back,,,public,,Best 5:30 AM – 7:30 AM,Free,Easy eastbound out-and-back along Sarjapur Road with the option to extend past Dommasandra. Standard weekday spin for the HSR riding crowd.,outdoor|road-cycling|group-ride|early-morning|free,,,curated,Desk research — route,Needs check,distance|surface,,,,,"12.90582,77.63021,12.92198,77.64679",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.90582,77.63021,12.92198,77.64679);
+  relation[""leisure""=""park""](12.90582,77.63021,12.92198,77.64679);
+  way[""highway""=""footway""](12.90582,77.63021,12.92198,77.64679);
+  way[""natural""=""water""](12.90582,77.63021,12.92198,77.64679);
+  relation[""natural""=""water""](12.90582,77.63021,12.92198,77.64679);
+);
+out geom;"
+RT-010,,AECS Layout D Block Football Ground,AECS Layout D Block Football Ground — walking and jogging loop,Brookefield,Priyadarshini Ward,East,12.962433,77.712048,run,loop,,,public,,Opens around 4:00 PM; check gate notice,Free,"Roughly 200-metre perimeter used for walking and jogging around the footballers and cricketers in the middle. Clean and safe for early-morning and late-evening loops, though gates are often shut outside posted hours.",outdoor|jogging-loop|200m|free|community-ground|limited-access,,,curated,Google Places (resolved),Verified,distance|surface,,,,,"12.95704,77.70652,12.96782,77.71758",600.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.95704,77.70652,12.96782,77.71758);
+  relation[""leisure""=""park""](12.95704,77.70652,12.96782,77.71758);
+  way[""highway""=""footway""](12.95704,77.70652,12.96782,77.71758);
+  way[""natural""=""water""](12.95704,77.70652,12.96782,77.71758);
+  relation[""natural""=""water""](12.95704,77.70652,12.96782,77.71758);
+);
+out geom;"
+RT-011,,Richmond Town Park,Richmond Town Park,Richmond Town,Shanthinagar,Central,12.963519,77.601689,run,,,,public,,"Daily 5:00 – 11:00 AM, 4:00 – 8:30 PM",Free,"Heavily shaded park with marked walking paths, outdoor gym equipment, over fifty benches and a kids play area. Dog friendly and well used for jogging and light exercise. Opens at 5 AM.",park|jogging-paths|outdoor-gym|shaded|dog-friendly|kids-play-area|free,,,curated,Google Places (resolved),Verified,distance|surface|shape,,,,,"12.95543,77.59339,12.97160,77.60999",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.95543,77.59339,12.97160,77.60999);
+  relation[""leisure""=""park""](12.95543,77.59339,12.97160,77.60999);
+  way[""leisure""=""garden""](12.95543,77.59339,12.97160,77.60999);
+  relation[""leisure""=""garden""](12.95543,77.59339,12.97160,77.60999);
+  way[""highway""=""footway""](12.95543,77.59339,12.97160,77.60999);
+);
+out geom;"
+RT-012,,Indian Athletic Academy,Indian Athletic Academy — Kittur Rani Chennamma Stadium,Jayanagar,Byrasandra,South,12.934331,77.585408,run,linear/track,,,public,,Mon–Sat 6:00 AM – 10:00 PM; Closed Sun,₹₹,"Structured athletics coaching on the stadium track — sprint and distance work, form, and mental preparation, individually tailored. 4.5 across 207 reviews. Coaches take athletes to competition.",athletics|running|sprint|distance|track-coaching|competition|individual-plans,,,curated,Google Places (resolved),Verified,distance|surface,,,,,"12.92625,77.57711,12.94242,77.59370",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.92625,77.57711,12.94242,77.59370);
+  relation[""leisure""=""park""](12.92625,77.57711,12.94242,77.59370);
+  way[""highway""=""footway""](12.92625,77.57711,12.94242,77.59370);
+  way[""natural""=""water""](12.92625,77.57711,12.94242,77.59370);
+  relation[""natural""=""water""](12.92625,77.57711,12.94242,77.59370);
+);
+out geom;"
+RT-013,,Kittur Rani Chennamma Stadium (Running Track),Kittur Rani Chennamma Stadium (Running Track),Jayanagar,Byrasandra,South,12.934438,77.586078,run,linear/track,,,public,,6-9:30 AM & 4-8 PM (Daily),₹,"BBMP stadium with a well-maintained public running track, open mornings and evenings on clean, spacious grounds. Popular with athletes and casual joggers alike. Washroom hygiene is the recurring complaint.",running|track|bbmp|jayanagar|public-stadium|athletics|athletics-track|public-access|BBMP|spacious|free-or-cheap|poor-washrooms,4.4,826.0,floor,"Google Places, Google Places (resolved)",Verified,distance|surface,,,,,"12.92635,77.57778,12.94252,77.59437",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.92635,77.57778,12.94252,77.59437);
+  relation[""leisure""=""park""](12.92635,77.57778,12.94252,77.59437);
+  way[""highway""=""footway""](12.92635,77.57778,12.94252,77.59437);
+  way[""natural""=""water""](12.92635,77.57778,12.94252,77.59437);
+  relation[""natural""=""water""](12.92635,77.57778,12.94252,77.59437);
+);
+out geom;"
+RT-014,,Attur BBMP Lake Park,Attur BBMP Lake Park,Yelahanka,Doddabettahalli,North,13.111497,77.565479,run,linear/track,2.2,mud,public,,5-9:30 AM & 4-7 PM (Daily),₹,"Lake park developed about two years ago, with a 2.2 km mud running and walking track, an open-air gym and peacocks about. Still being built out. Walkers advise against going alone in the very early morning.",running|trail|yelahanka|lake|peacocks|bbmp,4.2,121.0,floor,Google Places,Verified,,,,,,"13.09667,77.55026,13.12632,77.58070",1650.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.09667,77.55026,13.12632,77.58070);
+  relation[""natural""=""water""](13.09667,77.55026,13.12632,77.58070);
+  way[""leisure""=""park""](13.09667,77.55026,13.12632,77.58070);
+  relation[""leisure""=""park""](13.09667,77.55026,13.12632,77.58070);
+  way[""highway""=""footway""](13.09667,77.55026,13.12632,77.58070);
+);
+out geom;"
+RT-015,,Attur Lake Trail (proper),Attur Lake Trail (proper),Yelahanka,Doddabettahalli,North,13.11194,77.562658,run,linear/track,,,public,,5:30-8:30 AM & 4:30-7:30 PM (varies),₹,"Natural walking track around Attur Lake, close to three kilometres, with an open-air gym, badminton courts and sunrise and sunset views. Recent sewage pollution has hit water quality and the lake ecosystem. Adjacent to the BBMP lake park.",running|walking|trail|yelahanka|lake|pollution-flag,4.3,255.0,floor,Google Places,Verified,distance|surface,,,,,"13.10386,77.55436,13.12002,77.57096",900.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.10386,77.55436,13.12002,77.57096);
+  relation[""natural""=""water""](13.10386,77.55436,13.12002,77.57096);
+  way[""leisure""=""park""](13.10386,77.55436,13.12002,77.57096);
+  relation[""leisure""=""park""](13.10386,77.55436,13.12002,77.57096);
+  way[""highway""=""footway""](13.10386,77.55436,13.12002,77.57096);
+);
+out geom;"
+RT-016,,Devarakere Park,Devarakere Park,Subramanyapura,Uttarahalli,South,12.897797,77.555156,run,linear/track,,,public,,6 AM – 9 PM (Daily),₹,"Small scenic lake with a jogging track, walking path, temple, children's play zone and open-air gym. Fresh air, and an easy morning or evening walk. Recent visitors mention rubbish building up in the lake, the smell that follows, and stray dogs around the track.",walking|jogging|trail|banashankari|lake|temple|park,4.4,491.0,floor,Google Places,Verified,distance|surface,,,,,"12.88971,77.54686,12.90588,77.56345",900.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.88971,77.54686,12.90588,77.56345);
+  relation[""natural""=""water""](12.88971,77.54686,12.90588,77.56345);
+  way[""leisure""=""park""](12.88971,77.54686,12.90588,77.56345);
+  relation[""leisure""=""park""](12.88971,77.54686,12.90588,77.56345);
+  way[""highway""=""footway""](12.88971,77.54686,12.90588,77.56345);
+);
+out geom;"
+RT-017,,Sree Kanteerava Stadium (Running Track),Sree Kanteerava Stadium (Running Track),Cubbon Park,Sampangirama Nagar,Central,12.969698,77.593486,run,linear/track,,,public,,10 AM – 8 PM (Closed Sun),₹,"Central Bangalore's biggest running track, used by athletes for sprints, long runs and drills. Also hosts Bengaluru FC football matches and other events. Closed Sundays.",running|track|athletics|kanteerava|central-blr|stadium,4.4,20361.0,floor,Google Places,Verified,distance|surface,,,,,"12.96161,77.58519,12.97778,77.60178",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.96161,77.58519,12.97778,77.60178);
+  relation[""leisure""=""park""](12.96161,77.58519,12.97778,77.60178);
+  way[""highway""=""footway""](12.96161,77.58519,12.97778,77.60178);
+  way[""natural""=""water""](12.96161,77.58519,12.97778,77.60178);
+  relation[""natural""=""water""](12.96161,77.58519,12.97778,77.60178);
+);
+out geom;"
+RT-018,,Sri Chamarajendra Park (Cubbon Park),Sri Chamarajendra Park (Cubbon Park),Cubbon Park,Sampangirama Nagar,Central,12.975249,77.592887,run,loop,,,public,,6 AM – 6 PM (Closed Mon),₹,"Bangalore's most iconic urban park: a vast tree canopy, running and walking loops, calm mornings and weekend flower shows. Central, and well kept by the horticulture department. The anchor point for running in central Bangalore, and one of the most reviewed places in the city. Closed Mondays.",running|walking|cubbon|iconic|urban-park|central-blr|park|jogging|cycling|shaded|inclusive-play-area|free|central|closed-monday,4.4,143.0,floor,"Google Places, Google Places (resolved)",Verified,distance|surface,,,,,"12.96986,77.58736,12.98064,77.59842",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.96986,77.58736,12.98064,77.59842);
+  relation[""leisure""=""park""](12.96986,77.58736,12.98064,77.59842);
+  way[""leisure""=""garden""](12.96986,77.58736,12.98064,77.59842);
+  relation[""leisure""=""garden""](12.96986,77.58736,12.98064,77.59842);
+  way[""highway""=""footway""](12.96986,77.58736,12.98064,77.59842);
+);
+out geom;"
+RT-019,,Sankey Tank Park,Sankey Tank Park,Malleshwaram,Sadashiva Nagara,West,13.0073,77.5713,run,linear/track,1.5,,public,,5-10 AM & 4-8 PM (Daily),₹,"Historic Malleshwaram lake dating to 1882, circled by a scenic walking trail of about 1.5 km. Yoga areas, a public gym, children's play space, gazebos and benches. Cyclists are not permitted. Two open sessions daily, and a canonical Bangalore walking spot.",walking|trail|sankey-tank|malleshwaram|iconic|historic|lake,4.5,15.0,,Google Places,Verified,surface,,,,,"12.99719,77.56093,13.01741,77.58167",1125.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.99719,77.56093,13.01741,77.58167);
+  relation[""natural""=""water""](12.99719,77.56093,13.01741,77.58167);
+  way[""leisure""=""park""](12.99719,77.56093,13.01741,77.58167);
+  relation[""leisure""=""park""](12.99719,77.56093,13.01741,77.58167);
+  way[""highway""=""footway""](12.99719,77.56093,13.01741,77.58167);
+);
+out geom;"
+RT-020,,Jakkur Lake,Jakkur Lake,Jakkur,Jakkur,North,13.0873671,77.609935,run,loop,3.5,,public,,Open daily; joggers' gate opens early morning,Free,About 3.5 km of shaded track around the lake; pelicans and wetland birds. Separate joggers' entry on the south-east side.,running|walking|birdwatching|lake|pelicans|free|3.5km-loop,4.5,997.0,acceptable,Google Places,Verified,surface,,,,,"13.07636,77.59864,13.09837,77.62123",1225.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.07636,77.59864,13.09837,77.62123);
+  relation[""natural""=""water""](13.07636,77.59864,13.09837,77.62123);
+  way[""leisure""=""park""](13.07636,77.59864,13.09837,77.62123);
+  relation[""leisure""=""park""](13.07636,77.59864,13.09837,77.62123);
+  way[""highway""=""footway""](13.07636,77.59864,13.09837,77.62123);
+);
+out geom;"
+RT-021,,Yelahanka Kere,Yelahanka Kere,Yelahanka,Akash Ward,North,13.1043819,77.5968774,run,loop,5.0,paved,public,,"Daily 5:00 – 10:00 AM, 4:00 – 7:00 PM",Free,"About a 5 km loop with a mix of paved and mud track; one gate only, so plan the lap.",running|walking|5km-loop|birdwatching|free|lake|sunset,4.4,248.0,floor,Google Places,Verified,,,,,,"13.08866,77.58074,13.12010,77.61302",1750.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.08866,77.58074,13.12010,77.61302);
+  relation[""natural""=""water""](13.08866,77.58074,13.12010,77.61302);
+  way[""leisure""=""park""](13.08866,77.58074,13.12010,77.61302);
+  relation[""leisure""=""park""](13.08866,77.58074,13.12010,77.61302);
+  way[""highway""=""footway""](13.08866,77.58074,13.12010,77.61302);
+);
+out geom;"
+RT-022,,Yelahanka Bicycle Track,Yelahanka Bicycle Track,Yelahanka,Yelahanka Satellite Town,North,13.100382,77.5801046,cycle,linear/track,,,public,,Open 24 hours,Free,"Dedicated cycle track along Major Sandeep Unnikrishnan Road; lit, with benches.",cycling|walking|dedicated-track|free|lit|benches,4.3,22.0,floor,Google Places,Verified,distance|surface,,,,,"13.09230,77.57180,13.10847,77.58841",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](13.09230,77.57180,13.10847,77.58841);
+  relation[""leisure""=""park""](13.09230,77.57180,13.10847,77.58841);
+  way[""highway""=""footway""](13.09230,77.57180,13.10847,77.58841);
+  way[""natural""=""water""](13.09230,77.57180,13.10847,77.58841);
+  relation[""natural""=""water""](13.09230,77.57180,13.10847,77.58841);
+);
+out geom;"
+RT-023,,Mahadeva Banakara Park,Mahadeva Banakara Park — Rajajinagar 5th Block,Rajajinagar,Rama Mandira,West,12.983928,77.5516422,run,linear/track,,,public,,"Daily 5:00 – 9:00 AM, 4:30 – 8:00 PM",Free,"Park on 17th E Main with an inclined jogging track good for sprint work, plus a gymnastics area. No pets.",running|inclined-track|sprints|gymnastics|open-gym|no-pets,4.3,147.0,floor,Google Places,Verified,distance|surface,,,,,"12.97584,77.54335,12.99201,77.55994",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.97584,77.54335,12.99201,77.55994);
+  relation[""leisure""=""park""](12.97584,77.54335,12.99201,77.55994);
+  way[""leisure""=""garden""](12.97584,77.54335,12.99201,77.55994);
+  relation[""leisure""=""garden""](12.97584,77.54335,12.99201,77.55994);
+  way[""highway""=""footway""](12.97584,77.54335,12.99201,77.55994);
+);
+out geom;"
+RT-024,,SAI NCOE Athletics Track,SAI NCOE Athletics Track — Gnana Bharathi,Nagarbhavi,Jnana Bharathi Ward,West,12.9437905,77.5138389,run,linear/track,,synthetic,public,,Daily 8:00 AM – 5:20 PM,Free,"Sports Authority of India synthetic athletics track on the Bangalore University campus, with hockey, swimming and shooting alongside. Entry needs permission.",athletics|synthetic-track|running|campus,4.4,415.0,floor,Google Places,Verified,distance,,,,,"12.93571,77.50554,12.95188,77.52213",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.93571,77.50554,12.95188,77.52213);
+  relation[""leisure""=""park""](12.93571,77.50554,12.95188,77.52213);
+  way[""highway""=""footway""](12.93571,77.50554,12.95188,77.52213);
+  way[""natural""=""water""](12.93571,77.50554,12.95188,77.52213);
+  relation[""natural""=""water""](12.93571,77.50554,12.95188,77.52213);
+);
+out geom;"
+RT-025,,Sonu's Running Track,Sonu's Running Track — Hoodi Lake,Hoodi,Hoodi,East,12.9992348,77.7164409,run,loop,1.0,paved,public,,"Daily 5:00 – 9:00 AM, 4:00 – 7:00 PM",Free,"Roughly 1 km mud track around Hoodi Lake — unpaved and uneven, but a genuine running loop with cool breezes and few distractions. Avoid after 6 PM, no lighting.",running|lake-loop|unpaved|early-morning,4.1,174.0,floor,Google Places,Verified,,,,,,"12.99609,77.71321,13.00238,77.71967",350.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.99609,77.71321,13.00238,77.71967);
+  relation[""natural""=""water""](12.99609,77.71321,13.00238,77.71967);
+  way[""leisure""=""park""](12.99609,77.71321,13.00238,77.71967);
+  relation[""leisure""=""park""](12.99609,77.71321,13.00238,77.71967);
+  way[""highway""=""footway""](12.99609,77.71321,13.00238,77.71967);
+);
+out geom;"
+RT-026,,ITI Ground & Indoor Sports Facility,ITI Ground & Indoor Sports Facility — Duravani Nagar,Mahadevapura,Chikka Devasandra,East,13.003643,77.6849431,track,,,,public,,Open daily,Free,"Large public grass ground open for running and walking, with a basketball court and shade trees. Waterlogs after heavy rain.",running|ground|basketball|public-access,4.3,144.0,floor,Google Places,Verified,distance|surface|shape,,,,,"12.99556,77.67665,13.01173,77.69324",900.0,leisure=track|leisure=pitch|leisure=sports_centre,"[out:json][timeout:25];
+(
+  way[""leisure""=""track""](12.99556,77.67665,13.01173,77.69324);
+  relation[""leisure""=""track""](12.99556,77.67665,13.01173,77.69324);
+  way[""leisure""=""pitch""](12.99556,77.67665,13.01173,77.69324);
+  relation[""leisure""=""pitch""](12.99556,77.67665,13.01173,77.69324);
+  way[""leisure""=""sports_centre""](12.99556,77.67665,13.01173,77.69324);
+  relation[""leisure""=""sports_centre""](12.99556,77.67665,13.01173,77.69324);
+);
+out geom;"
+RT-027,,Inner Circle Ground Whitefield,Inner Circle Ground Whitefield — Whitefield,Whitefield,Hagaduru,East,12.9709701,77.7489547,run,linear/track,,,public,,Open 24 hours,Free,"Large open ground on Inner Circle Road with a perimeter walking path, kids' park and space for several games at once. Open 24 hours.",running|ground|walking-path|kids-area,4.4,777.0,floor,Google Places,Verified,distance|surface,,,,,"12.96289,77.74066,12.97905,77.75725",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.96289,77.74066,12.97905,77.75725);
+  relation[""leisure""=""park""](12.96289,77.74066,12.97905,77.75725);
+  way[""highway""=""footway""](12.96289,77.74066,12.97905,77.75725);
+  way[""natural""=""water""](12.96289,77.74066,12.97905,77.75725);
+  relation[""natural""=""water""](12.96289,77.74066,12.97905,77.75725);
+);
+out geom;"
+RT-028,,Doddagubbi Lake,Doddagubbi Lake — Doddagubbi,Kothanur,Kothanur,East,13.0727781,77.6721302,run,loop,4.0,paved,public,,"Daily 5:30 – 9:30 AM, 4:30 – 6:30 PM",Free,"Long dirt track running the full shoreline — roughly 4 km of maintained trail, quiet, with pelicans and open sky. One of the best distance loops in north Bengaluru. Not step-free; the track is unpaved.",running|4km-loop|lake|birdwatching|quiet|unpaved,4.4,299.0,floor,Strava segment map + Google Places,Verified,,,,,,"13.06020,77.65922,13.08535,77.68504",1400.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.06020,77.65922,13.08535,77.68504);
+  relation[""natural""=""water""](13.06020,77.65922,13.08535,77.68504);
+  way[""leisure""=""park""](13.06020,77.65922,13.08535,77.68504);
+  relation[""leisure""=""park""](13.06020,77.65922,13.08535,77.68504);
+  way[""highway""=""footway""](13.06020,77.65922,13.08535,77.68504);
+);
+out geom;"
+RT-029,,Chokkanahalli Lake Park,Chokkanahalli Lake Park — Chokkanahalli,Jakkur,Byatarayanapura,North,13.0854474,77.6305703,run,loop,,paved,public,,"Daily 5:00 – 10:00 AM, 4:30 – 7:00 PM",Free,"Small lake with a paved, well-fenced walking track set back from the main road. Clean and guarded, with a children's playground and a lot of waterbirds. Good short loop rather than a distance run.",walking|paved-track|lake|birdwatching|fenced|kids-area,4.2,171.0,floor,Strava segment map + Google Places,Verified,distance,,,,,"13.08006,77.62504,13.09084,77.63610",600.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.08006,77.62504,13.09084,77.63610);
+  relation[""natural""=""water""](13.08006,77.62504,13.09084,77.63610);
+  way[""leisure""=""park""](13.08006,77.62504,13.09084,77.63610);
+  relation[""leisure""=""park""](13.08006,77.62504,13.09084,77.63610);
+  way[""highway""=""footway""](13.08006,77.62504,13.09084,77.63610);
+);
+out geom;"
+RT-030,,Thirumenahalli Lake,Thirumenahalli Lake — Thirumenahalli,Jakkur,Byatarayanapura,North,13.0931592,77.629014,run,loop,1.25,gravel,public,,Daily 5:00 AM – 7:00 PM,Free,"Roughly 1.25 km gravel walkway around the lake, with outdoor gym, gazebos and a children's play area. Strong birdlife — pelicans, herons, cormorants. Water levels drop in dry months.",walking|1.25km-loop|gravel|open-gym|birdwatching|kids-area,4.1,114.0,floor,Strava segment map + Google Places,Verified,,,,,,"13.08923,77.62498,13.09708,77.63304",437.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.08923,77.62498,13.09708,77.63304);
+  relation[""natural""=""water""](13.08923,77.62498,13.09708,77.63304);
+  way[""leisure""=""park""](13.08923,77.62498,13.09708,77.63304);
+  relation[""leisure""=""park""](13.08923,77.62498,13.09708,77.63304);
+  way[""highway""=""footway""](13.08923,77.62498,13.09708,77.63304);
+);
+out geom;"
+RT-031,,Turahalli Forest MTB Trails,Turahalli Forest MTB Trails,Turahalli,Talagattapura,South,12.883171,77.52503,cycle,linear/track,20.0,,public,,Early morning,Free,"South Bangalore's mountain biking hub, a eucalyptus forest laced with technical off-road trails, 15 to 20 km from Jayanagar. Popular for weekend group rides, with trails from beginner-friendly to technical singletrack. Best in dry weather, as the monsoon turns them to slush.",cycling-route|mtb|off-road|technical|south-bangalore|forest,,,curated,"Google Places, Personal knowledge",Verified,surface,,,,,"12.74842,77.38680,13.01792,77.66326",15000.0,natural=wood|leisure=nature_reserve|highway=path,"[out:json][timeout:25];
+(
+  way[""natural""=""wood""](12.74842,77.38680,13.01792,77.66326);
+  relation[""natural""=""wood""](12.74842,77.38680,13.01792,77.66326);
+  way[""leisure""=""nature_reserve""](12.74842,77.38680,13.01792,77.66326);
+  relation[""leisure""=""nature_reserve""](12.74842,77.38680,13.01792,77.66326);
+  way[""highway""=""path""](12.74842,77.38680,13.01792,77.66326);
+);
+out geom;"
+RT-032,,Bhartiya City (Thanisandra),Bhartiya City (Thanisandra),Thanisandra,Kogilu,North,13.083376,77.642466,cycle,,,,public,,Any time (safest early morning),Free,"North Bangalore's mixed-use township, residential precinct plus retail, laid out with generous greenery, ponds and wide boulevards. Excellent for a quiet, safe, canopy-covered ride without leaving the city. Neither a forest like Cubbon nor a highway route, and a good option for beginners nervous about traffic.",cycling-route|urban|beginner-friendly|family-friendly|north-bangalore|planned-precinct,,,curated,Madman's Journey,Verified,distance|surface|shape,,,,,"13.07529,77.63417,13.09146,77.65077",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](13.07529,77.63417,13.09146,77.65077);
+  relation[""leisure""=""park""](13.07529,77.63417,13.09146,77.65077);
+  way[""highway""=""footway""](13.07529,77.63417,13.09146,77.65077);
+  way[""natural""=""water""](13.07529,77.63417,13.09146,77.65077);
+  relation[""natural""=""water""](13.07529,77.63417,13.09146,77.65077);
+);
+out geom;"
+RT-033,,Race Course Rd + Bhavan Rd Cycling Lanes,Race Course Rd + Bhavan Rd Cycling Lanes,Gandhi Nagar,Sampangirama Nagar,Central,12.981663,77.579579,cycle,loop,,,public,,Any time (best pre-dawn / evening),Free,"Central Bangalore's dedicated cycling infrastructure: green lanes running along Race Course Road and Bhavan Road and connecting to Cubbon Park. Tree-canopied the whole way, and one of the best urban cycling stretches in the city. Good for a short casual ride, or as a warm-up to a Cubbon Park loop.",cycling-route|urban|dedicated-lanes|central|canopy|cbd|short|beginner-friendly,,,curated,Madman's Journey,Verified,distance|surface,,,,,"12.97627,77.57405,12.98705,77.58511",600.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.97627,77.57405,12.98705,77.58511);
+  relation[""leisure""=""park""](12.97627,77.57405,12.98705,77.58511);
+  way[""highway""=""footway""](12.97627,77.57405,12.98705,77.58511);
+  way[""natural""=""water""](12.97627,77.57405,12.98705,77.58511);
+  relation[""natural""=""water""](12.97627,77.57405,12.98705,77.58511);
+);
+out geom;"
+RT-034,,Kanteerava Stadium Track,Kanteerava Stadium Track,MG Road,Ashokanagar,Central,12.9691,77.596,run,linear/track,,synthetic,public,,Check public schedule,₹ (ticket),"Public running track at Kanteerava Stadium, 400 m synthetic when open. Best for speed work and intervals. A ticket is required and access is restricted during events, so check the public timings ahead.",track|400m|speed-work|central|ticketed,,,curated,"Personal knowledge, KSAF",Needs check,distance,,,,,"12.96102,77.58770,12.97718,77.60430",900.0,leisure=park|highway=footway|natural=water,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.96102,77.58770,12.97718,77.60430);
+  relation[""leisure""=""park""](12.96102,77.58770,12.97718,77.60430);
+  way[""highway""=""footway""](12.96102,77.58770,12.97718,77.60430);
+  way[""natural""=""water""](12.96102,77.58770,12.97718,77.60430);
+  relation[""natural""=""water""](12.96102,77.58770,12.97718,77.60430);
+);
+out geom;"
+RT-035,,Bannerghatta Butterfly Park Trail,Bannerghatta Butterfly Park Trail,Bannerghatta,,,12.7867,77.5764,run,linear/track,8.0,,public,,Best early morning,Free (park area),"~5-8km rolling trails around Bannerghatta Biological Park area (parts outside the paid zone). Cooler, forested, quieter. Weekend group runs occasionally organised. Watch for early-morning traffic on main road.",trail|bannerghatta|forested|weekend|long-run|south,,,curated,Personal + trail community,Verified,surface,,,,,"12.73280,77.52113,12.84060,77.63167",6000.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.73280,77.52113,12.84060,77.63167);
+  relation[""leisure""=""park""](12.73280,77.52113,12.84060,77.63167);
+  way[""leisure""=""garden""](12.73280,77.52113,12.84060,77.63167);
+  relation[""leisure""=""garden""](12.73280,77.52113,12.84060,77.63167);
+  way[""highway""=""footway""](12.73280,77.52113,12.84060,77.63167);
+);
+out geom;"
+RT-036,,Turahalli Forest Trails,Turahalli Forest Trails,Uttarahalli,Talagattapura,South,12.8827,77.5296,run,linear/track,,,public,,6 AM - 6 PM (best early morning),Free,"Bangalore's last remaining urban forest, 600 acres of it. Trail running with some steep sections, and popular with mountain bikers and hikers too. Enter by 7 AM, as the sun heats the trail fast. No fee.",trail|forest|turahalli|south|nature|long-run|mtb-shared,,,curated,Personal knowledge,Verified,distance|surface,,,,,"12.87462,77.52131,12.89078,77.53789",900.0,natural=wood|leisure=nature_reserve|highway=path,"[out:json][timeout:25];
+(
+  way[""natural""=""wood""](12.87462,77.52131,12.89078,77.53789);
+  relation[""natural""=""wood""](12.87462,77.52131,12.89078,77.53789);
+  way[""leisure""=""nature_reserve""](12.87462,77.52131,12.89078,77.53789);
+  relation[""leisure""=""nature_reserve""](12.87462,77.52131,12.89078,77.53789);
+  way[""highway""=""path""](12.87462,77.52131,12.89078,77.53789);
+);
+out geom;"
+RT-037,,Puttenahalli Lake Loop,Puttenahalli Lake Loop,JP Nagar,RBI Layout,South,12.8878,77.5876,run,loop,1.0,,public,,Dawn to dusk,Free,~1km walking/jogging path around restored Puttenahalli Lake. Small but scenic. Popular with JP Nagar community. Multiple loops for distance. Restoration led by PNLIT.,lake-loop|jp-nagar|short|community|restored|wildlife,,,curated,PNLIT + local community,Verified,surface,,,,,"12.88466,77.58437,12.89094,77.59083",350.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.88466,77.58437,12.89094,77.59083);
+  relation[""natural""=""water""](12.88466,77.58437,12.89094,77.59083);
+  way[""leisure""=""park""](12.88466,77.58437,12.89094,77.59083);
+  relation[""leisure""=""park""](12.88466,77.58437,12.89094,77.59083);
+  way[""highway""=""footway""](12.88466,77.58437,12.89094,77.59083);
+);
+out geom;"
+RT-038,,NICE Road Early Morning Loop,NICE Road Early Morning Loop,NICE Road,,,,,cycle,loop,42.0,paved,public,,4:30 AM - 6:30 AM (Sun),Free (early hours),"A 42 km loop on NICE Road, ridden before 6:30 AM. Well paved, minimal traffic, some elevation, and a popular Sunday spin. After 6:30 the traffic builds and it stops being safe.",cycling|nice-road|long-ride|early-morning|group|west,,,curated,"Bangalore cycling community, Yulu Cycling Meetups",Verified,,,,,,,,,
+RT-039,,Cubbon Park Cycle Loop,Cubbon Park Cycle Loop,Cubbon Park,,,,,cycle,loop,4.0,,public,,Sat + Sun (car-free),Free,"Casual 3-4 km loop inside Cubbon Park (on car-free Saturdays and Sundays). Perfect for beginners, kids, urban commuters, gentle spin. No traffic on weekends.",cycling|cubbon-park|beginner-friendly|kids|weekend|central|car-free,,,curated,BBMP + citizen initiatives,Verified,surface,,,,,,,,
+RT-040,,Bugle Rock Park loop,Bugle Rock Park loop,Basavanagudi,N.R Colony,West,12.9427052,77.5694287,run,loop,,,public,,"5:30-10 AM, 4-8:30 PM (Daily)",Free,"Shaded walking paths winding between the granite outcrops off Bull Temple Road, with an open-air gym area. Roughly a 15-minute loop back to the Bull Temple Road gate. Litter around the rocks is the recurring complaint.",walk|park|loop|basavanagudi|south|shaded|outdoor-gym|rock-formations,,,curated,Google Places,Verified,distance|surface,,,,,"12.93732,77.56390,12.94810,77.57496",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.93732,77.56390,12.94810,77.57496);
+  relation[""leisure""=""park""](12.93732,77.56390,12.94810,77.57496);
+  way[""leisure""=""garden""](12.93732,77.56390,12.94810,77.57496);
+  relation[""leisure""=""garden""](12.93732,77.56390,12.94810,77.57496);
+  way[""highway""=""footway""](12.93732,77.56390,12.94810,77.57496);
+);
+out geom;"
+RT-041,,M.N. Krishna Rao Park loop,M.N. Krishna Rao Park loop,Basavanagudi,Sunkenahalli,Central,12.9418183,77.5752478,run,loop,,,public,,"5 AM-12 PM, 3-9 PM (Daily)",Free,"Big tree-covered park with a proper running track, three gates and a basketball court alongside. A full circuit takes 20 to 25 minutes at walking pace. Free entry and recently well maintained.",run|walk|park|track|basavanagudi|south|free|basketball|loop,,,curated,Google Places,Verified,distance|surface,,,,,"12.93643,77.56972,12.94721,77.58078",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.93643,77.56972,12.94721,77.58078);
+  relation[""leisure""=""park""](12.93643,77.56972,12.94721,77.58078);
+  way[""leisure""=""garden""](12.93643,77.56972,12.94721,77.58078);
+  relation[""leisure""=""garden""](12.93643,77.56972,12.94721,77.58078);
+  way[""highway""=""footway""](12.93643,77.56972,12.94721,77.58078);
+);
+out geom;"
+RT-042,,Basavanagudi Road Park circuit,Basavanagudi Road Park circuit,Basavanagudi,Sunkenahalli,Central,12.944034,77.567629,run,loop,,,public,,5 AM - 10 PM (Daily),Free,Small triangular park on Bull Temple Road with an open gym inside and a short walking circuit. Locals also use it for casual badminton. Restricted gate timings.,walk|park|basavanagudi|south|free|outdoor-gym|short-loop,,,curated,Google Places,Verified,distance|surface,,,,,"12.93864,77.56210,12.94942,77.57316",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.93864,77.56210,12.94942,77.57316);
+  relation[""leisure""=""park""](12.93864,77.56210,12.94942,77.57316);
+  way[""leisure""=""garden""](12.93864,77.56210,12.94942,77.57316);
+  relation[""leisure""=""garden""](12.93864,77.56210,12.94942,77.57316);
+  way[""highway""=""footway""](12.93864,77.56210,12.94942,77.57316);
+);
+out geom;"
+RT-043,,Malleshwara Public Park circuit,Malleshwara Public Park circuit,Malleshwaram,Malleshwaram,West,13.0063701,77.5702173,run,loop,,,public,,5 AM - 10 PM (Daily),Free,"Neighbourhood park off 16th Cross with clean walkways, a corner exercise station and plenty of benches. Planting is patchy but the paths are kept up.",walk|park|malleshwaram|central|free|outdoor-gym|short-loop,,,curated,Google Places,Verified,distance|surface,,,,,"13.00098,77.56469,13.01176,77.57575",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](13.00098,77.56469,13.01176,77.57575);
+  relation[""leisure""=""park""](13.00098,77.56469,13.01176,77.57575);
+  way[""leisure""=""garden""](13.00098,77.56469,13.01176,77.57575);
+  relation[""leisure""=""garden""](13.00098,77.56469,13.01176,77.57575);
+  way[""highway""=""footway""](13.00098,77.56469,13.01176,77.57575);
+);
+out geom;"
+RT-044,,Sadashivanagara Park loop,Sadashivanagara Park loop,Sadashiva Nagar,Sadashiva Nagara,West,13.0123185,77.5754609,run,loop,,,public,,"6-10 AM, 4-8 PM (Daily)",Free,"Wide walking bay under bamboo groves just off Sankey Tank, with pull-up and parallel bars for calisthenics. Quiet at dawn and popular with early walkers.",walk|run|park|sadashivanagar|central|free|calisthenics|bamboo|loop,,,curated,Google Places,Verified,distance|surface,,,,,"13.00693,77.56993,13.01771,77.58099",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](13.00693,77.56993,13.01771,77.58099);
+  relation[""leisure""=""park""](13.00693,77.56993,13.01771,77.58099);
+  way[""leisure""=""garden""](13.00693,77.56993,13.01771,77.58099);
+  relation[""leisure""=""garden""](13.00693,77.56993,13.01771,77.58099);
+  way[""highway""=""footway""](13.00693,77.56993,13.01771,77.58099);
+);
+out geom;"
+RT-045,,Children's Park Sadashivanagara stroll,Children's Park Sadashivanagara stroll,Sadashiva Nagar,Sadashiva Nagara,West,13.0118664,77.5757302,run,,,,public,,"4:30-10 AM, 4-8 PM (Daily)",Free,"Short lakeside stroll beside Sankey Tank with sunset views and a calm, low-traffic path. Free entry, parking outside. Lighting is thin after dark.",walk|park|sadashivanagar|central|free|lake-view|sunset|lighting-flag,,,curated,Google Places,Verified,distance|surface|shape,,,,,"13.00378,77.56743,13.01995,77.58403",900.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.00378,77.56743,13.01995,77.58403);
+  relation[""natural""=""water""](13.00378,77.56743,13.01995,77.58403);
+  way[""leisure""=""park""](13.00378,77.56743,13.01995,77.58403);
+  relation[""leisure""=""park""](13.00378,77.56743,13.01995,77.58403);
+  way[""highway""=""footway""](13.00378,77.56743,13.01995,77.58403);
+);
+out geom;"
+RT-046,,Madhavan Park circuit,Madhavan Park circuit,Jayanagar,Byrasandra,South,12.9362236,77.5857619,run,loop,,,public,,"5-10:30 AM, 4:30-8 PM (Sun 5 AM-8 PM)",Free,"Large park off South End Road with old trees, two children's areas and an open gym, though the equipment is worn. Central, busy and easy to reach from Jayanagar or Hombegowda Nagar.",walk|park|jayanagar|south|free|outdoor-gym|families|loop|worn-equipment,,,curated,Google Places,Verified,distance|surface,,,,,"12.93083,77.58023,12.94161,77.59129",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.93083,77.58023,12.94161,77.59129);
+  relation[""leisure""=""park""](12.93083,77.58023,12.94161,77.59129);
+  way[""leisure""=""garden""](12.93083,77.58023,12.94161,77.59129);
+  relation[""leisure""=""garden""](12.93083,77.58023,12.94161,77.59129);
+  way[""highway""=""footway""](12.93083,77.58023,12.94161,77.59129);
+);
+out geom;"
+RT-047,,B.N. Vijayakumar Park track,B.N. Vijayakumar Park track,Jayanagar,Byrasandra,South,12.9285624,77.5805066,run,linear/track,,,public,,24 hours (Daily),Free,"Level walking track with tactile paving running the perimeter, stone pergolas every 200 m, plus yoga and outdoor gym space. Diagonally across from Jayanagar metro, open around the clock.",walk|track|jayanagar|south|free|near-metro|accessible|yoga|outdoor-gym|24hour,,,curated,Google Places,Verified,distance|surface,,,,,"12.92048,77.57221,12.93665,77.58880",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.92048,77.57221,12.93665,77.58880);
+  relation[""leisure""=""park""](12.92048,77.57221,12.93665,77.58880);
+  way[""leisure""=""garden""](12.92048,77.57221,12.93665,77.58880);
+  relation[""leisure""=""garden""](12.92048,77.57221,12.93665,77.58880);
+  way[""highway""=""footway""](12.92048,77.57221,12.93665,77.58880);
+);
+out geom;"
+RT-048,,Wipro Park walk,Wipro Park walk,Koramangala,Kormangala East,South,12.9294917,77.6333823,run,linear/track,,paved,public,,"5-10:30 AM, 4-10 PM (Daily)",Free,"Long rectangular park on 80 Feet Road opposite Wipro, dense enough with trees to feel like a pocket forest. Paved paths and benches. Mosquitoes are bad in the evening and traffic noise carries.",walk|park|koramangala|south|free|shaded|mosquito-flag|traffic-noise,,,curated,Google Places,Verified,distance,,,,,"12.92141,77.62509,12.93758,77.64168",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.92141,77.62509,12.93758,77.64168);
+  relation[""leisure""=""park""](12.92141,77.62509,12.93758,77.64168);
+  way[""leisure""=""garden""](12.92141,77.62509,12.93758,77.64168);
+  relation[""leisure""=""garden""](12.92141,77.62509,12.93758,77.64168);
+  way[""highway""=""footway""](12.92141,77.62509,12.93758,77.64168);
+);
+out geom;"
+RT-049,,Subrahmanya Swamy Park circuit,Subrahmanya Swamy Park circuit,Koramangala,Sri Lakshmi Devi Ward,South,12.9403046,77.6238643,run,loop,,,public,,"5-10 AM, 4:30-8:45 PM (Daily)",Free,"Small 6th Block park with a walking track, basic outdoor gym and a kids' play area. Evening-only on most days — gates open from 4:30 PM.",walk|park|koramangala|south|free|outdoor-gym|short-loop|evening-hours,,,curated,Google Places,Verified,distance|surface,,,,,"12.93491,77.61833,12.94569,77.62939",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.93491,77.61833,12.94569,77.62939);
+  relation[""leisure""=""park""](12.93491,77.61833,12.94569,77.62939);
+  way[""leisure""=""garden""](12.93491,77.61833,12.94569,77.62939);
+  relation[""leisure""=""garden""](12.93491,77.61833,12.94569,77.62939);
+  way[""highway""=""footway""](12.93491,77.61833,12.94569,77.62939);
+);
+out geom;"
+RT-050,,HSR Friends Park circuit,HSR Friends Park circuit,HSR Layout,Agara,South,12.9079586,77.6426805,run,loop,,,public,,6 AM - 7:30 PM (Daily),Free,"Sector 3 park that works as a full outdoor fitness stop — walking paths, free gym equipment, yoga space, plus football, volleyball and badminton on the same ground.",walk|run|park|hsr|south|free|outdoor-gym|yoga|multi-sport|loop,,,curated,Google Places,Verified,distance|surface,,,,,"12.90257,77.63715,12.91335,77.64821",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.90257,77.63715,12.91335,77.64821);
+  relation[""leisure""=""park""](12.90257,77.63715,12.91335,77.64821);
+  way[""leisure""=""garden""](12.90257,77.63715,12.91335,77.64821);
+  relation[""leisure""=""garden""](12.90257,77.63715,12.91335,77.64821);
+  way[""highway""=""footway""](12.90257,77.63715,12.91335,77.64821);
+);
+out geom;"
+RT-051,,Hemavathi Park loop,Hemavathi Park loop,HSR Layout,Agara,South,12.9162328,77.6479541,run,loop,,,public,,"7 AM-1 PM, 4-8 PM (Daily)",Free,"Sector 1 park behind Assetz 27 Park Avenue with a well-designed walking path, gazebo, open-air theatre seating and an outdoor gym. Quiet and full of birdsong; the gym equipment rusts in the open.",walk|park|hsr|south|free|outdoor-gym|quiet|birdlife|loop|rusted-equipment,,,curated,Google Places,Verified,distance|surface,,,,,"12.91084,77.64242,12.92162,77.65348",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.91084,77.64242,12.92162,77.65348);
+  relation[""leisure""=""park""](12.91084,77.64242,12.92162,77.65348);
+  way[""leisure""=""garden""](12.91084,77.64242,12.92162,77.65348);
+  relation[""leisure""=""garden""](12.91084,77.64242,12.92162,77.65348);
+  way[""highway""=""footway""](12.91084,77.64242,12.92162,77.65348);
+);
+out geom;"
+RT-052,,Independence Park HSR loop,Independence Park HSR loop,HSR Layout,Agara,South,12.9074572,77.6473258,run,loop,,,public,,"5-10 AM, 4-8 PM (Daily)",Free,"Compact Sector 2 park with heavy shade that makes daytime running bearable, an amphitheatre that hosts events and an open gym. Carry repellent for evenings.",run|walk|park|hsr|south|free|shaded|amphitheatre|outdoor-gym|mosquito-flag,,,curated,Google Places,Verified,distance|surface,,,,,"12.90207,77.64180,12.91285,77.65286",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.90207,77.64180,12.91285,77.65286);
+  relation[""leisure""=""park""](12.90207,77.64180,12.91285,77.65286);
+  way[""leisure""=""garden""](12.90207,77.64180,12.91285,77.65286);
+  relation[""leisure""=""garden""](12.90207,77.64180,12.91285,77.65286);
+  way[""highway""=""footway""](12.90207,77.64180,12.91285,77.65286);
+);
+out geom;"
+RT-053,,Sector 4 Park HSR circuit,Sector 4 Park HSR circuit,HSR Layout,HSR Layout,South,12.9135429,77.6426775,run,loop,,,public,,6 AM - 10 PM (Daily),Free,"Green Sector 4 park with a walking track and kids' area, and one of the few nearby that stays open through the afternoon. Roadside parking is easy.",walk|jog|park|hsr|south|free|open-afternoon|kids-area|loop,,,curated,Google Places,Verified,distance|surface,,,,,"12.90815,77.63715,12.91893,77.64821",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.90815,77.63715,12.91893,77.64821);
+  relation[""leisure""=""park""](12.90815,77.63715,12.91893,77.64821);
+  way[""leisure""=""garden""](12.90815,77.63715,12.91893,77.64821);
+  relation[""leisure""=""garden""](12.90815,77.63715,12.91893,77.64821);
+  way[""highway""=""footway""](12.90815,77.63715,12.91893,77.64821);
+);
+out geom;"
+RT-054,,CMH Road stretch,CMH Road stretch,Indiranagar,,,12.98,77.6395,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,East along CMH Road from the 12th Main junction toward Old Madras Rd. Heavy heat on the heatmap; wide footpath but busy traffic. Best before 7 AM.,road-route|street|high-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9800,77.6395 -> 12.9782,77.6440",East along CMH Road from the 12th Main junction toward Old Madras Rd. Heavy heat on the heatmap; wide footpath but busy traffic. Best before 7 AM.,strava-heatmap-estimate,dark,"12.97192,77.63120,12.98808,77.64780",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.97192,77.63120,12.98808,77.64780);
+  way[""highway""=""secondary""](12.97192,77.63120,12.98808,77.64780);
+  way[""highway""=""tertiary""](12.97192,77.63120,12.98808,77.64780);
+  way[""highway""=""footway""](12.97192,77.63120,12.98808,77.64780);
+);
+out geom;"
+RT-055,,80 Feet Road — 12th Main to Domlur,80 Feet Road — 12th Main to Domlur,Indiranagar,,,12.9743,77.6412,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,South along 80 Feet Road from 12th Main to the Domlur flyover. One of the darkest corridors in the Indiranagar heatmap. Signal-interrupted.,road-route|street|high-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9743,77.6412 -> 12.9678,77.6415",South along 80 Feet Road from 12th Main to the Domlur flyover. One of the darkest corridors in the Indiranagar heatmap. Signal-interrupted.,strava-heatmap-estimate,dark,"12.96622,77.63290,12.98238,77.64950",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.96622,77.63290,12.98238,77.64950);
+  way[""highway""=""secondary""](12.96622,77.63290,12.98238,77.64950);
+  way[""highway""=""tertiary""](12.96622,77.63290,12.98238,77.64950);
+  way[""highway""=""footway""](12.96622,77.63290,12.98238,77.64950);
+);
+out geom;"
+RT-056,,12th Main to Double Road,12th Main to Double Road,Indiranagar,,,12.97,77.6355,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,Short connector from 12th Main west to Double Road Park. Feeds the Defence Colony grid loops.,road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9700,77.6355 -> 12.9687,77.6370",Short connector from 12th Main west to Double Road Park. Feeds the Defence Colony grid loops.,strava-heatmap-estimate,medium,"12.96192,77.62720,12.97808,77.64380",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.96192,77.62720,12.97808,77.64380);
+  way[""highway""=""secondary""](12.96192,77.62720,12.97808,77.64380);
+  way[""highway""=""tertiary""](12.96192,77.62720,12.97808,77.64380);
+  way[""highway""=""footway""](12.96192,77.62720,12.97808,77.64380);
+);
+out geom;"
+RT-057,,Defence Colony grid loop,Defence Colony grid loop,Indiranagar,,,12.976,77.638,run,loop,,paved,public,,Open road — best before 7:00 AM,Free,"Rectangular loop through the Defence Colony inner roads north of CMH Road. Low traffic, tree cover, popular for repeats.",road-route|street|high-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9760,77.6380 -> 12.9760,77.6380","Rectangular loop through the Defence Colony inner roads north of CMH Road. Low traffic, tree cover, popular for repeats.",strava-heatmap-estimate,dark,"12.97061,77.63247,12.98139,77.64353",600.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.97061,77.63247,12.98139,77.64353);
+  way[""highway""=""secondary""](12.97061,77.63247,12.98139,77.64353);
+  way[""highway""=""tertiary""](12.97061,77.63247,12.98139,77.64353);
+  way[""highway""=""footway""](12.97061,77.63247,12.98139,77.64353);
+);
+out geom;"
+RT-058,,Thippasandra Main Road,Thippasandra Main Road,HAL,,,12.972,77.649,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,"East along Thippasandra Main Rd through HAL 3rd Stage. Connects Kuvempu Park and GP Raja Ratnam Park; commercial stretch, busier after 8 AM.",road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9720,77.6490 -> 12.9700,77.6560","East along Thippasandra Main Rd through HAL 3rd Stage. Connects Kuvempu Park and GP Raja Ratnam Park; commercial stretch, busier after 8 AM.",strava-heatmap-estimate,medium,"12.96392,77.64070,12.98008,77.65730",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.96392,77.64070,12.98008,77.65730);
+  way[""highway""=""secondary""](12.96392,77.64070,12.98008,77.65730);
+  way[""highway""=""tertiary""](12.96392,77.64070,12.98008,77.65730);
+  way[""highway""=""footway""](12.96392,77.64070,12.98008,77.65730);
+);
+out geom;"
+RT-059,,Wheeler Road Extension — north to south,Wheeler Road Extension — north to south,Fraser Town,,,13.001,77.621,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,Straight north-south run down Wheeler Road Extension through Cooke Town. The main street route in an area with almost no park options.,road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"13.0010,77.6210 -> 12.9960,77.6215",Straight north-south run down Wheeler Road Extension through Cooke Town. The main street route in an area with almost no park options.,strava-heatmap-estimate,medium,"12.99292,77.61270,13.00908,77.62930",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.99292,77.61270,13.00908,77.62930);
+  way[""highway""=""secondary""](12.99292,77.61270,13.00908,77.62930);
+  way[""highway""=""tertiary""](12.99292,77.61270,13.00908,77.62930);
+  way[""highway""=""footway""](12.99292,77.61270,13.00908,77.62930);
+);
+out geom;"
+RT-060,,Jayamahal Main — northbound,Jayamahal Main — northbound,Fraser Town,,,12.9975,77.601,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,"Northbound along Jayamahal Main Road past the palace grounds. Wide shoulder, long uninterrupted stretch.",road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9975,77.6010 -> 13.0040,77.6000","Northbound along Jayamahal Main Road past the palace grounds. Wide shoulder, long uninterrupted stretch.",strava-heatmap-estimate,medium,"12.98942,77.59270,13.00558,77.60930",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.98942,77.59270,13.00558,77.60930);
+  way[""highway""=""secondary""](12.98942,77.59270,13.00558,77.60930);
+  way[""highway""=""tertiary""](12.98942,77.59270,13.00558,77.60930);
+  way[""highway""=""footway""](12.98942,77.59270,13.00558,77.60930);
+);
+out geom;"
+RT-061,,Bellandur Lake Road — south to north,Bellandur Lake Road — south to north,Bellandur,,,12.928,77.672,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,"North along Bellandur Lake Road from the ORR side. Dark heat on the Strava layer despite the lake itself being unusable — runners use the road, not the water's edge.",road-route|street|high-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9280,77.6720 -> 12.9360,77.6700","North along Bellandur Lake Road from the ORR side. Dark heat on the Strava layer despite the lake itself being unusable — runners use the road, not the water's edge.",strava-heatmap-estimate,dark,"12.91992,77.66370,12.93608,77.68030",900.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.91992,77.66370,12.93608,77.68030);
+  relation[""natural""=""water""](12.91992,77.66370,12.93608,77.68030);
+  way[""leisure""=""park""](12.91992,77.66370,12.93608,77.68030);
+  relation[""leisure""=""park""](12.91992,77.66370,12.93608,77.68030);
+  way[""highway""=""footway""](12.91992,77.66370,12.93608,77.68030);
+);
+out geom;"
+RT-062,,Kadubeesanahalli Road — APH to IPRR junction,Kadubeesanahalli Road — APH to IPRR junction,Kadubeesanahalli,,,12.94,77.696,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,"Uphill stretch from Ambalipura Halli Road to the Inner Peripheral Ring Road junction. Short, steep, used for repeats.",road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9400,77.6960 -> 12.9440,77.7020","Uphill stretch from Ambalipura Halli Road to the Inner Peripheral Ring Road junction. Short, steep, used for repeats.",strava-heatmap-estimate,medium,"12.93192,77.68770,12.94808,77.70430",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.93192,77.68770,12.94808,77.70430);
+  way[""highway""=""secondary""](12.93192,77.68770,12.94808,77.70430);
+  way[""highway""=""tertiary""](12.93192,77.68770,12.94808,77.70430);
+  way[""highway""=""footway""](12.93192,77.68770,12.94808,77.70430);
+);
+out geom;"
+RT-063,,Doddanekkundi Industrial Area loop,Doddanekkundi Industrial Area loop,Mahadevapura,,,12.978,77.694,run,loop,,paved,public,,Open road — best before 7:00 AM,Free,Grid loop through the industrial layout roads north of Doddanekkundi Lake. Very low traffic before 7 AM; the densest heat cluster in the Mahadevapura tile.,road-route|street|high-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9780,77.6940 -> 12.9780,77.6940",Grid loop through the industrial layout roads north of Doddanekkundi Lake. Very low traffic before 7 AM; the densest heat cluster in the Mahadevapura tile.,strava-heatmap-estimate,dark,"12.97261,77.68847,12.98339,77.69953",600.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.97261,77.68847,12.98339,77.69953);
+  way[""highway""=""secondary""](12.97261,77.68847,12.98339,77.69953);
+  way[""highway""=""tertiary""](12.97261,77.68847,12.98339,77.69953);
+  way[""highway""=""footway""](12.97261,77.68847,12.98339,77.69953);
+);
+out geom;"
+RT-064,,Whitefield Road — Hoodi to Mahadevapura,Whitefield Road — Hoodi to Mahadevapura,Hoodi,,,12.993,77.716,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,Long west-bound stretch of Whitefield Road. Continuous footpath most of the way; heavy traffic after 7:30 AM.,road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9930,77.7160 -> 12.9900,77.6870",Long west-bound stretch of Whitefield Road. Continuous footpath most of the way; heavy traffic after 7:30 AM.,strava-heatmap-estimate,medium,"12.98492,77.70770,13.00108,77.72430",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.98492,77.70770,13.00108,77.72430);
+  way[""highway""=""secondary""](12.98492,77.70770,13.00108,77.72430);
+  way[""highway""=""tertiary""](12.98492,77.70770,13.00108,77.72430);
+  way[""highway""=""footway""](12.98492,77.70770,13.00108,77.72430);
+);
+out geom;"
+RT-065,,Pattandur Agrahara Metro to Kadugodi Tree Park Metro,Pattandur Agrahara Metro to Kadugodi Tree Park Metro,Whitefield,,,12.993,77.728,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,"Metro-to-metro run along the Whitefield main road. Useful point-to-point — start at one station, finish at the other.",road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9930,77.7280 -> 12.9970,77.7480","Metro-to-metro run along the Whitefield main road. Useful point-to-point — start at one station, finish at the other.",strava-heatmap-estimate,medium,"12.98492,77.71970,13.00108,77.73630",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.98492,77.71970,13.00108,77.73630);
+  relation[""leisure""=""park""](12.98492,77.71970,13.00108,77.73630);
+  way[""leisure""=""garden""](12.98492,77.71970,13.00108,77.73630);
+  relation[""leisure""=""garden""](12.98492,77.71970,13.00108,77.73630);
+  way[""highway""=""footway""](12.98492,77.71970,13.00108,77.73630);
+);
+out geom;"
+RT-066,,ITI loop — KR Puram,ITI loop — KR Puram,Mahadevapura,,,13.0036,77.6849,run,loop,,mixed,public,,Open road — best before 7:00 AM,Free,"Loop around the ITI grounds and adjacent roads. Grass ground in the middle, road perimeter; waterlogs after heavy rain.",road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"13.0036,77.6849 -> 13.0036,77.6849","Loop around the ITI grounds and adjacent roads. Grass ground in the middle, road perimeter; waterlogs after heavy rain.",strava-heatmap-estimate,medium,"12.99821,77.67937,13.00899,77.69043",600.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.99821,77.67937,13.00899,77.69043);
+  way[""highway""=""secondary""](12.99821,77.67937,13.00899,77.69043);
+  way[""highway""=""tertiary""](12.99821,77.67937,13.00899,77.69043);
+  way[""highway""=""footway""](12.99821,77.67937,13.00899,77.69043);
+);
+out geom;"
+RT-067,,Sankey Touch & Back,Sankey Touch & Back,Malleshwaram,,,13.009,77.575,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,Out-and-back along Sankey Road from the tank to the Palace Ground side. Dark heat; the classic Malleshwaram street run.,road-route|street|high-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"13.0090,77.5750 -> 13.0060,77.5810",Out-and-back along Sankey Road from the tank to the Palace Ground side. Dark heat; the classic Malleshwaram street run.,strava-heatmap-estimate,dark,"13.00092,77.56670,13.01708,77.58330",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](13.00092,77.56670,13.01708,77.58330);
+  way[""highway""=""secondary""](13.00092,77.56670,13.01708,77.58330);
+  way[""highway""=""tertiary""](13.00092,77.56670,13.01708,77.58330);
+  way[""highway""=""footway""](13.00092,77.56670,13.01708,77.58330);
+);
+out geom;"
+RT-068,,Palace Ground Parallel,Palace Ground Parallel,Vasanth Nagar,,,12.999,77.587,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,"Runs the road parallel to the Palace Grounds boundary. Long uninterrupted stretch, wide shoulder, one of the few road options in a tight area.",road-route|street|high-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9990,77.5870 -> 13.0050,77.5920","Runs the road parallel to the Palace Grounds boundary. Long uninterrupted stretch, wide shoulder, one of the few road options in a tight area.",strava-heatmap-estimate,dark,"12.99092,77.57870,13.00708,77.59530",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.99092,77.57870,13.00708,77.59530);
+  way[""highway""=""secondary""](12.99092,77.57870,13.00708,77.59530);
+  way[""highway""=""tertiary""](12.99092,77.57870,13.00708,77.59530);
+  way[""highway""=""footway""](12.99092,77.57870,13.00708,77.59530);
+);
+out geom;"
+RT-069,,Jayamahal Main — northbound,Jayamahal Main — northbound,Vasanth Nagar,,,12.9975,77.601,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,"Northbound past the palace grounds. Duplicate anchor to RT-060 but filed to Vasanth Nagar, which has almost no road options.",road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9975,77.6010 -> 13.0040,77.6000","Northbound past the palace grounds. Duplicate anchor to RT-060 but filed to Vasanth Nagar, which has almost no road options.",strava-heatmap-estimate,medium,"12.98942,77.59270,13.00558,77.60930",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.98942,77.59270,13.00558,77.60930);
+  way[""highway""=""secondary""](12.98942,77.59270,13.00558,77.60930);
+  way[""highway""=""tertiary""](12.98942,77.59270,13.00558,77.60930);
+  way[""highway""=""footway""](12.98942,77.59270,13.00558,77.60930);
+);
+out geom;"
+RT-070,,New BEL Road,New BEL Road,Vidyaranyapura,,,13.033,77.565,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,Wide arterial with continuous footpath. Heavily used early; commercial and busy after 8 AM.,road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"13.0330,77.5650 -> 13.0290,77.5720",Wide arterial with continuous footpath. Heavily used early; commercial and busy after 8 AM.,strava-heatmap-estimate,medium,"13.02492,77.55670,13.04108,77.57330",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](13.02492,77.55670,13.04108,77.57330);
+  way[""highway""=""secondary""](13.02492,77.55670,13.04108,77.57330);
+  way[""highway""=""tertiary""](13.02492,77.55670,13.04108,77.57330);
+  way[""highway""=""footway""](13.02492,77.55670,13.04108,77.57330);
+);
+out geom;"
+RT-071,,Nandi Durga Road climb,Nandi Durga Road climb,Vasanth Nagar,,,12.995,77.604,run,linear/track,,paved,public,climb,Open road — best before 7:00 AM,Free,Short sustained climb toward Nandi Durga Road. Used for hill repeats — the only gradient in the tile.,road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9950,77.6040 -> 12.9990,77.6080",Short sustained climb toward Nandi Durga Road. Used for hill repeats — the only gradient in the tile.,strava-heatmap-estimate,medium,"12.98692,77.59570,13.00308,77.61230",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.98692,77.59570,13.00308,77.61230);
+  way[""highway""=""secondary""](12.98692,77.59570,13.00308,77.61230);
+  way[""highway""=""tertiary""](12.98692,77.59570,13.00308,77.61230);
+  way[""highway""=""footway""](12.98692,77.59570,13.00308,77.61230);
+);
+out geom;"
+RT-072,,Vidyapeetha to Ring Road,Vidyapeetha to Ring Road,Banashankari,,,12.928,77.556,run,linear/track,,paved,public,,Open road — best before 7:00 AM,Free,"East from Vidyapeetha Circle toward the Outer Ring Road. Wide, straight, moderate heat.",road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9280,77.5560 -> 12.9230,77.5620","East from Vidyapeetha Circle toward the Outer Ring Road. Wide, straight, moderate heat.",strava-heatmap-estimate,medium,"12.91992,77.54770,12.93608,77.56430",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.91992,77.54770,12.93608,77.56430);
+  way[""highway""=""secondary""](12.91992,77.54770,12.93608,77.56430);
+  way[""highway""=""tertiary""](12.91992,77.54770,12.93608,77.56430);
+  way[""highway""=""footway""](12.91992,77.54770,12.93608,77.56430);
+);
+out geom;"
+RT-073,,BDA hill repeats — Banashankari,BDA hill repeats — Banashankari,Banashankari,,,12.918,77.558,run,linear/track,,paved,public,climb,Open road — best before 7:00 AM,Free,Short steep repeat stretch on the BDA layout roads. The main gradient option in south-west Bengaluru.,road-route|street|moderate-traffic,,,curated,Strava heatmap (no Places entity),Needs check,distance,"12.9180,77.5580 -> 12.9200,77.5610",Short steep repeat stretch on the BDA layout roads. The main gradient option in south-west Bengaluru.,strava-heatmap-estimate,medium,"12.90992,77.54971,12.92608,77.56629",900.0,highway=residential|highway=secondary|highway=tertiary|highway=footway,"[out:json][timeout:25];
+(
+  way[""highway""=""residential""](12.90992,77.54971,12.92608,77.56629);
+  way[""highway""=""secondary""](12.90992,77.54971,12.92608,77.56629);
+  way[""highway""=""tertiary""](12.90992,77.54971,12.92608,77.56629);
+  way[""highway""=""footway""](12.90992,77.54971,12.92608,77.56629);
+);
+out geom;"
+RT-074,,Chelekere Lake,Chelekere Lake — Babusabpalya,Kalyan Nagar,Banasavadi,East,13.0263216,77.6454278,run,loop,1.2,paved,public,,"Daily 6:00 – 10:00 AM, 4:00 – 7:00 PM",Free,"Roughly 1.2 km paved loop around the lake, tree-covered for most of the way, with an active walkers association. Strong birdlife including peacocks on the island. Water level drops and smells in dry months.",running|1.2km-loop|lake|paved|birdwatching|shaded,4.5,69.0,floor,Strava heatmap + Google Places,Verified,,,,places-verified-point,,"13.02255,77.64156,13.03009,77.64930",420.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.02255,77.64156,13.03009,77.64930);
+  relation[""natural""=""water""](13.02255,77.64156,13.03009,77.64930);
+  way[""leisure""=""park""](13.02255,77.64156,13.03009,77.64930);
+  relation[""leisure""=""park""](13.02255,77.64156,13.03009,77.64930);
+  way[""highway""=""footway""](13.02255,77.64156,13.03009,77.64930);
+);
+out geom;"
+RT-075,,Chinnappanahalli Lake,Chinnappanahalli Lake — Chinnapanna Halli,Brookefield,Hagaduru,East,12.9659781,77.7072118,run,loop,,paved,public,,"Daily 6:00 – 10:00 AM, 4:00 – 6:30 PM",Free,"Fully paved loop around the lake with a children's play area, benches and public toilet. Stroller-friendly, dust-free and quiet — one of the better-kept lakes in the eastern corridor. Back section is less maintained.",walking|jogging|paved-loop|lake|kids-area|stroller-friendly,4.2,5484.0,floor,Strava heatmap + Google Places,Verified,distance,,,places-verified-point,,"12.96059,77.70168,12.97137,77.71274",600.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.96059,77.70168,12.97137,77.71274);
+  relation[""natural""=""water""](12.96059,77.70168,12.97137,77.71274);
+  way[""leisure""=""park""](12.96059,77.70168,12.97137,77.71274);
+  relation[""leisure""=""park""](12.96059,77.70168,12.97137,77.71274);
+  way[""highway""=""footway""](12.96059,77.70168,12.97137,77.71274);
+);
+out geom;"
+RT-076,,Kowdenahalli Lake And Park,Kowdenahalli Lake And Park — Dr Ambedkar Nagar,Mahadevapura,Hoodi,East,13.0142866,77.683324,run,loop,1.4,paved,public,,"Daily 5:00 – 10:00 AM, 4:00 – 6:30 PM",Free,"1.4 km fenced loop on a mud track — easier on the joints than paved surfaces. Wide enough for two-way traffic, with a children's play area. Water quality is inconsistent and smells in places.",running|1.4km-loop|mud-track|lake|kids-area|fenced,4.3,1744.0,floor,Strava heatmap + Google Places,Verified,,,,places-verified-point,,"13.00988,77.67881,13.01869,77.68784",490.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.00988,77.67881,13.01869,77.68784);
+  relation[""natural""=""water""](13.00988,77.67881,13.01869,77.68784);
+  way[""leisure""=""park""](13.00988,77.67881,13.01869,77.68784);
+  relation[""leisure""=""park""](13.00988,77.67881,13.01869,77.68784);
+  way[""highway""=""footway""](13.00988,77.67881,13.01869,77.68784);
+);
+out geom;"
+RT-077,,Kalkere Lake,Kalkere Lake — Kalkere,Kothanur,Horamavu,East,13.0471684,77.658913,run,loop,4.5,,public,,"Open daily, morning and evening",Free,"Roughly 4.5 km circuit — one of the longest lake loops in the city, rejuvenated and heavy with birdlife including migratory species. The trail does not quite close at one end, and a storm-water drain smells on part of the stretch.",running|4.5km-circuit|lake|birdwatching|long-loop,4.3,564.0,floor,Strava heatmap + Google Places,Verified,surface,,,places-verified-point,,"13.03302,77.64439,13.06132,77.67344",1575.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](13.03302,77.64439,13.06132,77.67344);
+  relation[""natural""=""water""](13.03302,77.64439,13.06132,77.67344);
+  way[""leisure""=""park""](13.03302,77.64439,13.06132,77.67344);
+  relation[""leisure""=""park""](13.03302,77.64439,13.06132,77.67344);
+  way[""highway""=""footway""](13.03302,77.64439,13.06132,77.67344);
+);
+out geom;"
+RT-078,,Abbigere Park,Abbigere Park — Abbigere,Vidyaranyapura,Chikkabanavara,North,13.0715612,77.5290986,run,,,,public,,"Daily 5:00 – 11:00 AM, 4:00 – 8:00 PM",Free,"Large community park with a long walking path, open gym in working order, seating decks throughout and a kids' play area. Gets crowded and dusty at peak times.",walking|long-path|open-gym|kids-area|large,4.1,3084.0,floor,Strava heatmap + Google Places,Verified,distance|surface|shape,,,places-verified-point,,"13.06348,77.52080,13.07965,77.53740",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](13.06348,77.52080,13.07965,77.53740);
+  relation[""leisure""=""park""](13.06348,77.52080,13.07965,77.53740);
+  way[""leisure""=""garden""](13.06348,77.52080,13.07965,77.53740);
+  relation[""leisure""=""garden""](13.06348,77.52080,13.07965,77.53740);
+  way[""highway""=""footway""](13.06348,77.52080,13.07965,77.53740);
+);
+out geom;"
+RT-079,,Kurubarahalli Kempegowda Park,Kurubarahalli Kempegowda Park — Basaveshwar Nagar,Rajajinagar,Kamakshipalya,West,12.9975886,77.536335,run,linear/track,,,public,,"Daily 5:00 AM – 12:00 PM, 3:00 – 10:00 PM",Free,"Recently renovated with a widened walking track, gym equipment at three points, sheltered seating and clean washrooms. Bright lighting makes it usable late. No kids' play area.",walking|wide-track|open-gym|well-lit|renovated,4.3,609.0,floor,Strava heatmap + Google Places,Verified,distance|surface,,,places-verified-point,,"12.98950,77.52804,13.00567,77.54463",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.98950,77.52804,13.00567,77.54463);
+  relation[""leisure""=""park""](12.98950,77.52804,13.00567,77.54463);
+  way[""leisure""=""garden""](12.98950,77.52804,13.00567,77.54463);
+  relation[""leisure""=""garden""](12.98950,77.52804,13.00567,77.54463);
+  way[""highway""=""footway""](12.98950,77.52804,13.00567,77.54463);
+);
+out geom;"
+RT-080,,Pushpanjali Park,Pushpanjali Park — Hosakerehalli,Banashankari,Banashankari Temple Ward,South,12.9345884,77.542918,run,,,,public,,Open 24 hours,Free,"Open 24 hours — rare for a BBMP park. Good walking paths, open gym, children's area and a laughing club in the mornings. Cricket often in progress on one side.",walking|open-24h|open-gym|kids-area|greenery,4.3,1497.0,floor,Strava heatmap + Google Places,Verified,distance|surface|shape,,,places-verified-point,,"12.92650,77.53462,12.94267,77.55121",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.92650,77.53462,12.94267,77.55121);
+  relation[""leisure""=""park""](12.92650,77.53462,12.94267,77.55121);
+  way[""leisure""=""garden""](12.92650,77.53462,12.94267,77.55121);
+  relation[""leisure""=""garden""](12.92650,77.53462,12.94267,77.55121);
+  way[""highway""=""footway""](12.92650,77.53462,12.94267,77.55121);
+);
+out geom;"
+RT-081,,Park Mahalakshmi Layout,Park Mahalakshmi Layout — Mahalakshmipuram,Yeshwanthpur,Nandini Layout,West,13.0094242,77.5438022,run,loop,,,public,,Daily 6:00 – 10:30 AM,Free,Small neighbourhood park on 7th Main with a short walking circuit and kids' play equipment. Mornings only. Dusty from the main road.,walking|small|kids-area|morning-only,4.0,124.0,floor,Strava heatmap + Google Places,Verified,distance|surface,,,places-verified-point,,"13.00403,77.53827,13.01481,77.54933",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](13.00403,77.53827,13.01481,77.54933);
+  relation[""leisure""=""park""](13.00403,77.53827,13.01481,77.54933);
+  way[""leisure""=""garden""](13.00403,77.53827,13.01481,77.54933);
+  relation[""leisure""=""garden""](13.00403,77.53827,13.01481,77.54933);
+  way[""highway""=""footway""](13.00403,77.53827,13.01481,77.54933);
+);
+out geom;"
+RT-082,,Saul Kere,Saul Kere — Kaikondrahalli,Sarjapur Road,Bellandur,East,12.9183126,77.680097,run,loop,2.15,,public,,"Daily 5:00 – 10:00 AM, 4:00 – 6:30 PM",Free,"A 2.15 km track around the lake behind the Bellandur tech blocks — known locally as a birding spot, best around 6:45 AM and peak season November to March. Clean, uncrowded, no mosquitoes. Water levels drop sharply outside the rains.",running|2.15km-loop|lake|birdwatching|clean|quiet,4.3,213.0,floor,Strava heatmap + Google Places,Verified,surface,,,places-verified-point,,"12.91156,77.67317,12.92507,77.68703",752.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.91156,77.67317,12.92507,77.68703);
+  relation[""natural""=""water""](12.91156,77.67317,12.92507,77.68703);
+  way[""leisure""=""park""](12.91156,77.67317,12.92507,77.68703);
+  relation[""leisure""=""park""](12.91156,77.67317,12.92507,77.68703);
+  way[""highway""=""footway""](12.91156,77.67317,12.92507,77.68703);
+);
+out geom;"
+RT-083,,Begur Lake View Park,Begur Lake View Park — Begur,Bommanahalli,Begur,South,12.8773296,77.6275797,run,loop,4.0,,public,,"Daily, morning and evening; one gate only",Free,"Roughly 4 km around the lake — a long stretch for walking and running, with benches on the cliff side for sunset. The north side is well kept; the south side has poor fencing and a mushy path. No lighting after dark.",running|4km-loop|lake|sunset|benches|long-stretch,4.5,671.0,floor,Strava heatmap + Google Places,Verified,surface,,,places-verified-point,,"12.86475,77.61468,12.88991,77.64048",1400.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.86475,77.61468,12.88991,77.64048);
+  relation[""natural""=""water""](12.86475,77.61468,12.88991,77.64048);
+  way[""leisure""=""park""](12.86475,77.61468,12.88991,77.64048);
+  relation[""leisure""=""park""](12.86475,77.61468,12.88991,77.64048);
+  way[""highway""=""footway""](12.86475,77.61468,12.88991,77.64048);
+);
+out geom;"
+RT-084,,Vijaya Bank Layout Main Park,Vijaya Bank Layout Main Park — Vijaya Bank Layout,Bannerghatta,Bilekahalli,South,12.8915927,77.6075265,run,loop,,,public,,"Daily 5:00 – 10:00 AM, 4:30 – 8:00 PM",Free,"Long walking circuit suited to distance, with a separate seniors' gym, kids' play area, toilets and heavy tree cover. Busy at peak hours — quiet mid-morning.",walking|long-circuit|open-gym|kids-area|shaded|toilets,4.5,599.0,floor,Strava heatmap + Google Places,Verified,distance|surface,,,places-verified-point,,"12.88620,77.60200,12.89698,77.61306",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.88620,77.60200,12.89698,77.61306);
+  relation[""leisure""=""park""](12.88620,77.60200,12.89698,77.61306);
+  way[""leisure""=""garden""](12.88620,77.60200,12.89698,77.61306);
+  relation[""leisure""=""garden""](12.88620,77.60200,12.89698,77.61306);
+  way[""highway""=""footway""](12.88620,77.60200,12.89698,77.61306);
+);
+out geom;"
+RT-085,,Turahalli Forest,Turahalli Forest — Thurahalli,Turahalli,Uttarahalli,South,12.8831706,77.5250297,run,loop,,rocky,public,hill,"Daily 6:00 – 10:00 AM, 4:00 – 6:00 PM",₹10 entry,"Bengaluru's only accessible forest hill — trail running and hiking on rocky tracks with multiple viewpoints, peacocks and genuine quiet. Two ways up: a sharp direct ascent or a longer loop around the base. ₹10 entry, cash only. Gate opens 5:30 AM.",trail-running|forest|hill|rocky|sunrise|viewpoints,4.3,10200.0,floor,Strava heatmap + Google Places,Verified,distance,,,places-verified-point,,"12.87778,77.51950,12.88856,77.53056",600.0,natural=wood|leisure=nature_reserve|highway=path,"[out:json][timeout:25];
+(
+  way[""natural""=""wood""](12.87778,77.51950,12.88856,77.53056);
+  relation[""natural""=""wood""](12.87778,77.51950,12.88856,77.53056);
+  way[""leisure""=""nature_reserve""](12.87778,77.51950,12.88856,77.53056);
+  relation[""leisure""=""nature_reserve""](12.87778,77.51950,12.88856,77.53056);
+  way[""highway""=""path""](12.87778,77.51950,12.88856,77.53056);
+);
+out geom;"
+RT-086,,Dore Kere Lake,Dore Kere Lake — Kumaraswamy Layout,Banashankari,Uttarahalli,South,12.9039555,77.55038,run,loop,1.6,,public,,"Daily 5:00 – 9:00 AM, 4:00 – 7:00 PM",Free,"About 1.6 km round on a lit track managed by the forest department — usable before dawn, with an island in the middle that draws birdwatchers. One stretch stinks and half the lake dries out in low-rain years.",running|1.6km-loop|lake|lit-track|birdwatching|early-morning,4.2,1744.0,floor,Strava heatmap + Google Places,Verified,surface,,,places-verified-point,,"12.89892,77.54522,12.90899,77.55554",560.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.89892,77.54522,12.90899,77.55554);
+  relation[""natural""=""water""](12.89892,77.54522,12.90899,77.55554);
+  way[""leisure""=""park""](12.89892,77.54522,12.90899,77.55554);
+  relation[""leisure""=""park""](12.89892,77.54522,12.90899,77.55554);
+  way[""highway""=""footway""](12.89892,77.54522,12.90899,77.55554);
+);
+out geom;"
+RT-087,,BDA Sculpture Park,BDA Sculpture Park — Banashankari 6th Stage,Rajarajeshwari Nagar,Uttarahalli,South,12.895394,77.5256867,run,loop,,,public,,"Daily 6:00 – 10:00 AM, 4:00 – 8:00 PM",Free,"Nine acres with a long jogging circuit, stone sculptures along the path, an open mini-auditorium and a kids' play area. Roomy enough that it rarely feels crowded. Pets no longer allowed.",jogging|9-acres|sculptures|kids-area|spacious,4.2,1845.0,floor,Strava heatmap + Google Places,Verified,distance|surface,,,places-verified-point,,"12.89000,77.52016,12.90078,77.53122",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.89000,77.52016,12.90078,77.53122);
+  relation[""leisure""=""park""](12.89000,77.52016,12.90078,77.53122);
+  way[""leisure""=""garden""](12.89000,77.52016,12.90078,77.53122);
+  relation[""leisure""=""garden""](12.89000,77.52016,12.90078,77.53122);
+  way[""highway""=""footway""](12.89000,77.52016,12.90078,77.53122);
+);
+out geom;"
+RT-088,,Kadugodi Tree Park,Kadugodi Tree Park — Kadugodi,Whitefield,Hagaduru,East,12.9865938,77.744809,run,loop,1.1,mud,public,,Daily 6:00 AM – 5:30 PM,Small entry fee,"A 1.1 km rectangular circuit through dense tree cover — closer to a mini forest than a park, with criss-cross paths that extend it to about 2 km. Mud walkway, open gym, signage on local flora. Small entry fee.",running|1.1km-circuit|mini-forest|mud-track|open-gym|quiet,4.4,2941.0,floor,Strava heatmap + Google Places,Verified,,,,places-verified-point,,"12.98314,77.74126,12.99005,77.74836",385.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.98314,77.74126,12.99005,77.74836);
+  relation[""leisure""=""park""](12.98314,77.74126,12.99005,77.74836);
+  way[""leisure""=""garden""](12.98314,77.74126,12.99005,77.74836);
+  relation[""leisure""=""garden""](12.98314,77.74126,12.99005,77.74836);
+  way[""highway""=""footway""](12.98314,77.74126,12.99005,77.74836);
+);
+out geom;"
+RT-089,,Ullal Lake,Ullal Lake — Jnana Ganga Nagar,Nagarbhavi,Ullalu,West,12.9609481,77.4807087,run,loop,1.8,paved,public,,"Daily 6:00 – 10:00 AM, 4:00 – 7:00 PM",Free,"Paved walkway right around the lake, about 1.8 km a full round. Heavy birdlife — peacocks, kingfishers, barbets, herons. Part of the lake dries out and one stretch carries a drainage smell.",running|1.8km-loop|paved|lake|birdwatching,4.1,255.0,floor,Strava heatmap + Google Places,Verified,,,,places-verified-point,,"12.95529,77.47490,12.96661,77.48652",630.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.95529,77.47490,12.96661,77.48652);
+  relation[""natural""=""water""](12.95529,77.47490,12.96661,77.48652);
+  way[""leisure""=""park""](12.95529,77.47490,12.96661,77.48652);
+  relation[""leisure""=""park""](12.95529,77.47490,12.96661,77.48652);
+  way[""highway""=""footway""](12.95529,77.47490,12.96661,77.48652);
+);
+out geom;"
+RT-090,,Ramaiah City Park,Ramaiah City Park — MS Ramaiah City Layout,Bannerghatta,Arekere,South,12.8808062,77.5873077,run,linear/track,,mud,public,,"Daily 5:00 – 10:00 AM, 4:00 – 7:30 PM",Free,"Walking track through well-kept greenery with a large open lawn, mud play area and two landscaped mounds. Set back from the main road so it stays quiet. Limited opening hours.",walking|greenery|quiet|kids-area|lawn,4.5,833.0,floor,Strava heatmap + Google Places,Verified,distance,,,places-verified-point,,"12.87272,77.57901,12.88889,77.59560",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.87272,77.57901,12.88889,77.59560);
+  relation[""leisure""=""park""](12.87272,77.57901,12.88889,77.59560);
+  way[""leisure""=""garden""](12.87272,77.57901,12.88889,77.59560);
+  relation[""leisure""=""garden""](12.87272,77.57901,12.88889,77.59560);
+  way[""highway""=""footway""](12.87272,77.57901,12.88889,77.59560);
+);
+out geom;"
+RT-091,,Dollars Colony Park,Dollars Colony Park — RMV 2nd Stage,Mathikere,Sanjaya Nagara,North,13.0418144,77.5682931,run,loop,,,public,,Daily 6:00 AM – 9:00 PM; surrounding roads always open,Free,"Wide clean paths inside, but the real draw is the gated streets around it — a genuinely good early-morning running circuit, usable from 4 AM to 11 PM. Skate ring and a meditation space on site. Inner walkways are narrow.",running|street-circuit|greenery|skate-ring|early-morning,4.5,2500.0,floor,Strava heatmap + Google Places,Verified,distance|surface,,,places-verified-point,,"13.03642,77.56276,13.04720,77.57383",600.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](13.03642,77.56276,13.04720,77.57383);
+  relation[""leisure""=""park""](13.03642,77.56276,13.04720,77.57383);
+  way[""leisure""=""garden""](13.03642,77.56276,13.04720,77.57383);
+  relation[""leisure""=""garden""](13.03642,77.56276,13.04720,77.57383);
+  way[""highway""=""footway""](13.03642,77.56276,13.04720,77.57383);
+);
+out geom;"
+RT-092,,Dr. B R Ambedkar Stadium,Dr. B R Ambedkar Stadium — Rajajinagar Industrial Town,Rajajinagar,Kamakshipalya,West,12.9840543,77.5439712,track,linear/track,,,public,,"Open daily, dawn to late evening",Free,"Public stadium with a proper athletics track alongside walking paths, basketball and badminton courts, a skating rink, cricket pitch and mini gym. Coaching available. Busy all day; parking is difficult.",athletics-track|stadium|open-gym|basketball|coaching|public,4.4,7777.0,floor,Strava heatmap + Google Places,Verified,distance|surface,,,places-verified-point,,"12.97597,77.53567,12.99214,77.55227",900.0,leisure=track|leisure=pitch|leisure=sports_centre,"[out:json][timeout:25];
+(
+  way[""leisure""=""track""](12.97597,77.53567,12.99214,77.55227);
+  relation[""leisure""=""track""](12.97597,77.53567,12.99214,77.55227);
+  way[""leisure""=""pitch""](12.97597,77.53567,12.99214,77.55227);
+  relation[""leisure""=""pitch""](12.97597,77.53567,12.99214,77.55227);
+  way[""leisure""=""sports_centre""](12.97597,77.53567,12.99214,77.55227);
+  relation[""leisure""=""sports_centre""](12.97597,77.53567,12.99214,77.55227);
+);
+out geom;"
+RT-093,,BGS Stadium,BGS Stadium — MC Layout,Vijayanagar,Hampi Nagar,West,12.974945,77.5413061,track,,,,public,,Mornings and evenings; restricted hours,Free,"Spacious public stadium used for running events and general sport. Open to the public on a timetable — locked outside those hours, which reviewers complain about at weekends.",stadium|running-events|public|spacious,4.5,512.0,floor,Strava heatmap + Google Places,Verified,distance|surface|shape,,,places-verified-point,,"12.96686,77.53301,12.98303,77.54960",900.0,leisure=track|leisure=pitch|leisure=sports_centre,"[out:json][timeout:25];
+(
+  way[""leisure""=""track""](12.96686,77.53301,12.98303,77.54960);
+  relation[""leisure""=""track""](12.96686,77.53301,12.98303,77.54960);
+  way[""leisure""=""pitch""](12.96686,77.53301,12.98303,77.54960);
+  relation[""leisure""=""pitch""](12.96686,77.53301,12.98303,77.54960);
+  way[""leisure""=""sports_centre""](12.96686,77.53301,12.98303,77.54960);
+  relation[""leisure""=""sports_centre""](12.96686,77.53301,12.98303,77.54960);
+);
+out geom;"
+RT-094,,Nadaprabhu Kempegowda Park,Nadaprabhu Kempegowda Park — Priyadarshini Layout,Vijayanagar,Govindaraja Nagar,West,12.9780148,77.5269559,run,loop,0.7,,public,,Daily 5:00 AM – 10:00 PM,Free,"The biggest park in this pocket — a 600–700 m perimeter circuit under heavy tree cover, with a BBMP library, meditation centre, public gym and kids' area. Multiple entrances, guarded.",running|600m-circuit|shaded|open-gym|library|meditation,4.4,472.0,floor,Strava heatmap + Google Places,Verified,surface,,,places-verified-point,,"12.97577,77.52465,12.98026,77.52926",250.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.97577,77.52465,12.98026,77.52926);
+  relation[""leisure""=""park""](12.97577,77.52465,12.98026,77.52926);
+  way[""leisure""=""garden""](12.97577,77.52465,12.98026,77.52926);
+  relation[""leisure""=""garden""](12.97577,77.52465,12.98026,77.52926);
+  way[""highway""=""footway""](12.97577,77.52465,12.98026,77.52926);
+);
+out geom;"
+RT-095,,Mahatma Gandhi BDA Park,Mahatma Gandhi BDA Park — Nagarbhavi 2nd Stage,Nagarbhavi,Nagarabhaavi,West,12.9688586,77.5145119,run,,,uneven,public,,"Daily 4:30 – 11:00 AM, 4:30 – 8:30 PM",Free,"The largest of several parks in this pocket, with a walking path, statues, open gym and kids' area under dense tree cover. The path surface is uneven — poor for fast running, fine for walking.",walking|large|open-gym|shaded|uneven-surface,4.2,1652.0,floor,Strava heatmap + Google Places,Verified,distance|shape,,,places-verified-point,,"12.96077,77.50622,12.97694,77.52281",900.0,leisure=park|leisure=garden|highway=footway,"[out:json][timeout:25];
+(
+  way[""leisure""=""park""](12.96077,77.50622,12.97694,77.52281);
+  relation[""leisure""=""park""](12.96077,77.50622,12.97694,77.52281);
+  way[""leisure""=""garden""](12.96077,77.50622,12.97694,77.52281);
+  relation[""leisure""=""garden""](12.96077,77.50622,12.97694,77.52281);
+  way[""highway""=""footway""](12.96077,77.50622,12.97694,77.52281);
+);
+out geom;"
+RT-096,,Kempambudhi Kere Park,Kempambudhi Kere Park — Chamrajpet,Basavanagudi,Chamarajapet,South,12.9530138,77.561259,run,loop,1.38,,public,,"Daily 6:00 – 10:00 AM, 4:00 – 7:00 PM",Free,"A 1.38 km walking and running loop around a historic 47-acre lake, shaded by old trees on both sides so it reads more like a forest path than a city park. Open gym, kids' zone and yoga spot. Drainage inflow smells in places; watch for street dogs at the entrance.",running|1.38km-loop|lake|shaded|historic|open-gym,4.0,254.0,floor,Strava heatmap + Google Places,Verified,surface,,,places-verified-point,,"12.94867,77.55681,12.95735,77.56571",483.0,natural=water|leisure=park|highway=footway,"[out:json][timeout:25];
+(
+  way[""natural""=""water""](12.94867,77.55681,12.95735,77.56571);
+  relation[""natural""=""water""](12.94867,77.55681,12.95735,77.56571);
+  way[""leisure""=""park""](12.94867,77.55681,12.95735,77.56571);
+  relation[""leisure""=""park""](12.94867,77.55681,12.95735,77.56571);
+  way[""highway""=""footway""](12.94867,77.55681,12.95735,77.56571);
+);
+out geom;"

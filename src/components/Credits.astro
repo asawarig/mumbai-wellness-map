@@ -1,0 +1,25 @@
+---
+/* Who made the map, with a link to each person's profile. Shown at the end of
+ * the About copy and in the Plum window's "team" box. A person without a link
+ * (href: '') is named in plain text; add their link here to make it one. */
+const PEOPLE = {
+  asawari: { name: 'Asawari Ghatage', href: 'https://www.linkedin.com/in/asawarighatage/' },
+  ganapathi: { name: 'Ganapathi Ramanathan', href: 'https://www.linkedin.com/in/ganapathi-ramanathan/' },
+  sathvik: { name: 'Sathvik Kamath', href: 'https://www.linkedin.com/in/sathvik-kamath/' },
+  avani: { name: 'Avani Samaga', href: 'https://www.linkedin.com/in/avani-samaga/' },
+  shriram: { name: 'Shriram Rajakumar', href: 'https://www.linkedin.com/in/shriram-rajakumar-b33527b4/' },
+  shreyas: { name: 'Shreyas Achar', href: 'https://www.linkedin.com/in/shreyasachar/' },
+};
+const { class: cls = '' } = Astro.props;
+---
+{(() => {
+  const who = (k) => {
+    const p = PEOPLE[k];
+    return p.href ? <a class="credit-name" href={p.href} target="_blank" rel="noopener">{p.name}</a> : <span class="credit-name">{p.name}</span>;
+  };
+  return (
+    <p class={cls}>
+      Brought to life by {who('asawari')}, {who('ganapathi')}, and {who('sathvik')}. Designed by {who('avani')} and {who('shriram')}. With inputs from {who('shreyas')}.
+    </p>
+  );
+})()}

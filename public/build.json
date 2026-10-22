@@ -1,0 +1,4 @@
+{
+  "build": 40,
+  "note": "Bump this in any commit that touches routing, the mount path or the build. Then check the deployed value before concluding anything about a fix: curl -sS <site>/<mount path>/build.json"
+}

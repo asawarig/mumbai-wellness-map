@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc">
+  <title id="title">Flower cart</title>
+  <desc id="desc">A market pushcart piled with marigold and hung with garlands</desc>
+  <g stroke="#571541" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#FFBF21" stroke="none" d="M5.3 10.6c1.1-1.6 2.2-1.6 3.3 0-1.1 1.5-2.2 1.5-3.3 0Zm4.6-.6c1.1-1.6 2.2-1.6 3.3 0-1.1 1.5-2.2 1.5-3.3 0Zm4.6.6c1.1-1.6 2.2-1.6 3.3 0-1.1 1.5-2.2 1.5-3.3 0Z"/>
+    <path fill="#FFEBDB" d="M3.5 11.9h15.1l-1.1 5.3H4.6Z"/>
+    <path fill="none" d="M19.4 11.9 21.6 8"/>
+    <path fill="none" stroke="#FFBF21" stroke-width="1.5" d="M4.6 13.6c.8 1.5 1.7 1.5 2.6 0m.7 0c.8 1.5 1.7 1.5 2.6 0m.7 0c.8 1.5 1.7 1.5 2.6 0m.7 0c.8 1.5 1.7 1.5 2.6 0"/>
+    <circle cx="6.9" cy="19" r="1.5" fill="#FFFCF9" stroke="#571541"/>
+    <circle cx="15.4" cy="19" r="1.5" fill="#FFFCF9" stroke="#571541"/>
+    <path fill="none" d="M2.4 20.6h19.2"/>
+  </g>
+</svg>

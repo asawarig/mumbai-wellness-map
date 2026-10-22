@@ -1,0 +1,21 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.local
+.DS_Store
+npm-debug.log*
+.vercel
+
+# Webflow Cloud / Cloudflare Workers local state
+.wrangler/
+.webflow/
+
+# Local caches and handoff clutter
+.cache/
+*.zip
+files/
+files-*/
+sources/**/snap-queue.csv
+.claude/
+reports/

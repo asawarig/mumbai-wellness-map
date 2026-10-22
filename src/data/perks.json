@@ -1,0 +1,1697 @@
+{
+  "blurb": "Get discounts with our Perks partners on the Plum app.",
+  "ctaUrl": "https://www.plumhq.com/app",
+  "perks": [
+    {
+      "id": "PLUM-001",
+      "n": "1MG (Tata 1mg)",
+      "cat": "care",
+      "s": "Pharmacy + Diagnostics",
+      "a": "Multi-city (BLR)",
+      "d": "Tata-backed online pharmacy + at-home diagnostics. Meds, lab tests, doctor consults through one app.",
+      "b": "Meds delivery, Home lab tests, Tele-consult",
+      "w": "https://www.1mg.com",
+      "tg": [
+        "pharmacy",
+        "diagnostics",
+        "tele-consult",
+        "app",
+        "chain",
+        "tata"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-015",
+      "n": "Ace Blend",
+      "cat": "eat",
+      "s": "Nutrition D2C (plant-based)",
+      "a": "D2C",
+      "d": "Bengaluru-founded premium nutrition — plant-based protein blends, superfoods, functional shakes. Clean labels.",
+      "b": "Plant protein, Superfoods, Shakes",
+      "w": "https://aceblend.com",
+      "tg": [
+        "nutrition",
+        "plant-based",
+        "protein",
+        "superfoods",
+        "bengaluru-hq",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-096",
+      "n": "Airth",
+      "cat": "gear",
+      "s": "Air purifier retrofit (D2C)",
+      "a": "D2C",
+      "d": "Retrofits existing split/window ACs into air purifiers using antimicrobial filters. Cost-effective wellness for indoor AQI.",
+      "b": "AC purifier retrofit",
+      "w": "https://airth.in",
+      "tg": [
+        "air-quality",
+        "ac-retrofit",
+        "purifier",
+        "indoor-air",
+        "d2c",
+        "delhi-hq"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-016",
+      "n": "Akunka",
+      "cat": "eat",
+      "s": "Longevity food (D2C)",
+      "a": "D2C",
+      "d": "Longevity-positioned brand — root-vegetable crisps closing India's veg-consumption gap. Fiber, gut health focus. Bengaluru-founded.",
+      "b": "Longevity snacks, Gut health, Vegetable crisps",
+      "w": "https://akunkafoods.com",
+      "tg": [
+        "longevity",
+        "gut-health",
+        "crisps",
+        "root-vegetables",
+        "bengaluru-hq",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-048",
+      "n": "AliveCor (Kardia)",
+      "cat": "gear",
+      "also": [
+        "care"
+      ],
+      "s": "Wearable / medical device",
+      "a": "D2C",
+      "d": "Personal ECG device — sync to phone, detect AFib, cardiologist review. Home cardiac monitoring.",
+      "b": "Home ECG, AFib detection",
+      "w": "https://alivecor.in",
+      "tg": [
+        "ecg",
+        "kardia",
+        "afib",
+        "cardiac-monitoring",
+        "medical-device",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-086",
+      "n": "Arva Health",
+      "cat": "care",
+      "s": "Fertility clinic",
+      "a": "",
+      "d": "Fertility care from testing to IVF, at their Indiranagar clinic.",
+      "b": "Fertility testing, IVF",
+      "w": "https://www.arva.health/",
+      "tg": [
+        "fertility",
+        "ivf",
+        "clinic"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-055",
+      "n": "Athlex",
+      "cat": "play",
+      "also": [
+        "workout"
+      ],
+      "s": "Fitness / sports platform",
+      "a": "",
+      "d": "Athlete-focused fitness platform. Exact offering to verify.",
+      "b": "Verify",
+      "w": "https://www.athlexinc.com/",
+      "tg": [
+        "fitness",
+        "athlete",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-017",
+      "n": "Beastlife",
+      "cat": "eat",
+      "also": [
+        "workout"
+      ],
+      "s": "Sports supplements (D2C)",
+      "a": "D2C",
+      "d": "Creator-led supplement brand founded by Gaurav Taneja. Positioned on ingredient purity and 3rd-party testing.",
+      "b": "Whey, Creatine, Pre-workouts",
+      "w": "https://beastlife.in",
+      "tg": [
+        "sports-supplements",
+        "purity",
+        "creator-led",
+        "gaurav-taneja",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-080",
+      "n": "Betterhood",
+      "cat": "gear",
+      "s": "Physiotherapy gear",
+      "a": "",
+      "d": "Physiotherapist co-created supports, cushions and roll-ons for back, neck and joint pain.",
+      "b": "Back, neck and joint pain",
+      "w": "https://betterhood.in/",
+      "tg": [
+        "physiotherapy",
+        "pain-relief",
+        "recovery"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-004",
+      "n": "Blinkit",
+      "cat": "care",
+      "s": "Quick-commerce (incl. pharmacy)",
+      "a": "Multi-city (BLR)",
+      "d": "Get a discount on your medicine orders.",
+      "b": "Emergency pharmacy, Groceries",
+      "w": "https://blinkit.com",
+      "tg": [
+        "quick-commerce",
+        "pharmacy",
+        "10-min-delivery",
+        "zomato"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-069",
+      "n": "Bold Care",
+      "cat": "care",
+      "s": "Specialty (men's sexual wellness)",
+      "a": "D2C + tele-consult",
+      "d": "Men's sexual wellness — prescription-adjacent and OTC products, tele-consult with doctors.",
+      "b": "Sexual wellness, ED, Testosterone",
+      "w": "https://boldcare.in",
+      "tg": [
+        "mens-health",
+        "sexual-wellness",
+        "tele-consult",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-066",
+      "n": "Caresmith",
+      "cat": "gear",
+      "s": "Personal care (home devices)",
+      "a": "D2C + Amazon",
+      "d": "Home wellness devices — muscle massagers, water flossers, foot spas, air purifiers.",
+      "b": "Massagers, Water flossers, Foot spa",
+      "w": "https://caresmith.com",
+      "tg": [
+        "home-wellness",
+        "massager",
+        "water-flosser",
+        "devices",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-018",
+      "n": "Cosmix",
+      "cat": "eat",
+      "s": "Functional nutrition (D2C)",
+      "a": "D2C",
+      "d": "Plant-based functional nutrition — Wondermag, You Glow Girl, Vegan Protein. Cricketer Jemimah Rodrigues-backed.",
+      "b": "Adaptogens, Beauty nutrition, Plant protein",
+      "w": "https://cosmix.in",
+      "tg": [
+        "functional-nutrition",
+        "adaptogens",
+        "beauty",
+        "plant-based",
+        "celebrity-backed",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-081",
+      "n": "Curelo",
+      "cat": "clear",
+      "s": "Wellness / recovery",
+      "a": "",
+      "d": "Wellness or recovery offering — verify.",
+      "b": "Verify",
+      "w": "",
+      "tg": [
+        "wellness",
+        "recovery",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-043",
+      "n": "Decode Age",
+      "cat": "care",
+      "also": [
+        "eat"
+      ],
+      "s": "New-age health (longevity D2C)",
+      "a": "D2C",
+      "d": "Longevity supplements (Trans-Resveratrol, NMN, Fisetin, Spermidine) + biological age testing kits.",
+      "b": "NAD+, Longevity supplements, Bio-age testing",
+      "w": "https://decodeage.com",
+      "tg": [
+        "longevity",
+        "nmn",
+        "resveratrol",
+        "bio-age-testing",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-082",
+      "n": "Deep Holistics",
+      "cat": "clear",
+      "s": "Holistic wellness / retreats",
+      "a": "",
+      "d": "Holistic wellness — likely retreats, coaching, or online programs.",
+      "b": "Retreats, Coaching",
+      "w": "https://www.deepholistics.com/",
+      "tg": [
+        "holistic",
+        "retreats",
+        "coaching",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-019",
+      "n": "Denzour Nutrition",
+      "cat": "eat",
+      "also": [
+        "workout"
+      ],
+      "s": "Sports supplements (D2C)",
+      "a": "D2C",
+      "d": "Value-priced sports nutrition — whey isolates, gainers, pre-workouts. Positioned for serious lifters.",
+      "b": "Whey isolate, Mass gainers, Pre-workouts",
+      "w": "https://denzournutrition.com",
+      "tg": [
+        "sports-supplements",
+        "value",
+        "serious-lifters",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-041",
+      "n": "Doki Foods",
+      "cat": "eat",
+      "s": "Jerky & meat snacks (D2C)",
+      "a": "D2C",
+      "d": "India's first jerky brand — dried spiced meats, positioned as high-protein snacking.",
+      "b": "Jerky, Dried meat, High-protein snacks",
+      "w": "https://dokifoods.com",
+      "tg": [
+        "jerky",
+        "meat-snacks",
+        "high-protein",
+        "first-of-kind",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-093",
+      "n": "Dr Doodley",
+      "cat": "people",
+      "s": "Pet supplements / products",
+      "a": "",
+      "d": "Unlimited free vet home visits.",
+      "b": "Pet health products",
+      "w": "https://doodley.in/",
+      "tg": [
+        "pet",
+        "supplements",
+        "d2c",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-092",
+      "n": "Dr Paws",
+      "cat": "people",
+      "s": "Vet at home",
+      "a": "Service (Multi-city BLR)",
+      "d": "At-home veterinary — vet visits, vaccinations, grooming, diagnostics.",
+      "b": "At-home vet, Vaccinations, Diagnostics",
+      "w": "https://drpaws.co",
+      "tg": [
+        "pet",
+        "vet",
+        "at-home-service",
+        "vaccinations",
+        "multi-city"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-056",
+      "n": "EarlyFit",
+      "cat": "play",
+      "also": [
+        "move",
+        "workout"
+      ],
+      "s": "Community fitness meetups",
+      "a": "App / Community",
+      "d": "Community-driven early morning fitness — runs, HIIT, yoga at parks and neighbourhoods.",
+      "b": "Sunrise fitness, Community meetups",
+      "w": "",
+      "tg": [
+        "community-fitness",
+        "meetups",
+        "sunrise",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-020",
+      "n": "Eat Better Co.",
+      "cat": "eat",
+      "s": "Healthy snacks (D2C)",
+      "a": "D2C + Q-com",
+      "d": "Clean-label snacking — sugar-free spreads, seed mixes, nut butters. Widely on quick commerce.",
+      "b": "Nut butters, Sugar-free spreads, Seeds",
+      "w": "https://eatbetterco.com",
+      "tg": [
+        "healthy-snacks",
+        "sugar-free",
+        "nut-butter",
+        "d2c",
+        "q-com"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-021",
+      "n": "Farmley",
+      "cat": "eat",
+      "s": "Nuts & dry fruits (D2C)",
+      "a": "D2C + retail",
+      "d": "Premium dry fruits and nuts — Shark Tank India alum. Now beyond dry fruits into gifting and snacks.",
+      "b": "Premium nuts, Dry fruits, Gifting",
+      "w": "https://www.farmley.com",
+      "tg": [
+        "nuts",
+        "dry-fruits",
+        "gifting",
+        "shark-tank",
+        "d2c",
+        "retail"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-072",
+      "n": "Femly",
+      "cat": "care",
+      "s": "Specialty (women's health)",
+      "a": "",
+      "d": "On all diet and wellness plans.",
+      "b": "Verify",
+      "w": "https://www.femlyhealth.com/",
+      "tg": [
+        "femtech",
+        "women",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-053",
+      "n": "Fitelo",
+      "cat": "play",
+      "also": [
+        "eat"
+      ],
+      "s": "Nutrition coaching app",
+      "a": "App",
+      "d": "Nutritionist-led weight loss programs — Indian food focus, coach + WhatsApp support.",
+      "b": "Weight loss, Indian diet plans",
+      "w": "https://fitelo.co",
+      "tg": [
+        "nutrition-app",
+        "weight-loss",
+        "dietitian-led",
+        "indian-diet"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-052",
+      "n": "Fittr",
+      "cat": "play",
+      "also": [
+        "workout",
+        "eat"
+      ],
+      "s": "Fitness coaching app",
+      "a": "App",
+      "d": "Fitness + nutrition app coaching. Coach-led plans, community groups, transformation programs.",
+      "b": "1:1 coaching, Nutrition plans, Community",
+      "w": "https://www.fittr.com",
+      "tg": [
+        "fitness-app",
+        "coaching",
+        "community",
+        "transformation"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-060",
+      "n": "Flexnest",
+      "cat": "gear",
+      "also": [
+        "workout"
+      ],
+      "s": "Sports / fitness retail",
+      "a": "D2C",
+      "d": "Home fitness equipment — Peloton-style smart bike, treadmill, adjustable dumbbells. App-connected classes.",
+      "b": "Smart bike, Treadmill, Dumbbells",
+      "w": "https://www.theflexnest.com",
+      "tg": [
+        "smart-fitness",
+        "home-equipment",
+        "peloton-style",
+        "connected-classes",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-064",
+      "n": "Foxtale",
+      "cat": "gear",
+      "s": "Personal care (skincare D2C)",
+      "a": "D2C + Q-com",
+      "d": "Skincare D2C — actives-based products (niacinamide, salicylic acid). Founded by Romita Mazumdar.",
+      "b": "Serums, Sunscreens, Moisturisers",
+      "w": "https://foxtale.in",
+      "tg": [
+        "skincare",
+        "actives",
+        "d2c",
+        "q-com",
+        "founder-led"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-051",
+      "n": "Gcode",
+      "cat": "care",
+      "s": "Specialty (genomics — verify)",
+      "a": "",
+      "d": "Product line to verify — possibly gene-based nutrition or genetic testing.",
+      "b": "Verify",
+      "w": "https://gcodehealth.com/",
+      "tg": [
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-046",
+      "n": "Genwise",
+      "cat": "care",
+      "s": "Diagnostic lab (genetic testing)",
+      "a": "D2C",
+      "d": "Consumer genetic testing — traits, health, ancestry. D2C kits sent home.",
+      "b": "DNA kits, Traits, Ancestry",
+      "w": "https://genwise.in",
+      "tg": [
+        "genetic-testing",
+        "dna-kits",
+        "consumer-genomics",
+        "d2c",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-022",
+      "n": "Gladful",
+      "cat": "eat",
+      "s": "Millet nutrition (D2C)",
+      "a": "D2C + Q-com",
+      "d": "Millet + protein blend snacks and mixes. Indian ingredients + modern nutrition science.",
+      "b": "Millet snacks, Protein mixes",
+      "w": "https://gladful.in",
+      "tg": [
+        "millet",
+        "protein",
+        "indian-ingredients",
+        "d2c",
+        "q-com"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-085",
+      "n": "Gratitude",
+      "cat": "clear",
+      "s": "Journaling / affirmation app",
+      "a": "App",
+      "d": "Journaling and gratitude affirmation app — one of the most downloaded self-help apps globally.",
+      "b": "Journaling, Affirmations",
+      "w": "https://gratefulness.me",
+      "tg": [
+        "journaling",
+        "gratitude",
+        "affirmations",
+        "app",
+        "self-help"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-095",
+      "n": "Green Soul Ergonomics",
+      "cat": "gear",
+      "s": "Ergo furniture (D2C)",
+      "a": "D2C + Amazon",
+      "d": "Ergonomic office chairs and standing desks. Strong Amazon presence + own site.",
+      "b": "Office chairs, Standing desks",
+      "w": "https://www.greensoul.online",
+      "tg": [
+        "ergonomic",
+        "office-chair",
+        "standing-desk",
+        "wfh",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-091",
+      "n": "Heads Up for Tails (HUFT)",
+      "cat": "people",
+      "s": "Pet retail chain",
+      "a": "Multi-city (BLR)",
+      "d": "India's biggest pet retail chain — food, treats, toys, grooming, apparel. Spa services in-store.",
+      "b": "Pet food, Grooming, Apparel",
+      "w": "https://headsupfortails.com",
+      "tg": [
+        "pet-retail",
+        "chain",
+        "grooming",
+        "food",
+        "spa",
+        "multi-branch"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-024",
+      "n": "Healthland Clinics",
+      "cat": "eat",
+      "s": "Traditional foods (D2C)",
+      "a": "",
+      "d": "Traditional Indian foods positioned as healthy — heritage recipes, less processed.",
+      "b": "Traditional snacks, Mixes",
+      "w": "https://www.healthlandclinics.com/",
+      "tg": [
+        "traditional",
+        "heritage",
+        "indian-foods",
+        "d2c",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-090",
+      "n": "Imagimake",
+      "cat": "people",
+      "s": "Kids' activity kits (D2C)",
+      "a": "D2C + Amazon",
+      "d": "Educational activity kits for kids — puzzles, craft, STEM.",
+      "b": "STEM, Craft, Puzzles",
+      "w": "https://imagimake.com",
+      "tg": [
+        "kids",
+        "education",
+        "craft",
+        "stem",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-025",
+      "n": "Immunit",
+      "cat": "eat",
+      "s": "Immunity supplements (D2C)",
+      "a": "D2C",
+      "d": "Immunity-focused supplements — vitamins, herbal blends.",
+      "b": "Immunity, Vitamins",
+      "w": "https://immunit.in/",
+      "tg": [
+        "immunity",
+        "supplements",
+        "d2c",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-103",
+      "n": "Isomeds",
+      "cat": "care",
+      "s": "Specialty (medical — verify)",
+      "a": "",
+      "d": "On generic medicines.",
+      "b": "Verify",
+      "w": "https://isomeds.in/",
+      "tg": [
+        "medical",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-014",
+      "n": "Ivory",
+      "cat": "care",
+      "s": "Specialty clinic (brain health)",
+      "a": "",
+      "d": "Brain health and early cognitive decline detection. Runs Cogniverse events with clinical experts.",
+      "b": "Cognitive screening, Memory care",
+      "w": "https://www.instagram.com/letsliveivory",
+      "tg": [
+        "brain-health",
+        "cognitive-decline",
+        "memory",
+        "specialty"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-026",
+      "n": "Jungly Delights",
+      "cat": "eat",
+      "s": "Healthy snacks (D2C)",
+      "a": "",
+      "d": "Better-for-you snacking. Category and product line to verify.",
+      "b": "Healthy snacks",
+      "w": "https://www.junglydelights.com/",
+      "tg": [
+        "snacks",
+        "better-for-you",
+        "d2c",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-087",
+      "n": "Khyaal",
+      "cat": "care",
+      "s": "Seniors' community app",
+      "a": "App",
+      "d": "Community app for Indian seniors — content, live sessions, safety, learning + \"Khyaal Care Card\".",
+      "b": "Seniors, Community, Safety",
+      "w": "https://khyaal.com",
+      "tg": [
+        "seniors",
+        "community",
+        "elder-care",
+        "app",
+        "care-card"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-101",
+      "n": "Magzter",
+      "cat": "people",
+      "s": "Digital magazine subscription",
+      "a": "App",
+      "d": "Digital magazine + book subscription — 5000+ magazines, unlimited reading. Wellness perk as stress/leisure benefit.",
+      "b": "Magazine reading, Leisure",
+      "w": "https://www.magzter.com",
+      "tg": [
+        "magazines",
+        "digital-subscription",
+        "leisure",
+        "stress-relief",
+        "app"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-044",
+      "n": "Mapmygenome",
+      "cat": "care",
+      "s": "Diagnostic lab (genomics)",
+      "a": "Sample collection (BLR)",
+      "d": "Personal genomics + genetic counselling. Genomepatri panel + specialised tests. HQ in Hyderabad.",
+      "b": "Genome scan, Genetic counselling, Carrier testing",
+      "w": "https://mapmygenome.in",
+      "tg": [
+        "genomics",
+        "genetic-counselling",
+        "dna-testing",
+        "hyderabad-hq"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-102",
+      "n": "Microbiotx",
+      "cat": "eat",
+      "s": "Probiotics / gut health (D2C)",
+      "a": "D2C",
+      "d": "Gut health / probiotics brand.",
+      "b": "Probiotics, Gut health",
+      "w": "https://www.microbiotx.com/",
+      "tg": [
+        "probiotics",
+        "gut-health",
+        "d2c",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-027",
+      "n": "Miduty",
+      "cat": "eat",
+      "s": "Clean supplements (D2C)",
+      "a": "D2C",
+      "d": "Nutritionist Palak Midha's supplement brand — Vit D, magnesium, marine collagen. Ingredient transparency focus.",
+      "b": "Vitamins, Collagen, Magnesium",
+      "w": "https://miduty.com",
+      "tg": [
+        "supplements",
+        "transparency",
+        "palak-midha",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-074",
+      "n": "Miyara",
+      "cat": "care",
+      "s": "Specialty (women's programs)",
+      "a": "Digital consults",
+      "d": "Women's health — structured programs for hormone conditions with tele-consult + nutrition + medicine.",
+      "b": "PCOS, Thyroid, Menopause",
+      "w": "https://miyara.co",
+      "tg": [
+        "womens-health",
+        "hormones",
+        "programs",
+        "digital-clinic",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-028",
+      "n": "MuscleBlaze",
+      "cat": "eat",
+      "also": [
+        "workout"
+      ],
+      "s": "Sports supplements (D2C)",
+      "a": "D2C + retail",
+      "d": "HealthKart's flagship supplement brand. India's most-sold whey. Available via HealthKart stores + D2C.",
+      "b": "Whey, Gainers, Creatine",
+      "w": "https://www.muscleblaze.com",
+      "tg": [
+        "sports-supplements",
+        "whey",
+        "mass-gainer",
+        "healthkart-brand",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-070",
+      "n": "Mymuse",
+      "cat": "care",
+      "s": "Specialty (intimate wellness)",
+      "a": "D2C",
+      "d": "Intimate wellness for women and couples — massagers, lubes, arousal serums.",
+      "b": "Intimate wellness, Couples",
+      "w": "https://mymuse.in",
+      "tg": [
+        "intimate-wellness",
+        "women",
+        "couples",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-029",
+      "n": "Näck",
+      "cat": "eat",
+      "also": [
+        "workout"
+      ],
+      "s": "Natural supplements (D2C)",
+      "a": "D2C",
+      "d": "Natural supplements — EAA + electrolytes, whey, natural astaxanthin, plant protein. Ingredient-purity focus.",
+      "b": "EAA, Astaxanthin, Plant protein",
+      "w": "https://nack.life",
+      "tg": [
+        "natural-supplements",
+        "eaa",
+        "astaxanthin",
+        "plant-based",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-073",
+      "n": "Newmi",
+      "cat": "care",
+      "s": "Specialty (women's digital clinic)",
+      "a": "Digital consults",
+      "d": "Women's hormonal health program at exclusive Plum Select price.",
+      "b": "PCOS, Menopause, Fertility",
+      "w": "https://newmicare.com",
+      "tg": [
+        "womens-health",
+        "pcos",
+        "menopause",
+        "fertility",
+        "digital-clinic"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-071",
+      "n": "Nuawoman",
+      "cat": "gear",
+      "s": "Sustainable feminine care (D2C)",
+      "a": "D2C",
+      "d": "Sustainable feminine care — biodegradable pads, cramp comfort roll-on, period underwear.",
+      "b": "Pads, Cramp roll-on, Period underwear",
+      "w": "https://nuawoman.com",
+      "tg": [
+        "feminine-care",
+        "sustainable",
+        "biodegradable",
+        "period-underwear",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-045",
+      "n": "Nugenomics",
+      "cat": "care",
+      "also": [
+        "eat"
+      ],
+      "s": "Diagnostic lab (nutrigenomics)",
+      "a": "D2C",
+      "d": "DNA-based nutrition, fitness, and disease-risk reporting. Followed by personalised program.",
+      "b": "DNA-based diet & lifestyle",
+      "w": "https://nugenomics.in",
+      "tg": [
+        "nutrigenomics",
+        "dna-testing",
+        "personalised-nutrition",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-083",
+      "n": "Nura",
+      "cat": "clear",
+      "s": "Wellness (verify)",
+      "a": "",
+      "d": "Multiple brands use \"Nura\" — could be wellness app, protein, or sleep. Verify.",
+      "b": "Verify",
+      "w": "https://nura.in/nura-bangalore/",
+      "tg": [
+        "needs-verification",
+        "ambiguous-name"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-030",
+      "n": "Nutriviva",
+      "cat": "eat",
+      "s": "Nutrition supplements (D2C)",
+      "a": "",
+      "d": "Nutrition brand. Category to verify.",
+      "b": "Nutrition products",
+      "w": "https://www.instagram.com/nutriviva_india/",
+      "tg": [
+        "nutrition",
+        "d2c",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-031",
+      "n": "Nuvie",
+      "cat": "eat",
+      "also": [
+        "workout"
+      ],
+      "s": "Protein drinks (D2C)",
+      "a": "D2C + retail + gyms",
+      "d": "Bengaluru RTD protein shakes + protein coffee (\"Proffee\"). Mukesh Bansal-backed. In 100+ retail + 200+ gyms.",
+      "b": "RTD protein, Protein coffee",
+      "w": "https://www.nuvie.co.in",
+      "tg": [
+        "protein-shakes",
+        "rtd",
+        "protein-coffee",
+        "bengaluru-hq",
+        "d2c",
+        "retail"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-067",
+      "n": "Oracura",
+      "cat": "gear",
+      "s": "Personal care (oral devices)",
+      "a": "D2C + Amazon",
+      "d": "Oral care devices — water flossers, electric toothbrushes, tongue cleaners.",
+      "b": "Water flossers, Electric brushes",
+      "w": "https://oracura.in",
+      "tg": [
+        "oral-care",
+        "water-flosser",
+        "electric-brush",
+        "devices",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-032",
+      "n": "Origins Nutra",
+      "cat": "eat",
+      "also": [
+        "workout"
+      ],
+      "s": "Sports & clinical nutrition (D2C)",
+      "a": "D2C",
+      "d": "Sports and clinical nutrition — whey isolate, gut health, weight management.",
+      "b": "Whey, Gut health, Weight mgmt",
+      "w": "https://originsnutra.com",
+      "tg": [
+        "sports-nutrition",
+        "clinical",
+        "gut-health",
+        "weight-mgmt",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-050",
+      "n": "Outlive",
+      "cat": "care",
+      "also": [
+        "eat"
+      ],
+      "s": "New-age health (longevity)",
+      "a": "",
+      "d": "On fasting program, nut bars and soups.",
+      "b": "Longevity stack",
+      "w": "https://getoutlive.in/",
+      "tg": [
+        "longevity",
+        "supplements",
+        "d2c",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-065",
+      "n": "Perfora",
+      "cat": "gear",
+      "s": "Personal care (oral care D2C)",
+      "a": "D2C + Q-com",
+      "d": "Modern oral care — electric toothbrushes, mouthwash concentrates, whitening kits.",
+      "b": "Electric brushes, Toothpaste, Whitening",
+      "w": "https://perfora.in",
+      "tg": [
+        "oral-care",
+        "electric-brush",
+        "mouthwash",
+        "whitening",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-003",
+      "n": "Pharmeasy",
+      "cat": "care",
+      "s": "Online pharmacy + Diagnostics",
+      "a": "App-based",
+      "d": "Online pharmacy with home delivery, diagnostics through Thyrocare (owned), and doctor consults.",
+      "b": "Home meds delivery, Lab tests",
+      "w": "https://pharmeasy.in",
+      "tg": [
+        "pharmacy",
+        "diagnostics",
+        "thyrocare",
+        "app",
+        "subscription"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-068",
+      "n": "Plawse",
+      "cat": "gear",
+      "s": "Personal care (skincare D2C)",
+      "a": "D2C + Flipkart",
+      "d": "On all orders.",
+      "b": "Serums, Skincare",
+      "w": "https://plawse.in/",
+      "tg": [
+        "skincare",
+        "serums",
+        "d2c",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-054",
+      "n": "Playo",
+      "cat": "play",
+      "s": "Sport / fitness activity (booking)",
+      "a": "App (Multi-city BLR)",
+      "d": "Book sports venues (turfs, badminton courts, box cricket), join or host casual sports meetups.",
+      "b": "Turf booking, Court booking, Sport meetups",
+      "w": "https://playo.co",
+      "tg": [
+        "sports-booking",
+        "turf",
+        "meetups",
+        "app",
+        "community"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-033",
+      "n": "Plix",
+      "cat": "eat",
+      "s": "Plant-based supplements (D2C)",
+      "a": "D2C",
+      "d": "Plant-based effervescents, gummies for hair/skin/gut/weight loss. Mass-market D2C.",
+      "b": "Effervescents, Gummies, Beauty & wellness",
+      "w": "https://plixlife.com",
+      "tg": [
+        "plant-based",
+        "effervescents",
+        "gummies",
+        "beauty",
+        "mass-market",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-034",
+      "n": "Poptopia",
+      "cat": "eat",
+      "s": "Healthy snacks (D2C)",
+      "a": "D2C + Q-com",
+      "d": "Air-popped popcorn with clean-label flavours. Guilt-free snacking.",
+      "b": "Air-popped popcorn, Flavoured snacks",
+      "w": "https://poptopia.in",
+      "tg": [
+        "popcorn",
+        "air-popped",
+        "clean-label",
+        "d2c",
+        "q-com"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-077",
+      "n": "Praan Health",
+      "cat": "care",
+      "s": "Specialty clinic (50+ care)",
+      "a": "Koramangala",
+      "d": "The Fifty+ Clinic: integrated care for people over 50, with doctor consults, physiotherapy and non-surgical pain treatment, carried on at home.",
+      "b": "Over-50s, Physiotherapy, Pain care",
+      "w": "https://praan.health/",
+      "tg": [
+        "senior-care",
+        "physiotherapy",
+        "pain",
+        "clinic"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-035",
+      "n": "Pragami",
+      "cat": "eat",
+      "s": "Ayurvedic gut cleanse (D2C)",
+      "a": "D2C",
+      "d": "Structured Ayurvedic gut cleanse protocols — A2 Bilona ghee, herbs, ritual. \"Progressive Ayurveda\" positioning.",
+      "b": "5-day gut cleanse, Ayurveda",
+      "w": "https://pragamiwellness.com",
+      "tg": [
+        "ayurveda",
+        "gut-cleanse",
+        "ghee",
+        "ritual",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-079",
+      "n": "Quitsure",
+      "cat": "clear",
+      "s": "Quit smoking app",
+      "a": "App",
+      "d": "Structured 8-day quit-smoking app. Non-nicotine cognitive-behavioural program.",
+      "b": "Quit smoking, CBT-based",
+      "w": "https://quitsure.app",
+      "tg": [
+        "quit-smoking",
+        "cbt",
+        "addiction",
+        "app"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-078",
+      "n": "Roundglass Living",
+      "cat": "clear",
+      "s": "Wellness app (content)",
+      "a": "App",
+      "d": "Wellness super-app — meditation, sleep stories, yoga, breathwork.",
+      "b": "Meditation, Sleep, Yoga",
+      "w": "https://roundglassliving.com",
+      "tg": [
+        "wellness-app",
+        "meditation",
+        "sleep-stories",
+        "yoga",
+        "super-app"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-088",
+      "n": "Samarth Care",
+      "cat": "care",
+      "s": "Elder care services",
+      "a": "Service (Multi-city BLR)",
+      "d": "Elder care services — home nursing, emergency response, health check-ups, companion care.",
+      "b": "Home nursing, Emergency, Companion care",
+      "w": "https://www.samarth.community",
+      "tg": [
+        "elder-care",
+        "home-nursing",
+        "emergency",
+        "companion"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-061",
+      "n": "Shvasa",
+      "cat": "play",
+      "also": [
+        "workout"
+      ],
+      "s": "Live yoga app",
+      "a": "App",
+      "d": "Live small-group online yoga classes — traditional yoga, teacher-led, subscription model.",
+      "b": "Live yoga, Traditional lineage",
+      "w": "https://shvasa.com",
+      "tg": [
+        "yoga-app",
+        "live-classes",
+        "traditional",
+        "subscription"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-104",
+      "n": "Skal",
+      "cat": "eat",
+      "s": "Non-alcoholic drinks",
+      "a": "",
+      "d": "On non-alcoholic mulled wine.",
+      "b": "Non-alcoholic mulled wine",
+      "w": "",
+      "tg": [
+        "non-alcoholic",
+        "drinks"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-076",
+      "n": "Sunshine by Lissun",
+      "cat": "clear",
+      "s": "Maternal / women's mental health app",
+      "a": "App",
+      "d": "Lissun's sub-brand for women's mental health — postpartum, PMS/PMDD, maternal therapy.",
+      "b": "Postpartum, PMS, Women's therapy",
+      "w": "https://www.lissun.app",
+      "tg": [
+        "mental-health",
+        "postpartum",
+        "women",
+        "maternal",
+        "app",
+        "lissun-vertical"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-089",
+      "n": "Superbottoms",
+      "cat": "gear",
+      "s": "Baby / parenting retail (D2C)",
+      "a": "D2C",
+      "d": "Reusable cloth diapers for babies. Also does period underwear and postpartum wear. Shark Tank alum.",
+      "b": "Cloth diapers, Period underwear, Postpartum",
+      "w": "https://superbottoms.com",
+      "tg": [
+        "baby",
+        "cloth-diapers",
+        "sustainable",
+        "postpartum",
+        "shark-tank",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-037",
+      "n": "SuperYou",
+      "cat": "eat",
+      "s": "Beauty & wellness gummies (D2C)",
+      "a": "D2C",
+      "d": "Ranveer Singh + Nikita Bardia-backed. Effervescent + gummy for beauty/sleep/focus. Mass-market wellness.",
+      "b": "Gummies, Sleep, Focus, Beauty",
+      "w": "https://superyou.in",
+      "tg": [
+        "gummies",
+        "celebrity-backed",
+        "ranveer-singh",
+        "beauty",
+        "mass-market",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-036",
+      "n": "Supply6",
+      "cat": "eat",
+      "s": "Meal replacement (D2C)",
+      "a": "D2C",
+      "d": "Complete nutrition meal-replacement shakes — protein + fiber + micronutrients. Time-poor professional positioning.",
+      "b": "Meal replacement, Complete nutrition",
+      "w": "https://supplysix.com",
+      "tg": [
+        "meal-replacement",
+        "complete-nutrition",
+        "professionals",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-058",
+      "n": "Tagda Raho",
+      "cat": "workout",
+      "also": [
+        "care"
+      ],
+      "s": "Specialty (men's health)",
+      "a": "",
+      "d": "On all equipment and training sessions.",
+      "b": "Men's health, Testosterone, Energy",
+      "w": "https://shop.tagdaraho.in/",
+      "tg": [
+        "mens-health",
+        "testosterone",
+        "sleep",
+        "energy",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-063",
+      "n": "Tego Fit",
+      "cat": "gear",
+      "s": "Sports / fitness retail",
+      "a": "",
+      "d": "Fitness apparel or smart wearables. Verify.",
+      "b": "Athleisure or wearables",
+      "w": "https://tego.fit/",
+      "tg": [
+        "fitness-apparel",
+        "wearables",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-042",
+      "n": "The Hempseed",
+      "cat": "eat",
+      "s": "Hemp foods (D2C)",
+      "a": "D2C",
+      "d": "Hemp foods — hemp hearts, hemp protein, hemp seed oil. Non-psychoactive.",
+      "b": "Hemp seeds, Hemp protein, Hemp oil",
+      "w": "https://itshemp.in/brand/the-hempseed/",
+      "tg": [
+        "hemp",
+        "hemp-seeds",
+        "hemp-oil",
+        "plant-protein",
+        "d2c",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-084",
+      "n": "The Stack Club",
+      "cat": "eat",
+      "s": "Longevity supplement stacks",
+      "a": "",
+      "d": "Curated supplement stack subscription — biohacker positioning.",
+      "b": "Curated stacks, Subscription",
+      "w": "https://thestack.club/",
+      "tg": [
+        "supplements",
+        "stacks",
+        "subscription",
+        "biohacker",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-038",
+      "n": "The Whole Truth",
+      "cat": "eat",
+      "s": "Clean-label snacks (D2C)",
+      "a": "D2C + retail",
+      "d": "Ingredient-honest protein bars, muesli, peanut butter, whey. Founded by Shashank Mehta.",
+      "b": "Protein bars, Peanut butter, Whey",
+      "w": "https://www.thewholetruthfoods.com",
+      "tg": [
+        "clean-label",
+        "protein-bars",
+        "transparency",
+        "d2c",
+        "retail"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-049",
+      "n": "Toothlens",
+      "cat": "care",
+      "s": "Specialty (AI dental screening)",
+      "a": "App",
+      "d": "Phone photo of teeth → AI flags decay, plaque, gum recession. Dentist-triage.",
+      "b": "AI dental self-check",
+      "w": "https://www.toothlens.com",
+      "tg": [
+        "dental",
+        "ai-diagnostics",
+        "self-screening",
+        "app"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-097",
+      "n": "Tripole Gears",
+      "cat": "gear",
+      "also": [
+        "move"
+      ],
+      "s": "Outdoor gear (D2C)",
+      "a": "D2C + Amazon",
+      "d": "Outdoor and trekking gear — rucksacks, hydration packs, running vests, camping accessories.",
+      "b": "Rucksacks, Hydration, Trek gear",
+      "w": "https://tripole.in",
+      "tg": [
+        "outdoor",
+        "trek",
+        "rucksack",
+        "hydration",
+        "camping",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-047",
+      "n": "Twin Health",
+      "cat": "care",
+      "also": [
+        "eat"
+      ],
+      "s": "New-age health (diabetes reversal)",
+      "a": "App + Coaching",
+      "d": "AI + CGM-based diabetes reversal. Wearable + coaching + meal tracking + doctor oversight. Well-funded.",
+      "b": "T2 diabetes reversal, CGM, Digital twin",
+      "w": "https://www.twinhealth.com",
+      "tg": [
+        "diabetes-reversal",
+        "cgm",
+        "digital-twin",
+        "ai",
+        "coaching",
+        "app"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-105",
+      "n": "Ultrahuman",
+      "cat": "gear",
+      "also": [
+        "workout"
+      ],
+      "s": "Wearable / medical device",
+      "a": "D2C",
+      "d": "Bengaluru-founded health wearables: the Ultrahuman Ring Air tracks sleep, recovery and movement, and the M1 pairs a glucose monitor with an app for metabolic health.",
+      "b": "Sleep tracking, Recovery, Metabolic health",
+      "w": "https://www.ultrahuman.com",
+      "tg": [
+        "wearable",
+        "smart-ring",
+        "sleep",
+        "recovery",
+        "glucose-monitor",
+        "d2c"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-057",
+      "n": "Unlock Fit",
+      "cat": "play",
+      "also": [
+        "workout"
+      ],
+      "s": "Fitness pass / app",
+      "a": "",
+      "d": "Fitness offering — likely multi-gym access pass or trainer app.",
+      "b": "Verify",
+      "w": "https://www.unlock.fit/",
+      "tg": [
+        "fitness",
+        "multi-gym-pass",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-100",
+      "n": "Urban Company",
+      "cat": "people",
+      "s": "Home services marketplace",
+      "a": "Multi-city (BLR)",
+      "d": "India's biggest home services marketplace — salon at home, massage, deep cleaning, appliance repair.",
+      "b": "Salon at home, Massage, Cleaning",
+      "w": "https://www.urbancompany.com",
+      "tg": [
+        "services",
+        "home-services",
+        "salon",
+        "massage",
+        "cleaning",
+        "marketplace"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-011",
+      "n": "Vetic",
+      "cat": "care",
+      "s": "Specialty clinic (veterinary)",
+      "a": "Multi-city (BLR)",
+      "d": "Modern vet clinics + at-home vet visits. Preventive care, vaccinations, surgeries.",
+      "b": "Vet consult, Vaccinations, At-home vet",
+      "w": "https://vetic.in",
+      "tg": [
+        "vet",
+        "pet",
+        "chain",
+        "at-home-service",
+        "multi-branch"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-059",
+      "n": "Volt Fitness",
+      "cat": "gear",
+      "also": [
+        "workout"
+      ],
+      "s": "Sports / fitness retail",
+      "a": "",
+      "d": "Smart home fitness equipment — likely digital resistance machine or app-connected trainer.",
+      "b": "Smart resistance training",
+      "w": "https://www.voltfitness.in/",
+      "tg": [
+        "smart-fitness",
+        "home-equipment",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-039",
+      "n": "Wellbeing Nutrition",
+      "cat": "eat",
+      "s": "Nutraceuticals (D2C)",
+      "a": "D2C + retail",
+      "d": "Nutraceuticals — oral strips (\"melts\"), effervescents, whole-food supplements. Marine collagen, Vit D melts.",
+      "b": "Melts, Effervescents, Whole-food supplements",
+      "w": "https://wellbeingnutrition.com",
+      "tg": [
+        "nutraceuticals",
+        "melts",
+        "whole-food",
+        "marine-collagen",
+        "d2c",
+        "retail"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-040",
+      "n": "What's Up Wellness",
+      "cat": "eat",
+      "s": "Beauty gummies (D2C)",
+      "a": "D2C + Q-com",
+      "d": "Beauty gummies — biotin, ACV, skin collagen. Popular in the beauty D2C category.",
+      "b": "Biotin, ACV, Skin collagen",
+      "w": "https://whatsupwellness.in",
+      "tg": [
+        "gummies",
+        "beauty",
+        "biotin",
+        "acv",
+        "collagen",
+        "d2c",
+        "q-com"
+      ],
+      "v": "Verified"
+    },
+    {
+      "id": "PLUM-075",
+      "n": "Woon Health",
+      "cat": "care",
+      "s": "Specialty (fertility / women's)",
+      "a": "",
+      "d": "Women's health / fertility platform.",
+      "b": "Fertility, Women's health",
+      "w": "https://woonhealth.com/",
+      "tg": [
+        "womens-health",
+        "fertility",
+        "needs-verification"
+      ],
+      "v": "Needs check"
+    },
+    {
+      "id": "PLUM-098",
+      "n": "Zen Barefoot",
+      "cat": "gear",
+      "also": [
+        "move"
+      ],
+      "s": "Barefoot shoes (D2C)",
+      "a": "D2C",
+      "d": "Barefoot / minimalist shoes for foot health, ground feel, and natural movement.",
+      "b": "Barefoot shoes, Foot health",
+      "w": "https://www.zenbarefoot.com",
+      "tg": [
+        "barefoot",
+        "minimalist-shoes",
+        "foot-health",
+        "natural-movement",
+        "d2c"
+      ],
+      "v": "Verified"
+    }
+  ]
+}

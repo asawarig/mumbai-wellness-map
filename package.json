@@ -1,0 +1,28 @@
+{
+  "name": "bengaluru-wellness-map",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An interactive map of places, routes, clinics, kitchens and communities for looking after yourself in Bengaluru. Built by the marketing team at Plum.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro build && wrangler dev",
+    "astro": "astro",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.3.1",
+    "@astrojs/vercel": "^11.0.10",
+    "astro": "^7.3.2",
+    "maplibre-gl": "^6.9.0",
+    "@phosphor-icons/core": "^2.1.1"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.131.0"
+  }
+}

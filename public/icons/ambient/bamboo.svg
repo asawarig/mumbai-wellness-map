@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc">
+  <title id="title">Bamboo grove</title>
+  <desc id="desc">Three culms with node ticks and narrow blade leaves</desc>
+  <g stroke="#571541" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#92BD33" d="M4.7 20.6V8.3c0-1 .3-1.7 1-2.2.7.5 1 1.2 1 2.2v12.3Z"/>
+    <path fill="#92BD33" d="M11 20.6V4.8c0-1.1.3-1.8 1-2.3.7.5 1 1.2 1 2.3v15.8Z"/>
+    <path fill="#92BD33" d="M17.3 20.6V10c0-1 .3-1.6 1-2.1.7.5 1 1.1 1 2.1v10.6Z"/>
+    <path fill="none" d="M4.7 11.6h2M4.7 15.8h2m4.3-7.6h2m-2 4.6h2m-2 4.6h2m4.3-4.6h2m-2 4.6h2"/>
+    <path fill="#92BD33" stroke="none" d="M6.7 11.5c1.9-.8 3.2-.5 4 .9-1.9.8-3.2.5-4-.9Zm6.3-3.3c1.9-.8 3.2-.5 4 .9-1.9.8-3.2.5-4-.9Zm-6.3 4.5c-1.7-.9-2.9-.7-3.7.6 1.7.8 2.9.6 3.7-.6Zm6.3 3.1c-1.7-.9-2.9-.7-3.7.6 1.7.8 2.9.6 3.7-.6Z"/>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc">
+  <title id="title">Get care</title>
+  <desc id="desc">A welcoming neighbourhood clinic with a shaded veranda</desc>
+  <g stroke="#571541" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#429CD8" d="M3.3 9.4 5 5.6l14.5.2 1.2 3.7-.9.8-15.7-.1Z"/>
+    <path fill="#FF4052" stroke="none" d="m3.5 9.2 17 .2-.8 2-15.5-.1Z"/>
+    <path fill="#DCEFF8" d="M5 11.3v8.9h14v-8.8"/>
+    <path fill="#571541" stroke="none" d="m9.3 13.1 5.4.1-.1 7H9.1Z"/>
+    <path fill="#FFEBDB" stroke="none" d="m10.3 14 3.2.1-.1 6.1h-3.2Z"/>
+    <circle cx="12.8" cy="17.2" r=".35" fill="#FF4052" stroke="none"/>
+    <path fill="none" d="M6.2 13.3h2v3.1h-2zm9.8 0h1.9v3.1H16zM19.2 20.1v-4.4m0 1.7c-.9-.2-1.5-.8-1.7-1.6 1-.1 1.6.4 1.7 1.6Zm0 .8c.9-.3 1.5-.9 1.7-1.8-.9 0-1.6.6-1.7 1.8Z"/>
+    <path fill="#92BD33" stroke="none" d="M17.8 19.4h2.8l-.4 2h-2Z"/>
+    <path fill="none" d="M3.5 21.5c4-.2 7.8-.2 11.3 0 2.2.1 4.1 0 5.9-.2"/>
+  </g>
+</svg>

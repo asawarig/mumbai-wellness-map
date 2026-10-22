@@ -1,0 +1,10 @@
+{
+ "benches": "Benches",
+ "gazebo": "Gazebo",
+ "gym": "Gym equipment",
+ "play": "Play equipment",
+ "toilet": "Toilet",
+ "water": "Borewell",
+ "guard": "Watchman",
+ "fountain": "Musical fountain"
+}

@@ -1,0 +1,44 @@
+{
+  "weekLabel": "Upcoming events",
+  "blurb": "Sessions Plum is running, and gatherings around Bengaluru. Pulled from Plum's Luma page.",
+  "contributeUrl": "https://tally.so/r/gDEb24",
+  "contributeLabel": "Got something on? Add it here.",
+  "events": [
+    {
+      "id": "EVT-101",
+      "n": "Breast Cancer Awareness Boost",
+      "when": "Thursday 1 October · 17:00–18:00",
+      "a": "Online · Google Meet",
+      "d": "Early detection, screening and everyday breast health, with Dr Triveni Arun Akkiraju — an obstetrician and gynaecologist of 20 years.",
+      "url": "https://luma.com/9thdor3l",
+      "src": "Luma"
+    },
+    {
+      "id": "EVT-102",
+      "n": "Menopause Support Essentials",
+      "when": "Thursday 8 October · 17:00–18:00",
+      "a": "Online · Google Meet",
+      "d": "Two voices in women's health on the realities of perimenopause and menopause — sleep, mood, energy, work, and the pressures that rarely get named.",
+      "url": "https://luma.com/ic1kawgm",
+      "src": "Luma"
+    },
+    {
+      "id": "EVT-103",
+      "n": "The Brain Fog Mystery: Sleep, Stress, Hormones or Something Else?",
+      "when": "Thursday 15 October · 17:00–18:00",
+      "a": "Online · Google Meet",
+      "d": "Why focus and memory slip, what is behind it, and what actually helps.",
+      "url": "https://luma.com/p6kio8r4",
+      "src": "Luma"
+    },
+    {
+      "id": "EVT-104",
+      "n": "Cortisol Culture: Fact vs. Fiction",
+      "when": "Thursday 22 October · 17:00–18:00",
+      "a": "Online · Google Meet",
+      "d": "Cortisol is everywhere online. What the stress hormone actually does, and which of the claims hold up.",
+      "url": "https://luma.com/km4p57yb",
+      "src": "Luma"
+    }
+  ]
+}

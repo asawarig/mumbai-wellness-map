@@ -1,0 +1,154 @@
+---
+/* The page shell. `embed` strips it back to what an iframe needs: no indexing,
+   no scrollbars of its own, and a viewport-height body so the map fills the
+   frame Webflow gives it. */
+interface Props {
+  title: string;
+  description: string;
+  embed?: boolean;
+  /* A page that exists to look at while building the map, not to be found. */
+  noindex?: boolean;
+  /* JSON-LD for this page, serialised into the head. */
+  schema?: unknown;
+  /* The page draws the map, so its tile index is worth fetching early. */
+  map?: boolean;
+  /* The copy a link shows when shared, where it differs from the page's own. */
+  ogTitle?: string;
+  ogDescription?: string;
+}
+const { title, description, embed = false, noindex = false, schema, map = false, ogTitle, ogDescription } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+/* Where the built map script lives: Webflow serves _astro/ from its own asset
+   host (build.assetsPrefix), so the address is built the way Astro builds its
+   own script tags. The name has no hash (astro.config.mjs, entryFileNames). */
+const assetsPrefix = import.meta.env.ASSETS_PREFIX;
+const assetHost = typeof assetsPrefix === 'string' && assetsPrefix ? assetsPrefix.replace(/\/$/, '') : '';
+/* Webflow's prefix already carries the mount path; a plain host does not. */
+const assetRoot = assetHost && assetHost.endsWith(base.replace(/\/$/, '')) ? `${assetHost}/` : `${assetHost}${base}`;
+const assetScript = import.meta.env.PROD ? `${assetRoot}_astro/wellness-map.js` : null;
+/* Built from `base` rather than Astro.url, because the worker sees Webflow's
+   internal host and a path that is not always the public one. astro.config.mjs
+   holds the address. */
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname.replace(/\/$/, '') || base, Astro.site).href
+  : null;
+/* A deployment that is not the Webflow one is a staging copy — see the note in
+   astro.config.mjs. It keeps the real site's canonical, and asks to be left out
+   of the index rather than compete with it. */
+const staging = import.meta.env.PUBLIC_STAGING === '1';
+const noindexed = embed || noindex || staging;
+
+/* Staging is served from another host entirely, and the production domain has
+   no copy of the card at its root — Webflow mounts the whole app under a path
+   and the file goes with it. So a staging page has to name the host actually
+   serving it, or the card resolves to a 404 and no preview appears. Only
+   staging reads Astro.url: on Webflow the worker sees an internal host and a
+   path that is not always the public one, which is why everything else here
+   is built from Astro.site. */
+const ogOrigin = staging ? Astro.url.origin : (Astro.site ? Astro.site.href : null);
+const ogImage = ogOrigin ? new URL(`${base}og-be-well-bengaluru-3.jpg`, ogOrigin).href : null;
+const ogUrl = staging
+  ? new URL(Astro.url.pathname, Astro.url.origin).href
+  : canonical;
+
+/* Social tags are not an indexing signal — robots is. Staging used to drop the
+   whole block along with the canonical, which meant a staging link pasted
+   anywhere came back as a bare grey rectangle, and the one place the card
+   could be checked before it shipped was the place it could not be checked.
+   It keeps noindex and gets its card. The embed is an iframe with no share
+   surface of its own, so it still gets nothing. */
+const social = !embed;
+---
+
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* Plum's tags, only on a production build, so a local server's visits
+        never land in Plum's numbers: Google Tag Manager, Ahrefs web
+        analytics, and Google Ads (AW-657297943). Google Analytics (GA4,
+        G-2QS7K5X34L) comes through the Tag Manager container's own Google
+        tag, so the page does not load it again: that would count every
+        visit twice. */}
+    {import.meta.env.PROD && <script is:inline fetchpriority="low" set:html={"(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NRWNV4G');"} />}
+    {import.meta.env.PROD && <script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key="ItUz8HwzBdaLPj8QnqrHAg" async></script>}
+    {import.meta.env.PROD && <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-657297943" fetchpriority="low"></script>}
+    {import.meta.env.PROD && <script is:inline fetchpriority="low" set:html={"window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-657297943');"} />}
+    {/* The fonts, loaded without blocking the first paint. media="print" keeps the
+        sheet out of the render path; onload promotes it once it has arrived,
+        and the fallback stack in --sans is what the page paints with until
+        then. It used to be an @import at the top of wellness-map.css, which
+        held every pixel back until Google answered. */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {/* The basemap's tiles. Opening the connection while the page is still
+        parsing saves the DNS, TCP and TLS round trips off the first tile. */}
+    <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
+    {/* The map can only ask for its tile index once its script has arrived
+        and run, which is most of a second on a first visit. Fetched here, it
+        is already in the cache by then. Anonymous CORS, as MapLibre asks. */}
+    {map && <link rel="preload" href="https://tiles.openfreemap.org/planet" as="fetch" crossorigin="anonymous" />}
+    {/* The map's own data (src/pages/data/map.json.js), fetched in parallel
+        with the script that will ask for it. */}
+    {map && <link rel="preload" href={`${base}data/map.json`} as="fetch" crossorigin="anonymous" />}
+    {/* The intro card's picture of the map, which stands in while the live
+        map loads: first in the queue, and only the one this screen will use. */}
+    {/* The map's label font (DM Sans Light glyphs, Latin range), which it only
+        asks for once its style is up; the map is not "drawn" until it lands. */}
+    {map && <link rel="preload" href={`${base}fonts/DM%20Sans%20Light/0-255.pbf`} as="fetch" crossorigin="anonymous" />}
+    {/* The map's script. The page's module script, at the end of the body, only
+        asks for it once it has itself arrived from the asset host and run,
+        a round trip later; named here, it downloads alongside the data.
+        Production only: dev serves the source, not _astro/. */}
+    {map && assetScript && assetHost && <link rel="preconnect" href={new URL(assetHost).origin} crossorigin />}
+    {map && assetScript && <link rel="modulepreload" href={assetScript} />}
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" />
+    </noscript>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href={`${base}favicon.svg?v=2`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${base}favicon.svg?v=2`} />
+    {noindexed ? (
+      <meta name="robots" content="noindex, follow" />
+    ) : (
+      <>
+        {canonical && <link rel="canonical" href={canonical} />}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+      </>
+    )}
+    {social && (
+      <>
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Plum" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:title" content={ogTitle || title} />
+        <meta property="og:description" content={ogDescription || description} />
+        {ogUrl && <meta property="og:url" content={ogUrl} />}
+        {/* twitter:card promises a large image, so one has to exist. The file
+            is a JPEG under a .jpg name: served as image/png, as it was under
+            its old .png extension, some crawlers refuse it. */}
+        {ogImage && <meta property="og:image" content={ogImage} />}
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Be Well, Bengaluru ft. Plum Perks, by Plum, over a softly blurred map of Bengaluru with its pins" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={ogTitle || title} />
+        <meta name="twitter:description" content={ogDescription || description} />
+        {ogImage && <meta name="twitter:image" content={ogImage} />}
+      </>
+    )}
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </head>
+  <body class={embed ? 'is-embed' : undefined}>
+    <slot />
+  </body>
+</html>

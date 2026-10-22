@@ -1,0 +1,25 @@
+# Bengaluru Wellness Map
+
+> An interactive map of places, routes, clinics, kitchens and communities for
+> looking after yourself in Bengaluru. Compiled by hand by the marketing team
+> at Plum, free to use, and not medical advice.
+
+The map needs JavaScript to draw itself. Everything on it is also published as
+plain HTML, with no JavaScript at all:
+
+- Every place on the map, grouped by what you want to do: move, play, work out,
+  eat healthy, indulge, reset, clear my head, get care, buy gear, fix my
+  wearable. See the "list" page alongside the map.
+
+## What it covers
+
+Greater Bengaluru, across the five city corporations. Each entry carries a
+name, a neighbourhood, a category, a note on what the place is, and whether we
+have checked it. Parks come from the BBMP register; the basemap is
+OpenStreetMap via OpenFreeMap.
+
+Last reviewed September 2026.
+
+## Adding to it
+
+Anything missing can be sent to https://tally.so/r/gDEb24

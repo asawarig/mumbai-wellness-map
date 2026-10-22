@@ -1,0 +1,32 @@
+{
+  "buy-gear": {
+    "colour": "#AD884F"
+  },
+  "clear-my-head": {
+    "colour": "#998CFC"
+  },
+  "eat-healthy": {
+    "colour": "#A1C13E"
+  },
+  "fix-my-wearable": {
+    "colour": "#4FAD8F"
+  },
+  "get-care": {
+    "colour": "#FF7291"
+  },
+  "indulge": {
+    "colour": "#85CEB4"
+  },
+  "move": {
+    "colour": "#7DDFDF"
+  },
+  "play": {
+    "colour": "#FD7C49"
+  },
+  "reset": {
+    "colour": "#99D8E8"
+  },
+  "work-out": {
+    "colour": "#F4B43C"
+  }
+}

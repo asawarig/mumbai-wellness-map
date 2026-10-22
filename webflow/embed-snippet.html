@@ -1,0 +1,55 @@
+<!-- ============================================================
+     Bengaluru Wellness Map — Webflow embed
+     ============================================================
+     Paste this into a Webflow Embed element (Add panel → Components →
+     Embed, or press Ctrl/Cmd+E on a selected element).
+
+     One thing to change: the src below. Point it at wherever the built
+     site is published, keeping the /embed path.
+
+     On Webflow Cloud the app serves from the mount path you gave its
+     environment, on the Webflow site's own domain, with NO TRAILING SLASH:
+
+       https://www.plumhq.com/health-map/bengaluru/embed
+
+     The slash matters. Webflow's edge 301s every slashed URL to its slashless
+     form, so an src ending in /embed/ costs the frame a redirect on every
+     load. README.md, "How Webflow Cloud serves this", has the detail.
+
+     Drop ?chrome=off from the URL if you want the map's own
+     "Bengaluru Wellness Map" wordmark to show inside the frame. Keep it if
+     the Webflow section above the frame already carries a heading.
+
+     The map fills the frame, so the height below is the height it gets.
+     82vh with a 620px floor reads well on a laptop and on a phone; raise
+     the floor if your Webflow page has a tall sticky nav.
+     ============================================================ -->
+
+<div class="wellness-map-frame">
+  <iframe
+    src="https://www.plumhq.com/health-map/bengaluru/embed?chrome=off"
+    title="Bengaluru Wellness Map"
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen></iframe>
+</div>
+
+<style>
+  .wellness-map-frame {
+    height: 82vh;
+    min-height: 620px;
+    max-height: 900px;
+    width: 100%;
+  }
+  .wellness-map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+  /* On a phone the map and the list stack, and the filter bar takes several
+     rows, so the frame needs the whole screen to leave either of them room. */
+  @media (max-width: 820px) {
+    .wellness-map-frame { height: 100vh; min-height: 640px; max-height: none; }
+  }
+</style>

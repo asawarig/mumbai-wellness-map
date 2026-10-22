@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc">
+  <title id="title">Fix my wearable</title>
+  <desc id="desc">An open watch face and a tiny repair tool</desc>
+  <g stroke="#571541" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#8C6079" stroke="#571541" d="m8.7 6.5.8-3.8h5l.8 3.8m0 11-.8 3.8h-5l-.8-3.8"/>
+    <rect x="6.7" y="6.1" width="10.7" height="11.8" rx="3" fill="#FF4052" stroke="#571541"/>
+    <circle cx="12" cy="12" r="3.2" fill="#FFEBDB"/>
+    <path fill="none" d="M12 9.8v2.5l1.6 1"/>
+    <path fill="#429CD8" stroke="#571541" d="m17.6 15.8 1.4-1.4 2.2 2.2-1.4 1.4-1-.4-2.7 2.7-1.2-1.2 2.7-2.7Z"/>
+  </g>
+</svg>

@@ -1,0 +1,292 @@
+{
+ "1mg": {
+  "brand": "1MG (Tata 1mg)",
+  "source": "supplied",
+  "file": "1mg.png"
+ },
+ "aceblend": {
+  "brand": "Ace Blend",
+  "domain": "aceblend.com",
+  "file": "aceblend.png"
+ },
+ "airth": {
+  "brand": "Airth",
+  "domain": "airth.in",
+  "file": "airth.png"
+ },
+ "akunka": {
+  "brand": "Akunka",
+  "domain": "akunkafoods.com",
+  "file": "akunka.png"
+ },
+ "alivecor": {
+  "brand": "Alivecor",
+  "domain": "alivecor.in",
+  "file": "alivecor.png"
+ },
+ "amahahealth": {
+  "brand": "Amaha Health",
+  "domain": "www.amahahealth.com",
+  "file": "amahahealth.png"
+ },
+ "apollopharmacy": {
+  "brand": "Apollo Pharmacy",
+  "domain": "www.apollopharmacy.in",
+  "file": "apollopharmacy.png"
+ },
+ "athlex": {
+  "brand": "Athlex",
+  "domain": "www.athlexinc.com",
+  "file": "athlex.png"
+ },
+ "blinkit": {
+  "brand": "Blinkit",
+  "source": "supplied",
+  "file": "blinkit.png"
+ },
+ "boldcare": {
+  "brand": "Bold Care",
+  "domain": "boldcare.in",
+  "file": "boldcare.png"
+ },
+ "cloudnine": {
+  "brand": "Cloud Nine",
+  "domain": "www.cloudninecare.com",
+  "file": "cloudnine.png"
+ },
+ "clove": {
+  "brand": "Clove",
+  "domain": "www.clovedental.in",
+  "file": "clove.png"
+ },
+ "cosmix": {
+  "brand": "Cosmix",
+  "source": "supplied",
+  "file": "cosmix.png"
+ },
+ "decodeage": {
+  "brand": "Decode Age",
+  "domain": "decodeage.com",
+  "file": "decodeage.png"
+ },
+ "doki": {
+  "brand": "Doki",
+  "domain": "dokifoods.com",
+  "file": "doki.png"
+ },
+ "drpaws": {
+  "brand": "Dr. Paws",
+  "domain": "drpaws.co",
+  "file": "drpaws.png"
+ },
+ "eatbetterco": {
+  "brand": "Eat Better Co.",
+  "source": "supplied",
+  "file": "eatbetterco.png"
+ },
+ "farmley": {
+  "brand": "Farmley",
+  "domain": "www.farmley.com",
+  "file": "farmley.png"
+ },
+ "fitelo": {
+  "brand": "Fitelo",
+  "source": "supplied",
+  "file": "fitelo.png"
+ },
+ "fittr": {
+  "brand": "Fittr",
+  "domain": "www.fittr.com",
+  "file": "fittr.png"
+ },
+ "foxtale": {
+  "brand": "Foxtale",
+  "domain": "foxtale.in",
+  "file": "foxtale.png"
+ },
+ "gladful": {
+  "brand": "Gladful",
+  "source": "supplied",
+  "file": "gladful.png"
+ },
+ "gratitude": {
+  "brand": "Gratitude",
+  "domain": "gratefulness.me",
+  "file": "gratitude.png"
+ },
+ "healthkart": {
+  "brand": "HealthKart",
+  "domain": "www.healthkart.com",
+  "file": "healthkart.png"
+ },
+ "healthlandclinics": {
+  "brand": "Healthland Clinics",
+  "domain": "www.healthlandclinics.com",
+  "file": "healthlandclinics.png"
+ },
+ "imagimake": {
+  "brand": "Imagimake",
+  "domain": "imagimake.com",
+  "file": "imagimake.png"
+ },
+ "magzter": {
+  "brand": "Magzter",
+  "domain": "www.magzter.com",
+  "file": "magzter.png"
+ },
+ "mapmygenome": {
+  "brand": "Mapmygenome",
+  "domain": "mapmygenome.in",
+  "file": "mapmygenome.png"
+ },
+ "miduty": {
+  "brand": "Miduty",
+  "domain": "miduty.com",
+  "file": "miduty.png"
+ },
+ "muscleblaze": {
+  "brand": "MuscleBlaze",
+  "domain": "www.muscleblaze.com",
+  "file": "muscleblaze.png"
+ },
+ "mymuse": {
+  "brand": "Mymuse",
+  "source": "supplied",
+  "file": "mymuse.png"
+ },
+ "nack": {
+  "brand": "N\u00e4ck",
+  "source": "supplied",
+  "file": "nack.png"
+ },
+ "nuawoman": {
+  "brand": "Nuawoman",
+  "domain": "nuawoman.com",
+  "file": "nuawoman.png"
+ },
+ "orangehealthlabs": {
+  "brand": "Orange Health Labs",
+  "source": "supplied",
+  "file": "orangehealthlabs.png"
+ },
+ "originsnutra": {
+  "brand": "Origins Nutra",
+  "domain": "originsnutra.com",
+  "file": "originsnutra.png"
+ },
+ "perfora": {
+  "brand": "Perfora",
+  "domain": "perfora.in",
+  "file": "perfora.png"
+ },
+ "pharmeasy": {
+  "brand": "Pharmeasy",
+  "domain": "pharmeasy.in",
+  "file": "pharmeasy.png"
+ },
+ "playo": {
+  "brand": "Playo",
+  "domain": "playo.co",
+  "file": "playo.png"
+ },
+ "plix": {
+  "brand": "Plix",
+  "domain": "plixlife.com",
+  "file": "plix.png"
+ },
+ "poptopia": {
+  "brand": "Poptopia",
+  "domain": "poptopia.in",
+  "file": "poptopia.png"
+ },
+ "qispineclinic": {
+  "brand": "QI Spine Clinic",
+  "domain": "qispine.com",
+  "file": "qispineclinic.png"
+ },
+ "quitsure": {
+  "brand": "Quitsure",
+  "domain": "quitsure.app",
+  "file": "quitsure.png"
+ },
+ "sabkadentist": {
+  "brand": "Sabka dentist",
+  "domain": "www.sabkadentist.com",
+  "file": "sabkadentist.png"
+ },
+ "samarthcare": {
+  "brand": "Samarth Care",
+  "domain": "www.samarth.community",
+  "file": "samarthcare.png"
+ },
+ "shvasa": {
+  "brand": "Shvasa",
+  "source": "supplied",
+  "file": "shvasa.png"
+ },
+ "sunshinebylissun": {
+  "brand": "Sunshine by Lissun",
+  "domain": "www.lissun.app",
+  "file": "sunshinebylissun.png"
+ },
+ "superbottoms": {
+  "brand": "Super Bottoms",
+  "domain": "superbottoms.com",
+  "file": "superbottoms.png"
+ },
+ "superyou": {
+  "brand": "Superyou",
+  "domain": "superyou.in",
+  "file": "superyou.png"
+ },
+ "thesleepcompany": {
+  "brand": "The Sleep Company",
+  "domain": "www.thesleepcompany.in",
+  "file": "thesleepcompany.png"
+ },
+ "thewellnessco": {
+  "brand": "The Wellness Co",
+  "domain": "www.thewellnessco.in",
+  "file": "thewellnessco.png"
+ },
+ "thewholetruth": {
+  "brand": "The Whole Truth",
+  "domain": "www.thewholetruthfoods.com",
+  "file": "thewholetruth.png"
+ },
+ "tripolegears": {
+  "brand": "Tripole Gears",
+  "domain": "tripole.in",
+  "file": "tripolegears.png"
+ },
+ "twinhealth": {
+  "brand": "Twin Health",
+  "domain": "www.twinhealth.com",
+  "file": "twinhealth.png"
+ },
+ "urbancompany": {
+  "brand": "Urban Company",
+  "domain": "www.urbancompany.com",
+  "file": "urbancompany.png"
+ },
+ "vetic": {
+  "brand": "Vetic",
+  "domain": "vetic.in",
+  "file": "vetic.png"
+ },
+ "vijayadiagnosticcentre": {
+  "brand": "Vijaya Diagnostic Centre",
+  "domain": "www.vijayadiagnostic.com",
+  "file": "vijayadiagnosticcentre.png"
+ },
+ "wellbeingnutrition": {
+  "brand": "Wellbeing Nutrition",
+  "domain": "wellbeingnutrition.com",
+  "file": "wellbeingnutrition.png"
+ },
+ "whatsupwellness": {
+  "brand": "What's Up Wellness",
+  "domain": "whatsupwellness.in",
+  "file": "whatsupwellness.png"
+ }
+}

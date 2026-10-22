@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc">
+  <title id="title">Move</title>
+  <desc id="desc">Bengaluru lake steps beneath a flowering rain-tree canopy</desc>
+  <g stroke="#571541" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#92BD33" stroke="none" d="M3.1 8.2c-.7-1.5.2-3 1.8-3.1.2-1.8 2.2-2.7 3.6-1.5 1.1-1.4 3.4-1.1 4 .5 1.7-.9 3.8.2 3.8 2.1 1.6.1 2.5 1.8 1.7 3.1-3.6-.6-6.3-.7-8.5-.2-2.3.5-4.3.3-6.4-.9Z"/>
+    <path fill="none" d="M8.5 8.2c-.1 2.2-.9 3.6-2.2 4.8m2.2-4.8c1.6.9 2.8 1.1 4.4.4"/>
+    <path fill="#FFFCF9" d="M4.1 13h7.5v2H5.2zm1.1 2h8.7v2.1H6.3zm1.1 2.1h9.4v2.1H7.4z"/>
+    <path fill="none" stroke="#429CD8" d="M3.4 20.4c1.5-.8 2.8-.8 4.2 0 1.3.8 2.7.8 4 0 1.4-.8 2.7-.8 4.1 0 1.3.8 2.6.8 4 0M7 22c1-.5 2-.5 3 0 1 .5 2 .5 3 0 1-.5 2-.5 3 0"/>
+    <path fill="#FF4052" stroke="none" d="M18.3 7.2c-.9-.3-1.1-1.4-.3-1.9-.4-.9.4-1.8 1.3-1.4.6-.8 1.8-.3 1.8.6 1 .1 1.3 1.3.5 1.9.4.9-.5 1.7-1.4 1.3-.6.8-1.7.4-1.9-.5-.5.2-1 .2-1.4 0Z"/>
+    <circle cx="19.8" cy="5.8" r=".45" fill="#FFBF21" stroke="none"/>
+  </g>
+</svg>

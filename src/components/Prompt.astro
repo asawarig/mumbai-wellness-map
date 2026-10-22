@@ -1,0 +1,107 @@
+---
+/* "I want to _ in _" — the map's only filter.
+ *
+ * One node, two homes. On the standalone page it is born inside the intro,
+ * centred, with Show me as the gate; pressing it moves this same element into
+ * #promptdock on the right. The embed has no intro and renders it docked.
+ *
+ * Both halves are dropdowns, and the activities start open in both homes —
+ * on the intro and on the map. They are the map's whole vocabulary and its
+ * live counts; behind a word they were a thing to discover. The places list
+ * stays shut, because 349 areas is a wall. Either way both are dropdowns —
+ * caret, closes on a pick. The
+ * activity list is the old legend, same markup and same [data-legend] hooks
+ * the map has always filtered and counted on, so it needed no new plumbing.
+ *
+ * Activity is multi-select, place is one at a time: you can want to move and
+ * eat healthy, but you are only ever in one part of town. */
+import { MAP_INTENTS, iconUrl, pinColour } from '../lib/intents.js';
+import { DB } from '../lib/db.js';
+
+interface Props { docked?: boolean }
+const { docked = false } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+/* Most-pinned first, the order every area picker uses. */
+const areas = DB.areasByPins || [];
+---
+
+<form class={`prompt${docked ? ' prompt-docked' : ''}`} id="prompt">
+  {/* Each label sits in its row, so docked it reads on one line with its
+      word: "I want to be well", "in Bengaluru". */}
+  <div class="prompt-row">
+    <p class="prompt-line">I want to</p>
+    {/* No longer a dropdown: the activities are always out, so the heading
+        only says what is on. */}
+    <p class="prompt-value prompt-value-static" id="prompt-intent-btn">be well</p>
+  </div>
+
+  <div class="prompt-panel" id="prompt-intent-panel">
+    <ul class="prompt-opts">
+      <li>
+        <button type="button" class="prompt-opt prompt-opt-all" id="prompt-all" aria-pressed="true">
+          {/* The category chips each carry their illustrated mark, and this one
+              sat in the row without one, so the column of names started a step
+              to the left of the rest. The four squares are the glyph this app
+              already uses for everything — it is the Index of everything button
+              in the toolbar — rather than a new drawing or the Plum heart,
+              which now reads as Plum Perks wherever it appears. Stroked in
+              currentColor, so it dims with the chip like the marks do. */}
+          <svg class="prompt-opt-mark" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="4" width="6.5" height="6.5" rx="1.2"/>
+            <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.2"/>
+            <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.2"/>
+            <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.2"/>
+          </svg>
+          <span class="prompt-opt-name">be well</span>
+          <em class="prompt-opt-note">everything</em>
+        </button>
+      </li>
+      {MAP_INTENTS.map((i) => (
+        <li>
+          <button type="button" class="prompt-opt" data-legend={i.k} aria-pressed="true" style={`--cat:${pinColour(i)}`}>
+            <img class="opt-square" src={iconUrl(i, base, 'tile')} alt="" width="22" height="22" />
+            <span class="prompt-opt-name">{i.prompt}</span>
+            <em class="prompt-opt-count" data-legend-count={i.k}></em>
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="prompt-row">
+    <p class="prompt-line">in</p>
+    <button type="button" class="prompt-value" id="prompt-area-btn"
+      aria-expanded="false" aria-controls="prompt-area-panel">Bengaluru</button>
+  </div>
+
+  <!-- 349 areas is too many to scroll, so the place picker filters as you
+       type. One at a time, so these are plain rows rather than toggles. -->
+  <div class="prompt-panel" id="prompt-area-panel" hidden>
+    <input type="search" id="prompt-area-filter" class="prompt-filter"
+      placeholder="Find an area" aria-label="Find an area" autocomplete="off" spellcheck="false" />
+    <ul class="prompt-opts prompt-areas" id="prompt-area-list">
+      <li>
+        <button type="button" class="prompt-opt" data-area="all" aria-pressed="true">
+          <span class="prompt-opt-name">Bengaluru</span>
+          <em class="prompt-opt-note">everywhere</em>
+        </button>
+      </li>
+      {areas.map((a) => (
+        <li>
+          <button type="button" class="prompt-opt" data-area={a} aria-pressed="false">
+            <span class="prompt-opt-name">{a}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {/* One dice for the whole sentence. Two of them asked the reader to shuffle
+      half a question at a time, which is not how anyone arrives at "somewhere
+      to go" — this picks an activity and a part of town together, and only a
+      pairing the map can actually answer. */}
+  <button type="button" class="prompt-surprise" id="surprise">Plan my healthy day</button>
+
+  <button type="submit" class="prompt-go" id="prompt-go">Show me</button>
+</form>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WellnessMap from '../components/WellnessMap.astro';
+import { COUNTS } from '../lib/db.js';
+import { MAP_INTENTS } from '../lib/intents.js';
+
+const title = `Bengaluru Wellness Map — ${COUNTS.onMap} places to move, eat and reset`;
+const description = `${COUNTS.onMap} pinned places for looking after yourself in Bengaluru `
+  + '— parks, routes, gyms, clinics, kitchens and communities, on one interactive map. '
+  + `${COUNTS.parks} are BBMP parks, ${COUNTS.verified} verified. Free to use, from Plum.`;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const site = Astro.site ? Astro.site.href.replace(/\/$/, '') : '';
+const url = `${site}${base.replace(/\/$/, '')}`;
+
+/* What the page is, where it sits, and what it is a list of. The categories
+   are the honest unit to publish: ten of them, each a thing a reader might be
+   looking for, rather than nine hundred rows an answer engine would not read
+   anyway. Counts come from the data, so the markup cannot drift from the map. */
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: title,
+      description,
+      inLanguage: 'en-IN',
+      isPartOf: { '@type': 'WebSite', '@id': `${site}#website`, url: site, name: 'Plum' },
+      publisher: { '@type': 'Organization', '@id': `${site}#org`, name: 'Plum', url: site },
+      about: { '@type': 'Place', name: 'Bengaluru', address: {
+        '@type': 'PostalAddress', addressLocality: 'Bengaluru', addressRegion: 'Karnataka', addressCountry: 'IN',
+      } },
+      primaryImageOfPage: { '@type': 'ImageObject', url: `${site}${base}og-be-well-bengaluru-3.jpg`, width: 1200, height: 630 },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Plum', item: site },
+        { '@type': 'ListItem', position: 2, name: 'Health map', item: `${site}/health-map` },
+        { '@type': 'ListItem', position: 3, name: 'Bengaluru' },
+      ],
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${url}#categories`,
+      name: 'What you can find on the Bengaluru Wellness Map',
+      numberOfItems: MAP_INTENTS.length,
+      itemListElement: MAP_INTENTS.map((i, n) => ({
+        '@type': 'ListItem',
+        position: n + 1,
+        name: i.verb,
+        description: i.blurb,
+      })),
+    },
+  ],
+};
+
+/* Not prerendered — and no page in this app may be. Webflow forces a trailing
+   slash onto every static HTML asset and then 301s it back off at the edge, so
+   any page served as a file loops forever. Rendering in the worker is the only
+   way a page answers 200. `output: 'server'` makes that the default, so no page
+   needs its own declaration; this one is spelled out because it is the route
+   the whole thing turns on. See README.md, "How Webflow Cloud serves this". */
+export const prerender = false;
+---
+
+<BaseLayout title={title} description={description} schema={schema} map
+  ogTitle="Be Well Bengaluru | Your local guide to move, eat and reset"
+  ogDescription="A health map of Bengaluru with places to move, eat, recover and reset, from parks and gyms to clinics, kitchens and communities. Free to use, by Plum.">
+  <WellnessMap />
+</BaseLayout>

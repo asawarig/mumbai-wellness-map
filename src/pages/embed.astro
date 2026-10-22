@@ -1,0 +1,25 @@
+---
+/* The version Webflow points its iframe at. The same map, minus the search
+   indexing, so the embedded copy does not compete with the canonical page.
+   The frame decides the height. README.md has the snippet that goes into the
+   Webflow Embed element. */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WellnessMap from '../components/WellnessMap.astro';
+import { COUNTS } from '../lib/db.js';
+
+const description = `${COUNTS.onMap} pinned places, routes, clinics, kitchens and communities `
+  + 'for looking after yourself in Bengaluru, on one interactive map.';
+
+---
+
+<BaseLayout title="Bengaluru Wellness Map" description={description} embed map>
+  <WellnessMap embed />
+</BaseLayout>
+
+<script>
+  /* ?chrome=off hides the wordmark, for a Webflow section that already carries
+     its own heading above the frame. */
+  if (new URLSearchParams(location.search).get('chrome') === 'off') {
+    document.body.classList.add('no-chrome');
+  }
+</script>

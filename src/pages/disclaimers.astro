@@ -1,0 +1,185 @@
+---
+/* What this map is, and what it is not.
+ *
+ * Two things live here. The first is the Perks note, which is the one a reader
+ * of the map actually needs: an offer printed on a card is a snapshot, and the
+ * app is the source of truth. The second is the standing legal position, drawn
+ * from Plum's own Terms and Conditions rather than restated from memory — the
+ * clauses that bear on a page of third-party listings are summarised and the
+ * full document is linked, because the T&Cs govern and this page does not.
+ *
+ * Deliberately plain: no map, no data bundle, one column of prose.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SUGGEST_FORM } from '../lib/intents.js';
+import '../styles/wellness-map.css';
+import '../styles/prompt-map.css';
+
+export const prerender = false;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const site = Astro.site ? Astro.site.href.replace(/\/$/, '') : '';
+const mapUrl = base.replace(/\/$/, '') || '/';
+
+const TERMS = 'https://www.plumhq.com/terms-and-conditions';
+const PRIVACY = 'https://www.plumhq.com/privacy';
+const PLUM_APP = 'https://www.plumhq.com/app';
+
+const title = 'Disclaimers — Bengaluru Wellness Map';
+const description = 'What the Bengaluru Wellness Map is, how its listings were compiled, '
+  + 'and the terms that apply to Plum Perks offers shown on it.';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: `${site}${base}disclaimers`,
+  publisher: { '@type': 'Organization', name: 'Plum', url: 'https://www.plumhq.com' },
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+  <main class="listing legal">
+    {/* Its own header rather than /list's: those styles are scoped to that
+        page, so borrowing the class names here got the markup and none of
+        the CSS. */}
+    {/* The map page's top bar, item for item where the map has it: the way
+        on at the start of the bar, the Plum wordmark at the far right, the
+        heading where the map's left column starts. */}
+    <header class="legal-head">
+      <a class="legal-cta" href={mapUrl}>Open the map</a>
+      <a class="legal-brand" href="https://www.plumhq.com" aria-label="Plum">
+        <img src={`${base}plum-logo.svg`} alt="Plum" width="48" height="15" />
+      </a>
+    </header>
+    <div class="legal-heading">
+      <h1>Disclaimers</h1>
+      <p><img class="brand-mark" src={`${base}be-well-logo.svg`} alt="Be well, Bengaluru" width="195" height="64" /></p>
+    </div>
+
+    {/* The one a reader of the map needs, in the one place they cannot miss it. */}
+    <p class="legal-note">
+      Plum Perks are subject to change — check the{' '}
+      <a href={PLUM_APP} target="_blank" rel="noopener">Plum app</a>{' '}
+      for the latest accurate offers.
+    </p>
+
+    <div class="legal-body">
+      <h2>About the offers</h2>
+      <p>
+        Every discount shown on this map was recorded at the time the page was compiled.
+        Partners join and leave the Plum Perks programme, and the terms of an offer — the
+        percentage, the cap, what it applies to, how long it runs — can change without
+        this page changing with it. Treat what you read here as an indication that a
+        partner exists, not as a commitment of what you will be charged.
+      </p>
+      <p>
+        The offer you are actually entitled to is the one shown in the Plum app at the
+        moment you use it. Where the two disagree, the app is right and this page is out
+        of date. Perks are available to members of a Plum-covered organisation and are
+        subject to the terms of the programme and of the partner.
+      </p>
+
+      <h2>About the listings</h2>
+      <p>
+        The places on this map were compiled by hand by the marketing team at Plum from
+        public sources. Inclusion is not an endorsement, a recommendation, or a statement
+        about the quality, safety or legitimacy of anything listed — a gym on this map is
+        a gym we found, not a gym we vouch for. A listing marked <b>Verified</b> means we
+        confirmed the place exists and its details looked right when we checked; it does
+        not mean we have been there.
+      </p>
+      <p>
+        Addresses, opening details, prices and descriptions go out of date. Places close.
+        Ratings, where they appear at all, are collected by third parties and belong to
+        them, not to Plum. If something here is wrong,{' '}
+        <a href={SUGGEST_FORM} target="_blank" rel="noopener">tell us</a>{' '}and we will fix it.
+      </p>
+      <p>
+        Links to partner sites, booking platforms and other third parties are provided for
+        convenience. Plum does not control those sites and accepts no responsibility for
+        their content, their accuracy, or anything you buy through them.
+      </p>
+
+      <h2>The terms that govern</h2>
+      <p>
+        This page is a summary written for readers of a map. It does not replace, vary or
+        add to Plum's{' '}
+        <a href={TERMS} target="_blank" rel="noopener">Terms and Conditions</a>, which
+        govern Plum's services and which you should read in full. Personal data is handled
+        as described in the{' '}
+        <a href={PRIVACY} target="_blank" rel="noopener">Privacy Policy</a>.
+      </p>
+      <p>
+        Under those Terms, Plum expressly disclaims responsibility and liability for any
+        deficiency in services provided by third parties, whether or not those third
+        parties are affiliated with Plum, and gives no warranty as to the accuracy or
+        completeness of content provided through third-party websites. Any dispute is
+        governed by the laws of India, with the courts at Bengaluru holding sole and
+        exclusive jurisdiction.
+      </p>
+      <p class="legal-entity">
+        Insurance products are offered and serviced by Plum Benefits Insurance Brokers Pvt
+        Ltd. IRDAI Registration Code: IRDA/DB1001/2022, Certificate No. 897, licence
+        category Direct Broker (Life &amp; General). CIN U66000KA2022PTC160458.
+      </p>
+    </div>
+
+    <footer class="legal-foot">
+      <p>
+        <a href={mapUrl}>Back to the map</a> ·{' '}
+        <a href={`${base}list`}>Every place as a list</a> ·{' '}
+        <a href={TERMS} target="_blank" rel="noopener">Full Terms and Conditions</a>
+      </p>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  /* The map page's frame: the same cream, the same 2.75% margin on the left
+     and the same right margin plus the wordmark's 7px inset on the right. */
+  .legal { --edge-l: 2.75%; --edge-r: calc(3.45% + 7px);
+    min-height: 100vh; background: var(--cream); }
+  /* 40px tall, 12px down, as the map's bars are: the button and the
+     wordmark centre on the same line they do there. */
+  .legal-head { display: flex; align-items: center; justify-content: space-between;
+    height: 40px; margin-top: 12px; padding: 0 var(--edge-r) 0 var(--edge-l); }
+  .legal-brand { flex: none; display: block; }
+  .legal-brand img { display: block; width: auto; height: 15px; }
+  /* Starts 88px down, where the map's left column does. */
+  .legal-heading { margin: 36px var(--edge-r) 0 var(--edge-l); padding-bottom: 16px;
+    border-bottom: 1px solid var(--line); }
+  .legal-heading h1 { margin: 0; font: 400 26px/1.2 var(--display); color: var(--red); }
+  .legal-heading p { margin: 3px 0 0; font: 400 12.5px/1.4 var(--sans); color: var(--text-3); }
+  .legal-heading .brand-mark { display: block; width: 150px; height: auto; margin-top: 6px; }
+  /* The site's main button: plum, 34px, DM Sans 13px medium, 3px corners. */
+  .legal-cta { flex: none; display: inline-flex; align-items: center; height: 34px; padding: 0 12px;
+    border-radius: 3px; background: var(--red); color: var(--cream);
+    font: 500 13px/1 var(--sans); text-decoration: none; transition: background-color .12s; }
+  .legal-cta:hover { background: #6b1d51; }
+  .legal-note { margin: 18px var(--edge-r) 0 var(--edge-l); padding: 14px 16px; border-radius: 3.5px;
+    background: rgba(87,21,65,.1); color: var(--maroon);
+    font: 500 14.5px/1.6 var(--sans); }
+  .legal-note a { color: var(--red); }
+  .legal-body { max-width: 68ch; margin: 8px var(--edge-r) 0 var(--edge-l); }
+  .legal-body h2 { margin: 30px 0 8px; font: 400 18px/1.3 var(--display); color: var(--red); }
+  .legal-body p { margin: 0 0 12px; font: 400 14px/1.7 var(--sans); color: var(--text-2); }
+  .legal-body a { color: var(--red); }
+  .legal-body b { font-weight: 600; color: var(--text); }
+  .legal-entity { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line);
+    font-size: 12.5px !important; color: var(--text-3) !important; }
+  .legal-foot { margin: 34px var(--edge-r) 0 var(--edge-l); padding: 16px 0 60px; border-top: 1px solid var(--line); }
+  .legal-foot p { margin: 0; font: 400 12.5px/1.7 var(--sans); color: var(--text-3); }
+  .legal-foot a { color: var(--text-2); }
+  .legal-foot a:hover { color: var(--red); }
+  /* A phone's bar is 10px in from each side, with the wordmark first, as on
+     the map. */
+  @media (max-width: 820px) {
+    .legal { --edge-l: 14px; --edge-r: 14px; }
+    .legal-head { margin-top: 10px; padding: 0 10px; }
+    .legal-brand { order: -1; padding-left: 6px; }
+    .legal-heading { margin-top: 18px; }
+    .legal-heading h1 { font-size: 22px; }
+  }
+</style>

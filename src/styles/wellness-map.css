@@ -1,0 +1,317 @@
+/* DM Sans and Crimson Pro are loaded from BaseLayout.astro, not @import-ed here. An @import is
+   fetched only after this file is parsed and blocks the CSSOM until it
+   resolves, so the whole page waited on two round trips to Google before it
+   could paint anything — measured at 1.5-3s of blank screen with every byte
+   already on the machine. The fallback stack in --sans carries the page until
+   the real face arrives. */
+
+/* A framed map on a warm grey page, cream chrome with soft shadows, and DM Sans
+   throughout: medium for names, regular for everything read like a note. Only
+   the About panel speaks in a serif. Colour stays with the ground, the pins and
+   the tags. */
+:root{
+ --page:#E9E7E1;
+ /* The one white: every paper, cream and #fff surface. */
+ --white:#F5F4F0;
+ --paper:var(--white);
+ --paper-2:#F1EEE5;
+ /* Behind the map and beyond its edge: matches BEYOND_FILL in basemap.js. */
+ --ground:var(--white);
+ --text:#23221E;
+ --text-2:rgba(35,34,30,.64);
+ --text-3:rgba(35,34,30,.44);
+ --line:rgba(35,34,30,.1);
+ --hover:rgba(35,34,30,.06);
+ --press:rgba(35,34,30,.11);
+ --accent:#2F7FD1;
+ --sel:#EDE56A;
+ --route:#E43F6A;
+ /* Plum's red and cream: the city, pressed buttons, and what sits on them. */
+ /* Red means Plum Perks and nothing else. Everything else that used to be red
+    is Plum's own plum (VISION in intents.js). */
+ --red:#571541;
+ --perk:#571541;
+ --cream:var(--white);
+ /* The serif headings' ink: the same plum as everything else that is not
+    Plum Perks red, so a heading reads as part of the page rather than as a
+    second, redder colour. */
+ --maroon:#571541;
+ /* The prompt's face. Declared here rather than on .prompt so the banner
+    above it can be set in the same type. */
+ --serif:'Crimson Pro','Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+ /* The largest line on each screen: About's title and the intro's "I want to". */
+ --display:'Crimson Pro',var(--serif);
+ --r:2px; --r-md:3px; --r-lg:4px;
+ /* Buttons cast purple, the map's own dark purple (#3F2F8F), not black. */
+ --shadow:0 1px 1px rgba(63,47,143,.07), 0 6px 18px -6px rgba(63,47,143,.24);
+ --shadow-pop:0 0 0 1px rgba(20,18,12,.05), 0 4px 10px rgba(20,18,12,.08), 0 14px 32px -8px rgba(20,18,12,.24);
+ --sans:'DM Sans',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+ /* Tag tints: a pale ground and a deep ink of the same hue. */
+ --t-grey:#E7E4DB;   --t-grey-ink:#4B4943;
+ --t-orange:#F6DCC8; --t-orange-ink:#8A4A1C;
+ --t-yellow:#F3E8BF; --t-yellow-ink:#72580A;
+ --t-green:#DCEBD9;  --t-green-ink:#2F6B3E;
+ --t-blue:#D9E6F4;   --t-blue-ink:#2D5B8A;
+ --t-violet:#E6DDF2; --t-violet-ink:#5B3E86;
+ --t-red:#F8D4D8;    --t-red-ink:#9B1D2E;
+}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:var(--page);color:var(--text);font-family:var(--sans);
+ font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+/* Dropdowns otherwise take the browser's own font, which is Arial. */
+select,option{font-family:var(--sans)}
+/* Labels a screen reader needs and the eye does not. */
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:var(--r)}
+
+/* ---------- the frame ---------- */
+#app{position:relative;height:100vh;height:100dvh;overflow:hidden}
+.frame{position:absolute;inset:16px;overflow:hidden;border-radius:5.5px;background:var(--ground);
+ box-shadow:0 0 0 1px rgba(20,18,12,.06),0 24px 60px -30px rgba(20,18,12,.4)}
+#map{position:absolute;inset:0;background:var(--ground)}
+
+/* One reveal, not three.
+ *
+ * The chrome is in the served HTML, so the toolbars are there on the first
+ * paint — but the map needs MapLibre and its tiles, and the list needs the
+ * data, and they used to arrive about a second apart and simply pop. The page
+ * assembled itself in front of the reader.
+ *
+ * Both are held until the map has drawn, then faded in together behind the
+ * intro card. The frame gets .is-ready from wellness-map.js, with a timeout
+ * behind it so a failed tile server cannot leave the map invisible. */
+#map,.search-panel{transition:opacity .38s ease}
+.frame:not(.is-ready) #map,
+.frame:not(.is-ready) .search-panel{opacity:0}
+@media (prefers-reduced-motion:reduce){
+  #map,.search-panel{transition:none}
+}
+
+/* ---------- ticker labels ----------
+   Buttons carry no hover tooltips. A short label with a longer name behind it
+   (Colours, Corporation colours) scrolls that name sideways on hover instead.
+   The ticker lies over the whole button, so the icon and short word fade out
+   and it has the button's full width to run in; the edges fade so words slide
+   in and out rather than being cut. The button keeps its width throughout. */
+.tick{position:absolute;inset:0 6px;display:flex;align-items:center;overflow:hidden;pointer-events:none;
+ opacity:0;transition:opacity .15s;
+ -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+ mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.tick-run{display:flex;flex:none;white-space:nowrap}
+.tick-run > span{padding-right:2em}
+button:has(.tick) > svg,.tick-short{transition:opacity .15s}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  button:hover > .tick{opacity:1}
+  button:hover > .tick .tick-run{animation:tick var(--tick-s) linear infinite}
+  button:has(.tick):hover > svg,button:hover > .tick-short{opacity:0}
+}
+/* Two copies side by side: moving by one copy's width lands on the start. */
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- tags ---------- */
+.tag{display:inline-flex;align-items:center;gap:5px;padding:0 6px;border-radius:1px;background:var(--t-grey);
+ color:var(--t-grey-ink);font:400 11px/19px var(--sans);letter-spacing:-.01em;white-space:nowrap}
+.tag s{flex:none;width:6px;height:6px;border-radius:50%;background:currentColor;text-decoration:none;opacity:.75}
+.tag.orange,.thumb.orange{background:var(--t-orange);color:var(--t-orange-ink)}
+.tag.yellow,.thumb.yellow{background:var(--t-yellow);color:var(--t-yellow-ink)}
+.tag.green,.thumb.green{background:var(--t-green);color:var(--t-green-ink)}
+.tag.blue,.thumb.blue{background:var(--t-blue);color:var(--t-blue-ink)}
+.tag.violet,.thumb.violet{background:var(--t-violet);color:var(--t-violet-ink)}
+.tag.grey,.thumb.grey{background:var(--t-grey);color:var(--t-grey-ink)}
+/* A category tag: a pale wash of its icon colour, inked in a deep shade of it. */
+.tag.cat{background:color-mix(in srgb,var(--cat) 24%,#fff);color:color-mix(in srgb,var(--cat) 48%,#1e1a17)}
+/* Plum Perks — same shape as the intent tags, inked in plum red. */
+.tag.red{background:var(--t-red);color:var(--t-red-ink)}
+/* A partner's logo in the Perks tray. White behind it, because brand marks are
+   drawn for white and a cream tile tints them; contained rather than cropped,
+   because a wordmark is wider than it is tall and cover would behead it. */
+.thumb.logo-tile{display:grid;place-items:center;background:var(--white);box-shadow:inset 0 0 0 1px var(--line,rgba(35,34,30,.1))}
+.thumb.logo-tile img{width:78%;height:78%;object-fit:contain}
+/* The offer on a Perks card. Its own line under the description, inked in the
+   plum red that means Plum Perks elsewhere, with the label carrying the weight
+   so the figure stays readable at this size. */
+/* The offer reads as plain red type, led by an OFFER label shaped as a
+   price tag: the left end cut to a point, a hole punched near it, and a
+   hairline inside the edge that follows the shape. The point is a clip-path;
+   the hole is a mask, so it goes through every layer; the hairline is the
+   gap between two inset layers drawn behind the word. */
+.person-offer,.card-offer{display:inline-flex;align-self:flex-start;width:fit-content;max-width:100%;
+ align-items:baseline;gap:7px;margin-top:5px;color:var(--perk);font:400 11.5px/1.4 var(--sans)}
+.person-offer b,.card-offer b{--tag-p:8px;position:relative;isolation:isolate;flex:none;
+ padding:2px 7px 2px calc(var(--tag-p) + 7px);border-radius:0 2.5px 2.5px 0;
+ background:var(--t-red);color:var(--t-red-ink);
+ font:600 9.5px/1.4 var(--sans);letter-spacing:.07em;text-transform:uppercase;
+ clip-path:polygon(var(--tag-p) 0,100% 0,100% 100%,var(--tag-p) 100%,0 50%);
+ -webkit-mask:radial-gradient(circle at calc(var(--tag-p) + 1px) 50%,#0000 1.6px,#000 2.1px);
+ mask:radial-gradient(circle at calc(var(--tag-p) + 1px) 50%,#0000 1.6px,#000 2.1px)}
+.person-offer b::before,.card-offer b::before,.person-offer b::after,.card-offer b::after{
+ content:"";position:absolute;z-index:-1;pointer-events:none}
+.person-offer b::before,.card-offer b::before{inset:1.5px;border-radius:0 2px 2px 0;background:rgba(255,255,255,.75);
+ clip-path:polygon(calc(var(--tag-p) - .8px) 0,100% 0,100% 100%,calc(var(--tag-p) - .8px) 100%,0 50%)}
+.person-offer b::after,.card-offer b::after{inset:2.5px;border-radius:0 1.5px 1.5px 0;background:var(--t-red);
+ clip-path:polygon(calc(var(--tag-p) - 1.3px) 0,100% 0,100% 100%,calc(var(--tag-p) - 1.3px) 100%,0 50%)}
+/* In a results row the line sits directly under the name, so it needs less
+   air above it than it does under a description. */
+.card-offer{margin-top:1px}
+/* The offer on an open place card. A band under the title rather than the
+   fifth row of the fact list, because it is the thing most likely to make
+   someone act and it was the last thing they read. Full plum red, so it is the
+   one element on the card that is not paper-coloured. */
+.pc-offer{margin:10px 0 2px;padding:9px 12px;border-radius:2.5px;background:var(--perk);color:var(--cream)}
+.pc-offer b{display:block;font:600 14px/1.25 var(--sans)}
+.pc-offer small{display:block;margin-top:2px;font:400 11px/1.4 var(--sans);opacity:.9}
+.pc-offer a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+
+/* Intent-coloured solid tiles with initials — no place photos. */
+.thumb{position:relative;display:grid;place-items:center;overflow:hidden;aspect-ratio:1;border-radius:2.5px;
+ background:var(--t-grey);color:var(--t-grey-ink)}
+.thumb-initials{font:400 13px/1 var(--sans);letter-spacing:.04em;opacity:.85}
+/* A tile filled in the dark plum carries cream type, or its initials vanish. */
+.thumb.on-dark{color:var(--cream)}
+.thumb.on-dark .thumb-initials{opacity:1}
+.thumb.pin-tile img{display:block;width:59%;height:auto}
+.thumb.pin-tile .tile-glyph{display:block;width:62%;aspect-ratio:1;background:var(--cream);
+ -webkit-mask:var(--glyph) center/contain no-repeat;mask:var(--glyph) center/contain no-repeat}
+/* The inverted tile, for everything that is not a Perks partner. The hairline
+   is what keeps it a tile: cream on the list's own cream has no edge of its
+   own. */
+.thumb.pin-tile.is-light{background:var(--cream);box-shadow:inset 0 0 0 1px rgba(35,34,30,.12)}
+.thumb.pin-tile.is-light .tile-glyph{background:var(--tile)}
+
+/* ---------- list rows ---------- */
+.card{margin:0 6px;border-radius:var(--r-md)}
+.card:hover{background:var(--hover)}
+.card.is-active{background:rgba(237,229,106,.4)}
+/* One column. The category tile used to be a 56px block down the left, which
+   set the height of every row and pushed the name into a narrow gutter; it is
+   an 18px mark on the name's own line now, and the row is as tall as its
+   words. */
+.card-main{display:block;width:100%;padding:6px;text-align:left;border-radius:var(--r-md)}
+.card-ico{flex:none;width:18px;border-radius:1.5px;margin-top:1px}
+.card-ico.pin-tile img,.card-ico.pin-tile .tile-glyph{width:66.5%}
+.card-ico .thumb-initials{font-size:9px}
+/* List rows carry the map pin whole: the round badge, or the Perks star with
+   the category's cream glyph set where the star's gift sits (37,36 of 74). */
+.card-ico.row-badge,.card-ico.row-star{width:19px;margin-top:0;border-radius:0;overflow:visible;background:none;box-shadow:none}
+.card-ico.row-badge img{display:block;width:100%;height:100%}
+/* The star is drawn bigger than a badge, as on the map (74 against 56), and
+   pulled back by the difference so the names still line up with the badges'. */
+.card-ico.row-star{width:26px;margin:-3px;background:var(--star) center/contain no-repeat}
+.card-ico.row-star img{position:absolute;left:50%;top:48.6%;width:46%;height:46%;transform:translate(-50%,-50%)}
+.card-ico.is-round{border-radius:50%}
+.card-text{min-width:0;display:flex;flex-direction:column;gap:4px}
+.card-name{display:block;font-size:14px;font-weight:500;line-height:1.3;color:var(--text)}
+/* The name and its marks share a line: the name takes the room, the marks sit
+   at the right edge and never wrap away from it. */
+.card-head{display:flex;align-items:flex-start;gap:7px}
+.card-head .card-name{flex:1;min-width:0}
+.card-marks{flex:none;display:inline-flex;align-items:center;gap:6px;padding-top:3px}
+.status-dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+.status-dot.green{color:var(--t-green-ink)}
+.status-dot.yellow{color:var(--t-yellow-ink)}
+.status-dot.blue{color:var(--t-blue-ink)}
+.status-dot.grey{color:var(--t-grey-ink)}
+.blurb{margin:0;font:400 11.5px/1.5 var(--sans);color:var(--text-2)}
+
+/* ---------- callouts and empty states ---------- */
+.notice{margin:2px 10px 6px;padding:7px 10px;border-radius:2.5px;background:var(--paper-2);
+ font:400 11.5px/1.5 var(--sans);color:var(--text)}
+.notice b{font-weight:500}
+.lnk{padding:0;font:inherit;color:var(--text-2);text-decoration:underline;text-decoration-color:rgba(35,34,30,.3);text-underline-offset:2px}
+.lnk:hover{color:var(--text)}
+.empty{padding:22px 16px;font:400 12px/1.6 var(--sans);color:var(--text-2)}
+.empty a{color:var(--red);text-decoration:underline;text-decoration-color:rgba(87,21,65,.4);text-underline-offset:2px}
+.empty a:hover{text-decoration-color:var(--red)}
+.empty b{display:block;margin-bottom:4px;font:600 15px/1.3 var(--sans);color:var(--text)}
+
+/* ---------- the place card ----------
+   Portrait. It stands on its pin with a pointer down to it and follows the map
+   (wellness-map.js writes --x and --y); a place with no pin docks it bottom-left. */
+.place-card{position:absolute;z-index:740;left:12px;bottom:12px;display:flex;flex-direction:column;gap:10px;
+ width:min(320px,calc(100% - 24px));max-height:calc(100% - var(--stack,360px) - 36px);overflow:auto;padding:14px 14px 12px;
+ border-radius:var(--r-lg);background:var(--paper);box-shadow:var(--shadow-pop)}
+.place-card[hidden]{display:none}
+.place-card.is-floating{left:0;top:0;bottom:auto;max-height:none;overflow:visible;
+ transform:translate(calc(var(--x,0px) - 50%),calc(var(--y,0px) - 100%))}
+.place-card.is-floating::after{content:"";position:absolute;left:50%;bottom:-7px;width:14px;height:14px;
+ border-radius:0 0 1px 0;background:var(--paper);transform:translateX(-50%) rotate(45deg)}
+.pc-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.pc-kind{font:400 11px/1 var(--sans);color:var(--text-2)}
+.pc-close{flex:none;margin:-4px -6px -4px 0;padding:4px 6px;border-radius:2px;font:400 12px/1.2 var(--sans);color:var(--text-2)}
+.pc-close:hover{background:var(--hover);color:var(--text)}
+/* A small icon beside the name, rather than a large one above it. */
+.pc-head{display:flex;align-items:center;gap:10px}
+.pc-media{flex:none;width:40px;border-radius:2.5px}
+/* The card's name is set in the serif like the prompt: regular, in plum, a
+   size up to sit level with the sans below it. */
+.pc-title{margin:0;min-width:0;font:400 23px/1.15 var(--serif);color:var(--maroon)}
+.pc-desc{margin:0;max-height:7.4em;overflow:auto;font:400 12px/1.6 var(--sans);color:var(--text-2)}
+.pc-facts{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;font:400 11.5px/1.5 var(--sans)}
+.pc-facts dt{color:var(--text-3)}
+.pc-facts dd{margin:0;min-width:0}
+.pc-facts a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.pc-facts a:hover{color:var(--red)}
+.pc-tags{display:flex;flex-wrap:wrap;gap:5px}
+.pc-actions{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:2px}
+.pc-link{padding:4px 7px;border-radius:2px;font:400 11.5px/1.2 var(--sans);color:var(--text-2);text-decoration:none}
+.pc-link:hover{background:var(--hover);color:var(--text)}
+
+/* ---------- map ---------- */
+.maplibregl-map{font-family:var(--sans);background:var(--ground)}
+
+/* Hung just inside the top of the area, so the chrome never covers it. */
+.area-marker{pointer-events:none}
+.area-label{display:inline-block;transform:translateY(10px);white-space:nowrap;padding:4px 10px;border-radius:2.5px;
+ background:var(--paper);color:var(--text);font:400 12px/1.35 var(--sans);box-shadow:var(--shadow-pop)}
+
+.tilewarn{position:absolute;right:12px;top:12px;z-index:800;max-width:300px;display:none;padding:10px 12px;
+ border-radius:3px;background:var(--paper);color:var(--text);font:400 12px/1.5 var(--sans);box-shadow:var(--shadow-pop)}
+.tilewarn.on{display:block}
+.tilewarn b{display:block;margin-bottom:2px;font:600 13px/1.3 var(--sans)}
+.tilewarn code{padding:1px 4px;border-radius:1px;background:var(--t-grey)}
+
+/* Hover labels on pins and routes, placed over the map by wellness-map.js. */
+.pin-label{padding:3px 7px;border:0;border-radius:1.5px;background:rgba(20,18,12,.9);color:#fff;
+ font:400 11px/1.4 var(--sans);box-shadow:none}
+.map-tip{position:absolute;left:0;top:0;z-index:700;white-space:nowrap;pointer-events:none}
+/* The hovered pin's copy, drawn over the map pin and scaled from its centre.
+   Sizes and timings are set from wellness-map.js. */
+.pin-hover{position:absolute;left:0;top:0;z-index:690;pointer-events:none}
+.pin-hover-art{position:relative;transform-origin:50% 50%;
+ transition:transform var(--pin-lift-ms) cubic-bezier(.4,0,.2,1);will-change:transform}
+/* Lifted, the pin also tips a little to the right, with a touch of overshoot
+   so it settles rather than stops. */
+.pin-hover.is-lifted .pin-hover-art{transform:scale(var(--pin-lift)) rotate(10deg);
+ transition-timing-function:cubic-bezier(.34,1.45,.64,1)}
+.pin-hover-art canvas{display:block}
+.pin-hover-mark{position:absolute;left:0;top:0;transition:opacity var(--pin-mark-ms)}
+.pin-hover.mark-off .pin-hover-mark{opacity:0}
+@media (prefers-reduced-motion:reduce){.pin-hover-art{transition:none}}
+
+/* ---------- UI greys ----------
+   Grey fills multiply into what sits under them rather than covering it. */
+.tag:not(.orange,.yellow,.green,.blue,.violet,.cat),
+.thumb:not(.orange,.yellow,.green,.blue,.violet,.pin-tile,.row-badge,.row-star),
+.card:not(.is-active):hover,.notice,.pc-close:hover,.pc-link:hover,.tilewarn code{mix-blend-mode:multiply}
+
+@media (max-width:820px){
+ .frame{inset:8px;border-radius:4px}
+ .place-card:not(.is-floating){left:8px;right:8px;bottom:8px;width:auto}
+ .place-card.is-floating{width:min(300px,calc(100% - 24px))}
+}
+@media (max-width:560px){
+ .frame{inset:0;border-radius:0}
+ .place-card:not(.is-floating){max-height:min(42vh,320px);overflow:auto}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- embedded in another page ----------
+   /embed?chrome=off drops the title, for a Webflow section that already
+   carries its own heading above the frame. */
+body.no-chrome .legend-title{font-size:0}
+body.no-chrome .legend-in{font-size:11px;margin-top:0}
+/* Inside an iframe the frame decides the height, so fill it exactly. */
+body.is-embed #app{height:100%}
+body.is-embed .frame{inset:0;border-radius:0}

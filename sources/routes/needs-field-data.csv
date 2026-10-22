@@ -1,0 +1,59 @@
+route_id,name,area,needs_field_data,source
+RT-002,Jinke Park,Chamrajpet,distance|surface|shape,Google Places
+RT-003,Gul Mohar Park,Armane Nagar,distance|surface|shape,Google Places
+RT-004,Defence Colony Park loop,Indiranagar,distance|surface,Google Places (resolved)
+RT-005,Indiranagar 100 Feet Road morning stretch,Indiranagar,distance|surface,Desk research — route
+RT-007,Koramangala 6th Block inner-road loop,Koramangala,distance|surface,Desk research — route
+RT-008,27th Main Road HSR morning stretch,HSR Layout,distance|surface,Desk research — route
+RT-010,AECS Layout D Block Football Ground,Brookefield,distance|surface,Google Places (resolved)
+RT-011,Richmond Town Park,Richmond Town,distance|surface|shape,Google Places (resolved)
+RT-012,Indian Athletic Academy,Jayanagar,distance|surface,Google Places (resolved)
+RT-013,Kittur Rani Chennamma Stadium (Running Track),Jayanagar,distance|surface,"Google Places, Google Places (resolved)"
+RT-015,Attur Lake Trail (proper),Yelahanka,distance|surface,Google Places
+RT-016,Devarakere Park,Subramanyapura,distance|surface,Google Places
+RT-017,Sree Kanteerava Stadium (Running Track),Cubbon Park,distance|surface,Google Places
+RT-018,Sri Chamarajendra Park (Cubbon Park),Cubbon Park,distance|surface,"Google Places, Google Places (resolved)"
+RT-019,Sankey Tank Park,Malleshwaram,surface,Google Places
+RT-020,Jakkur Lake,Jakkur,surface,Google Places
+RT-023,Mahadeva Banakara Park,Rajajinagar,distance|surface,Google Places
+RT-024,SAI NCOE Athletics Track,Nagarbhavi,distance,Google Places
+RT-027,Inner Circle Ground Whitefield,Whitefield,distance|surface,Google Places
+RT-029,Chokkanahalli Lake Park,Jakkur,distance,Strava segment map + Google Places
+RT-034,Kanteerava Stadium Track,MG Road,distance,"Personal knowledge, KSAF"
+RT-035,Bannerghatta Butterfly Park Trail,Bannerghatta,surface,Personal + trail community
+RT-036,Turahalli Forest Trails,Uttarahalli,distance|surface,Personal knowledge
+RT-037,Puttenahalli Lake Loop,JP Nagar,surface,PNLIT + local community
+RT-040,Bugle Rock Park loop,Basavanagudi,distance|surface,Google Places
+RT-041,M.N. Krishna Rao Park loop,Basavanagudi,distance|surface,Google Places
+RT-042,Basavanagudi Road Park circuit,Basavanagudi,distance|surface,Google Places
+RT-043,Malleshwara Public Park circuit,Malleshwaram,distance|surface,Google Places
+RT-044,Sadashivanagara Park loop,Sadashiva Nagar,distance|surface,Google Places
+RT-045,Children's Park Sadashivanagara stroll,Sadashiva Nagar,distance|surface|shape,Google Places
+RT-046,Madhavan Park circuit,Jayanagar,distance|surface,Google Places
+RT-047,B.N. Vijayakumar Park track,Jayanagar,distance|surface,Google Places
+RT-048,Wipro Park walk,Koramangala,distance,Google Places
+RT-049,Subrahmanya Swamy Park circuit,Koramangala,distance|surface,Google Places
+RT-050,HSR Friends Park circuit,HSR Layout,distance|surface,Google Places
+RT-051,Hemavathi Park loop,HSR Layout,distance|surface,Google Places
+RT-052,Independence Park HSR loop,HSR Layout,distance|surface,Google Places
+RT-053,Sector 4 Park HSR circuit,HSR Layout,distance|surface,Google Places
+RT-054,CMH Road stretch,Indiranagar,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-055,80 Feet Road — 12th Main to Domlur,Indiranagar,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-056,12th Main to Double Road,Indiranagar,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-057,Defence Colony grid loop,Indiranagar,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-058,Thippasandra Main Road,HAL,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-059,Wheeler Road Extension — north to south,Fraser Town,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-060,Jayamahal Main — northbound,Fraser Town,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-061,Bellandur Lake Road — south to north,Bellandur,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-062,Kadubeesanahalli Road — APH to IPRR junction,Kadubeesanahalli,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-063,Doddanekkundi Industrial Area loop,Mahadevapura,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-064,Whitefield Road — Hoodi to Mahadevapura,Hoodi,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-065,Pattandur Agrahara Metro to Kadugodi Tree Park Metro,Whitefield,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-066,ITI loop — KR Puram,Mahadevapura,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-067,Sankey Touch & Back,Malleshwaram,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-068,Palace Ground Parallel,Vasanth Nagar,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-069,Jayamahal Main — northbound,Vasanth Nagar,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-070,New BEL Road,Vidyaranyapura,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-071,Nandi Durga Road climb,Vasanth Nagar,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-072,Vidyapeetha to Ring Road,Banashankari,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)
+RT-073,BDA hill repeats — Banashankari,Banashankari,distance|elevation|exact-endpoints,Strava heatmap (no Places entity)

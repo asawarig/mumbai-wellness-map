@@ -1,0 +1,664 @@
+{
+ "1mg": {
+  "brand": "1MG",
+  "offers": [
+   "Extra 22% off"
+  ]
+ },
+ "aceblend": {
+  "brand": "Ace Blend",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "airth": {
+  "brand": "Airth",
+  "offers": [
+   "Extra 10% off"
+  ]
+ },
+ "akunka": {
+  "brand": "Akunka",
+  "offers": [
+   "Extra 25% off"
+  ]
+ },
+ "alivecor": {
+  "brand": "Alivecor",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "amahahealth": {
+  "brand": "Amaha Health",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "apollopharmacy": {
+  "brand": "Apollo Pharmacy",
+  "offers": [
+   "Extra 12% off"
+  ]
+ },
+ "arvahealth": {
+  "brand": "Arva Health",
+  "offers": [
+   "Free consultation with a fertility advisor"
+  ]
+ },
+ "athlex": {
+  "brand": "Athlex",
+  "offers": [
+   "Flat 15% off"
+  ]
+ },
+ "beastlife": {
+  "brand": "Beastlife",
+  "offers": [
+   "Extra 10% off"
+  ]
+ },
+ "betterhood": {
+  "brand": "Betterhood",
+  "offers": [
+   "Extra 15% off"
+  ]
+ },
+ "blinkit": {
+  "brand": "Blinkit",
+  "offers": [
+   "Flat 12% off on medicine orders"
+  ]
+ },
+ "boldcare": {
+  "brand": "Bold Care",
+  "offers": [
+   "Extra 25% off"
+  ]
+ },
+ "caresmith": {
+  "brand": "Caresmith",
+  "offers": [
+   "Extra 10% off"
+  ]
+ },
+ "cloudnine": {
+  "brand": "Cloud Nine",
+  "offers": [
+   "Extra 10% off"
+  ]
+ },
+ "clove": {
+  "brand": "Clove",
+  "offers": [
+   "Upto 60% off on scaling, polishing"
+  ]
+ },
+ "cosmix": {
+  "brand": "Cosmix",
+  "offers": [
+   "Extra 15% off"
+  ]
+ },
+ "curelo": {
+  "brand": "Curelo",
+  "offers": [
+   "Extra 35% off"
+  ]
+ },
+ "decodeage": {
+  "brand": "Decode Age",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "deepholistics": {
+  "brand": "Deep Holistics",
+  "offers": [
+   "Flat 20% off"
+  ]
+ },
+ "denzournutrition": {
+  "brand": "Denzour Nutrition",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "doki": {
+  "brand": "Doki",
+  "offers": [
+   "Extra 30% off"
+  ]
+ },
+ "dragarwals": {
+  "brand": "Dr Agarwals",
+  "offers": [
+   "Upto 25% off on treatments, surgeries, and opticals"
+  ]
+ },
+ "drdoodley": {
+  "brand": "Dr Doodley",
+  "offers": [
+   "Unlimited free vet home visits"
+  ]
+ },
+ "drpaws": {
+  "brand": "Dr. Paws",
+  "offers": [
+   "Extra 50% off"
+  ]
+ },
+ "earlyfit": {
+  "brand": "Early.fit",
+  "offers": [
+   "Flat ₹15,000 off on GLP-1 Medication",
+   "Flat ₹500 off on GLP-1 Assessment"
+  ]
+ },
+ "eatbetterco": {
+  "brand": "Eat Better Co.",
+  "offers": [
+   "Extra 25% off"
+  ]
+ },
+ "farmley": {
+  "brand": "Farmley",
+  "offers": [
+   "Extra 15% off"
+  ]
+ },
+ "femly": {
+  "brand": "Femly",
+  "offers": [
+   "Flat 20% off on all diet and wellness plans"
+  ]
+ },
+ "fitelo": {
+  "brand": "Fitelo",
+  "offers": [
+   "Exclusive price on GLP-1 weight loss program"
+  ]
+ },
+ "fittr": {
+  "brand": "Fittr",
+  "offers": [
+   "Extra 25% off"
+  ]
+ },
+ "flexnest": {
+  "brand": "Flexnest",
+  "offers": [
+   "Extra 10% off"
+  ]
+ },
+ "foxtale": {
+  "brand": "Foxtale",
+  "offers": [
+   "Flat ₹400 off"
+  ]
+ },
+ "frido": {
+  "brand": "Frido",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "gcode": {
+  "brand": "Gcode",
+  "offers": [
+   "Flat 20% off"
+  ]
+ },
+ "genwise": {
+  "brand": "Genwise",
+  "offers": [
+   "₹500 wallet balance"
+  ]
+ },
+ "gladful": {
+  "brand": "Gladful",
+  "offers": [
+   "Extra 25% off"
+  ]
+ },
+ "gratitude": {
+  "brand": "Gratitude",
+  "offers": [
+   "Free 3 months PRO membership"
+  ]
+ },
+ "greensoulergonomics": {
+  "brand": "Green Soul Ergonomics",
+  "offers": [
+   "Extra 10% off on ergonomic chairs, work tables, recliners and more"
+  ]
+ },
+ "groclub": {
+  "brand": "Gro Club",
+  "offers": [
+   "Extra 15% off"
+  ]
+ },
+ "headsupfortails": {
+  "brand": "Heads Up for Tails",
+  "offers": [
+   "Extra 10% off on pet supplies"
+  ]
+ },
+ "hkvitals": {
+  "brand": "HK Vitals",
+  "offers": [
+   "Flat 10% off"
+  ]
+ },
+ "healthlandclinics": {
+  "brand": "Healthland Clinics",
+  "offers": [
+   "Free subscription to expert pediatric care"
+  ]
+ },
+ "imagimake": {
+  "brand": "Imagimake",
+  "offers": [
+   "Extra 15% off"
+  ]
+ },
+ "immunit": {
+  "brand": "Immunit",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "isomeds": {
+  "brand": "Isomeds",
+  "offers": [
+   "Extra ₹200 off on generic medicines"
+  ]
+ },
+ "ivory": {
+  "brand": "Ivory",
+  "offers": [
+   "Flat 25% off"
+  ]
+ },
+ "junglydelights": {
+  "brand": "Jungly Delights",
+  "offers": [
+   "Extra 30% off"
+  ]
+ },
+ "khyaal": {
+  "brand": "Khyaal",
+  "offers": [
+   "Free membership on Khyaal app for seniors"
+  ]
+ },
+ "magzter": {
+  "brand": "Magzter",
+  "offers": [
+   "Rs. 3000 off"
+  ]
+ },
+ "mapmygenome": {
+  "brand": "Mapmygenome",
+  "offers": [
+   "Flat ₹2999 off"
+  ]
+ },
+ "microbiotx": {
+  "brand": "MicrobioTx",
+  "offers": [
+   "Flat 30% off"
+  ]
+ },
+ "miduty": {
+  "brand": "Miduty",
+  "offers": [
+   "Extra 10% off"
+  ]
+ },
+ "miyara": {
+  "brand": "Miyara",
+  "offers": [
+   "Flat 20% off"
+  ]
+ },
+ "muscleblaze": {
+  "brand": "MuscleBlaze",
+  "offers": [
+   "Flat ₹200 off"
+  ]
+ },
+ "mymuse": {
+  "brand": "MyMuse",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "netmeds": {
+  "brand": "Netmeds",
+  "offers": [
+   "Free 12 months membership"
+  ]
+ },
+ "newmi": {
+  "brand": "Newmi",
+  "offers": [
+   "Exclusive offer"
+  ]
+ },
+ "nuawoman": {
+  "brand": "Nuawoman",
+  "offers": [
+   "Extra 30% off"
+  ]
+ },
+ "nugenomics": {
+  "brand": "Nugenomics",
+  "offers": [
+   "Flat 50% off on genetic tests"
+  ]
+ },
+ "nura": {
+  "brand": "Nura",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "nutriviva": {
+  "brand": "Nutriviva",
+  "offers": [
+   "Flat 15% off on weight and chronic management programs"
+  ]
+ },
+ "nuvie": {
+  "brand": "Nuvie",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "nack": {
+  "brand": "Näck",
+  "offers": [
+   "Extra 15% off on science-backed supplements"
+  ]
+ },
+ "oracura": {
+  "brand": "Oracura",
+  "offers": [
+   "Extra 45% off"
+  ]
+ },
+ "originsnutra": {
+  "brand": "Origins Nutra",
+  "offers": [
+   "Extra 12% off"
+  ]
+ },
+ "outlive": {
+  "brand": "Outlive",
+  "offers": [
+   "Flat 20% off on fasting program, nut bars and soups"
+  ]
+ },
+ "perfora": {
+  "brand": "Perfora",
+  "offers": [
+   "Extra 15% off"
+  ]
+ },
+ "pharmeasy": {
+  "brand": "Pharmeasy",
+  "offers": [
+   "Extra 23% off"
+  ]
+ },
+ "plawse": {
+  "brand": "Plawse",
+  "offers": [
+   "Flat 25% off on all orders"
+  ]
+ },
+ "playo": {
+  "brand": "Playo",
+  "offers": [
+   "Extra 25% off"
+  ]
+ },
+ "plix": {
+  "brand": "Plix",
+  "offers": [
+   "Extra 15% off"
+  ]
+ },
+ "poptopia": {
+  "brand": "Poptopia",
+  "offers": [
+   "Extra 30% off"
+  ]
+ },
+ "praanhealth": {
+  "brand": "Praan Health",
+  "offers": [
+   "Upto 45% off"
+  ]
+ },
+ "pragami": {
+  "brand": "Pragami",
+  "offers": [
+   "Flat 15% off on Gut Shots and Gut Cleanse"
+  ]
+ },
+ "quitsure": {
+  "brand": "Quitsure",
+  "offers": [
+   "Extra 40% off"
+  ]
+ },
+ "roundglassliving": {
+  "brand": "Roundglass Living",
+  "offers": [
+   "Free 6 months subscription"
+  ]
+ },
+ "sabkadentist": {
+  "brand": "Sabka dentist",
+  "offers": [
+   "Free subscription to dental care plan"
+  ]
+ },
+ "samarthcare": {
+  "brand": "Samarth Care",
+  "offers": [
+   "Free membership on Samarth for seniors"
+  ]
+ },
+ "shvasa": {
+  "brand": "Shvasa",
+  "offers": [
+   "Flat 30% off on live online yoga classes"
+  ]
+ },
+ "skal": {
+  "brand": "SKAL",
+  "offers": [
+   "Extra 20% off on non-alcoholic mulled wine"
+  ]
+ },
+ "sunshinebylissun": {
+  "brand": "Sunshine by Lissun",
+  "offers": [
+   "Free Consultation on child counselling"
+  ]
+ },
+ "superbottoms": {
+  "brand": "Super Bottoms",
+  "offers": [
+   "Extra 25% off"
+  ]
+ },
+ "supertails": {
+  "brand": "Supertails",
+  "offers": [
+   "Extra ₹500 off pet supplies",
+   "Extra ₹500 off pet at home vet services"
+  ]
+ },
+ "superyou": {
+  "brand": "Superyou",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "supply6": {
+  "brand": "Supply6",
+  "offers": [
+   "Extra 30% off"
+  ]
+ },
+ "tagdaraho": {
+  "brand": "Tagda Raho",
+  "offers": [
+   "Extra 25% off on all equipment and training sessions"
+  ]
+ },
+ "tata1mglabs": {
+  "brand": "Tata 1MG Labs",
+  "offers": [
+   "Extra 10% off"
+  ]
+ },
+ "tegofit": {
+  "brand": "Tego Fit",
+  "offers": [
+   "Extra 30% off"
+  ]
+ },
+ "thehempseed": {
+  "brand": "The Hempseed",
+  "offers": [
+   "Extra 15% off"
+  ]
+ },
+ "thesleepcompany": {
+  "brand": "The Sleep Company",
+  "offers": [
+   "Rs. 1500 off"
+  ]
+ },
+ "thestackclub": {
+  "brand": "The Stack Club",
+  "offers": [
+   "Extra 30% off"
+  ]
+ },
+ "thewellnessco": {
+  "brand": "The Wellness Co",
+  "offers": [
+   "Upto 41% off"
+  ]
+ },
+ "thewholetruth": {
+  "brand": "The Whole Truth",
+  "offers": [
+   "Extra 15% off"
+  ]
+ },
+ "toothlens": {
+  "brand": "Toothlens",
+  "offers": [
+   "Flat 20% off on all cashless dental care plans"
+  ]
+ },
+ "tripolegears": {
+  "brand": "Tripole Gears",
+  "offers": [
+   "Extra 10% off"
+  ]
+ },
+ "twinhealth": {
+  "brand": "Twin Health",
+  "offers": [
+   "Flat ₹15,000 off on metabolic program"
+  ]
+ },
+ "unlockfit": {
+  "brand": "Unlock Fit",
+  "offers": [
+   "Extra 12% off"
+  ]
+ },
+ "urbancompany": {
+  "brand": "Urban Company",
+  "offers": [
+   "Flat 25% off on at-home spa and massage"
+  ]
+ },
+ "vetic": {
+  "brand": "Vetic",
+  "offers": [
+   "Flat 50% off on pet grooming"
+  ]
+ },
+ "voltfitness": {
+  "brand": "Volt Fitness",
+  "offers": [
+   "Flat ₹5,000 off on yearly membership"
+  ]
+ },
+ "wellbeingnutrition": {
+  "brand": "Wellbeing Nutrition",
+  "offers": [
+   "Extra 10% off"
+  ]
+ },
+ "whatsupwellness": {
+  "brand": "What's Up Wellness",
+  "offers": [
+   "Extra 30% off"
+  ]
+ },
+ "woonhealth": {
+  "brand": "Woon Health",
+  "offers": [
+   "Extra 20% off on postpartum programs"
+  ]
+ },
+ "zenbarefoot": {
+  "brand": "Zen Barefoot",
+  "offers": [
+   "Extra 20% off"
+  ]
+ },
+ "ultrahuman": {
+  "brand": "Ultrahuman",
+  "offers": [
+   "Flat ₹500 off on cryotherapy and sports massage"
+  ]
+ },
+ "healthkart": {
+  "brand": "HealthKart",
+  "offers": [
+   "Flat 10% off"
+  ]
+ },
+ "vijayadiagnosticcentre": {
+  "brand": "Vijaya Diagnostic Centre",
+  "offers": [
+   "Flat 15% off"
+  ]
+ },
+ "qispineclinic": {
+  "brand": "QI Spine Clinic",
+  "offers": [
+   "Flat 10% off"
+  ]
+ },
+ "studiooura": {
+  "brand": "Studio Oura",
+  "offers": [
+   "Flat 10% off"
+  ]
+ }
+}

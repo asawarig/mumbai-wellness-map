@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc">
+  <title id="title">Metro viaduct</title>
+  <desc id="desc">A pier carrying the elevated deck, with a train crossing</desc>
+  <g stroke="#571541" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#FFEBDB" d="M2.2 9.7h19.6v2.6H2.2Z"/>
+    <path fill="#429CD8" d="M6.4 5.1h11.2c.7 0 1.1.4 1.1 1.1v3.5H5.3V6.2c0-.7.4-1.1 1.1-1.1Z"/>
+    <path fill="#FFFCF9" stroke="none" d="M7 6.6h3.4v1.9H7zm6.6 0H17v1.9h-3.4Z"/>
+    <circle cx="12" cy="7.5" r=".5" fill="#FFBF21" stroke="none"/>
+    <path fill="#8C6079" d="M10.6 12.4h2.8l.7 7.9h-4.2Z"/>
+    <path fill="none" d="M4.6 12.4v1.6m14.8-1.6v1.6"/>
+    <path fill="none" d="M2.4 20.6h19.2"/>
+  </g>
+</svg>

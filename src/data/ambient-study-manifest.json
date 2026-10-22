@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "rain-tree",
+    "name": "Rain tree",
+    "family": "Canopy",
+    "description": "The Samanea saman dome over Richmond Town and Cubbon avenues. The workhorse — repeats most often without reading as a sticker.",
+    "placement": "Anywhere green in the old city core."
+  },
+  {
+    "slug": "tabebuia",
+    "name": "Tabebuia in bloom",
+    "family": "Canopy",
+    "description": "February pink on bare branches, petals drifting to the ground. Same silhouette family as the rain tree, a different season of the same city.",
+    "placement": "Jayanagar, Sadashivanagar, Cubbon edges."
+  },
+  {
+    "slug": "gulmohar",
+    "name": "Gulmohar",
+    "family": "Canopy",
+    "description": "The flat flame-tree umbrella, coral with marigold stamens and feathered leaves below.",
+    "placement": "Long arterial stretches in the east."
+  },
+  {
+    "slug": "bamboo",
+    "name": "Bamboo grove",
+    "family": "Canopy",
+    "description": "Three culms with node ticks, borrowing the fern logic from the Reset icon. Reads as texture rather than object.",
+    "placement": "Lalbagh and the southern greens."
+  },
+  {
+    "slug": "kere",
+    "name": "Kere",
+    "family": "Terrain",
+    "description": "An irregular lake outline with reeds and one standing heron. Doubles as orientation when placed on real water.",
+    "placement": "Bellandur, Varthur, Sarakki, Hebbal."
+  },
+  {
+    "slug": "outcrop",
+    "name": "Granite outcrop",
+    "family": "Terrain",
+    "description": "Stacked Bengaluru gneiss in muted plum with a prickly pear at the base. Anchors the emptiest parts of the map.",
+    "placement": "Northern and far southern periphery."
+  },
+  {
+    "slug": "tech-park",
+    "name": "Tech park",
+    "family": "City life",
+    "description": "A stepped glass block with one coconut palm. The palm is what keeps it Bengaluru instead of Anytown.",
+    "placement": "Whitefield, ORR, Electronic City."
+  },
+  {
+    "slug": "metro-pier",
+    "name": "Metro viaduct",
+    "family": "City life",
+    "description": "A pier carrying the elevated deck with a train crossing it, so switching on the Metro layer feels connected to the artwork.",
+    "placement": "Along the Purple and Green corridors."
+  },
+  {
+    "slug": "flower-cart",
+    "name": "Flower cart",
+    "family": "City life",
+    "description": "Marigold garlands looped over a market pushcart. The one that makes people smile.",
+    "placement": "KR Market, Malleshwaram, Gandhi Bazaar."
+  },
+  {
+    "slug": "parakeets",
+    "name": "Parakeets",
+    "family": "City life",
+    "description": "One rose-ringed parakeet and two distant flight marks. Punctuation more than illustration — never larger than 16px.",
+    "placement": "Drifting over any green area."
+  }
+]

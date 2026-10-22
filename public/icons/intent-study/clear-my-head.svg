@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc">
+  <title id="title">Clear my head</title>
+  <desc id="desc">An open window, slow curtain and distant dome</desc>
+  <g stroke="#571541" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#429CD8" stroke="#571541" d="m4.1 4.1 15.7.5-.4 15.3-15.6-.3Z"/>
+    <path fill="#FFEBDB" stroke="#571541" d="m6.5 6.5 10.9.3-.3 10.8-10.8-.2Z"/>
+    <path fill="none" d="m11.9 6.7-.2 10.8M6.4 12l10.8.3"/>
+    <path fill="#FF4052" stroke="none" d="M6.4 6.5c2.2 2.3 2.6 4.7 1.1 7.1-1.1 1.8-1.2 3-.4 3.8H4.6l.2-10.9Z"/>
+    <path fill="#571541" stroke="none" d="M13.4 17.5c.3-2.3 1.6-3.7 3.8-4.3 2.2.7 3.3 2.2 3.3 4.6Z"/>
+    <circle cx="17.1" cy="13.1" r=".7" fill="#FFBF21" stroke="none"/>
+  </g>
+</svg>

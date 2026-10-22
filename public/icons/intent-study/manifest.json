@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "move",
+    "name": "Move",
+    "description": "Bengaluru lake steps beneath a flowering rain-tree canopy"
+  },
+  {
+    "slug": "play",
+    "name": "Play",
+    "description": "Gully-cricket stumps, ball and a flowering branch"
+  },
+  {
+    "slug": "work-out",
+    "name": "Work out",
+    "description": "Colourful climbing holds on a Bengaluru granite wall"
+  },
+  {
+    "slug": "eat-healthy",
+    "name": "Eat healthy",
+    "description": "A banana-leaf meal seen from above"
+  },
+  {
+    "slug": "indulge",
+    "name": "Indulge",
+    "description": "A steel filter-coffee tumbler nested in its dabarah"
+  },
+  {
+    "slug": "reset",
+    "name": "Reset",
+    "description": "A quiet courtyard bench beneath fern and Tabebuia"
+  },
+  {
+    "slug": "clear-my-head",
+    "name": "Clear my head",
+    "description": "An open window, slow curtain and distant dome"
+  },
+  {
+    "slug": "get-care",
+    "name": "Get care",
+    "description": "A welcoming neighbourhood clinic with a shaded veranda"
+  },
+  {
+    "slug": "buy-gear",
+    "name": "Buy gear",
+    "description": "A bicycle wheel and Bengaluru cycle bell"
+  },
+  {
+    "slug": "fix-my-wearable",
+    "name": "Fix my wearable",
+    "description": "An open watch face and a tiny repair tool"
+  },
+  {
+    "slug": "find-your-people",
+    "name": "Find your people",
+    "description": "A gathering of seed-like marks beneath one canopy"
+  }
+]

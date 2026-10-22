@@ -1,0 +1,642 @@
+---
+/* Wellness map: a framed map with its chrome laid over it. Toolbar and the
+ * toolbar top-left, search and zoom top-right, the prompt ("I want to _ in _")
+ * on the right once the intro is dismissed, scale and compass bottom-centre,
+ * the results list or place card bottom-left, Communities and Upcoming
+ * events as a pair bottom-centre, and an index view of every entry. The prompt
+ * is the filter: it replaced the legend that used to sit under the toolbar,
+ * which is why the list now has the whole left column to grow into. */
+import 'maplibre-gl/dist/maplibre-gl.css';
+import '../styles/wellness-map.css';
+import '../styles/prompt-map.css';
+/* The card's typeface, asked for before the stylesheet gets to it, so the
+   words are set in it from the first frame rather than in a stand-in that
+   then swaps and rewraps. The same unhashed file the stylesheet asks for
+   (astro.config.mjs keeps asset names stable for Webflow's cached HTML). */
+const grenetteRegular = `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}_astro/GrenettePro-Regular.woff2`;
+
+import { validateEntries } from '../lib/validate.js';
+import { MAP_INTENTS, INTENT_BY_K, iconUrl } from '../lib/intents.js';
+import { PERK_GLYPH } from '../lib/index-card.js';
+
+/* The Communities pane is navigation, so it takes the category's own name. The
+   button in the dock below the map keeps its invitation. */
+const communities = INTENT_BY_K.people.verb;
+import AboutCopy from './AboutCopy.astro';
+import Credits from './Credits.astro';
+import Prompt from './Prompt.astro';
+
+validateEntries();
+
+/* The embed skips the intro. In an iframe the Webflow page around it has
+   already done the introducing, and a full-height gate over a framed map is a
+   wall to scroll past rather than a welcome. Without it the prompt docks on
+   load and the map is filterable straight away. */
+interface Props { embed?: boolean }
+const { embed = false } = Astro.props;
+
+/* BASE_URL keeps whatever trailing slash astro.config.mjs gave it, often none. */
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const mapIntents = MAP_INTENTS;
+
+/* Toolbar glyphs on a 24px grid, stroked in currentColor. */
+const ICON = {
+  search: '<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>',
+  map: '<path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4Z"/><path d="M9 4v14M15 6v14"/>',
+  index: '<rect x="4" y="4" width="6.5" height="6.5" rx="1.2"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.2"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.2"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.2"/>',
+  routes: '<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h7.5a3.5 3.5 0 0 0 0-7h-7a3.5 3.5 0 0 1 0-7H16"/>',
+  /* The gift box from the Perks mark: lid, body, ribbon, and a two-loop bow.
+     Stroked like the rest of this set, so it sits in the toolbar as a sibling
+     rather than an import. */
+  perks: '<rect x="3.6" y="7.8" width="16.8" height="3.9" rx="1.1"/>'
+    + '<path d="M5.3 11.7V19a1.4 1.4 0 0 0 1.4 1.4h10.6a1.4 1.4 0 0 0 1.4-1.4v-7.3"/>'
+    + '<path d="M12 7.8v12.6"/>'
+    + '<path d="M12 7.8C10.5 7.9 8.2 8 7.4 7.1 6.5 6.1 7.1 4.4 8.5 4.3c1.7-.1 2.8 2 3.5 3.5Z"/>'
+    + '<path d="M12 7.8c1.5.1 3.8.2 4.6-.7.9-1 .3-2.7-1.1-2.8-1.7-.1-2.8 2-3.5 3.5Z"/>',
+  metro: '<rect x="6" y="3.5" width="12" height="13" rx="3"/><path d="M6 11h12M9 20.5l1.5-4M15 20.5l-1.5-4"/><circle cx="9.5" cy="13.8" r=".6"/><circle cx="14.5" cy="13.8" r=".6"/>',
+  regions: '<path d="M12 3.5a8.5 8.5 0 1 0 0 17c1.4 0 2-.9 2-1.8 0-1.2-1-1.6-1-2.7 0-1 .8-1.5 1.8-1.5H17a3.5 3.5 0 0 0 3.5-3.5c0-4.1-3.8-7.5-8.5-7.5Z"/><circle cx="7.8" cy="11" r="1"/><circle cx="10.5" cy="7.3" r="1"/><circle cx="15" cy="7.5" r="1"/>',
+  /* Frame corners: the map with its furniture taken away. */
+  clear: '<path d="M9 4H5.4A1.4 1.4 0 0 0 4 5.4V9M15 4h3.6A1.4 1.4 0 0 1 20 5.4V9'
+    + 'M9 20H5.4A1.4 1.4 0 0 1 4 18.6V15M15 20h3.6a1.4 1.4 0 0 0 1.4-1.4V15"/>',
+  minus: '<path d="M6 12h12"/>',
+  plus: '<path d="M12 6v12M6 12h12"/>',
+};
+const svg = (k) => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg>`;
+/* A short label with its full name behind it. On hover the full name scrolls
+   sideways through the button, ticker-style, in two copies so the loop has no
+   seam. It is decoration for sighted readers; the full name is aria-label. */
+const ticker = (short, full) => `<span class="tick-short">${short}</span><span class="tick" aria-hidden="true"><span class="tick-run" style="--tick-s:${(full.length * 0.2).toFixed(1)}s"><span>${full}</span><span>${full}</span></span></span>`;
+/* The About button is Plum's P-heart, filled in currentColor so it follows the
+   buttons' colours: red at rest, cream once pressed. */
+import MAP_HELP from '../icons/map-help.svg?raw';
+import CORNERS_OUT from '@phosphor-icons/core/assets/regular/corners-out.svg?raw';
+import CORNERS_IN from '@phosphor-icons/core/assets/regular/corners-in.svg?raw';
+const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true">'
+  + '<path d="M62.8315 29.658C62.8315 36.8441 62.0434 42.5843 60.4671 46.8727C58.8909 51.1641 56.6913 54.2177 53.8684 56.0363C51.0425 57.855 47.6263 58.7659 43.6108 58.7659C38.5554 58.7659 34.2311 57.5463 30.6351 55.1041C27.2758 52.8239 24.8245 49.2813 23.2783 44.4763C23.0895 43.8895 22.4991 43.538 21.9058 43.6664L21.72 43.7061C21.1117 43.8375 20.7071 44.4244 20.788 45.051L22.8617 60.9146C22.8677 60.9666 22.8707 61.0216 22.8707 61.0736V65.8602C22.8707 67.5872 21.9597 68.7273 20.0598 68.7273H2.81089C1.27958 68.7273 0 67.6208 0 65.8602V4.27922C0 2.53085 1.34851 1.41214 2.81089 1.41214H19.4665C21.0457 1.41214 22.3223 2.46972 22.0586 4.49929L20.3385 18.8224C20.2606 19.4643 20.6921 20.0542 21.3184 20.1643L21.4503 20.1857C22.0706 20.2927 22.6669 19.8861 22.8048 19.2595C23.8446 14.5738 25.1931 10.8631 26.8473 8.12133C28.6303 5.16562 30.8239 3.07187 33.425 1.84312C36.0262 0.614373 39.2146 0 42.9904 0C56.2478 0.00305658 62.8615 9.88805 62.8315 29.658ZM37.8601 40.029C38.9899 38.1492 39.5532 35.1629 39.5532 31.0671C39.5532 27.0966 39.0019 24.2601 37.9021 22.5606C36.8023 20.8642 35.0043 20.0145 32.505 20.0145C30.8988 20.0145 29.3825 20.4302 27.9561 21.2646C26.5297 22.0991 25.355 23.3737 24.432 25.0854C23.509 26.8001 22.9906 28.9153 22.8707 31.4308V38.0667C22.8707 38.4702 23.0715 38.8492 23.4011 39.0754C25.4179 40.4539 27.0631 41.4167 28.3337 41.9608C29.7151 42.5507 31.1805 42.8472 32.7268 42.8472C35.0223 42.8472 36.7304 41.9088 37.8601 40.029Z"/>'
+  + '<path d="M127.395 0C127.38 0 127.365 0 127.353 0C127.335 0 127.317 0 127.297 0C122.379 0 118.119 1.80841 114.517 5.42268C110.979 8.97564 108.598 14.6308 107.371 22.3957C107.331 22.646 107.217 22.8733 107.043 23.0368C106.685 23.374 106.165 23.374 105.806 23.0368C105.632 22.8733 105.518 22.646 105.478 22.3957C104.251 14.6308 101.87 8.97564 98.3327 5.42268C94.7248 1.80841 90.4655 0 85.5472 0C85.5295 0 85.5119 0 85.4917 0C85.4765 0 85.4614 0 85.4488 0C74.4331 0 68.0227 6.44693 68.9291 19.2259C69.2346 23.5221 69.8103 26.978 70.8429 29.9793C79.1393 54.1169 96.8178 63.3812 104.9 68.0887C104.9 68.0887 105.963 68.7273 106.422 68.7273C106.882 68.7273 107.967 68.0887 107.967 68.0887C116.049 63.3812 133.705 54.1169 142.001 29.9793C143.034 26.978 143.61 23.5221 143.915 19.2259C144.822 6.44693 138.409 0 127.395 0Z"/>'
+  + '</svg>';
+---
+
+{import.meta.env.PROD && <link rel="preload" href={grenetteRegular} as="font" type="font/woff2" crossorigin />}
+<div id="app">
+  {/* is-intro: the map fills the screen until the intro is dismissed. In the
+      markup rather than added by script, so nothing animates on arrival. */}
+  <div class={`frame${embed ? '' : ' is-intro'}`} id="frame">
+    <div id="map"><div class="tilewarn" id="tilewarn"></div></div>
+
+    <div class="topleft" id="topleft">
+      <div class="toolbar" role="toolbar" aria-label="Map tools">
+        {/* The Map and Index toggles are gone: the Index grid has no way in any
+            more and stays only behind setView('index'), and the map is the
+            only view, so the logo stands alone. /list still serves every place
+            as a page for search engines. */}
+        <div class="tool-group brand-group" role="group" aria-label="Plum">
+          <a class="brand" href="https://www.plumhq.com" target="_blank" rel="noopener" aria-label="Plum">
+            <img src={`${base}plum-logo.svg`} alt="Plum" width="48" height="15" />
+          </a>
+        </div>
+        {/* The Plum Perks toggle that sat here is gone: the list's All | Plum
+            Perks tabs do the same, and the wordmark has the start of the bar back. */}
+        <!-- These three said what they did only on hover, which is no use to
+             anyone who doesn't know there is anything to hover over: grey
+             glyphs in a row read as decoration. The word is the control now and
+             the glyph is the mark beside it. The full names are in aria-label; on
+             hover the full name scrolls through the button rather than a tooltip
+             popping up. -->
+        <div class="tool-group layer-group desk-only" role="group" aria-label="Layers">
+          <button type="button" class="tool tool-label" id="l-routes" aria-pressed="false" aria-label="Running and cycling routes">
+            <Fragment set:html={svg('routes')} /><Fragment set:html={ticker('Trails', 'Running and cycling routes')} />
+          </button>
+          <button type="button" class="tool tool-label" id="l-metro" aria-pressed="false" aria-label="Metro lines">
+            <Fragment set:html={svg('metro')} /><Fragment set:html={ticker('Metro', 'Metro lines')} />
+          </button>
+          <button type="button" class="tool tool-label" id="l-regions" aria-pressed="false" aria-label="Corporation colours">
+            <Fragment set:html={svg('regions')} /><Fragment set:html={ticker('Colours', 'Corporation colours')} />
+          </button>
+        </div>
+        <!-- The last group in the row. They were a pair of pill buttons floating
+             bottom-centre, then a second row under the toolbar; both put them
+             somewhere other than where a reader looks for a way in. They are
+             tools, so they sit with the tools — same pill, same pressed state,
+             and no arrow, which is what let the row stay one row. -->
+        <div class="tool-group nav-group desk-only" role="group" aria-label="Communities and events">
+          <button type="button" class="tool tool-text" id="open-people" aria-pressed="false">Communities</button>
+          <button type="button" class="tool tool-text" id="open-events" aria-pressed="false">Upcoming events</button>
+          <button type="button" class="tool tool-about" id="open-cliff" aria-pressed="false" aria-label="About this map" set:html={PLUM_MARK} />
+        </div>
+      </div>
+    </div>
+
+    <!-- The prompt docks on the right, clear of the left column so the places
+         list has the whole of it. -->
+    <div class="promptdock" id="promptdock" aria-live="polite"><Prompt docked /></div>
+
+    <div class="topright" id="topright">
+      <div class="search desk-show" id="search" role="search">
+        <input type="search" id="search-input" class="search-input" placeholder="Tags, places, areas, notes…"
+          aria-label="Search the map" autocomplete="off" spellcheck="false" tabindex="-1" />
+        <button type="button" class="tool search-btn" id="t-search" aria-label="Search" aria-expanded="false" aria-controls="search-input" set:html={svg('search')} />
+        <div class="search-suggest" id="search-suggest" hidden></div>
+      </div>
+      <button type="button" class="tool tool-solo clear-btn" id="t-clear" aria-pressed="false"
+        aria-label="Just the map" set:html={svg('clear')} />
+      {/* The city's buildings in 3D, the map tilted to show them. */}
+      <button type="button" class="tool tool-solo tool-3d" id="t-3d" aria-pressed="false" aria-label="3D buildings"><svg class="cube" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 19.5 7.7v8.6L12 20.5 4.5 16.3V7.7z"/><path d="M4.5 7.7 12 12l7.5-4.3M12 12v8.5"/></svg></button>
+      <div class="tool-group zoom-group desk-only" role="group" aria-label="Zoom">
+        <button type="button" class="tool" id="z-out" aria-label="Zoom out" set:html={svg('minus')} />
+        <button type="button" class="zoom-pct" id="zoom-pct" aria-label="Zoom level; click for the whole city">100%</button>
+        <button type="button" class="tool" id="z-in" aria-label="Zoom in" set:html={svg('plus')} />
+      </div>
+      <button type="button" class="tool tool-solo mobile-only menu-btn" id="open-menu" aria-label="Menu" aria-expanded="false" aria-controls="chrome-menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14"/></svg>
+      </button>
+      {/* Desktop only: what the list on the left shows besides the places, as
+          toggles like Trails, Metro and Colours. Pressing one swaps the places
+          for it; pressing it again brings the places back. The phone keeps
+          the list's own header. */}
+      {/* Surprise me: picks a part of town (or lets you pick one) and plans a day there. */}
+      <button type="button" class="tool tool-text tool-surprise" id="open-surprise" aria-pressed="false" aria-haspopup="dialog" aria-controls="surprise-pop">
+        <svg class="tool-surprise-dice" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="4.5" width="15" height="15" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="9" r="1.3"/><circle cx="15" cy="15" r="1.3"/><circle cx="15" cy="9" r="1.3"/><circle cx="9" cy="15" r="1.3"/></svg>
+        <span class="tool-surprise-word">Plan my healthy day</span>
+      </button>
+      <div class="tool-group pane-group desk-only" id="list-tabs" role="group" aria-label="What to list">
+        <button type="button" class="tool tool-text" data-pane="people" aria-pressed="false">Communities</button>
+        <button type="button" class="tool tool-text" data-pane="events" aria-pressed="false">Events</button>
+        <button type="button" class="tool tool-text" data-pane="online" aria-pressed="false">Online perks</button>
+      </div>
+    </div>
+
+    {/* On a desktop, just-the-map and the zoom sit on the map itself, in its
+        top-right corner, a card like the compass's. wellness-map.js moves them
+        here from the bar above at that width and back below it. */}
+    <div class="mapctl desk-only" id="mapctl"></div>
+
+    <div class="scalebar desk-only" id="scalebar">
+      <button type="button" class="compass" id="compass" aria-label="North is up. Show the whole city">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" /><path class="needle-n" d="M12 3.8 14.8 12H9.2Z" /><path class="needle-s" d="M12 20.2 9.2 12h5.6Z" /></svg>
+        <span>N</span>
+      </button>
+      <div class="ruler" aria-live="polite">
+        <span class="ruler-bar" id="ruler-bar"></span>
+        <span class="ruler-label" id="ruler-label"></span>
+      </div>
+    </div>
+
+    <aside class="search-panel" id="search-panel" hidden aria-label="Matching places">
+      <header class="results-head">
+        <div class="results-top">
+          <strong id="results-title">Places</strong>
+          <div class="results-actions">
+            <button type="button" class="results-btn" id="results-shuffle" aria-label="Randomize the order" title="Randomize"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h3.5c2 0 3 1 4 3l1 2c1 2 2 3 4 3H17"/><path d="M3 14h3.5c1.2 0 2-.4 2.7-1.1"/><path d="M11.8 7.1C12.5 6.4 13.3 6 14.5 6H17"/><path d="M15 4l2 2-2 2"/><path d="M15 12l2 2-2 2"/></svg></button>
+            <button type="button" class="results-btn" id="results-toggle" aria-expanded="true" aria-controls="results-body" aria-label="Minimize the list" title="Minimize"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg></button>
+            <button type="button" class="results-btn mobile-only" id="results-close" aria-label="Close places list" title="Close"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+          </div>
+        </div>
+        <span id="results-sub" class="results-sub"></span>
+        <!-- Two kinds of partner, two lists. The places answer the sentence in
+             the prompt; the brands ship anywhere in India, so neither the
+             category nor the area applies to them and merging the two put 93
+             rows under a filter that could not touch them. -->
+        <div class="results-tabs" id="results-tabs" role="group" aria-label="Which partners" hidden>
+          <button type="button" class="results-tab" data-list-tab="places" aria-pressed="true">
+            In Bengaluru <em data-tab-count="places"></em>
+          </button>
+          <button type="button" class="results-tab" data-list-tab="online" aria-pressed="false">
+            Online <em data-tab-count="online"></em>
+          </button>
+        </div>
+      </header>
+      {/* All lists every place but the partners; Plum Perks lists only the
+          partners; Delivery only lists the kitchens with no dine-in, the ones
+          tagged delivery-only in entries.json. */}
+      <p class="list-explore desk-only" id="list-explore">Explore in Bengaluru</p>
+      <div class="list-tabs list-mode" id="list-mode" role="group" aria-label="Which places to list" style={`--star-shape:url('${base}icons/perk-star-blank.svg')`}>
+        <button type="button" class="list-tab" data-mode="all" aria-pressed="true">All</button>
+        <button type="button" class="list-tab list-tab-perk" data-mode="perks" aria-pressed="false">Plum Perks</button>
+      </div>
+      {/* Phone only: the list folded away behind a bar like the perks one. */}
+      <button type="button" class="list-bar" id="list-bar" aria-expanded="false" aria-controls="results-body">
+        <span class="lb-label">See the places</span>
+        <svg class="lb-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 7.5 6 4.5l3 3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      </button>
+      <div class="results-body" id="results-body">
+        <div id="notice"></div>
+        <div class="cards" id="cards"></div>
+      </div>
+      {/* The paper map's Plum Perks drawer: a red bar along the list's foot
+          that slides up into the partners that fit the sentence. */}
+      <div class="perks-drawer" id="perks-drawer" hidden>
+        <button type="button" class="pd-handle" id="pd-handle" aria-expanded="false" aria-controls="pd-body">
+          <span class="pd-label">See discounts with Plum Perks</span>
+          <svg class="pd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 7.5 6 4.5l3 3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <div class="pd-body" id="pd-body"></div>
+      </div>
+    </aside>
+
+    {/* Desktop only: Communities, Events and Online perks, from the toggles in
+        the top bar. A column of the cream page on the right, which slides in as
+        the map gives up its right-hand side to it (.is-side). */}
+    <aside class="side-panel desk-only" id="side-panel" hidden aria-labelledby="side-title">
+      <header class="side-head">
+        <h2 id="side-title"></h2>
+        <button type="button" class="ghost" id="side-close">Close</button>
+      </header>
+      <div class="side-body" id="side-body">
+        <div class="list-pane" id="pane-people" hidden>
+          <p class="list-pane-blurb">Clubs, hangouts and accounts without a fixed pin on the map.</p>
+          <div id="list-people" class="people-list"></div>
+        </div>
+        <div class="list-pane" id="pane-events" hidden>
+          <p class="list-pane-blurb" id="list-events-blurb"></p>
+          <div id="list-events" class="people-list"></div>
+          <p class="events-contribute">
+            <a id="list-events-contribute" class="about-form-link" href="#" target="_blank" rel="noopener"></a>
+          </p>
+        </div>
+        {/* About, on a desktop: the same panel as the lists, rather than a card
+            of its own over the map. The phone keeps the card (.cliff). */}
+        <div class="list-pane about-copy side-about" id="pane-about" hidden>
+          <AboutCopy />
+        </div>
+        <div class="list-pane" id="pane-online" hidden>
+          <p class="list-pane-blurb">Plum Perks partners that ship across India, so they have no pin on the map. Tap one to get its offer in the Plum app.</p>
+          <div id="list-online" class="cards"></div>
+        </div>
+      </div>
+    </aside>
+
+
+    <!-- The intro. The prompt is the gate: pick what and where, press Show me,
+         and the same element moves into the dock on the right so it stays the
+         thing you change your mind with. The embed has no intro, so its prompt
+         renders into the dock already docked. See Prompt.astro. -->
+    {/* The intro: a few cards, each a line of text beside a window onto the
+        map, which is the one clear place on a blurred screen. Each card moves
+        the map under its window and filters it to what the line says
+        (data-area, data-intents, data-perks; wellness-map.js). */}
+    {!embed && (
+    <div class="intro story" id="intro" role="dialog" aria-modal="true" aria-label="About the Bengaluru Wellness Map">
+      <h1 class="sr-only">Bengaluru Wellness Map, by Plum Perks</h1>
+      <div class="story-veil" id="story-veil" aria-hidden="true"></div>
+      {/* The intro is one sentence, the map's own: "I want to … in …", set in
+          the same coloured words as the picker. Each word is live: pressing
+          one goes to the map with the sentence started from it and that word's
+          choices open (wellness-map.js, data-si-*). A tip says so each visit. */}
+      {/* The intro, back as a few cards in the paper style: a line of text
+          over a window onto the map, the only clear place on a softened
+          screen. Each card moves the map under its window and filters it to
+          what the line says (data-area, data-intents, data-perks, data-plan;
+          wellness-map.js). The last card is the map's own sentence, each word
+          live: pressing one goes to the map with the sentence started from it. */}
+      <div class="story-card story-paper" id="story-card">
+        <header class="story-head">
+          {/* The map's name as its logo: "Be well, Bengaluru". A wide screen has
+              it over a sleeping dog; a phone, with "by Plum Perks" beside it. */}
+          <p class="story-kicker"><img class="brand-mark" src={`${base}be-well-logo-long.svg`} alt="Be well, Bengaluru" width="184" height="98" /> <span>by Plum Perks</span></p>
+          <img class="story-dog-ph" src={`${base}art/sleeping-dog.png`} alt="" aria-hidden="true" width="640" height="340" />
+          <button type="button" class="story-close" id="story-close">Go to the map</button>
+        </header>
+        <div class="story-text">
+          <img class="story-dog" src={`${base}art/sleeping-dog.png`} alt="" aria-hidden="true" width="640" height="340" />
+          <div class="story-slides" aria-live="polite">
+            <div class="story-slide" data-slide="0">
+              <p>Bengaluru has more wellness spots than you’ve had time to find. So we made a map that’ll help you <button type="button" class="story-pick story-pick-go" data-story-pick="all" style="--c:#E2DFD7">get healthy</button> in any part of the city.</p>
+            </div>
+            <div class="story-slide" data-slide="1" data-area="Yeshwanthpur" data-intents="eat" hidden>
+              <p>For instance, you’re in <span class="story-pick" style="--c:#E2DFD7">Yeshwanthpur</span> and trying to <span class="story-pick" style="--c:#90E07E">eat better</span>. We show you every healthy kitchen near you.</p>
+            </div>
+            <div class="story-slide" data-slide="2" data-area="Sadashiva Nagar" data-plan="1" hidden>
+              <p>Or let us <span class="story-pick" style="--c:#1E1B18;--ink:#F5F4F0">plan your day</span>: we’ve curated some of the best wellness activities in Bengaluru just for you.</p>
+            </div>
+            <div class="story-slide" data-slide="3" data-perks="1" hidden>
+              <p>Every healthy spot in the city we could find, on one map.</p>
+              <p class="story-note">Also find the wellness spots in Bengaluru where you get discounts through <span class="story-perks-pair"><a href="https://www.plumhq.com/perks" target="_blank" rel="noopener" class="story-pick story-perks-link" id="story-perks" style="--c:#571541;--ink:#FFFFFF">Plum Perks</a> <img class="story-perk-star" src={`${base}icons/perk-star-pin.svg`} alt="(the star on the map)" width="22" height="22" /></span> — some of India’s best wellness brands now live in the <a id="story-app" href="https://www.plumhq.com/app" target="_blank" rel="noopener">Plum app</a>.</p>
+            </div>
+          </div>
+          <div class="story-nav">
+            <span class="story-step" id="story-step">1 of 4</span>
+            {/* Each dot goes straight to its card. */}
+            <span class="story-dots">{[1, 2, 3, 4].map((n) => (
+              <button type="button" class="story-dot" data-story={n - 1} aria-label={`Card ${n} of 4`}><i></i></button>
+            ))}</span>
+            <button type="button" class="story-next" id="story-next" disabled>Next</button>
+          </div>
+        </div>
+        <div class="story-window" id="story-window" aria-hidden="true">
+        </div>
+      </div>
+    </div>
+    )}
+    {/* While the map loads the card is its words alone, edge, corners and
+        shadow and all; once the map is halfway in, it stretches to its full
+        height until its window shows the map. Run here, inline, so the first frame is
+        already the closed card rather than the open one jumping shut. The
+        veil's hole follows the window each frame; wellness-map.js leaves the
+        hole alone until this is done. */}
+    {!embed && <script is:inline set:html={`
+(() => {
+  const card = document.getElementById('story-card');
+  const win = document.getElementById('story-window');
+  const text = card && card.querySelector('.story-text');
+  const head = card && card.querySelector('.story-head');
+  const veil = document.getElementById('story-veil');
+  if (!card || !win || !text || !veil) return;
+  /* The card stays out of sight until the map's script has set the page up:
+     it marks the frame with its map style, which the card's size rules key
+     on, and before that the card would show at another size and then jump.
+     Two seconds at most, whatever happens. */
+  const frame = document.getElementById('frame');
+  const styled = () => !!frame && (frame.classList.contains('is-paper') || frame.classList.contains('is-ready'));
+  /* Declared here, not where it is filled in below: with reduced motion the
+     script stops before that point, and the wait below must still be able to
+     call it (as a no-op) and show the card. Reaching a const declared after
+     an early return threw, and left the card hidden for good: only the
+     window into the map showed, and readers had to click past it. */
+  let settle = () => {};
+  if (!styled()) {
+    card.style.visibility = 'hidden';
+    const t0 = performance.now();
+    const wait = () => {
+      if (styled() || performance.now() - t0 > 2000) { card.style.visibility = ''; try { settle(); } catch (e) {} return; }
+      requestAnimationFrame(wait);
+    };
+    requestAnimationFrame(wait);
+  }
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  window.__storyOpening = true;
+  /* Shut, the card is as tall as its words need, with nothing of the window
+     showing; open, it is its full height. Both are measured again the moment
+     it opens, so a late stylesheet cannot leave it opening to a stale size
+     and snapping at the end. */
+  const measure = () => {
+    card.style.height = 'auto';
+    const s = card.getBoundingClientRect().height;
+    card.style.height = '';
+    const f = card.getBoundingClientRect().height;
+    return [Math.min(s, f), f];
+  };
+  let shut = 0, full = 0;
+  const hole = () => {
+    const w = win.getBoundingClientRect(), v = veil.getBoundingClientRect(), cs = getComputedStyle(win);
+    const x1 = w.left - v.left + (parseFloat(cs.borderLeftWidth) || 0);
+    const y1 = w.top - v.top + (parseFloat(cs.borderTopWidth) || 0);
+    const x2 = w.right - v.left - (parseFloat(cs.borderRightWidth) || 0);
+    const y2 = w.bottom - v.top - (parseFloat(cs.borderBottomWidth) || 0);
+    veil.style.clipPath = y2 > y1 + 0.5
+      ? 'polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ' + x1 + 'px ' + y1 + 'px, ' + x2 + 'px ' + y1 + 'px, ' + x2 + 'px ' + y2 + 'px, ' + x1 + 'px ' + y2 + 'px, ' + x1 + 'px ' + y1 + 'px)'
+      : 'none';
+  };
+  /* Shut, its words are there but its window is closed; opening, the window
+     parts as the card grows and the map shows through it. The shut height is
+     taken only once the page is set up, so it is never taken from a passing
+     layout and then corrected. */
+  settle = () => { [shut, full] = measure(); card.style.height = shut + 'px'; hole(); };
+  card.classList.add('is-shut');
+  if (styled()) settle();
+  const MS = 950, WAIT = 0;
+  const ease = (t) => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  let t0 = 0;
+  const step = (now) => {
+    if (!t0) t0 = now + WAIT;
+    const t = Math.max(0, Math.min(1, (now - t0) / MS));
+    card.style.height = (shut + (full - shut) * ease(t)) + 'px';
+    hole();
+    if (t < 1) requestAnimationFrame(step);
+    else { card.style.height = ''; window.__storyOpening = false; hole(); window.dispatchEvent(new Event('story-opened')); }
+  };
+  /* It stays shut while the map loads; wellness-map.js opens it once the
+     map is halfway there (its style and first tiles are in). */
+  let opened = false;
+  window.__openStory = () => {
+    if (opened) return;
+    opened = true;
+    /* From exactly where it stands now, to its full height as it is now. */
+    const now = card.getBoundingClientRect().height;
+    full = measure()[1];
+    shut = Math.min(now, full);
+    card.style.height = shut + 'px';
+    card.classList.remove('is-shut');
+    requestAnimationFrame(step);
+    /* Next comes in once the window is fully open: its opening runs 0.95s
+       after a 0.1s wait (prompt-map.css, .story-window::before). */
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setTimeout(() => card.classList.add('is-window-open'), still ? 0 : 1100);
+  };
+  setTimeout(window.__openStory, 8000);
+})();
+`}></script>}
+
+    <article class="place-card" id="place-card" hidden aria-live="polite"></article>
+
+    <!-- The map's key, set out the way a printed map sets out its legend: a
+         title over a rule, then each kind of line drawn as a sample beside
+         its name. A row is also its switch; a line that is off greys out. -->
+    <aside class="map-key" id="map-key" aria-label="Map options">
+      <div class="mk-body" id="mk-body">
+      <button type="button" class="mk-row" id="k-routes" aria-pressed="false">
+        <svg class="mk-swatch" viewBox="0 0 34 14" aria-hidden="true">
+          <path d="M5 7h24" stroke="#3F6CF2" stroke-width="5" stroke-linecap="round"/>
+          <path d="M5 7h24" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span class="mk-label">Trails<small>run · ride</small></span>
+      </button>
+      <button type="button" class="mk-row" id="k-metro" aria-pressed="false">
+        <svg class="mk-swatch" viewBox="0 0 34 14" aria-hidden="true">
+          <path d="M2 3h30" stroke="#C29BE2" stroke-width="2.4"/>
+          <path d="M2 7h30" stroke="#7FCB8E" stroke-width="2.4"/>
+          <path d="M2 11h30" stroke="#EFD36B" stroke-width="2.4"/>
+        </svg>
+        <span class="mk-label">Metro<small>purple · green · yellow</small></span>
+      </button>
+        <button type="button" class="mk-row" id="k-3d" aria-pressed="false">
+          <svg class="mk-swatch mk-icon" viewBox="0 0 34 14" aria-hidden="true"><path d="M17 1.2 22.6 4.3v5.4L17 12.8l-5.6-3.1V4.3z M11.4 4.3 17 7.4l5.6-3.1M17 7.4v5.4" stroke="#1E1B18" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          <span class="mk-label">3D<small>tilt, buildings up</small></span>
+        </button>
+        <button type="button" class="mk-row" id="k-full" aria-pressed="false">
+          {/* Corners out to go full screen; corners in, once it is, to come back. */}
+          <span class="mk-swatch mk-full-ic mk-full-out" aria-hidden="true" set:html={CORNERS_OUT} />
+          <span class="mk-swatch mk-full-ic mk-full-in" aria-hidden="true" set:html={CORNERS_IN} />
+          <span class="mk-label">Full screen<small>just the map</small></span>
+        </button>
+      </div>
+      <button type="button" class="mk-head" id="mk-toggle" aria-expanded="false" aria-controls="mk-body">
+        <span class="mk-title">map</span><svg class="mk-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 7.5 6 4.5l3 3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      </button>
+    </aside>
+
+    <!-- Top left: the Plum mark and the map's switches, each opening a window
+         of its own in the card's style. The mark is Plum's for now; the Plum
+         Perks mark takes its place later. -->
+    <nav class="corner-bar" id="corner-bar" aria-label="Plum and map options">
+      <img class="cb-name" src={`${base}be-well-logo-short.svg`} alt="Be well, Bengaluru" width="238" height="55" />
+      <button type="button" class="cb-tile cb-logo" data-win="about" aria-expanded="false" aria-controls="win-about" aria-label="About this map"><img src={`${base}plum-logo.svg`} alt="" width="44" height="14" /></button>
+      <button type="button" class="cb-tile cb-map" data-win="map" aria-expanded="false" aria-controls="win-map" aria-label="Map options" set:html={MAP_HELP} />
+    </nav>
+    <section class="corner-win" id="win-map" hidden aria-label="Map options">
+      <div class="win-body"></div>
+    </section>
+    <!-- The Plum window: what this map is, the two forms (embedded from Tally
+         when opened) and the way to plumhq.com, as a sentence of chips. On a
+         local server a postcard look is kept too, with a switch at the foot. -->
+    <section class="corner-win corner-win-about plum-win is-home" id="win-about" hidden aria-label="Plum" data-style="c">
+      <div class="pw-home pw-sentence">
+        <p><a class="pw-mark-link" href="https://www.plumhq.com" target="_blank" rel="noopener" aria-label="Plum, plumhq.com"><img class="pw-mark" src={`${base}plum-logo.svg`} alt="Plum" width="44" height="14" /></a> and <button type="button" class="pw-team" aria-expanded="false" aria-controls="pw-credits">team</button> made this map. Read <button type="button" class="pw-chip pw-c-why" data-pw="about">why</button>, <button type="button" class="pw-chip pw-c-suggest" data-pw="suggest">suggest a place</button>, <button type="button" class="pw-chip pw-c-partner" data-pw="partner">partner with us</button> or visit <a class="pw-chip pw-c-site" href="https://www.plumhq.com" target="_blank" rel="noopener">plumhq.com&nbsp;&#8599;</a></p>
+        <div class="pw-credits" id="pw-credits" hidden>
+          <p class="pw-credits-kick">Credits</p>
+          <Credits />
+        </div>
+      </div>
+      {/* The postcard look, kept for comparing on a local server only. */}
+      {import.meta.env.DEV && (
+      <div class="pw-home pw-card" aria-label="Plum">
+        <div class="pw-note">
+          <p>Health is having a moment. We made a map of what&rsquo;s already around you.</p>
+          <button type="button" class="pw-link" data-pw="about">Read why &rarr;</button>
+        </div>
+        <div class="pw-addr">
+          <img class="pw-stamp" src={`${base}art/stamp-bengaluru.png`} alt="A postage stamp: Made with love, Plum, Bengaluru" width="579" height="760" loading="lazy" />
+          <button type="button" class="pw-line" data-pw="suggest">Suggest a place</button>
+          <button type="button" class="pw-line" data-pw="partner">Partner with us</button>
+          <a class="pw-line pw-site" href="https://www.plumhq.com" target="_blank" rel="noopener">plumhq.com &#8599;</a>
+        </div>
+      </div>
+      )}
+      {import.meta.env.DEV && <p class="pw-dev">look: <button type="button" data-look="b">postcard</button> · <button type="button" data-look="c">sentence</button></p>}
+      <div class="pw-sheet">
+        <button type="button" class="pw-back" data-pw="">&larr; Back</button>
+        <div class="pw-pane win-body" data-pane="about"></div>
+        <div class="pw-pane" data-pane="suggest" hidden>
+          <p class="s-kick">Suggest a place</p>
+          <p class="s-big">Know somewhere we&rsquo;ve missed?</p>
+          <iframe data-tally-src="https://tally.so/embed/gDEb24?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="482" frameborder="0" marginheight="0" marginwidth="0" title="Contribute to Bengaluru Wellness Map"></iframe>
+        </div>
+        <div class="pw-pane" data-pane="partner" hidden>
+          <p class="s-kick">Partner with us</p>
+          <p class="s-big">Become a Plum Perks partner</p>
+          <iframe data-tally-src="https://tally.so/embed/mDeKVZ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" loading="lazy" width="100%" height="820" frameborder="0" marginheight="0" marginwidth="0" title="Become a Plum partner"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <a class="legal-tab" href={`${base}disclaimers`}>Disclaimers</a>
+
+    <aside class="chrome-menu" id="chrome-menu" hidden aria-label="Menu">
+      <header>
+        <h2>Menu</h2>
+        <button type="button" class="ghost" id="close-menu" aria-label="Close menu">Close</button>
+      </header>
+      <nav class="chrome-menu-body">
+        <button type="button" class="menu-row" data-menu="surprise">Plan my healthy day</button>
+        <button type="button" class="menu-row" data-menu="people">{communities}</button>
+        <button type="button" class="menu-row" data-menu="events">Upcoming events</button>
+        <button type="button" class="menu-row" data-menu="online">Online perks</button>
+        <div class="menu-layers" role="group" aria-label="Map layers">
+          <span class="menu-label">Map</span>
+          {/* Zoom is the map's own pinch; the menu keeps only the layers. */}
+          <div class="menu-tray">
+            <button type="button" class="menu-row" id="m-routes" aria-pressed="false">Running and cycling routes</button>
+            <button type="button" class="menu-row" id="m-metro" aria-pressed="false">Metro lines</button>
+            <button type="button" class="menu-row" id="m-regions" aria-pressed="false">Corporation colours</button>
+          </div>
+        </div>
+        <button type="button" class="menu-row" data-menu="about">About</button>
+      </nav>
+    </aside>
+
+    <section class="index-view" id="index-view" hidden aria-label="Index of every entry">
+      <header class="index-head">
+        <div class="index-heading">
+          <h2>Index</h2>
+          <p class="index-sub" id="index-sub"></p>
+        </div>
+        <input type="search" id="index-search" placeholder="Search" aria-label="Search" autocomplete="off" />
+        <select id="index-area" class="index-area" aria-label="Filter the index by area"></select>
+        <button type="button" class="ghost" id="close-index">Back to map</button>
+        <div class="index-filters" id="index-filters" role="group" aria-label="Show one category">
+          <button type="button" class="index-chip" data-index-intent="all" aria-pressed="true">All</button>
+          {mapIntents.map((i) => (
+            <button type="button" class="index-chip" data-index-intent={i.k} aria-pressed="false">
+              <img src={iconUrl(i, base)} alt="" width="24" height="24" />
+              {i.verb}
+            </button>
+          ))}
+          {/* Plum Perks, both halves. Neither is a category — one is a set of
+              places that already sit in the categories to the left, the other
+              ships to the whole country — so the two sit at the end of the
+              row, in the gift rather than an illustrated mark. */}
+          <button type="button" class="index-chip index-chip-perk" data-index-intent="perks-bengaluru" aria-pressed="false">
+            <Fragment set:html={PERK_GLYPH} />
+            Plum Perks in Bengaluru
+          </button>
+          <button type="button" class="index-chip index-chip-perk" data-index-intent="online" aria-pressed="false">
+            <Fragment set:html={PERK_GLYPH} />
+            Plum Perks online
+          </button>
+        </div>
+      </header>
+      <div class="index-body" id="index-body"></div>
+      <button type="button" class="to-top" id="index-to-top" aria-label="Back to the top"
+        set:html={'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>'} />
+    </section>
+
+    <section class="surprise-pop" id="surprise-pop" role="dialog" aria-labelledby="surprise-title" hidden>
+      <header>
+        <h2 id="surprise-title">Plan my healthy day</h2>
+        <button type="button" class="ghost" id="close-surprise">Close</button>
+      </header>
+      {/* Curated days (src/data/themed-days.json): pick what you want to do,
+          or where, and each side offers only what the other can answer. */}
+      <div class="surprise-body">
+        <p class="surprise-ask">I want to</p>
+        <div class="surprise-chips" id="surprise-acts" role="group" aria-label="What you want to do"></div>
+        <p class="surprise-ask">in</p>
+        <div class="surprise-chips" id="surprise-places" role="group" aria-label="Where"></div>
+        <ul class="surprise-days" id="surprise-days" aria-live="polite"></ul>
+      </div>
+      <footer class="surprise-foot">
+        <p class="surprise-note" id="surprise-note" hidden></p>
+        <button type="button" class="surprise-random" id="surprise-random">Or surprise me</button>
+      </footer>
+    </section>
+    <aside class="cliff" id="cliff" hidden aria-label="About this map">
+      <header>
+        <h2 id="cliff-title">About</h2>
+        <button type="button" class="ghost" id="close-cliff" aria-label="Close">Close</button>
+      </header>
+      <div class="cliff-body">
+        <div id="cliff-about" class="about-copy">
+          <AboutCopy />
+        </div>
+        <div id="cliff-people" hidden>
+          <p>Clubs, hangouts and accounts without a fixed pin on the map.</p>
+          <div id="people-list" class="people-list"></div>
+        </div>
+        <div id="cliff-events" hidden>
+          <p id="events-blurb"></p>
+          <div id="events-list" class="people-list"></div>
+          <p class="events-contribute">
+            <a id="events-contribute" class="about-form-link" href="#" target="_blank" rel="noopener"></a>
+          </p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div hidden>
+  <div id="foot"></div>
+  <select id="rg"></select>
+</div>
+
+<script>
+  /* The chrome, the intro and the list are all in the HTML above, so the page
+     can paint before the map exists. The map's script is imported rather than
+     loaded as this module's own dependency, so the page never waits for it.
+     It used to wait for the first frame, or for the browser to go idle, so a
+     blank page did not sit there while it compiled; the intro now shows its
+     card shut from the first frame and opens it once the map is in, and
+     the script's own first step is to wait for the map's data, so asking for
+     it at once only gets the live map there sooner. */
+  import('../scripts/wellness-map.js');
+</script>

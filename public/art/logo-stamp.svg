@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="160" viewBox="0 0 120 160" fill="none">
+  <!-- A ticket stamp: fluorescent paper with a half-round notch in each side,
+       printed in one ink with a very small map of the city: two roads that
+       cross, a lake with ripples, a park and a pin where you are. -->
+  <path d="M3 0H117A3 3 0 0 1 120 3V85A7 7 0 0 0 120 99V157A3 3 0 0 1 117 160H3A3 3 0 0 1 0 157V99A7 7 0 0 0 0 85V3A3 3 0 0 1 3 0Z" fill="#FF8FB8"/>
+  <g stroke="#571541" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Two roads, drawn a little loose, as a hand-cut stamp would print them. -->
+    <path d="M10 118 C34 108 52 98 66 80 S96 46 110 40"/>
+    <path d="M30 18 C38 46 44 64 58 86 S78 122 84 146"/>
+    <!-- A lake and its ripples. -->
+    <path d="M14 46 C14 34 30 28 40 34 C50 40 46 56 34 58 C22 60 14 56 14 46 Z"/>
+    <path d="M22 44 q4 -3 8 0 t8 0" stroke-width="1.8"/>
+    <path d="M24 50 q3 -2.5 6 0 t6 0" stroke-width="1.8"/>
+    <!-- A park, a soft blob with a tree's dot in it. -->
+    <path d="M78 104 C86 96 102 98 104 110 C106 122 92 128 84 122 C76 118 72 110 78 104 Z"/>
+    <!-- The pin. -->
+    <path d="M66 66 C66 58 72 52 79 52 C86 52 92 58 92 66 C92 76 79 86 79 86 C79 86 66 76 66 66 Z" fill="#FFFAF2"/>
+  </g>
+  <circle cx="91" cy="112" r="2.4" fill="#571541"/>
+  <circle cx="79" cy="66" r="4" fill="#571541"/>
+  <!-- Sparks in the corner, like the little marks on the reference stamps. -->
+  <g fill="#571541">
+    <circle cx="96" cy="16" r="2"/>
+    <circle cx="104" cy="22" r="2"/>
+    <circle cx="110" cy="14" r="2"/>
+  </g>
+</svg>
