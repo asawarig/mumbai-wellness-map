@@ -16,7 +16,7 @@ import ROUTES from '../data/routes.json';
 import ICONS from '../data/icons.json';
 import LABELS from '../data/labels.json';
 
-/* Two reference layers that are not entries: the Namma Metro alignment and
+/* Two reference layers that are not entries: the Mumbai Metro alignment and
    every park BBMP has a record of. See scripts/kml-to-geojson.mjs. */
 import METRO from '../data/metro.json';
 import PARKS_RAW from '../data/parks.json';
@@ -182,7 +182,7 @@ corps.forEach((c) => {
   if (byRg[c.k]) areas.push({ rg: c.k, label: c.label, items: [...byRg[c.k]].sort() });
 });
 if (byRg['']) {
-  areas.push({ rg: '', label: 'Outside the five corporations', items: [...byRg['']].sort() });
+  areas.push({ rg: '', label: 'Outside the six zones', items: [...byRg['']].sort() });
 }
 
 /* Flat area list ordered by mapped-pin density (for the prompt dropdown). */
@@ -200,7 +200,7 @@ areas.forEach((g) => g.items.forEach((a) => {
 }));
 areasByPins.sort((a, b) => (areaPinCounts[b] || 0) - (areaPinCounts[a] || 0) || a.localeCompare(b));
 
-/* BBMP parks join the listings as Move places (sub-category "park"), so they
+/* city parks join the listings as Move places (sub-category "park"), so they
    filter, count, cluster, search and list like everything else. A park takes
    its ward's corporation, and the ward's area when the ward shares a name with
    the listings. */
@@ -232,9 +232,9 @@ const parkEntries = PARKS.features.map((f) => {
   return {
     id: parkId(lat, lon), n: p.n || 'Unnamed park', c: 'Activities', g: 'park', s: '',
     a: ward?.area && knownAreas.has(ward.area) ? ward.area : '',
-    raw: wardName || 'BBMP park', ad: '', lat, lon, rg: ward?.rg || '',
-    gm: '', w: '', ig: '', p: 'Free', b: '', t: p.t || '', tg: ['park'], src: 'BBMP parks register', v: '', out: 0,
-    d: has.length ? `A BBMP park with ${has.join(', ').toLowerCase()}.` : 'A BBMP park.',
+    raw: wardName || 'city park', ad: '', lat, lon, rg: ward?.rg || '',
+    gm: '', w: '', ig: '', p: 'Free', b: '', t: p.t || '', tg: ['park'], src: 'city parks register', v: '', out: 0,
+    d: has.length ? `A city park with ${has.join(', ').toLowerCase()}.` : 'A city park.',
     park: { sqm: p.sqm || 0 },
   };
 });
@@ -295,7 +295,7 @@ COUNTS.unpinned = COUNTS.total - COUNTS.mapped - COUNTS.outside;
    describing. The two below are what a reader would count for themselves, and
    are what the page titles and meta descriptions claim:
 
-     onMap   pins on the map browsing all of Bengaluru, counted the way the map
+     onMap   pins on the map browsing all of Mumbai, counted the way the map
              counts them: coordinates, inside the city, and in a category the
              map draws. Anything looser disagrees with the number the list
              header shows — it was 14 out, counting six Communities pins the map

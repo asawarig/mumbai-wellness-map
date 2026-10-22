@@ -2,8 +2,8 @@
  *
  * READ THIS BEFORE RELYING ON IT. A crawler only reads robots.txt from the
  * root of a host: https://www.plumhq.com/robots.txt. This app is mounted at
- * /health-map/bengaluru, so what this file serves lives at
- * /health-map/bengaluru/robots.txt — which no crawler will fetch, and none
+ * /health-map/mumbai, so what this file serves lives at
+ * /health-map/mumbai/robots.txt — which no crawler will fetch, and none
  * will obey. It exists so the rules are stated in the repo that owns the
  * pages, and so the sitemap has somewhere to be declared locally.
  *
@@ -23,7 +23,7 @@ export function GET(context) {
   const staging = import.meta.env.PUBLIC_STAGING === '1';
 
   const body = staging
-    ? `# Staging copy of the Bengaluru Wellness Map. Not the canonical site.
+    ? `# Staging copy of the Mumbai Wellness Map. Not the canonical site.
 User-agent: *
 Disallow: /
 `

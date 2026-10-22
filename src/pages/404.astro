@@ -15,8 +15,8 @@ Astro.response.status = 404;
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const mapUrl = base.replace(/\/$/, '') || '/';
-const title = 'Not on the map — Bengaluru Wellness Map';
-const description = 'This page is not on the Bengaluru Wellness Map.';
+const title = 'Not on the map — Mumbai Wellness Map';
+const description = 'This page is not on the Mumbai Wellness Map.';
 ---
 
 <BaseLayout title={title} description={description} noindex>
@@ -25,7 +25,7 @@ const description = 'This page is not on the Bengaluru Wellness Map.';
       that cannot read it, leaving the first. */}
   <main class="nf" style={`background-image:url(${base}art/map-404.jpg);background-image:image-set(url(${base}art/map-404.avif) type("image/avif"),url(${base}art/map-404.jpg) type("image/jpeg"))`}>
     <div class="nf-veil" aria-hidden="true"></div>
-    <a class="nf-brand" href={mapUrl} aria-label="Bengaluru Wellness Map">
+    <a class="nf-brand" href={mapUrl} aria-label="Mumbai Wellness Map">
       <img src={`${base}be-well-logo.svg`} alt="Be well, Bengaluru" width="195" height="64" />
     </a>
     <div class="nf-lens">

@@ -1,9 +1,9 @@
 {
-  "name": "bengaluru-wellness-map",
+  "name": "mumbai-wellness-map",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "An interactive map of places, routes, clinics, kitchens and communities for looking after yourself in Bengaluru. Built by the marketing team at Plum.",
+  "description": "An interactive map of places, routes, clinics, kitchens and communities for looking after yourself in Mumbai. Built by the marketing team at Plum.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -15,14 +15,15 @@
   "dependencies": {
     "@astrojs/cloudflare": "^14.3.1",
     "@astrojs/vercel": "^11.0.10",
+    "@phosphor-icons/core": "^2.1.1",
     "astro": "^7.3.2",
-    "maplibre-gl": "^6.9.0",
-    "@phosphor-icons/core": "^2.1.1"
+    "maplibre-gl": "^6.9.0"
   },
   "engines": {
     "node": ">=22.12.0"
   },
   "devDependencies": {
+    "polyclip-ts": "^0.16.8",
     "wrangler": "^4.131.0"
   }
 }

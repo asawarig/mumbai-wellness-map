@@ -23,7 +23,7 @@ const ENTRIES = path.join(ROOT, 'src/data/entries.json');
 const ROUTES = path.join(ROOT, 'src/data/routes.json');
 const SOURCE = 'running-routes';
 
-const CORP = new Set(['Central', 'East', 'West', 'South', 'North']);
+import { ZONE_KEYS as CORP } from './zones.mjs';
 /* Same gazetted box ingest-entries.mjs uses. A route beyond it is a day trip and
    has to say so — the page's validator rejects an unflagged one at render time,
    which is a 200 with an empty body rather than a build failure. This only

@@ -1,12 +1,52 @@
-# Bengaluru Wellness Map
+# Mumbai Wellness Map
 
-An interactive map of 395 places, routes, clinics, kitchens and communities for
-looking after yourself in Bengaluru, built as an [Astro](https://astro.build)
-site, deployed on [Webflow Cloud](https://developers.webflow.com/webflow-cloud)
-so it serves from a path on the Webflow site itself and drops into any Webflow
-page. Built by the marketing team at [Plum](https://plumhq.com).
+An interactive map of places, routes, clinics, kitchens and communities for
+looking after yourself in Mumbai, built as an [Astro](https://astro.build)
+site. Built by the marketing team at [Plum](https://plumhq.com).
 
-Live at **<https://www.plumhq.com/health-map/bengaluru>**
+It is a copy of the [Bengaluru Wellness Map](https://www.plumhq.com/health-map/bengaluru),
+with the city swapped. Most of this README was written for Bengaluru and still
+describes the code accurately; where it names Bengaluru's data, read Mumbai's.
+
+## Mumbai: what changed, what is still to do
+
+**Changed**
+
+- **City outline**: the BMC area, which OpenStreetMap has as Mumbai City
+  District (relation 7964376) plus Mumbai Suburban District (7964375). The
+  outline is the two joined along their shared border.
+- **"Corporations" are BMC's six zones** (OSM relations 7888964–7888969).
+  The code still calls them corporations. Keys, names and colours are in
+  `src/data/corporations.json`: `South` (Zone 1, South Mumbai), `Central`
+  (Zone 2), `West` (Zone 3, Bandra–Andheri), `NorthWest` (Zone 4,
+  Goregaon–Dahisar), `East` (Zone 5, Kurla–Chembur–Govandi), `NorthEast`
+  (Zone 6, Ghatkopar–Bhandup–Mulund). Use these keys in an entry's `rg`.
+- **Wards** are BMC's 24 administrative wards (A Ward … T Ward), each labelled
+  with the neighbourhoods it is known by.
+- **Metro**: the running Mumbai Metro lines and stations from OSM.
+- **Green roads**: rebuilt over Mumbai's parks and forests.
+- All the on-page text says Mumbai.
+
+**Cleared, waiting for Mumbai data**
+
+- Places (`sources/entries/healthmap_v8_recategorised.csv`, header only)
+- Routes (`sources/routes/*.csv`, header only)
+- Parks: Bengaluru's came from the BBMP register. Mumbai has none yet.
+- Communities (`src/data/community-categories.json`), themed days
+  (`src/data/themed-days.json`), map ornaments (`src/data/ambient.json`)
+
+**Kept as they were**
+
+- Plum Perks partner brands and the online Plum events, which are not
+  tied to a city. One perk, Praan Health, is listed at Koramangala.
+- **All the artwork**, which is still Bengaluru's as a placeholder: the hero,
+  the stamp, the "Be well, Bengaluru" logos, the vignettes and the share
+  image `og-be-well-bengaluru-3.jpg`. Their alt text still says Bengaluru
+  because it describes the images. Change both together.
+- The Plum HQ pin is hidden, since it is in Bengaluru (`PLUM_HQ` in
+  `src/scripts/wellness-map.js`).
+- The disclaimers still name the courts at Bengaluru, since that is
+  Plum's legal seat and not the map's city.
 
 ## What it is
 

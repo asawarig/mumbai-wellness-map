@@ -199,7 +199,7 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
              rows under a filter that could not touch them. -->
         <div class="results-tabs" id="results-tabs" role="group" aria-label="Which partners" hidden>
           <button type="button" class="results-tab" data-list-tab="places" aria-pressed="true">
-            In Bengaluru <em data-tab-count="places"></em>
+            In Mumbai <em data-tab-count="places"></em>
           </button>
           <button type="button" class="results-tab" data-list-tab="online" aria-pressed="false">
             Online <em data-tab-count="online"></em>
@@ -209,7 +209,7 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
       {/* All lists every place but the partners; Plum Perks lists only the
           partners; Delivery only lists the kitchens with no dine-in, the ones
           tagged delivery-only in entries.json. */}
-      <p class="list-explore desk-only" id="list-explore">Explore in Bengaluru</p>
+      <p class="list-explore desk-only" id="list-explore">Explore in Mumbai</p>
       <div class="list-tabs list-mode" id="list-mode" role="group" aria-label="Which places to list" style={`--star-shape:url('${base}icons/perk-star-blank.svg')`}>
         <button type="button" class="list-tab" data-mode="all" aria-pressed="true">All</button>
         <button type="button" class="list-tab list-tab-perk" data-mode="perks" aria-pressed="false">Plum Perks</button>
@@ -276,8 +276,8 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
         the map under its window and filters it to what the line says
         (data-area, data-intents, data-perks; wellness-map.js). */}
     {!embed && (
-    <div class="intro story" id="intro" role="dialog" aria-modal="true" aria-label="About the Bengaluru Wellness Map">
-      <h1 class="sr-only">Bengaluru Wellness Map, by Plum Perks</h1>
+    <div class="intro story" id="intro" role="dialog" aria-modal="true" aria-label="About the Mumbai Wellness Map">
+      <h1 class="sr-only">Mumbai Wellness Map, by Plum Perks</h1>
       <div class="story-veil" id="story-veil" aria-hidden="true"></div>
       {/* The intro is one sentence, the map's own: "I want to … in …", set in
           the same coloured words as the picker. Each word is live: pressing
@@ -291,7 +291,7 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
           live: pressing one goes to the map with the sentence started from it. */}
       <div class="story-card story-paper" id="story-card">
         <header class="story-head">
-          {/* The map's name as its logo: "Be well, Bengaluru". A wide screen has
+          {/* The map's name as its logo: "Be well, Mumbai". A wide screen has
               it over a sleeping dog; a phone, with "by Plum Perks" beside it. */}
           <p class="story-kicker"><img class="brand-mark" src={`${base}be-well-logo-long.svg`} alt="Be well, Bengaluru" width="184" height="98" /> <span>by Plum Perks</span></p>
           <img class="story-dog-ph" src={`${base}art/sleeping-dog.png`} alt="" aria-hidden="true" width="640" height="340" />
@@ -301,17 +301,17 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
           <img class="story-dog" src={`${base}art/sleeping-dog.png`} alt="" aria-hidden="true" width="640" height="340" />
           <div class="story-slides" aria-live="polite">
             <div class="story-slide" data-slide="0">
-              <p>Bengaluru has more wellness spots than you’ve had time to find. So we made a map that’ll help you <button type="button" class="story-pick story-pick-go" data-story-pick="all" style="--c:#E2DFD7">get healthy</button> in any part of the city.</p>
+              <p>Mumbai has more wellness spots than you’ve had time to find. So we made a map that’ll help you <button type="button" class="story-pick story-pick-go" data-story-pick="all" style="--c:#E2DFD7">get healthy</button> in any part of the city.</p>
             </div>
-            <div class="story-slide" data-slide="1" data-area="Yeshwanthpur" data-intents="eat" hidden>
-              <p>For instance, you’re in <span class="story-pick" style="--c:#E2DFD7">Yeshwanthpur</span> and trying to <span class="story-pick" style="--c:#90E07E">eat better</span>. We show you every healthy kitchen near you.</p>
+            <div class="story-slide" data-slide="1" data-area="Bandra" data-intents="eat" hidden>
+              <p>For instance, you’re in <span class="story-pick" style="--c:#E2DFD7">Bandra</span> and trying to <span class="story-pick" style="--c:#90E07E">eat better</span>. We show you every healthy kitchen near you.</p>
             </div>
-            <div class="story-slide" data-slide="2" data-area="Sadashiva Nagar" data-plan="1" hidden>
-              <p>Or let us <span class="story-pick" style="--c:#1E1B18;--ink:#F5F4F0">plan your day</span>: we’ve curated some of the best wellness activities in Bengaluru just for you.</p>
+            <div class="story-slide" data-slide="2" data-area="Dadar" data-plan="1" hidden>
+              <p>Or let us <span class="story-pick" style="--c:#1E1B18;--ink:#F5F4F0">plan your day</span>: we’ve curated some of the best wellness activities in Mumbai just for you.</p>
             </div>
             <div class="story-slide" data-slide="3" data-perks="1" hidden>
               <p>Every healthy spot in the city we could find, on one map.</p>
-              <p class="story-note">Also find the wellness spots in Bengaluru where you get discounts through <span class="story-perks-pair"><a href="https://www.plumhq.com/perks" target="_blank" rel="noopener" class="story-pick story-perks-link" id="story-perks" style="--c:#571541;--ink:#FFFFFF">Plum Perks</a> <img class="story-perk-star" src={`${base}icons/perk-star-pin.svg`} alt="(the star on the map)" width="22" height="22" /></span> — some of India’s best wellness brands now live in the <a id="story-app" href="https://www.plumhq.com/app" target="_blank" rel="noopener">Plum app</a>.</p>
+              <p class="story-note">Also find the wellness spots in Mumbai where you get discounts through <span class="story-perks-pair"><a href="https://www.plumhq.com/perks" target="_blank" rel="noopener" class="story-pick story-perks-link" id="story-perks" style="--c:#571541;--ink:#FFFFFF">Plum Perks</a> <img class="story-perk-star" src={`${base}icons/perk-star-pin.svg`} alt="(the star on the map)" width="22" height="22" /></span> — some of India’s best wellness brands now live in the <a id="story-app" href="https://www.plumhq.com/app" target="_blank" rel="noopener">Plum app</a>.</p>
             </div>
           </div>
           <div class="story-nav">
@@ -509,7 +509,7 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
         <div class="pw-pane" data-pane="suggest" hidden>
           <p class="s-kick">Suggest a place</p>
           <p class="s-big">Know somewhere we&rsquo;ve missed?</p>
-          <iframe data-tally-src="https://tally.so/embed/gDEb24?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="482" frameborder="0" marginheight="0" marginwidth="0" title="Contribute to Bengaluru Wellness Map"></iframe>
+          <iframe data-tally-src="https://tally.so/embed/gDEb24?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="482" frameborder="0" marginheight="0" marginwidth="0" title="Contribute to Mumbai Wellness Map"></iframe>
         </div>
         <div class="pw-pane" data-pane="partner" hidden>
           <p class="s-kick">Partner with us</p>
@@ -565,9 +565,9 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
               places that already sit in the categories to the left, the other
               ships to the whole country — so the two sit at the end of the
               row, in the gift rather than an illustrated mark. */}
-          <button type="button" class="index-chip index-chip-perk" data-index-intent="perks-bengaluru" aria-pressed="false">
+          <button type="button" class="index-chip index-chip-perk" data-index-intent="perks-mumbai" aria-pressed="false">
             <Fragment set:html={PERK_GLYPH} />
-            Plum Perks in Bengaluru
+            Plum Perks in Mumbai
           </button>
           <button type="button" class="index-chip index-chip-perk" data-index-intent="online" aria-pressed="false">
             <Fragment set:html={PERK_GLYPH} />

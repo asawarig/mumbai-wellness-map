@@ -13,9 +13,10 @@
  *                typed on, and the build refuses a row where the two disagree.
  *   out          derived from whether the pin falls inside the gazetted box,
  *                because the sheet exports every row as 0.
- *   rg           kept when it is one of the five corporations; otherwise taken
- *                from the row already in entries.json ("South-east" and
- *                "North-west" are directions, not corporations).
+ *   rg           kept when it is one of the six zone keys (scripts/zones.mjs
+ *                folds "SoBo", "Western Suburbs" and the like onto them);
+ *                otherwise the row already in entries.json, and failing that
+ *                the zone the pin falls in.
  *   map_eligible honoured: "no" drops the coordinates, so the entry stays in
  *                the list and off the map. That is how the sheet marks a place
  *                the parks layer already pins, or a route still being traced.
@@ -33,6 +34,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SUBCAT } from '../src/lib/categories.js';
+import { ZONE_KEYS, RG_ALIAS, zoneAt } from './zones.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CSV = path.resolve(ROOT, process.argv[2] || 'sources/entries/healthmap_v8_recategorised.csv');
@@ -40,24 +42,7 @@ const OUT = path.join(ROOT, 'src/data/entries.json');
 
 const city = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/city.json'), 'utf8'));
 const [S, W, N, E] = city.box;
-const CORPS = new Set(
-  JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/corporations.json'), 'utf8')).map((c) => c.k),
-);
-/* Directional sheet values that are not corporation keys. */
-const RG_ALIAS = {
-  'South East': 'East',
-  'Southeast': 'East',
-  'South-east': 'East',
-  'North East': 'East',
-  'Northeast': 'East',
-  'North-east': 'East',
-  'North West': 'West',
-  'Northwest': 'West',
-  'North-west': 'West',
-  'South West': 'West',
-  'Southwest': 'West',
-  'South-west': 'West',
-};
+const CORPS = ZONE_KEYS;
 /* v8 branch rows under an act_ prefix, folded onto the sub-category each one
    already has. The s column on every row confirms the pairing, and dental has
    166 rows of precedent in the sheet itself. Pharmacy is the one with no
@@ -204,6 +189,8 @@ for (const row of body) {
     if (was && CORPS.has(was)) { rg = was; stats.fixedRg++; }
     else { rg = ''; stats.droppedRg++; }
   }
+  /* Blank or unknown: the zone the pin is in. */
+  if (!rg && !out) rg = zoneAt(lon, lat);
 
   const entry = {
     id,

@@ -17,7 +17,7 @@ import path from 'node:path';
    one as `base` at build time and overrides whatever is committed, so this is
    only ever used to make a local build look like production:
 
-     BASE_PATH=/health-map/bengaluru npm run preview
+     BASE_PATH=/health-map/mumbai npm run preview
 */
 /* Which host this build is for. Vercel sets VERCEL=1 at build time, but only
    while "Enable access to System Environment Variables" is ticked in the
@@ -44,8 +44,8 @@ const site = process.env.SITE_URL || 'https://www.plumhq.com';
    Webflow Cloud then serves dist/client from the mount path — so the prefix
    lands twice and the whole site sits one level too deep:
 
-     disk dist/client/health-map/bengaluru/X  ->  URL /health-map/bengaluru/health-map/bengaluru/X
-     disk dist/client/X                       ->  URL /health-map/bengaluru/X   <- wanted
+     disk dist/client/health-map/mumbai/X  ->  URL /health-map/mumbai/health-map/mumbai/X
+     disk dist/client/X                       ->  URL /health-map/mumbai/X   <- wanted
 
    base:'/' fixes it locally and is silently discarded in production, because
    Webflow injects the mount path as `base` at build time. Flattening after the

@@ -1,37 +1,44 @@
 [
   {
-    "k": "Central",
-    "label": "Bengaluru Central",
+    "k": "South",
+    "label": "South Mumbai",
     "c": "#A9DCCB",
     "tone": "#1F7F66",
-    "km2": 78
+    "km2": 30
   },
   {
-    "k": "North",
-    "label": "Bengaluru North",
+    "k": "Central",
+    "label": "Central Mumbai",
     "c": "#C9BCEC",
     "tone": "#6344A8",
-    "km2": 160
-  },
-  {
-    "k": "East",
-    "label": "Bengaluru East",
-    "c": "#D3D08A",
-    "tone": "#676420",
-    "km2": 164
-  },
-  {
-    "k": "South",
-    "label": "Bengaluru South",
-    "c": "#F4D77E",
-    "tone": "#94700F",
-    "km2": 153
+    "km2": 41
   },
   {
     "k": "West",
-    "label": "Bengaluru West",
+    "label": "Western Suburbs",
     "c": "#F4BACA",
     "tone": "#C93A64",
-    "km2": 164
+    "km2": 70
+  },
+  {
+    "k": "NorthWest",
+    "label": "Northern Western Suburbs",
+    "c": "#B8D6F2",
+    "tone": "#2F68A3",
+    "km2": 154
+  },
+  {
+    "k": "East",
+    "label": "Eastern Suburbs",
+    "c": "#D3D08A",
+    "tone": "#676420",
+    "km2": 73
+  },
+  {
+    "k": "NorthEast",
+    "label": "Northern Eastern Suburbs",
+    "c": "#F4D77E",
+    "tone": "#94700F",
+    "km2": 109
   }
 ]

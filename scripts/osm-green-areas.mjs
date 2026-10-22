@@ -1,5 +1,5 @@
 /* Builds public/data/green-roads.json: the stretches of road and footpath
- * that run through Bengaluru's green areas. The basemap outlines those roads
+ * that run through Mumbai's green areas. The basemap outlines those roads
  * in green and draws those paths in green; everywhere else roads have no
  * outline and paths are grey (basemap.js, setGreenRoads).
  *
@@ -24,9 +24,9 @@
 
 import { writeFileSync, mkdirSync } from 'node:fs';
 
-const UA = 'bengaluru-wellness-map/1.0 (green areas build script)';
+const UA = 'mumbai-wellness-map/1.0 (green areas build script)';
 /* south, west, north, east: the city and a margin, as the map's grid. */
-const BBOX = '12.70,77.30,13.25,77.95';
+const BBOX = '18.85,72.72,19.33,73.05';
 const MIN_AREA = 2000; // m²
 const TOLERANCE = 0.00002; // degrees, about 2 m
 const OUT = 'public/data/green-roads.json';
@@ -45,6 +45,7 @@ async function overpass(q) {
         method: 'POST',
         headers: { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
         body: 'data=' + encodeURIComponent(q),
+          signal: AbortSignal.timeout(240000), // a hung mirror must not stall the run
       });
       if (res.ok) return (await res.json()).elements;
       errors.push(`${new URL(url).host} ${res.status}`);

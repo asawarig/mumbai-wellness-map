@@ -1,5 +1,5 @@
 /* Builds src/data/region.json: the edge of the map — a circle round
- * Bengaluru, wide enough to take in the greater area its places reach into.
+ * Mumbai, wide enough to take in the greater area its places reach into.
  *
  *   node scripts/build-region.mjs
  *

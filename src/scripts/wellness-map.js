@@ -1,4 +1,4 @@
-/* The Bengaluru Wellness Map.
+/* The Mumbai Wellness Map.
  *
  * A framed map with its chrome laid over it (see WellnessMap.astro). The legend
  * top-left is the intent filter (src/lib/intents.js) and holds the area picker;
@@ -86,9 +86,9 @@ if (!document.getElementById('map')) throw new Error('Wellness map: #map is not 
 
 const BASE = import.meta.env.BASE_URL || '/';
 /* BASE keeps whatever trailing slash astro.config.mjs gave it, which off Webflow
-   is "/" and on Webflow is "/health-map/bengaluru" with none. Anything that
+   is "/" and on Webflow is "/health-map/mumbai" with none. Anything that
    concatenates a path onto it has to add the slash itself — iconUrl does, and a
-   logo src that did not shipped "/health-map/bengalurulogos/perks/x.png" to
+   logo src that did not shipped "/health-map/mumbailogos/perks/x.png" to
    production while working everywhere it was tested, because only Webflow sets
    a base at all. */
 const BASE_PATH = BASE.endsWith('/') ? BASE : `${BASE}/`;
@@ -227,7 +227,7 @@ const isMapsUrl = (u) => isReal(u)
 const placeIdOf = (u) => (String(u || '').match(/place_id[:=]([A-Za-z0-9_-]{20,})/) || [])[1] || '';
 function mapsUrlFor(r) {
   const name = String(r.n || '').replace(/\s+—\s+.*$/, '').trim();
-  const where = r.ad || [r.a, 'Bengaluru'].filter(Boolean).join(', ');
+  const where = r.ad || [r.a, 'Mumbai'].filter(Boolean).join(', ');
   const pid = placeIdOf(r.gm);
   if (!pid && isMapsUrl(r.gm) && !/[?&]q=place_id|query=Google&/.test(r.gm)) return r.gm;
   const q = encodeURIComponent(where ? `${name}, ${where}` : name);
@@ -302,7 +302,7 @@ function dayBlockHtml() {
 function planMapsUrl(stops) {
   const at = stops.filter((r) => r.lat != null);
   if (at.length < 2) return '';
-  const said = (r) => `${String(r.n || '').replace(/\s+—\s+.*$/, '').trim()}, ${r.ad || [r.a, 'Bengaluru'].filter(Boolean).join(', ')}`;
+  const said = (r) => `${String(r.n || '').replace(/\s+—\s+.*$/, '').trim()}, ${r.ad || [r.a, 'Mumbai'].filter(Boolean).join(', ')}`;
   const first = at[0], last = at[at.length - 1], mid = at.slice(1, -1);
   const q = new URLSearchParams({ api: '1', origin: said(first), destination: said(last), travelmode: 'walking' });
   if (placeIdOf(first.gm)) q.set('origin_place_id', placeIdOf(first.gm));
@@ -366,7 +366,7 @@ const state = {
   /* A random rank per entry once Randomize has been pressed. */
   shuffle: null,
   /* Which half of the Perks answer the list is showing: the places in
-     Bengaluru, or the brands that ship to it. */
+     Mumbai, or the brands that ship to it. */
   listTab: 'places',
 };
 
@@ -380,8 +380,8 @@ const footText =
   + 'City, corporation and ward boundaries and metro lines © OpenStreetMap contributors. '
   + COUNTS.total + ' entries compiled by hand: ' + COUNTS.mapped + ' pinned, '
   + COUNTS.unpinned + ' with no fixed address, ' + COUNTS.outside + ' starting outside the city limits. '
-  + 'Plus ' + COUNTS.parks + ' parks from the BBMP register. '
-  + 'Greater Bengaluru covers ' + DB.gba_km2 + ' km² across five city corporations. '
+  + 'Plus ' + COUNTS.parks + ' parks from the city parks register. '
+  + 'Mumbai covers ' + DB.gba_km2 + ' km² across the BMC\u2019s six zones. '
   + 'Last reviewed September 2026. Not medical advice.';
 
 const footEl = document.getElementById('foot');
@@ -431,7 +431,7 @@ function openResultsList() {
 }
 
 /* On a phone the prompt folds to its two lines ("I want to be well",
-   "in Bengaluru"), so the list and the map have the screen; a chevron on it
+   "in Mumbai"), so the list and the map have the screen; a chevron on it
    opens and folds it, and opening the list folds it. */
 /* On a phone the paper map is one card too: the sentence and the list are
    halves of it, so folding the sentence folds the card to its first line and
@@ -1305,7 +1305,7 @@ function openCliff(view = 'about') {
    left out of the communities altogether. */
 const COMMUNITY_OTHER = 'Other';
 const communityKey = (s) => String(s || '').toLowerCase().replace(/\(.*?\)/g, ' ').replace(/[^a-z0-9]+/g, ' ')
-  .replace(/\b(the|bangalore|bengaluru|community|club|blr)\b/g, ' ').replace(/\s+/g, '').trim();
+  .replace(/\b(the|bangalore|bengaluru|mumbai|bombay|community|club|blr)\b/g, ' ').replace(/\s+/g, '').trim();
 const COMMUNITY_INDEX = COMMUNITY_CATEGORIES.communities.map((c) => [communityKey(c.name), c.category]);
 function communityCategory(r) {
   const k = communityKey(r.n);
@@ -1411,23 +1411,23 @@ document.getElementById('close-cliff')?.addEventListener('click', closeCliff);
 
 const rgEl = document.getElementById('rg');
 if (rgEl) {
-  rgEl.innerHTML = '<option value="all">All five corporations</option>'
+  rgEl.innerHTML = '<option value="all">All six zones</option>'
     + DB.corps.map(c => `<option value="${c.k}">${esc(c.label)} (${c.n})</option>`).join('')
-    + '<option value="none">No fixed corporation</option>';
+    + '<option value="none">No fixed zone</option>';
 }
 
 const areaEl = document.getElementById('area');
 const areaMobileEl = document.getElementById('area-mobile');
 function fillAreaSelect(el) {
   if (!el) return;
-  el.innerHTML = '<option value="all">Bengaluru</option>'
+  el.innerHTML = '<option value="all">Mumbai</option>'
     + (DB.areasByPins || []).map((a) => `<option value="${esc(a)}">${esc(a)}</option>`).join('');
   el.value = state.area;
 }
 fillAreaSelect(areaEl);
 fillAreaSelect(areaMobileEl);
 
-/* The index keeps its own area, from the same list, starting on all of Bengaluru. */
+/* The index keeps its own area, from the same list, starting on all of Mumbai. */
 const indexAreaEl = document.getElementById('index-area');
 fillAreaSelect(indexAreaEl);
 if (indexAreaEl) {
@@ -1473,7 +1473,7 @@ function syncPromptLabels() {
   const iBtn = document.getElementById('prompt-intent-btn');
   const aBtn = document.getElementById('prompt-area-btn');
   if (iBtn) iBtn.textContent = intentSummary();
-  if (aBtn) aBtn.textContent = state.area === 'all' ? 'Bengaluru' : state.area;
+  if (aBtn) aBtn.textContent = state.area === 'all' ? 'Mumbai' : state.area;
   if (typeof renderSentence === 'function') renderSentence();
   const allOn = selectedMapIntents().length >= MAP_INTENTS.length;
   document.getElementById('prompt-all')?.setAttribute('aria-pressed', String(allOn));
@@ -1531,7 +1531,7 @@ function filterAreaList(q) {
   const words = String(q || '').trim().toLowerCase();
   document.querySelectorAll('#prompt-area-list > li').forEach((li) => {
     const name = li.querySelector('[data-area]')?.dataset.area || '';
-    const label = name === 'all' ? 'bengaluru' : name.toLowerCase();
+    const label = name === 'all' ? 'mumbai' : name.toLowerCase();
     li.hidden = !!words && !label.includes(words);
   });
 }
@@ -2122,7 +2122,7 @@ function renderSentence() {
       <button type="button" class="s-bubble s-quiet" data-s-close="${k}">close</button>
     </div>`;
   const rest = SENTENCE_KINDS.filter((k) => !chosen.includes(k));
-  const areaName = state.area === 'all' ? 'Bengaluru' : state.area;
+  const areaName = state.area === 'all' ? 'Mumbai' : state.area;
   const q = sentence.areaQuery.trim().toLowerCase();
   const areas = (DB.areasByPins || []).filter((a) => !q || a.toLowerCase().includes(q)).slice(0, q ? 24 : 12);
   /* Days whose main thing is what was picked come first, then days that take
@@ -2183,7 +2183,7 @@ function renderSentence() {
       return words.join('') + `<span class="s-tail">${last}${plus}</span>`;
     })()}</div>
     ${sentence.open === '+' ? `<div class="s-tray" role="group" aria-label="Add to the day">${planRest.map((k) => `<button type="button" class="s-bubble" data-s-padd="${k}" style="${tint(k)}">${esc(INTENT_BY_K[k].prompt)}</button>`).join('')}</div>` : ''}
-    <div class="s-line s-line-area"><span class="s-say">in</span><span class="s-chip"><button type="button" class="s-word s-place" data-s-area-open="1" aria-expanded="${sentence.open === 'area'}">${esc(areaName)}</button>${state.area !== 'all' ? '<button type="button" class="s-x" data-s-area="all" aria-label="Anywhere in Bengaluru"><svg class="s-x-ic" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 2.5l5 5M7.5 2.5l-5 5"/></svg></button>' : ''}</span>
+    <div class="s-line s-line-area"><span class="s-say">in</span><span class="s-chip"><button type="button" class="s-word s-place" data-s-area-open="1" aria-expanded="${sentence.open === 'area'}">${esc(areaName)}</button>${state.area !== 'all' ? '<button type="button" class="s-x" data-s-area="all" aria-label="Anywhere in Mumbai"><svg class="s-x-ic" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 2.5l5 5M7.5 2.5l-5 5"/></svg></button>' : ''}</span>
       <button type="button" class="s-go" data-s-make="1" ${sentence.plan.length ? '' : 'disabled'}>${madeKey() && sentence.madeFor === madeKey() ? 'another day →' : 'make my day →'}</button></div>
     ${sentence.open === 'area' ? `<div class="s-tray s-areas">
       <input type="search" class="s-find" id="s-find" placeholder="Find a part of town" value="${esc(sentence.areaQuery)}" autocomplete="off" spellcheck="false" aria-label="Find a part of town">
@@ -2222,12 +2222,12 @@ function renderSentence() {
     </div>` : ''}
     <div class="s-line s-line-area">
       <span class="s-say">in</span>
-      <span class="s-chip"><button type="button" class="s-word s-place" data-s-area-open="1" aria-expanded="${sentence.open === 'area'}">${esc(areaName)}</button>${state.area !== 'all' ? '<button type="button" class="s-x" data-s-area="all" aria-label="Anywhere in Bengaluru"><svg class="s-x-ic" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 2.5l5 5M7.5 2.5l-5 5"/></svg></button>' : ''}</span>
+      <span class="s-chip"><button type="button" class="s-word s-place" data-s-area-open="1" aria-expanded="${sentence.open === 'area'}">${esc(areaName)}</button>${state.area !== 'all' ? '<button type="button" class="s-x" data-s-area="all" aria-label="Anywhere in Mumbai"><svg class="s-x-ic" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 2.5l5 5M7.5 2.5l-5 5"/></svg></button>' : ''}</span>
     </div>
     ${sentence.open === 'area' ? `<div class="s-tray s-areas">
       <input type="search" class="s-find" id="s-find" placeholder="Find a part of town" value="${esc(sentence.areaQuery)}" autocomplete="off" spellcheck="false" aria-label="Find a part of town">
       <div class="s-area-list">
-        ${state.area !== 'all' ? '<button type="button" class="s-bubble s-quiet" data-s-area="all">all of Bengaluru</button>' : ''}
+        ${state.area !== 'all' ? '<button type="button" class="s-bubble s-quiet" data-s-area="all">all of Mumbai</button>' : ''}
         ${areas.map((a) => `<button type="button" class="s-bubble s-quiet" data-s-area="${esc(a)}" aria-pressed="${a === state.area}">${esc(a)}</button>`).join('')}
       </div>
     </div>` : ''}
@@ -2336,8 +2336,8 @@ promptEl?.addEventListener('click', (e) => {
       return;
     }
     if (!plan) { if (note) { note.textContent = 'Couldn’t find all of that close together there. Try another part of town, or fewer things.'; note.hidden = false; } return; }
-    /* The sentence keeps the place the reader chose: "in Bengaluru" stays
-       Bengaluru even though the day was found in one part of it. */
+    /* The sentence keeps the place the reader chose: "in Mumbai" stays
+       Mumbai even though the day was found in one part of it. */
     showPlanned(plan.stops, `A day in ${plan.area}`, state.area);
     /* The button turns to "another day" while the words and the part of town
        are the ones this day was made from. */
@@ -3022,7 +3022,7 @@ function inPlace(r){
   if (state.area !== 'all') return r.a === state.area;
   /* Corporation filter only when browsing citywide — never AND with area. */
   if (state.rg !== 'all' && (state.rg === 'none' ? !!r.rg : r.rg !== state.rg)) return false;
-  /* “in Bengaluru” = inside the city. Day trips stay out of the citywide browse. */
+  /* “in Mumbai” = inside the city. Day trips stay out of the citywide browse. */
   return !r.out;
 }
 
@@ -3444,7 +3444,7 @@ function focusPoints(pts, maxZoom = FOCUS_ZOOM){
 }
 
 let cityZoom = null;
-/* On desktop, Bengaluru opens a touch closer than a full fit so the city reads
+/* On desktop, Mumbai opens a touch closer than a full fit so the city reads
    at a comfortable size. 100% remains “city fills the frame”; the default is 140%. */
 const CITY_DEFAULT_SCALE = 1.4;
 /* The whole-city view. On the paper map's desktop the card floats over the
@@ -3543,7 +3543,7 @@ legendToggle?.addEventListener('click', () => {
 
 /* ---------- zoom, scale and compass ----------
    The zoom readout is relative to the whole-city view: 100% is the city
-   filling the frame. Desktop’s Bengaluru default is 140% of that, centred. */
+   filling the frame. Desktop’s Mumbai default is 140% of that, centred. */
 zoomIn?.addEventListener('click', () => map?.zoomIn());
 zoomOut?.addEventListener('click', () => map?.zoomOut());
 zoomPct?.addEventListener('click', () => fitCity());
@@ -3709,7 +3709,7 @@ const ROUTE_RIDE = '#EEFFCE';
 const ROUTE_CASING = '#3F2F8F';
 /* The chevrons along a route: a soft violet-grey, so they read without shouting. */
 const ROUTE_ARROW = '#968FC0';
-/* OSM's Yellow Line yellow disappears into the South corporation's ground, so
+/* The Yellow Line's yellow disappears into the North-east zone's ground, so
    it is drawn a deeper mustard. */
 const METRO_INK = { '#E2B100': '#B88600' };
 
@@ -4211,7 +4211,7 @@ function addOverlays(){
      names and everything drawn on the map. A test. */
   if (POSTER && !map.getSource('grid')) {
     const lines = [];
-    const [w, sth, e, n] = [77.30, 12.70, 77.95, 13.25];
+    const [w, sth, e, n] = [72.72, 18.85, 73.05, 19.33];
     for (let x = w; x <= e + 1e-9; x += 0.01) lines.push([[+x.toFixed(2), sth], [+x.toFixed(2), n]]);
     for (let y = sth; y <= n + 1e-9; y += 0.01) lines.push([[w, +y.toFixed(2)], [e, +y.toFixed(2)]]);
     map.addSource('grid', { type: 'geojson', data: { type: 'Feature', properties: {}, geometry: { type: 'MultiLineString', coordinates: lines } } });
@@ -4340,7 +4340,9 @@ function addOverlays(){
    under the pointer; a tap gives its line. */
 const PLUM_HQ = {
   name: 'Plum HQ',
-  at: [77.7324518, 12.9890782], /* Primeco Union City, ITPB Main Road */
+  /* Plum's office is in Bengaluru, off this map, so no pin. Set [lon, lat]
+     to show one (Bengaluru's was [77.7324518, 12.9890782]). */
+  at: null,
 };
 const hqEl = document.createElement('div');
 hqEl.className = 'pin-label map-tip hq-tip';
@@ -4362,7 +4364,7 @@ let hqPinned = false, hqMarker = null;
 /* A marker rather than a map layer, so it can grow a little under the
    pointer (less than a place's pin does), its edge keeping its width. */
 function addPlumHQ() {
-  if (hqMarker) return;
+  if (hqMarker || !PLUM_HQ.at) return;
   const el = document.createElement('button');
   el.type = 'button';
   el.className = 'hq-pin';
@@ -5382,7 +5384,7 @@ function syncSearchPanel(items){
   /* A search reads the whole city, so the heading has to say so rather than
      name the area the reader had picked — the results are no longer from it. */
   const searching = !!wordsOf(state.query).length;
-  const areaName = searching || state.area === 'all' ? 'Bengaluru' : state.area;
+  const areaName = searching || state.area === 'all' ? 'Mumbai' : state.area;
   /* The line over the list's All | Plum Perks names the place it covers. */
   const explore = document.getElementById('list-explore');
   if (explore) explore.textContent = `Explore in ${areaName}`;
@@ -5481,7 +5483,7 @@ function syncSearchPanel(items){
   /* A planned day names its own part of town. */
   if (state.area !== 'all' && !plan) {
     notice += `<div class="notice">Showing <b>${esc(state.area)}</b>.
-      <button type="button" class="lnk" id="clearArea">All of Bengaluru</button></div>`;
+      <button type="button" class="lnk" id="clearArea">All of Mumbai</button></div>`;
   }
   if (out) notice += `<div class="notice"><b>${out} fall outside the city limits.</b></div>`;
   if (noticeEl) noticeEl.innerHTML = notice;
@@ -5505,7 +5507,7 @@ function syncSearchPanel(items){
     listItems = brands;
     listShown = 0;
     cardsEl.innerHTML = onlineChipsHtml(state.query) + (brands.length ? '' : `<div class="empty"><b>No brand matches that.</b>
-      Try another word, or look in Bengaluru.</div>`);
+      Try another word, or look in Mumbai.</div>`);
     fillList();
     return;
   }
@@ -6095,7 +6097,7 @@ function renderIndex(){
 
   /* The brands ride along with everything, because unlike the places above
      they appear nowhere else on the page. An area picked in the grid is a
-     Bengaluru locality, which none of them have, so the section stands down
+     Mumbai locality, which none of them have, so the section stands down
      rather than claiming to be in it. */
   const showBrands = (state.indexIntent === 'all' || onlineTab) && state.indexArea === 'all';
   const brandSection = showBrands ? perksSectionHtml(brands, BASE) : '';
@@ -6107,7 +6109,7 @@ function renderIndex(){
     const filtering = words.length || state.indexIntent !== 'all' || state.indexArea !== 'all' || perksOn;
     indexSub.textContent = filtering
       ? `${shown} of ${E.length + (PERKS.perks || []).length}`
-      : `${COUNTS.total} entries · ${COUNTS.parks} BBMP parks · ${COUNTS.verified} verified`;
+      : `${COUNTS.total} entries · ${COUNTS.parks} city parks · ${COUNTS.verified} verified`;
   }
   syncIndexFilters();
   equaliseIndexCards();

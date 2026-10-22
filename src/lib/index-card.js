@@ -202,8 +202,8 @@ export function indexCardHtml(r, base = '/', { openInMap = false } = {}) {
  * the card carries no data-id for the map's click handler to find. */
 export const PERKS_ONLINE_KEY = 'online';
 export const PERKS_ONLINE_LABEL = 'Plum Perks online';
-export const PERKS_PLACES_KEY = 'perks-bengaluru';
-export const PERKS_PLACES_LABEL = 'Plum Perks in Bengaluru';
+export const PERKS_PLACES_KEY = 'perks-mumbai';
+export const PERKS_PLACES_LABEL = 'Plum Perks in Mumbai';
 
 /* The gift from the toolbar's icon set, so a Perks chip fills the same icon
    slot the category chips do. Without it the label started where the others'

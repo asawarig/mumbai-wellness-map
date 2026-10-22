@@ -28,7 +28,7 @@ const areas = DB.areasByPins || [];
 
 <form class={`prompt${docked ? ' prompt-docked' : ''}`} id="prompt">
   {/* Each label sits in its row, so docked it reads on one line with its
-      word: "I want to be well", "in Bengaluru". */}
+      word: "I want to be well", "in Mumbai". */}
   <div class="prompt-row">
     <p class="prompt-line">I want to</p>
     {/* No longer a dropdown: the activities are always out, so the heading
@@ -72,7 +72,7 @@ const areas = DB.areasByPins || [];
   <div class="prompt-row">
     <p class="prompt-line">in</p>
     <button type="button" class="prompt-value" id="prompt-area-btn"
-      aria-expanded="false" aria-controls="prompt-area-panel">Bengaluru</button>
+      aria-expanded="false" aria-controls="prompt-area-panel">Mumbai</button>
   </div>
 
   <!-- 349 areas is too many to scroll, so the place picker filters as you
@@ -83,7 +83,7 @@ const areas = DB.areasByPins || [];
     <ul class="prompt-opts prompt-areas" id="prompt-area-list">
       <li>
         <button type="button" class="prompt-opt" data-area="all" aria-pressed="true">
-          <span class="prompt-opt-name">Bengaluru</span>
+          <span class="prompt-opt-name">Mumbai</span>
           <em class="prompt-opt-note">everywhere</em>
         </button>
       </li>

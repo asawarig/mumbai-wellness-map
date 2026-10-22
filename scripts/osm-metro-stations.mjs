@@ -1,17 +1,17 @@
-/* Builds src/data/metro-stations.json: the Namma Metro stations that are open.
+/* Builds src/data/metro-stations.json: the Mumbai Metro stations that are open.
  *
  *   node scripts/osm-metro-stations.mjs
  *
- * Takes OpenStreetMap's stop positions and stations for Namma Metro (the
+ * Takes OpenStreetMap's stop positions and stations for Mumbai Metro (the
  * nodes on the route=subway relations osm-metro.mjs draws), keeps one point
  * per named station, and drops any still tagged as under construction.
  */
 import { writeFileSync } from 'node:fs';
 
-const UA = 'bengaluru-wellness-map/1.0 (metro stations build script)';
+const UA = 'mumbai-wellness-map/1.0 (metro stations build script)';
 const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
 const Q = `[out:json][timeout:90];
-rel["route"="subway"]["network"~"Namma Metro|BMRCL",i];
+rel["route"="subway"]["network"="Mumbai Metro"];
 node(r)->.stops;
 (node.stops["railway"="station"];node.stops["public_transport"~"stop_position|station"];);
 out tags center;`;
@@ -19,7 +19,7 @@ out tags center;`;
 let data = null;
 for (const url of OVERPASS) {
   try {
-    const res = await fetch(url, { method: 'POST', headers: { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'data=' + encodeURIComponent(Q) });
+    const res = await fetch(url, { method: 'POST', headers: { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'data=' + encodeURIComponent(Q), signal: AbortSignal.timeout(240000) });
     if (res.ok) { data = await res.json(); break; }
   } catch {}
 }

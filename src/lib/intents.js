@@ -10,7 +10,7 @@
  * is Check your health, Mental health or Work out, a shop is Buy gear or Eat
  * healthy, a stadium is Play or Move). So the sheet carries the category per
  * row in entries.json as `cat`, and G_TO_INTENT below is the fallback for the
- * rows no sheet produced — BBMP parks (sub-category "park"; see src/lib/db.js)
+ * rows no sheet produced — city parks (sub-category "park"; see src/lib/db.js)
  * and the traced routes, which are Move either way.
  *
  * The keys are internal and older than the v8 names: `care` is Check your

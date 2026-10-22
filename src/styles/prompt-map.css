@@ -544,7 +544,7 @@
 .prompt-panel[hidden]{display:none!important}
 .prompt-opts{display:grid;gap:1px;margin:0;padding:0;list-style:none}
 /* The activities: toggle buttons two to a row, "get healthy" among them, in
-   the chips' own vocabulary (the index filters, the In Bengaluru tabs): grey
+   the chips' own vocabulary (the index filters, the In Mumbai tabs): grey
    at rest, plum with cream type when on. With everything on, only "get
    healthy" reads as pressed; pick some and those are. Each keeps its badge. */
 #prompt-intent-panel{padding:0;background:none}
@@ -649,7 +649,7 @@
   .promptdock{left:8px;right:8px;top:58px;width:auto;max-width:none;max-height:none}
   .prompt.prompt-docked{padding:8px 10px}
   /* On a phone each label shares its word's line: "I want to get healthy",
-     "in Bengaluru". */
+     "in Mumbai". */
   .prompt-docked .prompt-line{flex:none}
   .prompt-docked .prompt-row{margin-bottom:6px}
   .prompt-docked .prompt-value{font-size:18.5px}
@@ -3461,7 +3461,7 @@ a.credit-name:hover{color:#571541}
 @media (hover:hover){ .story-pick-go:hover{transform:translateY(-1px);background:#D6D2C9!important} }
 /* The first-visit hint: a dashed coral ring round "be well" with a small
    "tap me" tag on its corner, and both words of the sentence ("be well",
-   "Bengaluru") bouncing very slightly until the first press. */
+   "Mumbai") bouncing very slightly until the first press. */
 .s-chip:has(> .bw-ring){position:relative}
 .bw-tip{right:auto;bottom:auto;padding:3px 8px;border-radius:999px;background:#FF4052;color:#fff;font:400 12px/1.2 var(--display);white-space:nowrap}
 .bw-tip::after{display:none}

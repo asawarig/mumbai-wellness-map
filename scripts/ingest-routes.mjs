@@ -11,6 +11,7 @@
  *
  *   node scripts/ingest-routes.mjs [sources/routes/wellness-map-routes-v2.csv]
  */
+import { ZONE_KEYS, RG_ALIAS } from './zones.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -95,16 +96,7 @@ function known(value) {
 const sameSpot = (a, b) => Array.isArray(a) && Array.isArray(b)
   && Math.abs(a[0] - b[0]) < 1e-6 && Math.abs(a[1] - b[1]) < 1e-6;
 
-const RG_FALLBACK = {
-  'South-east': 'South',
-  'North-west': 'West',
-  Central: 'Central',
-  'City-wide': 'Central',
-  South: 'South',
-  East: 'East',
-  West: 'West',
-  North: 'North',
-};
+const RG_FALLBACK = { ...RG_ALIAS, ...Object.fromEntries([...ZONE_KEYS].map((k) => [k, k])) };
 
 const csv = parseCsv(fs.readFileSync(CSV, 'utf8'));
 const entries = JSON.parse(fs.readFileSync(ENTRIES, 'utf8'));

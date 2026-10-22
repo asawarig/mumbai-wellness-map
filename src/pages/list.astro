@@ -2,7 +2,7 @@
 /* Everything on the map, as a page you can read.
  *
  * The map itself is two megabytes of JavaScript drawing nine hundred pins, and
- * a crawler — or a model being asked what there is to do in Bengaluru — sees
+ * a crawler — or a model being asked what there is to do in Mumbai — sees
  * none of it: the list is built in the browser, so the document is a wrapper
  * round an empty div. This page is the other half of that. No map, no
  * MapLibre, no data bundle; just every entry as text, grouped the way the
@@ -27,10 +27,10 @@ const site = Astro.site ? Astro.site.href.replace(/\/$/, '') : '';
 const url = `${site}${base}list`;
 const mapUrl = `${site}${base.replace(/\/$/, '')}`;
 
-const title = `Every place on the Bengaluru Wellness Map — all ${COUNTS.listed}`;
+const title = `Every place on the Mumbai Wellness Map — all ${COUNTS.listed}`;
 const description = `The full list behind the map: ${COUNTS.listed} places, routes, clinics, kitchens `
-  + `and communities in Bengaluru, grouped by what you want to do. `
-  + `${COUNTS.verified} verified, ${COUNTS.parks} of them BBMP parks. Compiled by hand at Plum.`;
+  + `and communities in Mumbai, grouped by what you want to do. `
+  + `${COUNTS.verified} verified, ${COUNTS.parks} of them city parks. Compiled by hand at Plum.`;
 
 /* Counts per category, straight from the data. Counted through intentMeta, not
    the sub-category list: a row can carry a category its sub-category would not
@@ -55,7 +55,7 @@ const byIntent = MAP_INTENTS.map((i) => ({
  * of the card, and repeating all 2,610 of them costs half a megabyte to tell a
  * crawler something it has just read. addressRegion and addressCountry are left
  * out too — the Dataset states the spatial coverage once, and repeating
- * "Karnataka, IN" per entry is another hundred kilobytes of the same fact.
+ * "Maharashtra, IN" per entry is another hundred kilobytes of the same fact.
  *
  * No aggregateRating. Where a rating exists at all it is Google's, collected
  * from Google's users; publishing it here as this site's own would misrepresent
@@ -81,7 +81,7 @@ const placeNodes = placeOrder.map((r, n) => {
   place.address = {
     '@type': 'PostalAddress',
     ...(r.ad ? { streetAddress: r.ad } : {}),
-    addressLocality: r.a || 'Bengaluru',
+    addressLocality: r.a || 'Mumbai',
   };
   if (r.lat != null && r.lon != null) {
     place.geo = { '@type': 'GeoCoordinates', latitude: r.lat, longitude: r.lon };
@@ -98,7 +98,7 @@ const schema = {
       '@type': 'Dataset',
       '@id': `${url}#dataset`,
       url,
-      name: 'Bengaluru Wellness Map',
+      name: 'Mumbai Wellness Map',
       description,
       inLanguage: 'en-IN',
       isAccessibleForFree: true,
@@ -107,11 +107,11 @@ const schema = {
       temporalCoverage: '2026',
       spatialCoverage: {
         '@type': 'Place',
-        name: 'Bengaluru',
+        name: 'Mumbai',
         address: {
           '@type': 'PostalAddress',
-          addressLocality: 'Bengaluru',
-          addressRegion: 'Karnataka',
+          addressLocality: 'Mumbai',
+          addressRegion: 'Maharashtra',
           addressCountry: 'IN',
         },
       },
@@ -126,14 +126,14 @@ const schema = {
       '@id': `${url}#breadcrumbs`,
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Plum', item: site },
-        { '@type': 'ListItem', position: 2, name: 'Bengaluru Wellness Map', item: mapUrl },
+        { '@type': 'ListItem', position: 2, name: 'Mumbai Wellness Map', item: mapUrl },
         { '@type': 'ListItem', position: 3, name: 'Every place' },
       ],
     },
     {
       '@type': 'ItemList',
       '@id': `${url}#places`,
-      name: 'Every place on the Bengaluru Wellness Map',
+      name: 'Every place on the Mumbai Wellness Map',
       numberOfItems: placeNodes.length,
       itemListElement: placeNodes,
     },
@@ -154,7 +154,7 @@ const schema = {
       <div class="index-heading">
         <h1>Every place on <img class="brand-mark" src={`${base}be-well-logo.svg`} alt="Be well, Bengaluru" width="195" height="64" /></h1>
         <p class="index-sub">
-          {COUNTS.listed} entries · {COUNTS.onMap} pinned · {COUNTS.parks} BBMP parks · {COUNTS.verified} verified
+          {COUNTS.listed} entries · {COUNTS.onMap} pinned · {COUNTS.parks} city parks · {COUNTS.verified} verified
         </p>
       </div>
       <a class="listing-cta" href={base.replace(/\/$/, '') || '/'}>Open the map</a>
@@ -222,7 +222,7 @@ const schema = {
 
     <footer class="listing-foot">
       <p>
-        Basemap from OpenStreetMap via OpenFreeMap. Parks from the BBMP register.
+        Basemap from OpenStreetMap via OpenFreeMap. Parks from the city parks register.
         Last reviewed September 2026. Not medical advice.
       </p>
     </footer>

@@ -1,4 +1,4 @@
-# Running the Bengaluru Wellness Map on your machine
+# Running the Mumbai Wellness Map on your machine
 
 This is an Astro app that renders every page on a server — it is not a folder of
 HTML files, so opening `index.html` in a browser will not work. You need Node,
@@ -40,16 +40,14 @@ Leave that terminal window open — it is the server. `Ctrl-C` stops it.
 
 ## What you should see
 
-An intro card over a dark map of Bengaluru. Click **Show me** and you get 2,689
-places across seven categories: Move, Play, Work out, Eat healthy, Check your
-health, Mental health and Buy gear, plus two panes along the bottom — Find your
-people and This week's events. Plum Perks is the toggle in the toolbar rather
-than a pane.
+An intro card over the map of Mumbai. Click **Show me** and you get the map
+with BMC's six zones in colour, the Mumbai Metro lines and their stations.
 
-Two kinds of pin animate, swapping glyph every 1.4 seconds: **Plum Perks
-partners**, which are plum red and alternate their category glyph with a gift,
-and **Playo venues**, which keep their category colour and alternate with
-Playo's roundel. Both run off one timer, so they stay in step.
+There are **no places on it yet**. This map was copied from the Bengaluru one,
+and the Bengaluru places, routes, parks, communities and themed days were
+cleared out so they can be replaced with Mumbai's. See *Changing the data*
+below. The artwork (hero, stamp, logos, vignettes) is still Bengaluru's, as a
+placeholder.
 
 ## If something goes wrong
 
