@@ -3256,8 +3256,8 @@
 .cp-kinds{display:flex;flex-wrap:wrap;gap:4px}
 /* The map's name, as its logo (be-well-logo.svg): in the intro card's
    head it stands in for the words, at the height of the type it replaces. */
-.story-kicker .brand-mark{display:block;width:195px;height:auto;margin-top:6px}
-@media (max-width:820px){ .story-kicker .brand-mark{width:166px} }
+.story-kicker .brand-mark{display:block;width:159px;height:auto;margin-top:6px}
+@media (max-width:820px){ .story-kicker .brand-mark{width:135px} }
 /* The Plum mark at the head of the Plum window's sentence goes to plumhq.com. */
 .pw-mark-link{display:inline-block;line-height:0;vertical-align:-2px;border-radius:4px;transition:opacity .15s}
 .pw-mark-link .pw-mark{vertical-align:0}
@@ -3343,7 +3343,7 @@
    "by Plum Perks" on its right, centred on the logo's height. */
 @media (max-width:820px){
   .story-paper .story-head .story-kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;box-sizing:border-box;padding-left:0!important;margin-left:0!important}
-  .story-paper .story-head .story-kicker .brand-mark{flex:0 1 auto;width:121.6px;min-width:0;margin:0 0 0 -1px}
+  .story-paper .story-head .story-kicker .brand-mark{flex:0 1 auto;width:99.1px;min-width:0;margin:0 0 0 -1px}
   .story-paper .story-head .story-kicker span{flex:none;margin:0;white-space:nowrap;font-size:9px;letter-spacing:.2em}
 }
 /* Phone: no room beside the logo row for Go to the map, so it sits inside
@@ -3418,7 +3418,7 @@ a.credit-name:hover{color:#571541}
 .story-paper .story-dog{display:none}
 @media (min-width:821px){
   .story-paper .story-kicker span{display:none}
-  .story-paper .story-kicker .brand-mark{width:180.5px;margin-top:6px}
+  .story-paper .story-kicker .brand-mark{width:147.1px;margin-top:6px}
   .story-paper .story-dog{display:block;position:relative;left:-18px;width:250px;max-width:100%;height:auto;margin:6px auto 0}
   /* The last card has the most to say: the dog curls up smaller there. */
   .story-paper .story-text:has(.story-slide[data-slide="3"]:not([hidden])) .story-dog{width:190px;margin:6px auto 10px}

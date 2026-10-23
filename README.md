@@ -26,6 +26,12 @@ describes the code accurately; where it names Bengaluru's data, read Mumbai's.
 - **Metro**: the running Mumbai Metro lines and stations from OSM.
 - **Green roads**: rebuilt over Mumbai's parks and forests.
 - All the on-page text says Mumbai.
+- **The logos say "Be well, Mum"** (`public/be-well-logo*.svg`). "Be Well,"
+  is the original hand lettering. "Mum" is set in Kalam Bold (Indian Type
+  Foundry, SIL Open Font License) in the long and short logos, and in
+  Grenette Pro with the original's letter spacing in the plain one, both
+  converted to outlines. A hand-lettered "Mum" from the designer would
+  match the brush strokes better.
 
 **Cleared, waiting for Mumbai data**
 
@@ -39,10 +45,10 @@ describes the code accurately; where it names Bengaluru's data, read Mumbai's.
 
 - Plum Perks partner brands and the online Plum events, which are not
   tied to a city. One perk, Praan Health, is listed at Koramangala.
-- **All the artwork**, which is still Bengaluru's as a placeholder: the hero,
-  the stamp, the "Be well, Bengaluru" logos, the vignettes and the share
-  image `og-be-well-bengaluru-3.jpg`. Their alt text still says Bengaluru
-  because it describes the images. Change both together.
+- **All the other artwork**, which is still Bengaluru's as a placeholder: the
+  hero, the stamp, the vignettes, the 404 map and the share image
+  `og-be-well-bengaluru-3.jpg`. Their alt text still says Bengaluru because
+  it describes the images. Change both together.
 - The Plum HQ pin is hidden, since it is in Bengaluru (`PLUM_HQ` in
   `src/scripts/wellness-map.js`).
 - The disclaimers still name the courts at Bengaluru, since that is
