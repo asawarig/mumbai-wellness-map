@@ -77,7 +77,7 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
   + '</svg>';
 ---
 
-{import.meta.env.PROD && <link rel="preload" href={grenetteRegular} as="font" type="font/woff2" crossorigin />}
+{import.meta.env.PROD && import.meta.env.STABLE_ASSET_NAMES && <link rel="preload" href={grenetteRegular} as="font" type="font/woff2" crossorigin />}
 <div id="app">
   {/* is-intro: the map fills the screen until the intro is dismissed. In the
       markup rather than added by script, so nothing animates on arrival. */}

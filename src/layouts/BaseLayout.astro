@@ -26,7 +26,7 @@ const assetsPrefix = import.meta.env.ASSETS_PREFIX;
 const assetHost = typeof assetsPrefix === 'string' && assetsPrefix ? assetsPrefix.replace(/\/$/, '') : '';
 /* Webflow's prefix already carries the mount path; a plain host does not. */
 const assetRoot = assetHost && assetHost.endsWith(base.replace(/\/$/, '')) ? `${assetHost}/` : `${assetHost}${base}`;
-const assetScript = import.meta.env.PROD ? `${assetRoot}_astro/wellness-map.js` : null;
+const assetScript = import.meta.env.PROD && import.meta.env.STABLE_ASSET_NAMES ? `${assetRoot}_astro/wellness-map.js` : null;
 /* Built from `base` rather than Astro.url, because the worker sees Webflow's
    internal host and a path that is not always the public one. astro.config.mjs
    holds the address. */

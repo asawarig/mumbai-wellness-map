@@ -322,6 +322,9 @@ export default defineConfig({
        under every adapter. */
     define: {
       'import.meta.env.PUBLIC_STAGING': JSON.stringify(onVercel ? '1' : ''),
+      /* Whether stableAssetNames ran, so the layout only preloads the fixed
+         names (_astro/wellness-map.js) where those files exist. */
+      'import.meta.env.STABLE_ASSET_NAMES': JSON.stringify(onVercel ? '' : '1'),
     },
     /* MapLibre starts a web worker from a file next to its own module. The dev
        dependency optimiser moves the module and leaves the worker behind, so
