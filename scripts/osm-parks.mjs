@@ -4,8 +4,9 @@
  *
  *   node scripts/osm-parks.mjs
  *
- * Takes every leisure=park, leisure=garden and leisure=recreation_ground
- * (Mumbai's maidans) inside the city (the BMC area, mask.json) that has a
+ * Takes every leisure=park, leisure=garden and recreation ground (Mumbai's
+ * maidans, which OSM tags as leisure= or landuse=recreation_ground; Oval and
+ * Azad Maidan are the latter) inside the city (the BMC area, mask.json) that has a
  * name, is not private, and covers at least MIN_SQM. Unnamed ones are left
  * out, and so are names that only say "park" or "garden": a pin called
  * "park 1" helps nobody. So are housing-society gardens, school grounds and
@@ -48,7 +49,15 @@ async function overpass(q) {
           body: 'data=' + encodeURIComponent(q),
           signal: AbortSignal.timeout(240000), // a hung mirror must not stall the run
         });
-        if (res.ok) return (await res.json()).elements;
+        if (res.ok) {
+          const body = await res.json();
+          /* An overloaded instance can answer 200 with a "runtime error" remark
+             and no elements; that is a failure, not an empty city. */
+          if (body.remark && /error|timed out|out of memory/i.test(body.remark)) throw new Error(body.remark.slice(0, 80));
+          const els = body.elements;
+          console.log(`  (${new URL(url).host} answered: ${els.length} elements)`);
+          return els;
+        }
         errors.push(`${new URL(url).host} ${res.status}`);
       } catch (e) {
         errors.push(`${new URL(url).host} ${e.message}`);
@@ -116,8 +125,10 @@ const area = `rel(id:${CITY_RELS.join(',')});map_to_area->.city;`;
 console.log('Fetching parks and gardens from Overpass…');
 const parksRaw = await overpass(`[out:json][timeout:180];${area}
 (way["leisure"~"^(park|garden|recreation_ground)$"]["name"](area.city);
- relation["leisure"~"^(park|garden|recreation_ground)$"]["name"](area.city););
-out tags geom;`);
+ relation["leisure"~"^(park|garden|recreation_ground)$"]["name"](area.city);
+ way["landuse"="recreation_ground"]["name"](area.city);
+ relation["landuse"="recreation_ground"]["name"](area.city););
+out body geom;`); // body, not tags: a relation needs its members to have a shape
 console.log(`  ${parksRaw.length} named parks, gardens and grounds`);
 
 console.log('Fetching what is inside them…');
@@ -170,7 +181,7 @@ function plainHours(raw) {
 /* ---------- build ---------- */
 const PRIVATE = /^(private|no|customers|permit)$/;
 /* Mapped as gardens and grounds, but behind a gate. */
-const NOT_PUBLIC = /\b(society|soc\.?|chs|co-?op\w*|housing|residency|residence|apartments?|towers?|complex|school|vidya|vidyalaya|college|university|club|gymkhana|hotel|back area|compound)\b/i;
+const NOT_PUBLIC = /\b(society|soc\.?|chs|co-?op\w*|housing|residency|residence|apartments?|towers?|complex|school|vidya|vidyalaya|college|university|academy|hostel|club|gymkhana|association|hotel|back area|compound|police|parade ground|chapel|church|convent|canossa|holy cross|st\.?|saint|aquarium|plaza|chowk|building|mmrda|jio)\b|^(back|front) ground$/i;
 /* Names that say nothing but what the thing is. */
 const GENERIC = /^(bmc\s+|municipal\s+)?(park|garden|udyan|play\s*ground|ground|open space|recreation ground)(\s*(no\.?\s*)?\d+)?$/i;
 /* "abhinav nagar garden" -> "Abhinav Nagar Garden"; names with any capitals stay as mapped. */
@@ -184,7 +195,7 @@ for (const e of parksRaw) {
   if (PRIVATE.test(t.access || '') || NOT_PUBLIC.test(name)) { stats.private++; continue; }
   if (GENERIC.test(name)) { stats.generic++; continue; }
   /* Gardens inside housing societies and hotels are mapped as gardens too. */
-  if (e.tags.leisure === 'garden' && /^(residential|private|hotel)$/.test(t['garden:type'] || '')) { stats.private++; continue; }
+  if (t.leisure === 'garden' && /^(residential|private|hotel)$/.test(t['garden:type'] || '')) { stats.private++; continue; }
   const rings = e.type === 'way'
     ? (e.geometry && e.geometry.length > 3 ? [e.geometry.map((p) => [p.lon, p.lat])] : [])
     : closeRings((e.members || []).filter((m) => m.type === 'way' && m.role !== 'inner' && m.geometry));
@@ -223,6 +234,9 @@ for (const p of parks) {
 }
 kept.sort((a, b) => a.properties.n.localeCompare(b.properties.n));
 
+/* A run that found almost nothing is a bad answer, not a city without parks:
+   keep the file that is there. */
+if (kept.length < 200) throw new Error(`only ${kept.length} parks — refusing to overwrite src/data/parks.json`);
 writeFileSync(new URL('../src/data/parks.json', import.meta.url), JSON.stringify({
   type: 'FeatureCollection',
   source: `OpenStreetMap leisure=park|garden inside relations ${CITY_RELS.join(' + ')}, fetched ${new Date().toISOString().slice(0, 10)}. ODbL.`,
