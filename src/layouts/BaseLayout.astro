@@ -47,7 +47,7 @@ const noindexed = embed || noindex || staging;
    path that is not always the public one, which is why everything else here
    is built from Astro.site. */
 const ogOrigin = staging ? Astro.url.origin : (Astro.site ? Astro.site.href : null);
-const ogImage = ogOrigin ? new URL(`${base}og-be-well-bengaluru-3.jpg`, ogOrigin).href : null;
+const ogImage = ogOrigin ? new URL(`${base}og-be-well-mumbai.jpg`, ogOrigin).href : null;
 const ogUrl = staging
   ? new URL(Astro.url.pathname, Astro.url.origin).href
   : canonical;
@@ -139,7 +139,7 @@ const social = !embed;
         {ogImage && <meta property="og:image" content={ogImage} />}
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Be Well, Bengaluru ft. Plum Perks, by Plum, over a softly blurred map of Bengaluru with its pins" />
+        <meta property="og:image:alt" content="Be Well, Mumbai ft. Plum Perks, by Plum, over a softly blurred map of Bandra and Mahim with its pins" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={ogTitle || title} />
         <meta name="twitter:description" content={ogDescription || description} />

@@ -12,12 +12,13 @@
  * and a full-screen pass redraws only the outside, desaturated.
  */
 
-import { CITY_RINGS } from './basemap.js';
+import { CITY_RINGS, OCEAN_FILL } from './basemap.js';
 
 export const OUTSIDE_VEIL = 'outside-veil';
 
 /* How much colour is left beyond the city: 1 is untouched, 0 is grey. */
 const SATURATION = 0.45;
+const SEA = [1, 3, 5].map((i) => parseInt(OCEAN_FILL.slice(i, i + 2), 16) / 255);
 /* Outline vertices are stored relative to the city's middle, in thousandths of
    the mercator square, so float32 keeps its precision at street zoom. */
 const UNIT = 1e-3;
@@ -51,11 +52,15 @@ precision highp float;
 uniform sampler2D u_screen;
 uniform sampler2D u_outside;
 uniform float u_saturation;
+uniform vec3 u_sea;
 in vec2 v_uv;
 out vec4 o;
 void main() {
   if (texture(u_outside, v_uv).r < 0.5) discard;
   vec3 c = texture(u_screen, v_uv).rgb;
+  /* The sea lies outside the city all along a coast, but it is the city's
+     sea: its own colour (OCEAN_FILL, used nowhere else) is left as it is. */
+  if (distance(c, u_sea) < 0.02) discard;
   float grey = dot(c, vec3(0.299, 0.587, 0.114));
   o = vec4(mix(vec3(grey), c, u_saturation), 1.0);
 }`;
@@ -240,6 +245,7 @@ export function outsideVeil() {
         gl.uniform1i(finish.u[name], unit);
       });
       gl.uniform1f(finish.u.u_saturation, SATURATION);
+      gl.uniform3fv(finish.u.u_sea, SEA);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
       [1, 0].forEach((unit) => {
@@ -264,6 +270,8 @@ export function outsideVeil() {
 /* After the greens and water, before the roads: under 'corp-ground', the
    first layer after them. Once per style. */
 export function addOutsideVeil(glMap) {
-  const add = () => { if (!glMap.getLayer(OUTSIDE_VEIL)) glMap.addLayer(outsideVeil(), 'corp-ground'); };
+  const add = () => {
+    if (!glMap.getLayer(OUTSIDE_VEIL)) glMap.addLayer(outsideVeil(), 'corp-ground');
+  };
   try { add(); } catch { glMap.once('style.load', add); }
 }

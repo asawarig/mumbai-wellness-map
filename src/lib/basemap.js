@@ -406,6 +406,10 @@ const PAPER_PARK = '#E5FECC';
 const PAPER_WOOD = PAPER_PARK;
 const PAPER_FARM = PAPER_PARK;
 const WATER_FILL = '#DBFAFF';
+/* The sea, two steps darker than lakes and rivers at the same hue and
+   saturation (HSL 187°, 100%, 93% → 85%), so a coastal city's inland water
+   still reads as inland. */
+export const OCEAN_FILL = '#B3F6FF';
 /* Any line round or across the greens, and round or across the water. */
 const EDGE_GREEN = '#B3ECBC';
 const EDGE_BLUE = '#A9E5FF';
@@ -529,7 +533,8 @@ function paperStyle(regions) {
       /* Parks over the woods inside them, so a park reads as one place. */
       flatFill('park', 'landcover', PAPER_PARK, { filter: PARK_FILTER }),
       flatFill('protected', 'park', PAPER_PARK),
-      flatFill('water', 'water', WATER_FILL, { filter: notTunnel }),
+      flatFill('water', 'water', WATER_FILL, { filter: ['all', notTunnel, ['!=', ['get', 'class'], 'ocean']] }),
+      flatFill('ocean', 'water', OCEAN_FILL, { filter: ['all', notTunnel, ['==', ['get', 'class'], 'ocean']] }),
 
       inkLine('water-edge', 'water', 1, { filter: notTunnel }, EDGE_BLUE),
       /* Every green is outlined, not only the parks. */
