@@ -28,6 +28,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { SUBCAT } from '../src/lib/categories.js';
+import { NOT_WELLNESS } from './exclusions.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const OUT = path.join(ROOT, 'sources/entries/mumbai-places.csv');
@@ -107,9 +108,8 @@ const metres = (a, b) => Math.hypot((a[0] - b[0]) * 104900, (a[1] - b[1]) * 1106
 const num = (v) => (v === '' || v == null || Number.isNaN(Number(v)) ? null : Number(v));
 
 /* ---------- tidy ---------- */
-const OUTSIDE = /\b(4006(0[0-9]|1[0-3])|4011\d\d|4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(thane\s*\(?\s*(west|east|w|e)\b|ghodbunder|majiwada|kalwa|mumbra|kalyan(?!\s*(jewel|nagar))|dombivli|kharghar|kamothe|kalamboli|ulwe|taloja|panvel|mira road|bhayandar|bhayander|vasai|virar)\b/i;
+const OUTSIDE = /\b(4006(0[0-9]|1[0-3])|4011\d\d|4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(thane\s*\(?\s*(west|east|w|e)\b|ghodbunder|majiwada|kalwa|mumbra|kalyan(?!\s*(jewel|nagar))|dombivli|kharghar|kamothe|kalamboli|ulwe|taloja|mira road|bhayandar|bhayander|vasai|virar)\b/i;
 const OSM_SKIP = new Set(['clinic', 'hospital']);
-const NOT_WELLNESS = /brahma\s*kumari|vipassana|\bdhamma\b|global pagoda|ramakrishna math|ananda sangha|transcendental meditation|\bisha (foundation|yoga|centre|center)|sadhguru|art of living|sri sri|heartfulness|sahaja|iskcon|hare krishna|\bosho\b|satsang|\bashram\b|ambika yoga kutir|raja ?yoga meditation|rajyoga|\bscientology|\bkabbalah/i;
 const stats = { spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
 rows = rows.filter((r) => {
   if (!r.n) return false;

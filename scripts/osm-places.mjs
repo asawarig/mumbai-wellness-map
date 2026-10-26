@@ -20,9 +20,9 @@
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { CITY_RELS } from './city.mjs';
 
 const UA = 'mumbai-wellness-map/1.0 (places build script)';
-const CITY_RELS = [7964376, 7964375]; // Mumbai City District, Mumbai Suburban District
 const OUT = process.argv[2] || fileURLToPath(new URL('../sources/entries/osm-places.csv', import.meta.url));
 
 const OVERPASS = [

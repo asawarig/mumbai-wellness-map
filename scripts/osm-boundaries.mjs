@@ -7,8 +7,11 @@
  * (7964375), so the city outline is those two joined along their shared
  * border. BMC's six zones are 7888964–7888969 (admin_level=9) and its 24
  * administrative wards (A Ward … T Ward) sit under them at admin_level=10.
- * The map calls the zones "corporations" — the word the code inherited from
- * Bengaluru. Overpass lists the wards; Nominatim returns every relation as
+ * Navi Mumbai Municipal Corporation (13180880) is the seventh zone, across
+ * Thane Creek; its own wards, where OSM has them at admin_level=10, sit under
+ * it, and where it has none the zone is its own one ward. City relations are
+ * in scripts/city.mjs. The map calls the zones "corporations" — the word the
+ * code inherited from Bengaluru. Overpass lists the wards; Nominatim returns every relation as
  * an assembled, lightly simplified polygon. Writes:
  *
  *   src/data/zones.json               one polygon per ward, tagged with its zone
@@ -23,11 +26,11 @@
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { union } from 'polyclip-ts';
+import { CITY_RELS } from './city.mjs';
 
 const DATA = new URL('../src/data/', import.meta.url);
 const UA = 'mumbai-wellness-map/1.0 (boundary build script)';
-const CITY_RELS = [7964376, 7964375]; // Mumbai City District, Mumbai Suburban District
-const CORP_REL = { South: 7888969, Central: 7888968, West: 7888967, NorthWest: 7888966, East: 7888965, NorthEast: 7888964 };
+const CORP_REL = { South: 7888969, Central: 7888968, West: 7888967, NorthWest: 7888966, East: 7888965, NorthEast: 7888964, NaviMumbai: 13180880 };
 
 const read = (f) => JSON.parse(readFileSync(new URL(f, DATA), 'utf8'));
 const write = (f, j, pretty = false) => {
@@ -214,6 +217,7 @@ function corpFor(polys) {
   return best && votes[best] / total > 0.3 ? best : null;
 }
 
+const corpsMeta = read('corporations.json');
 /* BMC's ward letters mean little to most people, so each carries the
    neighbourhoods it is known by. */
 const WARD_AREAS = {
@@ -261,9 +265,17 @@ for (const rel of wardRels) {
     geometry: roundGeom(f.geometry),
   });
 }
+/* A zone OSM has no wards for is one ward of its own, so its area still
+   answers a click. */
+for (const rg of Object.keys(CORP_REL)) {
+  if (wards.some((w) => w.properties.rg === rg)) continue;
+  const label = corpsMeta.find((c) => c.k === rg)?.label || rg;
+  wards.push({ type: 'Feature', properties: { rg, ward: label, area: areaByNorm.get(norm(label)) || '', osm: CORP_REL[rg] }, geometry: roundGeom(top.get(CORP_REL[rg]).geometry) });
+  console.log(`  ${rg} has no wards in OSM; it stands as one`);
+}
 wards.sort((a, b) => a.properties.rg.localeCompare(b.properties.rg) || a.properties.ward.localeCompare(b.properties.ward));
 
-console.log(`  ${wards.length} wards inside the six zones`);
+console.log(`  ${wards.length} wards inside the ${Object.keys(CORP_REL).length} zones`);
 if (missing.length) console.log(`  ${missing.length} not returned by Nominatim: ${missing.join(', ')}`);
 if (outside.length) console.log(`  ${outside.length} outside the corporations, dropped: ${outside.join(', ')}`);
 const byRg = {};
@@ -307,7 +319,7 @@ write('city.json', {
   ...city,
   box: [+S.toFixed(5), +W.toFixed(5), +N.toFixed(5), +E.toFixed(5)],
   gba_km2: Math.round(km2(cityPolys)),
-  source: `OpenStreetMap relations ${CITY_RELS.join(' + ')} (Mumbai City and Mumbai Suburban districts, the BMC area), fetched ${new Date().toISOString().slice(0, 10)}`,
+  source: `OpenStreetMap relations ${CITY_RELS.join(' + ')} (Mumbai City and Mumbai Suburban districts, the BMC area, and Navi Mumbai Municipal Corporation), fetched ${new Date().toISOString().slice(0, 10)}`,
 });
 /* Hand-edited (the hue families live here), so it stays readable. */
 write('corporations.json', corps.map((c) => ({ ...c, km2: Math.round(km2(corpPolys[c.k])) })), true);

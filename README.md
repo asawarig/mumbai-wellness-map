@@ -21,6 +21,10 @@ describes the code accurately; where it names Bengaluru's data, read Mumbai's.
   (Zone 2), `West` (Zone 3, Bandra–Andheri), `NorthWest` (Zone 4,
   Goregaon–Dahisar), `East` (Zone 5, Kurla–Chembur–Govandi), `NorthEast`
   (Zone 6, Ghatkopar–Bhandup–Mulund). Use these keys in an entry's `rg`.
+- **Navi Mumbai** (Navi Mumbai Municipal Corporation, OSM relation 13180880)
+  is the seventh zone, key `NaviMumbai`, across Thane Creek. Kharghar,
+  Panvel and Ulwe are Panvel Municipal Corporation and are not on the map.
+  The OSM areas every build script uses are in `scripts/city.mjs`.
 - **Wards** are BMC's 24 administrative wards (A Ward … T Ward), each labelled
   with the neighbourhoods it is known by.
 - **Metro**: the running Mumbai Metro lines and stations from OSM.

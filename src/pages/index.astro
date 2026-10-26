@@ -5,7 +5,7 @@ import { COUNTS } from '../lib/db.js';
 import { MAP_INTENTS } from '../lib/intents.js';
 
 const title = `Mumbai Wellness Map — ${COUNTS.onMap} places to move, eat and reset`;
-const description = `${COUNTS.onMap} pinned places for looking after yourself in Mumbai `
+const description = `${COUNTS.onMap} pinned places for looking after yourself in Mumbai and Navi Mumbai `
   + '— parks, routes, gyms, clinics, kitchens and communities, on one interactive map. '
   + `${COUNTS.parks} are public parks, ${COUNTS.verified} verified. Free to use, from Plum.`;
 
@@ -69,6 +69,6 @@ export const prerender = false;
 
 <BaseLayout title={title} description={description} schema={schema} map
   ogTitle="Be well, Mumbai | Your local guide to move, eat and reset"
-  ogDescription="A health map of Mumbai with places to move, eat, recover and reset, from parks and gyms to clinics, kitchens and communities. Free to use, by Plum.">
+  ogDescription="A health map of Mumbai and Navi Mumbai with places to move, eat, recover and reset, from parks and gyms to clinics, kitchens and communities. Free to use, by Plum.">
   <WellnessMap />
 </BaseLayout>

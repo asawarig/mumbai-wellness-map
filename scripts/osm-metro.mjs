@@ -10,9 +10,9 @@
  */
 
 import { writeFileSync } from 'node:fs';
+import { CITY_RELS } from './city.mjs';
 
 const UA = 'mumbai-wellness-map/1.0 (metro build script)';
-const CITY_RELS = [7964376, 7964375]; // Mumbai City District, Mumbai Suburban District
 /* OSM names Mumbai Metro's colours rather than giving hex, so map them to the
    lines' own. Keyed by line ref. */
 const LINE_COLOUR = { 1: '#2E7DD1', '2A': '#E2B100', 2: '#E2B100', '2B': '#E2B100', 3: '#1FA9B8', 4: '#23994A', 7: '#E0453A', 9: '#E0453A' };
@@ -43,14 +43,17 @@ async function overpass(q) {
 }
 
 const els = await overpass(`[out:json][timeout:120];rel(id:${CITY_RELS.join(',')});map_to_area->.city;
-rel["route"="subway"]["network"="Mumbai Metro"](area.city)->.r;
+rel["route"="subway"]["network"~"^(Navi )?Mumbai Metro$"](area.city)->.r;
 .r out body;
 way(r.r)["railway"="subway"];out geom;`);
 
 const ways = new Map(els.filter((e) => e.type === 'way').map((w) => [w.id, w]));
 const lines = new Map();
 for (const rel of els.filter((e) => e.type === 'relation')) {
-  const ref = rel.tags.ref || (rel.tags.name || 'Metro').replace(/^Line\s+/, '').split(' ')[0];
+  /* Navi Mumbai's lines are N1, N2…, so they do not collide with Mumbai's. */
+  const nm = /^Navi/.test(rel.tags.network || '');
+  const raw = rel.tags.ref || (rel.tags.name || 'Metro').replace(/^Line\s+/, '').split(' ')[0];
+  const ref = nm && !/^N/.test(raw) ? `N${raw}` : raw;
   if (!lines.has(ref)) {
     const hex = /^#[0-9a-f]{6}$/i.test(rel.tags.colour || '') ? rel.tags.colour : '#3A3934';
     lines.set(ref, { ref, colour: LINE_COLOUR[ref] || hex, ways: new Set() });
@@ -60,7 +63,7 @@ for (const rel of els.filter((e) => e.type === 'relation')) {
 
 const features = [...lines.values()].filter((l) => l.ways.size).map((l) => ({
   type: 'Feature',
-  properties: { line: l.ref, name: `Line ${l.ref}`, colour: l.colour },
+  properties: { line: l.ref, name: /^N\d/.test(l.ref) ? `Navi Mumbai Line ${l.ref.slice(1)}` : `Line ${l.ref}`, colour: l.colour },
   geometry: {
     type: 'MultiLineString',
     coordinates: [...l.ways].map((id) => ways.get(id).geometry.map((p) => [+p.lon.toFixed(5), +p.lat.toFixed(5)])),

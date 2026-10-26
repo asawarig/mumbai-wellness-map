@@ -41,8 +41,18 @@
     },
     {
       "category": "Running",
+      "name": "Daud Adda",
+      "url": "https://www.endorfin.run/clubs/daudadda"
+    },
+    {
+      "category": "Running",
       "name": "Founders Running Club Mumbai",
       "url": "https://www.endorfin.run/clubs/foundersrunningclubmumbai"
+    },
+    {
+      "category": "Running",
+      "name": "Genesis Run Club",
+      "url": "https://www.endorfin.run/clubs/genesis-runclub"
     },
     {
       "category": "Running",
@@ -68,6 +78,11 @@
       "category": "Running",
       "name": "MBE Run Club",
       "url": "https://www.endorfin.run/clubs/mberunclub"
+    },
+    {
+      "category": "Running",
+      "name": "Momentum",
+      "url": "https://www.endorfin.run/clubs/momentum-healthclub"
     },
     {
       "category": "Running",
@@ -151,6 +166,11 @@
     },
     {
       "category": "Running",
+      "name": "The Why Run Club",
+      "url": "https://www.endorfin.run/clubs/thewhyrunclub"
+    },
+    {
+      "category": "Running",
       "name": "Tilak Nagar Running Club",
       "url": "https://www.endorfin.run/clubs/tilaknagarrunningclub"
     },
@@ -161,6 +181,11 @@
     },
     {
       "category": "Cycling",
+      "name": "Airoli Cycling Enthusiasts",
+      "url": "https://www.instagram.com/airolicycling_enthusiasts/"
+    },
+    {
+      "category": "Cycling",
       "name": "Borivali Cyclists Association (BCA)",
       "url": "https://www.instagram.com/bca.strongertogether/"
     },
@@ -168,6 +193,11 @@
       "category": "Cycling",
       "name": "Cycle Ride Lovers Group (CRL)",
       "url": "https://www.instagram.com/cycle_ride_lovers_group/"
+    },
+    {
+      "category": "Cycling",
+      "name": "Everest Cycling Culture (ECC)",
+      "url": "https://www.everestcycle.com/"
     },
     {
       "category": "Cycling",

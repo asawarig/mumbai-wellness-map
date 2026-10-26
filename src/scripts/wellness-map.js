@@ -381,7 +381,7 @@ const footText =
   + COUNTS.total + ' entries compiled by hand: ' + COUNTS.mapped + ' pinned, '
   + COUNTS.unpinned + ' with no fixed address, ' + COUNTS.outside + ' starting outside the city limits. '
   + 'Plus ' + COUNTS.parks + ' public parks from OpenStreetMap. '
-  + 'Mumbai covers ' + DB.gba_km2 + ' km² across the BMC\u2019s six zones. '
+  + 'Mumbai and Navi Mumbai cover ' + DB.gba_km2 + ' km² across seven zones: the BMC\u2019s six and Navi Mumbai. '
   + 'Last reviewed September 2026. Not medical advice.';
 
 const footEl = document.getElementById('foot');
@@ -1411,7 +1411,7 @@ document.getElementById('close-cliff')?.addEventListener('click', closeCliff);
 
 const rgEl = document.getElementById('rg');
 if (rgEl) {
-  rgEl.innerHTML = '<option value="all">All six zones</option>'
+  rgEl.innerHTML = '<option value="all">All seven zones</option>'
     + DB.corps.map(c => `<option value="${c.k}">${esc(c.label)} (${c.n})</option>`).join('')
     + '<option value="none">No fixed zone</option>';
 }
@@ -4211,7 +4211,7 @@ function addOverlays(){
      names and everything drawn on the map. A test. */
   if (POSTER && !map.getSource('grid')) {
     const lines = [];
-    const [w, sth, e, n] = [72.72, 18.85, 73.05, 19.33];
+    const [w, sth, e, n] = [72.72, 18.85, 73.12, 19.33];
     for (let x = w; x <= e + 1e-9; x += 0.01) lines.push([[+x.toFixed(2), sth], [+x.toFixed(2), n]]);
     for (let y = sth; y <= n + 1e-9; y += 0.01) lines.push([[w, +y.toFixed(2)], [e, +y.toFixed(2)]]);
     map.addSource('grid', { type: 'geojson', data: { type: 'Feature', properties: {}, geometry: { type: 'MultiLineString', coordinates: lines } } });

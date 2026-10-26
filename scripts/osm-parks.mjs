@@ -25,9 +25,10 @@
  */
 
 import { readFileSync, writeFileSync } from 'node:fs';
+import { CITY_RELS } from './city.mjs';
+import { NOT_WELLNESS } from './exclusions.mjs';
 
 const UA = 'mumbai-wellness-map/1.0 (parks build script)';
-const CITY_RELS = [7964376, 7964375]; // Mumbai City District, Mumbai Suburban District
 const MIN_SQM = 500;
 
 const OVERPASS = [
@@ -193,6 +194,7 @@ for (const e of parksRaw) {
   const t = e.tags || {};
   const name = tidyName((t['name:en'] || t.name).replace(/\s+/g, ' ').trim());
   if (PRIVATE.test(t.access || '') || NOT_PUBLIC.test(name)) { stats.private++; continue; }
+  if (NOT_WELLNESS.test(name)) { stats.private++; continue; }
   if (GENERIC.test(name)) { stats.generic++; continue; }
   /* Gardens inside housing societies and hotels are mapped as gardens too. */
   if (t.leisure === 'garden' && /^(residential|private|hotel)$/.test(t['garden:type'] || '')) { stats.private++; continue; }

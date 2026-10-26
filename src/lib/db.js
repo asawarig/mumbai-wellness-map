@@ -184,7 +184,7 @@ corps.forEach((c) => {
   if (byRg[c.k]) areas.push({ rg: c.k, label: c.label, items: [...byRg[c.k]].sort() });
 });
 if (byRg['']) {
-  areas.push({ rg: '', label: 'Outside the six zones', items: [...byRg['']].sort() });
+  areas.push({ rg: '', label: 'Outside the city', items: [...byRg['']].sort() });
 }
 
 /* Flat area list ordered by mapped-pin density (for the prompt dropdown). */

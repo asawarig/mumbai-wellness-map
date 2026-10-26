@@ -11,7 +11,7 @@ import { writeFileSync } from 'node:fs';
 const UA = 'mumbai-wellness-map/1.0 (metro stations build script)';
 const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
 const Q = `[out:json][timeout:90];
-rel["route"="subway"]["network"="Mumbai Metro"];
+rel["route"="subway"]["network"~"^(Navi )?Mumbai Metro$"];
 node(r)->.stops;
 (node.stops["railway"="station"];node.stops["public_transport"~"stop_position|station"];);
 out tags center;`;

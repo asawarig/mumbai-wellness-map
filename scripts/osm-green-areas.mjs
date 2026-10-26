@@ -26,7 +26,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 
 const UA = 'mumbai-wellness-map/1.0 (green areas build script)';
 /* south, west, north, east: the city and a margin, as the map's grid. */
-const BBOX = '18.85,72.72,19.33,73.05';
+const BBOX = '18.85,72.72,19.33,73.12';
 const MIN_AREA = 2000; // m²
 const TOLERANCE = 0.00002; // degrees, about 2 m
 const OUT = 'public/data/green-roads.json';

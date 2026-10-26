@@ -40,5 +40,12 @@
     "c": "#F4D77E",
     "tone": "#94700F",
     "km2": 109
+  },
+  {
+    "k": "NaviMumbai",
+    "label": "Navi Mumbai",
+    "c": "#F5C6A8",
+    "tone": "#A8532A",
+    "km2": 105
   }
 ]
