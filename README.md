@@ -30,11 +30,11 @@ describes the code accurately; where it names Bengaluru's data, read Mumbai's.
   generic names ("park 1") are left out. Fix a wrong one in OSM and rerun.
 - **Green roads**: rebuilt over Mumbai's parks and forests.
 - All the on-page text says Mumbai.
-- **The logos say "Be well, Mum"** (`public/be-well-logo*.svg`). "Be Well,"
-  is the original hand lettering. "Mum" is set in Kalam Bold (Indian Type
+- **The logos say "Be well, Mumbai"** (`public/be-well-logo*.svg`). "Be Well,"
+  is the original hand lettering. "Mumbai" is set in Kalam Bold (Indian Type
   Foundry, SIL Open Font License) in the long and short logos, and in
   Grenette Pro with the original's letter spacing in the plain one, both
-  converted to outlines. A hand-lettered "Mum" from the designer would
+  converted to outlines. A hand-lettered "Mumbai" from the designer would
   match the brush strokes better.
 
 **Cleared, waiting for Mumbai data**
