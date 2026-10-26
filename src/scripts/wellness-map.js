@@ -380,7 +380,7 @@ const footText =
   + 'City, corporation and ward boundaries and metro lines © OpenStreetMap contributors. '
   + COUNTS.total + ' entries compiled by hand: ' + COUNTS.mapped + ' pinned, '
   + COUNTS.unpinned + ' with no fixed address, ' + COUNTS.outside + ' starting outside the city limits. '
-  + 'Plus ' + COUNTS.parks + ' parks from the city parks register. '
+  + 'Plus ' + COUNTS.parks + ' public parks from OpenStreetMap. '
   + 'Mumbai covers ' + DB.gba_km2 + ' km² across the BMC\u2019s six zones. '
   + 'Last reviewed September 2026. Not medical advice.';
 
@@ -6109,7 +6109,7 @@ function renderIndex(){
     const filtering = words.length || state.indexIntent !== 'all' || state.indexArea !== 'all' || perksOn;
     indexSub.textContent = filtering
       ? `${shown} of ${E.length + (PERKS.perks || []).length}`
-      : `${COUNTS.total} entries · ${COUNTS.parks} city parks · ${COUNTS.verified} verified`;
+      : `${COUNTS.total} entries · ${COUNTS.parks} public parks · ${COUNTS.verified} verified`;
   }
   syncIndexFilters();
   equaliseIndexCards();

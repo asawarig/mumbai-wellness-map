@@ -30,7 +30,7 @@ const mapUrl = `${site}${base.replace(/\/$/, '')}`;
 const title = `Every place on the Mumbai Wellness Map — all ${COUNTS.listed}`;
 const description = `The full list behind the map: ${COUNTS.listed} places, routes, clinics, kitchens `
   + `and communities in Mumbai, grouped by what you want to do. `
-  + `${COUNTS.verified} verified, ${COUNTS.parks} of them city parks. Compiled by hand at Plum.`;
+  + `${COUNTS.verified} verified, ${COUNTS.parks} of them public parks. Compiled by hand at Plum.`;
 
 /* Counts per category, straight from the data. Counted through intentMeta, not
    the sub-category list: a row can carry a category its sub-category would not
@@ -154,7 +154,7 @@ const schema = {
       <div class="index-heading">
         <h1>Every place on <img class="brand-mark" src={`${base}be-well-logo.svg`} alt="Be well, Mum" width="150" height="64" /></h1>
         <p class="index-sub">
-          {COUNTS.listed} entries · {COUNTS.onMap} pinned · {COUNTS.parks} city parks · {COUNTS.verified} verified
+          {COUNTS.listed} entries · {COUNTS.onMap} pinned · {COUNTS.parks} public parks · {COUNTS.verified} verified
         </p>
       </div>
       <a class="listing-cta" href={base.replace(/\/$/, '') || '/'}>Open the map</a>
@@ -222,7 +222,7 @@ const schema = {
 
     <footer class="listing-foot">
       <p>
-        Basemap from OpenStreetMap via OpenFreeMap. Parks from the city parks register.
+        Basemap from OpenStreetMap via OpenFreeMap. Parks from OpenStreetMap contributors (ODbL).
         Last reviewed September 2026. Not medical advice.
       </p>
     </footer>

@@ -6,7 +6,7 @@
  * Each group lists the sheet labels it takes. A label not listed falls into
  * the activity's last group, so a new label in the sheet still lands
  * somewhere rather than nowhere. Parks have no label: they come from the
- * city parks register, and the first Move group takes them by their `g`.
+ * OpenStreetMap (scripts/osm-parks.mjs), and the first Move group takes them by their `g`.
  *
  * `say` is the group as words that follow "I want to", for the sentence picker.
  */

@@ -17,7 +17,8 @@ import ICONS from '../data/icons.json';
 import LABELS from '../data/labels.json';
 
 /* Two reference layers that are not entries: the Mumbai Metro alignment and
-   every park BBMP has a record of. See scripts/kml-to-geojson.mjs. */
+   Mumbai's public parks, gardens and maidans from OpenStreetMap. See
+   scripts/osm-metro.mjs and scripts/osm-parks.mjs. */
 import METRO from '../data/metro.json';
 import PARKS_RAW from '../data/parks.json';
 /* Safe: intents.js reads only intent-pins.json, so this does not close a loop. */
@@ -26,7 +27,8 @@ import PARK_AMENITIES from '../data/park-amenities.json';
 import { cleanParkName } from './park-name.js';
 import { subcategoryOf } from './subcategories.js';
 
-/* BBMP’s register stacks many park records on one spot (exact or near).
+/* A register can stack many park records on one spot (exact or near).
+   osm-parks.mjs already keeps one per park; this stays as a safety net.
    Collapse to one pin per place before the map draws them. */
 function parkScore(f) {
   const n = (f.properties?.n || '').trim();
@@ -200,7 +202,7 @@ areas.forEach((g) => g.items.forEach((a) => {
 }));
 areasByPins.sort((a, b) => (areaPinCounts[b] || 0) - (areaPinCounts[a] || 0) || a.localeCompare(b));
 
-/* city parks join the listings as Move places (sub-category "park"), so they
+/* Parks join the listings as Move places (sub-category "park"), so they
    filter, count, cluster, search and list like everything else. A park takes
    its ward's corporation, and the ward's area when the ward shares a name with
    the listings. */
@@ -232,9 +234,9 @@ const parkEntries = PARKS.features.map((f) => {
   return {
     id: parkId(lat, lon), n: p.n || 'Unnamed park', c: 'Activities', g: 'park', s: '',
     a: ward?.area && knownAreas.has(ward.area) ? ward.area : '',
-    raw: wardName || 'city park', ad: '', lat, lon, rg: ward?.rg || '',
-    gm: '', w: '', ig: '', p: 'Free', b: '', t: p.t || '', tg: ['park'], src: 'city parks register', v: '', out: 0,
-    d: has.length ? `A city park with ${has.join(', ').toLowerCase()}.` : 'A city park.',
+    raw: wardName || 'park', ad: '', lat, lon, rg: ward?.rg || '',
+    gm: '', w: '', ig: '', p: 'Free', b: '', t: p.t || '', tg: ['park'], src: 'OpenStreetMap', v: '', out: 0,
+    d: has.length ? `A public park with ${has.join(', ').toLowerCase()}.` : 'A public park.',
     park: { sqm: p.sqm || 0 },
   };
 });

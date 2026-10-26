@@ -24,6 +24,10 @@ describes the code accurately; where it names Bengaluru's data, read Mumbai's.
 - **Wards** are BMC's 24 administrative wards (A Ward … T Ward), each labelled
   with the neighbourhoods it is known by.
 - **Metro**: the running Mumbai Metro lines and stations from OSM.
+- **Parks**: Mumbai's public parks, gardens and maidans from OSM
+  (`node scripts/osm-parks.mjs`), in place of Bengaluru's BBMP register.
+  Named ones of 500 m² or more; society gardens, school grounds, clubs and
+  generic names ("park 1") are left out. Fix a wrong one in OSM and rerun.
 - **Green roads**: rebuilt over Mumbai's parks and forests.
 - All the on-page text says Mumbai.
 - **The logos say "Be well, Mum"** (`public/be-well-logo*.svg`). "Be Well,"
@@ -37,7 +41,6 @@ describes the code accurately; where it names Bengaluru's data, read Mumbai's.
 
 - Places (`sources/entries/healthmap_v8_recategorised.csv`, header only)
 - Routes (`sources/routes/*.csv`, header only)
-- Parks: Bengaluru's came from the BBMP register. Mumbai has none yet.
 - Communities (`src/data/community-categories.json`), themed days
   (`src/data/themed-days.json`), map ornaments (`src/data/ambient.json`)
 
@@ -476,8 +479,8 @@ keeps tinted tiles with initials. No Google or scraped photos.
 | What | Source | Licence |
 |---|---|---|
 | The entries | Compiled by hand | Ours |
-| Metro lines | OpenStreetMap Namma Metro route relations, running track only | ODbL |
-| Parks | BBMP parks register | Government of Karnataka |
+| Metro lines | OpenStreetMap Mumbai Metro route relations, running track only | ODbL |
+| Parks | OpenStreetMap parks, gardens and maidans (scripts/osm-parks.mjs) | ODbL |
 | City, corporation and ward boundaries | OpenStreetMap relation 7902476 and the admin boundaries inside it | ODbL |
 | Basemap | OpenStreetMap vector tiles via OpenFreeMap (OpenMapTiles schema) | ODbL, free with attribution |
 | Underlying map data | OpenStreetMap contributors | ODbL |
