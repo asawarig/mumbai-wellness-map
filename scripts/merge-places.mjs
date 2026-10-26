@@ -107,19 +107,27 @@ const metres = (a, b) => Math.hypot((a[0] - b[0]) * 104900, (a[1] - b[1]) * 1106
 const num = (v) => (v === '' || v == null || Number.isNaN(Number(v)) ? null : Number(v));
 
 /* ---------- tidy ---------- */
-const OUTSIDE = /\b(40[0-9]6\d\d|4007\d\d|4011\d\d|4012\d\d|4013\d\d)\b|\b(thane|navi mumbai|vashi|nerul|kharghar|belapur|airoli|panvel|mira road|bhayandar|bhayander|vasai|virar)\b/i;
+const OUTSIDE = /\b(4006(0[0-9]|1[0-3])|4011\d\d|4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(thane\s*\(?\s*(west|east|w|e)\b|ghodbunder|majiwada|kalwa|mumbra|kalyan(?!\s*(jewel|nagar))|dombivli|kharghar|kamothe|kalamboli|ulwe|taloja|panvel|mira road|bhayandar|bhayander|vasai|virar)\b/i;
 const OSM_SKIP = new Set(['clinic', 'hospital']);
-const stats = { farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
+const NOT_WELLNESS = /brahma\s*kumari|vipassana|\bdhamma\b|global pagoda|ramakrishna math|ananda sangha|transcendental meditation|\bisha (foundation|yoga|centre|center)|sadhguru|art of living|sri sri|heartfulness|sahaja|iskcon|hare krishna|\bosho\b|satsang|\bashram\b|ambika yoga kutir|raja ?yoga meditation|rajyoga|\bscientology|\bkabbalah/i;
+const stats = { spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
 rows = rows.filter((r) => {
   if (!r.n) return false;
+  /* No religious or spiritual organisations, and no guru-led movements:
+     the map is for health, and some of these border on cults. Healthcare
+     run by a religious trust (a mission hospital, a Jain medical centre)
+     stays; the organisations themselves do not. */
+  if (NOT_WELLNESS.test(r.n) || NOT_WELLNESS.test(r.d || '') && r.g === 'alttherapy') { stats.spiritual++; console.log(`  skipped (spiritual/religious): ${r.n}`); return false; }
   /* OSM tags hundreds of nursing homes and doctors' rooms in Mumbai as
      hospitals and clinics; those come from research only. */
   if (r._osm && OSM_SKIP.has(r.g)) { stats.osmSkipped++; return false; }
   if (!r.g || !SUBCAT[r.g]) { stats.noG++; console.log(`  skipped (unknown g ${JSON.stringify(r.g)}): ${r.n} [${r._file}]`); return false; }
   r.category = r.category || G_CATEGORY[r.g];
   r.out = r.out === '1' || r.out === 1 ? 1 : 0;
-  /* An address in Thane, Navi Mumbai or Mira-Bhayandar is outside the city
-     whatever its pin says (BMC PIN codes are 4000xx–4001xx). */
+  /* An address in Thane city, Panvel (Kharghar, Ulwe…), Mira-Bhayandar or
+     Vasai-Virar is outside the city whatever its pin says. Navi Mumbai's own
+     addresses often say "Thane" (the district), so that word alone is not
+     enough: only "Thane West/East" or a Thane-city PIN is. */
   if (!r.out && OUTSIDE.test(r.ad || '')) { stats.outsideAd++; console.log(`  skipped (address outside BMC): ${r.n} — ${r.ad}`); return false; }
   let lat = num(r.lat), lon = num(r.lon);
   /* Swapped coordinates are a common slip: Mumbai is about 19 N, 72.8 E. */
@@ -293,13 +301,17 @@ for (const r of merged) {
 
 /* ---------- ids ---------- */
 const prev = fs.existsSync(OUT) ? readRows(OUT) : [];
-const idFor = new Map(prev.map((p) => [`${key(p.n)}|${p.g}`, p.id]));
+/* Same name, same kind, same spot (to ~100 m): the same place. The spot tells
+   apart branches that share a bare name ("Decathlon", "Gym"). */
+const spot = (r) => (r.lat == null || r.lat === '' ? '' : `${(+r.lat).toFixed(3)},${(+r.lon).toFixed(3)}`);
+const idFor = new Map(prev.map((p) => [`${key(p.n)}|${p.g}|${spot(p)}`, p.id]));
+prev.forEach((p) => { const k = `${key(p.n)}|${p.g}`; if (!idFor.has(k)) idFor.set(k, p.id); });
 let next = prev.reduce((m, p) => Math.max(m, +(String(p.id).match(/MUM-(\d+)/)?.[1] || 0)), 0);
 const ORDER = Object.keys(G_CATEGORY);
 merged.sort((a, b) => ORDER.indexOf(a.g) - ORDER.indexOf(b.g) || a.n.localeCompare(b.n));
 const used = new Set();
 for (const r of merged) {
-  let id = idFor.get(`${key(r.n)}|${r.g}`);
+  let id = idFor.get(`${key(r.n)}|${r.g}|${spot(r)}`) || idFor.get(`${key(r.n)}|${r.g}`);
   if (!id || used.has(id)) id = `MUM-${String(++next).padStart(4, '0')}`;
   used.add(id);
   r.id = id;
@@ -338,6 +350,6 @@ const by = {};
 merged.forEach((r) => { const k = `${r.category} / ${r.g}`; by[k] = by[k] || { rows: 0, pinned: 0 }; by[k].rows++; if (r.lat != null) by[k].pinned++; });
 console.log(`\n${merged.length} places → ${path.relative(ROOT, OUT)}`);
 Object.entries(by).forEach(([k, v]) => console.log(`  ${k.padEnd(32)} ${String(v.rows).padStart(4)}  (${v.pinned} pinned)`));
-console.log(`  ${stats.osmSkipped} OSM clinics/hospitals left out, ${stats.outsideAd} skipped for an address outside the city, ${stats.dupes} duplicates merged, ${stats.noG} skipped for an unknown sub-category, ${stats.badCoords} coordinates outside the city re-looked up`);
+console.log(`  ${stats.spiritual} spiritual/religious organisations left out, ${stats.osmSkipped} OSM clinics/hospitals left out, ${stats.outsideAd} skipped for an address outside the city, ${stats.dupes} duplicates merged, ${stats.noG} skipped for an unknown sub-category, ${stats.badCoords} coordinates outside the city re-looked up`);
 console.log(`  ${stats.farPins} source pins far from their area re-looked up, ${stats.geocoded} pinned by lookup, ${stats.geoMiss} left without a pin, ${stats.areaFilled} areas filled from OSM`);
 console.log(`  ${cc.communities.length} communities in the Communities tab`);
