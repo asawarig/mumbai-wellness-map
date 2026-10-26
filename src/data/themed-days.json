@@ -34,5 +34,11 @@
   {"title": "Float and forest", "name": "float, eat, then the Aarey roads", "k": "clear", "area": "Goregaon East", "stops": ["MUM-1296", "MUM-0569", "MUM-0001"], "book": ["MUM-1296"]},
   {"title": "Breathe in Colaba", "name": "a breathwork class, a light meal, then the garden", "k": "clear", "area": "Colaba", "stops": ["MUM-1298", "MUM-0581", "PARK-18.92470_72.83048"], "book": ["MUM-1298"]},
   {"title": "Recovery day", "name": "recover, eat, then the lake garden", "k": "clear", "area": "Powai", "stops": ["MUM-1288", "MUM-0624", "MUM-0027"], "book": ["MUM-1288"]},
-  {"title": "Art and quiet", "name": "an art-therapy session, a meal, then the park", "k": "clear", "area": "Khar West", "stops": ["MUM-1289", "MUM-0551", "PARK-19.06431_72.83411"], "book": ["MUM-1289"]}
+  {"title": "Art and quiet", "name": "an art-therapy session, a meal, then the park", "k": "clear", "area": "Khar West", "stops": ["MUM-1289", "MUM-0551", "PARK-19.06431_72.83411"], "book": ["MUM-1289"]},
+  {"title": "Naupada lengths", "name": "swim laps, a healthy lunch, then a lap of Masunda Lake", "k": "move", "area": "Naupada", "stops": ["MUM-2244", "MUM-2366", "MUM-2239"]},
+  {"title": "Upvan to Yeoor", "name": "walk the lake, then head up the hill road", "k": "move", "area": "Upvan", "stops": ["MUM-2241", "MUM-2242"]},
+  {"title": "Hiranandani rally", "name": "play badminton, a bowl at WeFit, then the hill park", "k": "play", "area": "Hiranandani Estate", "stops": ["MUM-2253", "MUM-2396", "PARK-19.25344_72.97796"], "book": ["MUM-2253"]},
+  {"title": "Kopri pickleball", "name": "play pickleball, a fresh juice, then the park", "k": "play", "area": "Kopri, Thane East", "stops": ["MUM-2259", "MUM-2391", "PARK-19.17437_72.97450"], "book": ["MUM-2259"]},
+  {"title": "Aerial in Manpada", "name": "aerial yoga, a cold-pressed juice, then the garden", "k": "workout", "area": "Manpada", "stops": ["MUM-2348", "MUM-2368", "PARK-19.23671_72.96495"], "book": ["MUM-2348"]},
+  {"title": "Ghodbunder workout", "name": "a Cult class, a smoothie, then the park", "k": "workout", "area": "Ghodbunder Road", "stops": ["MUM-2307", "MUM-2389", "PARK-19.22777_72.97177"], "book": ["MUM-2307"]}
 ]

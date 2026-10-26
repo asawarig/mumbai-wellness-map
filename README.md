@@ -25,6 +25,8 @@ describes the code accurately; where it names Bengaluru's data, read Mumbai's.
   is the seventh zone, key `NaviMumbai`, across Thane Creek. Kharghar,
   Panvel and Ulwe are Panvel Municipal Corporation and are not on the map.
   The OSM areas every build script uses are in `scripts/city.mjs`.
+- **Thane** (Thane Municipal Corporation, OSM relation 7120000: Thane city,
+  Ghodbunder Road, Kalwa, Mumbra, Diva) is the eighth zone, key `Thane`.
 - **Wards** are BMC's 24 administrative wards (A Ward … T Ward), each labelled
   with the neighbourhoods it is known by.
 - **Metro**: the running Mumbai Metro lines and stations from OSM.

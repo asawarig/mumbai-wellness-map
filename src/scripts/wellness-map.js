@@ -381,7 +381,7 @@ const footText =
   + COUNTS.total + ' entries compiled by hand: ' + COUNTS.mapped + ' pinned, '
   + COUNTS.unpinned + ' with no fixed address, ' + COUNTS.outside + ' starting outside the city limits. '
   + 'Plus ' + COUNTS.parks + ' public parks from OpenStreetMap. '
-  + 'Mumbai and Navi Mumbai cover ' + DB.gba_km2 + ' km² across seven zones: the BMC\u2019s six and Navi Mumbai. '
+  + 'Mumbai, Navi Mumbai and Thane cover ' + DB.gba_km2 + ' km² across eight zones: the BMC\u2019s six, Navi Mumbai and Thane. '
   + 'Last reviewed September 2026. Not medical advice.';
 
 const footEl = document.getElementById('foot');
@@ -1411,7 +1411,7 @@ document.getElementById('close-cliff')?.addEventListener('click', closeCliff);
 
 const rgEl = document.getElementById('rg');
 if (rgEl) {
-  rgEl.innerHTML = '<option value="all">All seven zones</option>'
+  rgEl.innerHTML = '<option value="all">All eight zones</option>'
     + DB.corps.map(c => `<option value="${c.k}">${esc(c.label)} (${c.n})</option>`).join('')
     + '<option value="none">No fixed zone</option>';
 }

@@ -29,6 +29,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { SUBCAT } from '../src/lib/categories.js';
 import { NOT_WELLNESS } from './exclusions.mjs';
+import { decodePlusCode, plusCodeIn } from './pluscode.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const OUT = path.join(ROOT, 'sources/entries/mumbai-places.csv');
@@ -108,7 +109,7 @@ const metres = (a, b) => Math.hypot((a[0] - b[0]) * 104900, (a[1] - b[1]) * 1106
 const num = (v) => (v === '' || v == null || Number.isNaN(Number(v)) ? null : Number(v));
 
 /* ---------- tidy ---------- */
-const OUTSIDE = /\b(4006(0[0-9]|1[0-3])|4011\d\d|4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(thane\s*\(?\s*(west|east|w|e)\b|ghodbunder|majiwada|kalwa|mumbra|kalyan(?!\s*(jewel|nagar))|dombivli|kharghar|kamothe|kalamboli|ulwe|taloja|mira road|bhayandar|bhayander|vasai|virar)\b/i;
+const OUTSIDE = /\b(4011\d\d|4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(bhiwandi|kalyan(?!\s*(jewel|nagar))|dombivli|ambernath|badlapur|ulhasnagar|kharghar|kamothe|kalamboli|ulwe|taloja|mira road|bhayan[dt]ar(?!\s*pada)|bhayander(?!\s*pada)|vasai|virar)\b/i;
 const OSM_SKIP = new Set(['clinic', 'hospital']);
 const stats = { spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
 rows = rows.filter((r) => {
@@ -124,10 +125,9 @@ rows = rows.filter((r) => {
   if (!r.g || !SUBCAT[r.g]) { stats.noG++; console.log(`  skipped (unknown g ${JSON.stringify(r.g)}): ${r.n} [${r._file}]`); return false; }
   r.category = r.category || G_CATEGORY[r.g];
   r.out = r.out === '1' || r.out === 1 ? 1 : 0;
-  /* An address in Thane city, Panvel (Kharghar, Ulwe…), Mira-Bhayandar or
-     Vasai-Virar is outside the city whatever its pin says. Navi Mumbai's own
-     addresses often say "Thane" (the district), so that word alone is not
-     enough: only "Thane West/East" or a Thane-city PIN is. */
+  /* An address in Bhiwandi, Kalyan-Dombivli, Panvel MC (Kharghar, Ulwe…),
+     Mira-Bhayandar or Vasai-Virar is outside the city whatever its pin says.
+     Mumbai, Navi Mumbai and Thane are all in. */
   if (!r.out && OUTSIDE.test(r.ad || '')) { stats.outsideAd++; console.log(`  skipped (address outside BMC): ${r.n} — ${r.ad}`); return false; }
   let lat = num(r.lat), lon = num(r.lon);
   /* Swapped coordinates are a common slip: Mumbai is about 19 N, 72.8 E. */
@@ -222,8 +222,17 @@ const hoodPt = (a) => {
 };
 const LANDMARK = /\b(mall|marketcity|market city|udyan|udyaan|park|garden|beach|chowpatty|caves?|jetty|hospital|institute|fort|station|gymkhana|complex|lake|club|stadium|maidan|temple|church|school|college|university|hotel|plaza|centre|center|bhavan|bhawan|dome|pagoda)\b/i;
 const JUNK = /^(shop|unit|office|flat|gala|plot|no\.?|ground|first|second|third|\d+(st|nd|rd|th)?\s*floor|floor|ugf|lgf|wing|block|room|near|opp\.?|opposite|behind|next to|above|below|beside)\b|^\d+[a-z]?$/i;
+/* Which city to name in a lookup: a Thane or Navi Mumbai address asked about
+   as if it were in Mumbai finds nothing. */
+const NAVI = /navi mumbai|vashi|sanpada|juinagar|turbhe|nerul|seawoods|belapur|kopar ?khairane|ghansoli|rabale|airoli|digha|mahape/i;
+const cityOf = (r) => {
+  const t = `${r.ad || ''} ${r.a || ''}`;
+  return NAVI.test(t) ? 'Navi Mumbai' : /\bthane\b|ghodbunder|majiwada|kalwa|mumbra|diva\b|kasarvadavali|naupada|kolshet|manpada|vartak nagar|wagle/i.test(t) ? 'Thane' : 'Mumbai';
+};
+const CITY_CENTRE = { Mumbai: [72.88, 19.08], Thane: [72.97, 19.2], 'Navi Mumbai': [73.02, 19.06] };
 function queries(r) {
-  const city = r.out ? '' : ', Mumbai';
+  const c = cityOf(r);
+  const city = r.out ? '' : (new RegExp(`\\b${c}\\b`, 'i').test(r.ad || '') ? '' : `, ${c}`);
   const segs = String(r.ad || '').replace(/^(start|starts at|starting point|meeting point)\s*:?\s*/i, '')
     .split(/\s*[,;–]\s*/).map((x) => x.trim()).filter(Boolean);
   const useful = segs.filter((x) => !JUNK.test(x) && !/^(mumbai|maharashtra|india|\d{6})$/i.test(x) && !/^mumbai\s+\d{6}$/i.test(x));
@@ -263,6 +272,18 @@ console.log(`\nLooking up ${need.length} rows without coordinates…`);
 let done = 0;
 for (const r of need) {
   const near = r.out ? null : hoodPt(r.a);
+  /* A plus code in the address is an exact spot: decode it first. */
+  const pc = plusCodeIn(r.ad);
+  if (pc) {
+    const ref = near || CITY_CENTRE[cityOf(r)];
+    const hit = decodePlusCode(pc, ref[1], ref[0]);
+    if (hit && (r.out || inCity(hit.lon, hit.lat))) {
+      r.lon = +hit.lon.toFixed(6); r.lat = +hit.lat.toFixed(6);
+      r.notes = [r.notes, `pin from plus code ${pc}`].filter(Boolean).join('; ');
+      stats.geocoded++; done++;
+      continue;
+    }
+  }
   for (const q of queries(r)) {
     let found = null;
     for (const look of [nominatim, photon]) {

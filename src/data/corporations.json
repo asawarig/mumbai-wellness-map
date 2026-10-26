@@ -47,5 +47,12 @@
     "c": "#F5C6A8",
     "tone": "#A8532A",
     "km2": 105
+  },
+  {
+    "k": "Thane",
+    "label": "Thane",
+    "c": "#C7E3A9",
+    "tone": "#4E7A1E",
+    "km2": 142
   }
 ]
