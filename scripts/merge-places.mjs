@@ -152,6 +152,10 @@ for (const r of rows) {
   const adKey = (x) => (x.ad || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
   const twin = merged.find((m) => {
     if (m.g === r.g && Math.min(adKey(m).length, adKey(r).length) > 30 && (adKey(m).includes(adKey(r)) || adKey(r).includes(adKey(m)))) return true;
+    /* "Care Counselling Coaching" and "Care Counselling Coaching — Malvani":
+       one name with and without its branch, at the same spot. */
+    const bare = (n) => key(String(n).replace(/\s+—\s+.*$/, ''));
+    if (m.g === r.g && m.lat != null && r.lat != null && bare(m.n) === bare(r.n) && metres([m.lon, m.lat], [r.lon, r.lat]) < 150) return true;
     if (key(m.n) !== k) return false;
     if (m.lat != null && r.lat != null) return metres([m.lon, m.lat], [r.lon, r.lat]) < 300;
     return (m.a || '').toLowerCase() === (r.a || '').toLowerCase() || !m.a || !r.a;
@@ -338,6 +342,24 @@ for (const r of merged) {
   used.add(id);
   r.id = id;
 }
+
+/* ---------- Plum Perks ----------
+   The map reads a partner from the tag plum-perks and a Playo venue from the
+   tag playo (src/lib/index-card.js). Research marks a partner branch in
+   perk_partner / perk_id; any row named after a partner brand with physical
+   branches is one too, whoever found it (the OSM sweep finds Apollo
+   Pharmacies the research did not). */
+const PERK_BRANDS = /^(cult\.?fit|cult\b|eat\.?fit|healthkart|apollo pharmacy|clove dental|sabka dentist|vijaya diagnostic|cloudnine|qi spine|the wellness co|amaha|the sleep company|vetic|tagda raho|studio oura|ultrahuman|praan health|dr\.? paws|arva health)/i;
+let perkTagged = 0, playoTagged = 0;
+for (const r of merged) {
+  const tags = new Set(String(r.tg || '').split('|').map((t) => t.trim()).filter(Boolean));
+  const playo = r.perk_id === 'PLUM-054' || /playo\.co/i.test(r.w || '') || /on playo/i.test(r.notes || '');
+  const partner = !playo && ((r.perk_partner || '').toLowerCase() === 'yes' || /^PLUM-/.test(r.perk_id || '') || PERK_BRANDS.test(r.n));
+  if (playo && !tags.has('playo')) { tags.add('playo'); playoTagged++; }
+  if (partner && !tags.has('plum-perks')) { tags.add('plum-perks'); perkTagged++; }
+  r.tg = [...tags].join('|');
+}
+console.log(`\n  ${perkTagged} Plum Perks partner branches tagged, ${playoTagged} Playo venues tagged`);
 
 /* ---------- write the sheet ---------- */
 const COLS = ['category', 'intent_v7', 'id', 'n', 'c', 'g', 's', 'a', 'raw', 'ad', 'lat', 'lon', 'rg', 'gm', 'w', 'ig', 'd', 'p', 'b', 't', 'tg',

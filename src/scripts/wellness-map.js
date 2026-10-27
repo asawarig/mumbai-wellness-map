@@ -1104,9 +1104,23 @@ function perkCardRow(p) {
    repeated the place name back at itself. */
 /* A place's line in the paper listing: the start of its description, else
    what kind of place it is. */
+/* The name a row shows: the branch after " — " is dropped. Where that leaves
+   two places looking the same ("Agilus Diagnostics" fourteen times), each one's
+   line ends with where it is: "Diagnostic lab · Chembur". */
+const shownName = (n) => String(n || '').replace(/\s+—\s+.*$/, '');
+const SHARED_NAME = (() => {
+  const n = new Map();
+  E.forEach((r) => { const k = shownName(r.n).toLowerCase(); n.set(k, (n.get(k) || 0) + 1); });
+  return n;
+})();
+const branchOf = (r) => (String(r.n || '').match(/\s+—\s+(.*)$/)?.[1] || r.a || '').trim();
 function aboutLine(r) {
-  const d = descText(r.d || '').split(/(?<=[.!?])\s/)[0].replace(/[.!?]$/, '');
-  const line = d || r.s || '';
+  const d = firstSentence(descText(r.d || '')).replace(/[.!?]$/, '');
+  const where = SHARED_NAME.get(shownName(r.n).toLowerCase()) > 1 ? branchOf(r) : '';
+  /* With a place to name, the kind of place is enough before it, so the
+     area is never the part cut off. */
+  const what = where ? (r.s || d) : (d || r.s || '');
+  const line = where ? [what, where].filter(Boolean).join(' · ') : what;
   return line.length > 70 ? `${line.slice(0, 68).replace(/\s+\S*$/, '')}…` : line;
 }
 /* The paper listing: a small square in the category's colour, the name, then
@@ -1124,7 +1138,7 @@ function paperRowHtml(r, cls = '') {
   return `<div class="card prow${cls}${offer ? ' has-perk' : ''}${stopNo ? ' is-stop' : ''}${state.active === r.id ? ' is-active' : ''}" data-id="${esc(r.id)}">
     <button type="button" class="card-main">
       ${stopNo ? `<span class="prow-no" aria-label="Stop ${stopNo}">${stopNo}</span>` : `<span class="prow-sq" style="--c:${colour}" aria-hidden="true"></span>`}
-      <span class="prow-name">${esc(r.n.replace(/\s+—\s+.*$/, ''))}</span>
+      <span class="prow-name">${esc(shownName(r.n))}</span>
       <span class="prow-meta">${offer ? `<span class="prow-offer">${esc(offer)}</span>` : ''}${offer && about ? '<i aria-hidden="true">•</i>' : ''}${about ? `<span>${esc(about)}</span>` : ''}</span>
       ${offer ? `<span class="prow-pk" title="${esc(offer)}, with Plum Perks">${esc(offerShort(offer))}</span>` : ''}
     </button>
@@ -5085,11 +5099,28 @@ function areaOfPlace(r) {
 /* The card leads with one line that says what the place is: the first
    sentence of its description, when that sentence is short enough to read as
    a verdict. The rest of the description follows it as before. */
+/* Where the first sentence really ends: a full stop after "Dr", "St", "incl",
+   a degree ("M.Sc.") or an initial ("B. R. Ambedkar", "B.K.S. Iyengar") is
+   not the end of one. */
+const NOT_AN_END = /(?:^|[\s(])(?:dr|dt|mr|mrs|ms|st|sr|jr|prof|no|nos|rd|opp|nr|vs|approx|incl|est|pvt|ltd|co|bldg|sec|mt|ft|e\.g|i\.e|etc|b\.?sc|m\.?sc|b\.?a|m\.?a|m\.?s|ph\.?d|(?:[a-z]\.){0,3}[a-z])\.$/i;
+function firstSentence(text) {
+  const re = /[.!?](?=\s+|$)/g;
+  let m;
+  while ((m = re.exec(text))) {
+    const upTo = text.slice(0, m.index + 1);
+    if (m[0] === '.' && NOT_AN_END.test(upTo)) continue;
+    return upTo;
+  }
+  return text;
+}
 function splitVerdict(d) {
   const text = String(d || '').trim();
   if (!text) return ['', ''];
-  const m = text.match(/^(.{20,170}?[.!?])(\s+|$)/);
-  if (m) return [m[1], text.slice(m[0].length).trim()];
+  /* One rule everywhere: the whole first sentence leads when it is short
+     enough to read as a verdict; otherwise nothing leads and the whole
+     description follows. A sentence is never cut in two. */
+  const first = firstSentence(text);
+  if (first.length >= 20 && first.length <= 170) return [first, text.slice(first.length).trim()];
   return text.length <= 170 ? [text, ''] : ['', text];
 }
 /* A chip with the category's own pin badge, in its colour, under the name. */
