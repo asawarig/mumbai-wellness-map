@@ -280,9 +280,10 @@ for (const r of merged) {
 {
   const prevSheet = fs.existsSync(OUT) ? readRows(OUT) : [];
   const prevPin = new Map(prevSheet.filter((p) => p.lat && p.map_eligible !== 'no').map((p) => [`${key(p.n)}|${p.g}`, [+p.lat, +p.lon]]));
+  const prevPinAny = new Map(prevSheet.filter((p) => p.lat && p.map_eligible !== 'no').map((p) => [key(p.n) + '|' + String(p.a || '').toLowerCase(), [+p.lat, +p.lon]]));
   for (const r of merged) {
     if (r.lat != null || r._noLookup || r.category === 'Communities') continue;
-    const pin = prevPin.get(`${key(r.n)}|${r.g}`);
+    const pin = prevPin.get(`${key(r.n)}|${r.g}`) || prevPinAny.get(key(r.n) + '|' + String(r.a || '').toLowerCase());
     if (pin && (r.out || inCity(pin[1], pin[0]))) { r.lat = pin[0]; r.lon = pin[1]; stats.keptPin++; }
   }
 }
@@ -373,12 +374,14 @@ const prev = fs.existsSync(OUT) ? readRows(OUT) : [];
 const spot = (r) => (r.lat == null || r.lat === '' ? '' : `${(+r.lat).toFixed(3)},${(+r.lon).toFixed(3)}`);
 const idFor = new Map(prev.map((p) => [`${key(p.n)}|${p.g}|${spot(p)}`, p.id]));
 prev.forEach((p) => { const k = `${key(p.n)}|${p.g}`; if (!idFor.has(k)) idFor.set(k, p.id); });
+/* A place refiled under another sub-category keeps its id: matched by name and spot alone. */
+prev.forEach((p) => { const k = `${key(p.n)}|*|${spot(p)}`; if (spot(p) && !idFor.has(k)) idFor.set(k, p.id); });
 let next = prev.reduce((m, p) => Math.max(m, +(String(p.id).match(/MUM-(\d+)/)?.[1] || 0)), 0);
 const ORDER = Object.keys(G_CATEGORY);
 merged.sort((a, b) => ORDER.indexOf(a.g) - ORDER.indexOf(b.g) || a.n.localeCompare(b.n));
 const used = new Set();
 for (const r of merged) {
-  let id = idFor.get(`${key(r.n)}|${r.g}|${spot(r)}`) || idFor.get(`${key(r.n)}|${r.g}`);
+  let id = idFor.get(`${key(r.n)}|${r.g}|${spot(r)}`) || idFor.get(`${key(r.n)}|${r.g}`) || (spot(r) && idFor.get(`${key(r.n)}|*|${spot(r)}`));
   if (!id || used.has(id)) id = `MUM-${String(++next).padStart(4, '0')}`;
   used.add(id);
   r.id = id;
@@ -401,6 +404,19 @@ for (const r of merged) {
   r.tg = [...tags].join('|');
 }
 console.log(`\n  ${perkTagged} Plum Perks partner branches tagged, ${playoTagged} Playo venues tagged`);
+
+/* ---------- classes ----------
+   As on the Bengaluru map: a place you go to for a class (a dance school, a
+   martial-arts academy, a boxing club, an aerial studio) is a Gym class
+   (act_gym), not a gym. Pilates and strength studios stay gyms. */
+const CLASS_KIND = /\b(dance|dancing|zumba|salsa|bollywood|martial arts?|karate|taekwondo|judo|jiu[- ]?jitsu|bjj|mma|muay thai|kick ?boxing|boxing (club|academy|school)|krav maga|kalari\w*|capoeira|aerial|pole (dance|fitness|studio)|calisthenics park)\b/i;
+let classed = 0;
+for (const r of merged) {
+  if (r.g !== 'gym') continue;
+  if (!CLASS_KIND.test(`${r.s || ''} ${r.n || ''}`)) continue;
+  r.g = 'act_gym'; classed++;
+}
+console.log(`  ${classed} dance, martial-arts and class studios filed as Gym classes`);
 
 /* ---------- delivery-only kitchens ----------
    As on the Bengaluru map: a kitchen you can only order from (a cloud
