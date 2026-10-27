@@ -109,7 +109,7 @@ const metres = (a, b) => Math.hypot((a[0] - b[0]) * 104900, (a[1] - b[1]) * 1106
 const num = (v) => (v === '' || v == null || Number.isNaN(Number(v)) ? null : Number(v));
 
 /* ---------- tidy ---------- */
-const OUTSIDE = /\b(4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(bhiwandi|kalyan(?!\s*(jewel|nagar))|dombivli|ambernath|badlapur|ulhasnagar|kharghar|kamothe|kalamboli|ulwe|taloja|vasai|virar)\b/i;
+const OUTSIDE = /\b(4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(bhiwandi|kalyan(?!\s*(jewel|nagar|kendra))|dombivli|ambernath|badlapur|ulhasnagar|kharghar|kamothe|kalamboli|ulwe|taloja|vasai|virar)\b/i;
 const OSM_SKIP = new Set(['clinic', 'hospital']);
 const stats = { closed: 0, sharedPin: 0, spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
 rows = rows.filter((r) => {
@@ -122,7 +122,8 @@ rows = rows.filter((r) => {
   if (NOT_WELLNESS.test(r.n) || NOT_WELLNESS.test(r.d || '') && r.g === 'alttherapy') { stats.spiritual++; console.log(`  skipped (spiritual/religious): ${r.n}`); return false; }
   /* OSM tags hundreds of nursing homes and doctors' rooms in Mumbai as
      hospitals and clinics; those come from research only. */
-  if (r._osm && OSM_SKIP.has(r.g)) { stats.osmSkipped++; return false; }
+  /* Dentists are the exception: OSM maps them reliably, by name. */
+  if (r._osm && OSM_SKIP.has(r.g) && r.s !== 'Dental clinic') { stats.osmSkipped++; return false; }
   if (!r.g || !SUBCAT[r.g]) { stats.noG++; console.log(`  skipped (unknown g ${JSON.stringify(r.g)}): ${r.n} [${r._file}]`); return false; }
   r.category = r.category || G_CATEGORY[r.g];
   r.out = r.out === '1' || r.out === 1 ? 1 : 0;
