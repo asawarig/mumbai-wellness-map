@@ -3519,3 +3519,6 @@ p.desc-cta a{color:#571541;text-decoration:underline;text-underline-offset:3px}
 .rt-badge i{font-style:normal;font-size:11px}
 .rt-top{background:#1C7C3A}.rt-good{background:#24963F}.rt-fair{background:#5BA829}.rt-meh{background:#DB9C26}.rt-low{background:#D9534F}
 .rt-count{font:400 13.5px/1 var(--display);color:#6E6860}
+
+/* A place with no pin of its own says so, under its description. */
+.pp-nopin{margin:8px 0 0;font:400 12.5px/1.45 var(--sans);color:var(--text-3)}

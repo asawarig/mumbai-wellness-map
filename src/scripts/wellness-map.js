@@ -784,6 +784,10 @@ cardsEl?.addEventListener('mouseover', (e) => {
   if (!row || !map || row.classList.contains('is-open')) return;
   const f = PLACE_FEATURE.get(row.dataset.id);
   if (!f || lifted?.id === row.dataset.id) return;
+  /* Not while the map is flying to a place: the list under a still pointer is
+     redrawn mid-flight, and a pin lifted then was left hanging where the
+     flight passed while the map moved on under it. */
+  if (map.isMoving() || map.isEasing?.()) return;
   liftPin(f, map.project(f.geometry.coordinates));
 });
 cardsEl?.addEventListener('mouseout', (e) => {
@@ -4580,7 +4584,7 @@ function liftPin(f, point) {
      at its true, fractional spot. */
   el.style.transform = `translate(${p.x}px, ${p.y}px) translate(-50%, -50%)`;
   frameEl?.appendChild(el);
-  lifted = { id, el };
+  lifted = { id, el, at: f.geometry.coordinates };
   /* Its row in the list lights up with it. */
   cardsEl?.querySelectorAll('.prow.is-hot').forEach((x) => x.classList.remove('is-hot'));
   cardsEl?.querySelector(`.prow[data-id="${CSS.escape(id)}"]`)?.classList.add('is-hot');
@@ -4615,6 +4619,13 @@ function dropPin() {
     if (map && !lifted) { map.once('render', done); map.triggerRepaint(); setTimeout(done, 120); } else done();
   }, PIN_HOVER_MS);
 }
+/* A lifted pin keeps to its spot on every frame the map moves, so it never
+   lags or jumps while the map pans or zooms under it. */
+map?.on('move', () => {
+  if (!lifted?.at) return;
+  const p = onFrame(lifted.at);
+  lifted.el.style.transform = `translate(${p.x}px, ${p.y}px) translate(-50%, -50%)`;
+});
 /* Straight away, for when the map moves out from under it or the pin is picked. */
 function clearLift() {
   lifted = null;
@@ -5240,9 +5251,12 @@ function paperPlaceBody(r, p) {
   const offer = !p.noOffer && (p.perkPartner || p.playo) && hasPerkCallout(r)
     ? `<p class="pp-offer"><b>${esc(offersFor(r)[0] || 'An offer')}</b> with Plum Perks, in the <a href="${esc(PLUM_APP)}" target="_blank" rel="noopener">Plum app</a></p>`
     : '';
+  const noPin = r.lat == null && r.c !== 'Communities' && !r.out
+    ? `<p class="pp-nopin">No exact pin for this one yet${r.a ? ` — the map shows ${esc(r.a)}` : ''}.</p>` : '';
   return `
     ${p.verdict ? descParas('pp-verdict', p.verdict) : ''}
     ${offer}
+    ${noPin}
     ${p.restOfDesc ? descParas('pp-desc', p.restOfDesc) : ''}
     ${p.facts.length ? `<dl class="pp-facts">${p.facts.map(([k, v, html]) => `<div><dt>${k}</dt><dd>${html ? v : esc(v)}</dd></div>`).join('')}</dl>` : ''}
     ${p.tags.trim() ? `<div class="pp-tags">${p.tags}</div>` : ''}
@@ -6166,12 +6180,36 @@ function setView(view){
   }
 }
 
+/* The middle of an area, from the places pinned in it: the median, so one
+   stray pin cannot drag it. */
+const AREA_CENTRE = (() => {
+  const by = new Map();
+  for (const x of E) {
+    if (x.lat == null || !x.a) continue;
+    const k = x.a.toLowerCase();
+    if (!by.has(k)) by.set(k, []);
+    by.get(k).push([x.lon, x.lat]);
+  }
+  const mid = (v) => { const s = [...v].sort((p, q) => p - q); return s[Math.floor(s.length / 2)]; };
+  const out = new Map();
+  by.forEach((pts, k) => { if (pts.length >= 2) out.set(k, [mid(pts.map((p) => p[0])), mid(pts.map((p) => p[1]))]); });
+  return out;
+})();
+const areaCentre = (r) => AREA_CENTRE.get(String(r.a || '').toLowerCase())
+  || AREA_CENTRE.get(String(r.a || '').split(/[,(/]/)[0].trim().toLowerCase()) || null;
 function goTo(id){
   const r = BY_ID.get(id);
   if (!r) return;
   setView('map');
   const meta = intentMeta(r);
-  if (!meta?.map || r.lat == null) { showPlace(r); return; }
+  if (!meta?.map || r.lat == null) {
+    /* No pin of its own: go to its part of town, so a click still takes the
+       reader somewhere, and the card says the spot is not mapped. */
+    const near = r.lat == null ? areaCentre(r) : null;
+    if (near && map) map.flyTo({ center: near, zoom: Math.max(map.getZoom(), 14), duration: 900 });
+    showPlace(r);
+    return;
+  }
   if (!state.intents.has(meta.k)) state.intents = new Set(MAP_INTENTS.map((i) => i.k));
   if (state.query && !matchesQuery(r, wordsOf(state.query))) {
     state.query = '';

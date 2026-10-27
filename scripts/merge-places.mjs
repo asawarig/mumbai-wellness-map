@@ -28,7 +28,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { SUBCAT } from '../src/lib/categories.js';
-import { NOT_WELLNESS } from './exclusions.mjs';
+import { NOT_WELLNESS, CLOSED } from './exclusions.mjs';
 import { decodePlusCode, plusCodeIn } from './pluscode.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -111,13 +111,14 @@ const num = (v) => (v === '' || v == null || Number.isNaN(Number(v)) ? null : Nu
 /* ---------- tidy ---------- */
 const OUTSIDE = /\b(4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(bhiwandi|kalyan(?!\s*(jewel|nagar))|dombivli|ambernath|badlapur|ulhasnagar|kharghar|kamothe|kalamboli|ulwe|taloja|vasai|virar)\b/i;
 const OSM_SKIP = new Set(['clinic', 'hospital']);
-const stats = { spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
+const stats = { closed: 0, sharedPin: 0, spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
 rows = rows.filter((r) => {
   if (!r.n) return false;
   /* No religious or spiritual organisations, and no guru-led movements:
      the map is for health, and some of these border on cults. Healthcare
      run by a religious trust (a mission hospital, a Jain medical centre)
      stays; the organisations themselves do not. */
+  if (CLOSED.test(r.n)) { stats.closed++; console.log(`  skipped (closed): ${r.n}`); return false; }
   if (NOT_WELLNESS.test(r.n) || NOT_WELLNESS.test(r.d || '') && r.g === 'alttherapy') { stats.spiritual++; console.log(`  skipped (spiritual/religious): ${r.n}`); return false; }
   /* OSM tags hundreds of nursing homes and doctors' rooms in Mumbai as
      hospitals and clinics; those come from research only. */
@@ -224,7 +225,7 @@ const hoodPt = (a) => {
   const h = hoodsForCheck.filter((x) => Array.isArray(x.pt) && x.pt[0] != null).find((x) => words.some((w) => x.name.toLowerCase().includes(w) || w.includes(x.name.toLowerCase())));
   return h?.pt || null;
 };
-const LANDMARK = /\b(mall|marketcity|market city|udyan|udyaan|park|garden|beach|chowpatty|caves?|jetty|hospital|institute|fort|station|gymkhana|complex|lake|club|stadium|maidan|temple|church|school|college|university|hotel|plaza|centre|center|bhavan|bhawan|dome|pagoda)\b/i;
+const LANDMARK = /\b(mall|marketcity|market city|palladium|phoenix|inorbit|infiniti|oberoi|r city|viviana|lake shore|korum|growel|nexus|grand central|raghuleela|kamala mills|todi mills|high street|udyan|udyaan|park|garden|beach|chowpatty|caves?|jetty|hospital|institute|fort|station|gymkhana|complex|lake|club|stadium|maidan|temple|church|school|college|university|hotel|plaza|centre|center|bhavan|bhawan|dome|pagoda)\b/i;
 const JUNK = /^(shop|unit|office|flat|gala|plot|no\.?|ground|first|second|third|\d+(st|nd|rd|th)?\s*floor|floor|ugf|lgf|wing|block|room|near|opp\.?|opposite|behind|next to|above|below|beside)\b|^\d+[a-z]?$/i;
 /* Which city to name in a lookup: a Thane or Navi Mumbai address asked about
    as if it were in Mumbai finds nothing. */
@@ -312,6 +313,33 @@ for (const r of need) {
 }
 saveCache();
 
+/* ---------- shared buildings ----------
+   A place still without a pin, in the same mall or named building as a place
+   that has one, stands where that one does: "3rd Floor, Phoenix Palladium
+   Mall" and "Palladium, Lower Parel" are the same few metres. */
+{
+  /* Buildings only: a beach, a park or a lake is too big to share a pin in. */
+  const BUILDING = /\b(mall|marketcity|market city|palladium|phoenix|inorbit|infiniti|oberoi|r city|viviana|lake shore|korum|growel|nexus|grand central|raghuleela|plaza|towers?|complex|bhavan|bhawan|building|bldg|heights|chambers|arcade|business park|mills|apartments?|co-?op|chs)\b/i;
+  const segsOf = (r) => String(r.ad || '').split(/\s*[,;]\s*/).map((x) => x.trim())
+    .filter((x) => BUILDING.test(x) && !/\b(beach|park|garden|udyan|lake|chowpatty|maidan|fort|caves?|trail|station)\b/i.test(x) && x.length > 5)
+    .map((x) => x.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim());
+  const areaWords = (r) => new Set(String(r.a || '').toLowerCase().split(/[^a-z]+/).filter((w) => w.length > 3 && !/^(east|west|road|nagar|mumbai)$/.test(w)));
+  const sameArea = (m, r) => { const a = areaWords(m), b = areaWords(r); return !a.size || !b.size || [...a].some((w) => b.has(w)); };
+  const GENERIC_BLD = /^(mall|the mall|complex|centre|center|plaza|tower|building|house)$/;
+  const core = (k) => k.replace(/\b(mall|the|shop|no|ground|floor|level|unit)\b/g, ' ').replace(/\s+/g, ' ').trim();
+  const pinned = merged.filter((m) => m.lat != null).map((m) => ({ m, keys: segsOf(m).map(core).filter((k) => k.length >= 6 && !GENERIC_BLD.test(k)) }));
+  for (const r of merged) {
+    if (r.lat != null || r.category === 'Communities' || r.out) continue;
+    const mine = segsOf(r).map(core).filter((k) => k.length >= 6 && !GENERIC_BLD.test(k));
+    if (!mine.length) continue;
+    const hit = pinned.find(({ m, keys }) => cityOf(m) === cityOf(r) && sameArea(m, r)
+      && keys.some((k) => mine.some((x) => x === k || (x.length >= 8 && k.includes(x)) || (k.length >= 8 && x.includes(k)))))?.m;
+    if (!hit) continue;
+    r.lat = hit.lat; r.lon = hit.lon; stats.sharedPin++;
+    r.notes = [String(r.notes || '').replace(/;?\s*no pin found; listed without one/, ''), `pin shared with ${hit.n} (same building)`].filter(Boolean).join('; ');
+  }
+}
+
 /* ---------- area ---------- */
 const NB = path.join(ROOT, '.cache/osm-neighbourhoods.json');
 const hoods = (fs.existsSync(NB) ? JSON.parse(fs.readFileSync(NB, 'utf8')) : []).filter((h) => Array.isArray(h.pt) && h.pt[0] != null);
@@ -349,7 +377,7 @@ for (const r of merged) {
    perk_partner / perk_id; any row named after a partner brand with physical
    branches is one too, whoever found it (the OSM sweep finds Apollo
    Pharmacies the research did not). */
-const PERK_BRANDS = /^(cult\.?fit|cult\b|eat\.?fit|healthkart|apollo pharmacy|clove dental|sabka dentist|vijaya diagnostic|cloudnine|qi spine|the wellness co|amaha|the sleep company|vetic|tagda raho|studio oura|ultrahuman|praan health|dr\.? paws|arva health)/i;
+const PERK_BRANDS = /\beat\.? ?fit\b|^(cult\.?fit|cult\b|healthkart|apollo pharmacy|clove dental|sabka dentist|vijaya diagnostic|cloudnine|qi spine|the wellness co|amaha|the sleep company|vetic|tagda raho|studio oura|ultrahuman|praan health|dr\.? paws|arva health)/i;
 let perkTagged = 0, playoTagged = 0;
 for (const r of merged) {
   const tags = new Set(String(r.tg || '').split('|').map((t) => t.trim()).filter(Boolean));
@@ -395,5 +423,5 @@ merged.forEach((r) => { const k = `${r.category} / ${r.g}`; by[k] = by[k] || { r
 console.log(`\n${merged.length} places → ${path.relative(ROOT, OUT)}`);
 Object.entries(by).forEach(([k, v]) => console.log(`  ${k.padEnd(32)} ${String(v.rows).padStart(4)}  (${v.pinned} pinned)`));
 console.log(`  ${stats.spiritual} spiritual/religious organisations left out, ${stats.osmSkipped} OSM clinics/hospitals left out, ${stats.outsideAd} skipped for an address outside the city, ${stats.dupes} duplicates merged, ${stats.noG} skipped for an unknown sub-category, ${stats.badCoords} coordinates outside the city re-looked up`);
-console.log(`  ${stats.farPins} source pins far from their area re-looked up, ${stats.geocoded} pinned by lookup, ${stats.geoMiss} left without a pin, ${stats.areaFilled} areas filled from OSM`);
+console.log(`  ${stats.closed} closed places left out, ${stats.sharedPin} pins shared within a building, ${stats.farPins} source pins far from their area re-looked up, ${stats.geocoded} pinned by lookup, ${stats.geoMiss} left without a pin, ${stats.areaFilled} areas filled from OSM`);
 console.log(`  ${cc.communities.length} communities in the Communities tab`);
