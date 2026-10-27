@@ -40,5 +40,12 @@
   {"title": "Smash and a bowl", "name": "play badminton, a bowl at WeFit, then the hill park", "k": "play", "area": "Hiranandani Estate", "stops": ["MUM-2253", "MUM-2396", "PARK-19.25344_72.97796"], "book": ["MUM-2253"]},
   {"title": "Pickle and a juice", "name": "play pickleball, a fresh juice, then the park", "k": "play", "area": "Kopri, Thane East", "stops": ["MUM-2259", "MUM-2391", "PARK-19.17437_72.97450"], "book": ["MUM-2259"]},
   {"title": "Aerial hour", "name": "aerial yoga, a cold-pressed juice, then the garden", "k": "workout", "area": "Manpada", "stops": ["MUM-2348", "MUM-2368", "PARK-19.23671_72.96495"], "book": ["MUM-2348"]},
-  {"title": "Class and a smoothie", "name": "a Cult class, a smoothie, then the park", "k": "workout", "area": "Ghodbunder Road", "stops": ["MUM-2307", "MUM-2389", "PARK-19.22777_72.97177"], "book": ["MUM-2307"]}
+  {"title": "Class and a smoothie", "name": "a Cult class, a smoothie, then the park", "k": "workout", "area": "Ghodbunder Road", "stops": ["MUM-2307", "MUM-2389", "PARK-19.22777_72.97177"], "book": ["MUM-2307"]},
+  {"title": "Jesal Park sunset", "name": "walk the creek-side park at sunset, then a juice", "k": "move", "area": "Bhayandar West", "stops": ["MUM-2609", "MUM-2698"]},
+  {"title": "Laps and a fruit bowl", "name": "swim laps, a fruit bowl, then the jogging track", "k": "move", "area": "Mira Road (Hatkesh)", "stops": ["MUM-2622", "MUM-2700", "MUM-2608"]},
+  {"title": "Pickle and a bowl", "name": "play pickleball, a bowl at Truth Bowl, then Ramdev Park", "k": "play", "area": "Mira Road (Kanakia)", "stops": ["MUM-2628", "MUM-2699", "PARK-19.29694_72.86978"], "book": ["MUM-2628"]},
+  {"title": "Five-a-side", "name": "play on the turf, a WeFit bowl, then the playground", "k": "play", "area": "Bhayandar West", "stops": ["MUM-2633", "MUM-2701", "PARK-19.29533_72.84863"], "book": ["MUM-2633"]},
+  {"title": "Dance, then a juice", "name": "dance, then a fresh juice, then Ramdev Park", "k": "workout", "area": "Mira Road", "stops": ["MUM-2659", "MUM-2694", "MUM-2614"], "book": ["MUM-2659"]},
+  {"title": "Three beaches", "name": "walk Dana Pani, Madh and Erangal beaches", "k": "move", "area": "Madh Island", "stops": ["MUM-2605", "MUM-2610", "MUM-2606"]},
+  {"title": "Farm day", "name": "walk Manori beach, then a half-day at the farm", "k": "move", "area": "Manori", "stops": ["MUM-2612", "MUM-2645"], "book": ["MUM-2645"]}
 ]
