@@ -5251,8 +5251,10 @@ function paperPlaceBody(r, p) {
   const offer = !p.noOffer && (p.perkPartner || p.playo) && hasPerkCallout(r)
     ? `<p class="pp-offer"><b>${esc(offersFor(r)[0] || 'An offer')}</b> with Plum Perks, in the <a href="${esc(PLUM_APP)}" target="_blank" rel="noopener">Plum app</a></p>`
     : '';
+  const delivery = (r.tg || []).includes('delivery');
   const noPin = r.lat == null && r.c !== 'Communities' && !r.out
-    ? `<p class="pp-nopin">No exact pin for this one yet${r.a ? ` — the map shows ${esc(r.a)}` : ''}.</p>` : '';
+    ? (delivery ? '<p class="pp-nopin">Delivery only: order from it, there is no place to visit.</p>'
+      : `<p class="pp-nopin">No exact pin for this one yet${r.a ? ` — the map shows ${esc(r.a)}` : ''}.</p>`) : '';
   return `
     ${p.verdict ? descParas('pp-verdict', p.verdict) : ''}
     ${offer}
@@ -6205,7 +6207,7 @@ function goTo(id){
   if (!meta?.map || r.lat == null) {
     /* No pin of its own: go to its part of town, so a click still takes the
        reader somewhere, and the card says the spot is not mapped. */
-    const near = r.lat == null ? areaCentre(r) : null;
+    const near = r.lat == null && !(r.tg || []).includes('delivery') ? areaCentre(r) : null;
     if (near && map) map.flyTo({ center: near, zoom: Math.max(map.getZoom(), 14), duration: 900 });
     showPlace(r);
     return;

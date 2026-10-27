@@ -111,7 +111,7 @@ const num = (v) => (v === '' || v == null || Number.isNaN(Number(v)) ? null : Nu
 /* ---------- tidy ---------- */
 const OUTSIDE = /\b(4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(bhiwandi|kalyan(?!\s*(jewel|nagar|kendra))|dombivli|ambernath|badlapur|ulhasnagar|kharghar|kamothe|kalamboli|ulwe|taloja|vasai|virar)\b/i;
 const OSM_SKIP = new Set(['clinic', 'hospital']);
-const stats = { closed: 0, sharedPin: 0, spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
+const stats = { keptPin: 0, closed: 0, sharedPin: 0, spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
 rows = rows.filter((r) => {
   if (!r.n) return false;
   /* No religious or spiritual organisations, and no guru-led movements:
@@ -274,6 +274,18 @@ for (const r of merged) {
     r.lat = r.lon = null; stats.farPins++;
   }
 }
+/* A pin the live sheet already has is kept when this run finds none: a
+   lookup that fails today (a busy geocoder, a changed query) must not
+   unpin a place that was on the map yesterday. */
+{
+  const prevSheet = fs.existsSync(OUT) ? readRows(OUT) : [];
+  const prevPin = new Map(prevSheet.filter((p) => p.lat && p.map_eligible !== 'no').map((p) => [`${key(p.n)}|${p.g}`, [+p.lat, +p.lon]]));
+  for (const r of merged) {
+    if (r.lat != null || r._noLookup || r.category === 'Communities') continue;
+    const pin = prevPin.get(`${key(r.n)}|${r.g}`);
+    if (pin && (r.out || inCity(pin[1], pin[0]))) { r.lat = pin[0]; r.lon = pin[1]; stats.keptPin++; }
+  }
+}
 const need = merged.filter((r) => r.lat == null && !r._noLookup && r.category !== 'Communities');
 console.log(`\nLooking up ${need.length} rows without coordinates…`);
 let done = 0;
@@ -390,6 +402,20 @@ for (const r of merged) {
 }
 console.log(`\n  ${perkTagged} Plum Perks partner branches tagged, ${playoTagged} Playo venues tagged`);
 
+/* ---------- delivery-only kitchens ----------
+   As on the Bengaluru map: a kitchen you can only order from (a cloud
+   kitchen, a meal subscription) stays in the list but gets no pin, since
+   there is nowhere to go. A café that also delivers keeps its pin. */
+const DELIVERY_ONLY = /delivery[- ]only|cloud kitchen|delivery kitchen|healthy kitchen \(delivery\)|meal[- ]subscription|delivery-first|no dine-?in/i;
+let deliveryOnly = 0;
+for (const r of merged) {
+  if (r.category !== 'Eat healthy' || r.g !== 'healthy') continue;
+  if (!DELIVERY_ONLY.test(`${r.s || ''} ${r.notes || ''} ${r.d || ''} ${r.tg || ''}`)) continue;
+  r._delivery = true; deliveryOnly++;
+  const tags = new Set(String(r.tg || '').split('|').filter(Boolean)); tags.add('delivery'); r.tg = [...tags].join('|');
+}
+console.log(`  ${deliveryOnly} delivery-only kitchens listed without a pin`);
+
 /* ---------- write the sheet ---------- */
 const COLS = ['category', 'intent_v7', 'id', 'n', 'c', 'g', 's', 'a', 'raw', 'ad', 'lat', 'lon', 'rg', 'gm', 'w', 'ig', 'd', 'p', 'b', 't', 'tg',
   'src', 'v', 'out', 'map_eligible', 'perk_partner', 'perk_id', 'src_url', 'notes'];
@@ -401,7 +427,7 @@ const lines = merged.map((r) => COLS.map((c) => q({
   raw: r.a || '',
   src: r._osm ? 'OpenStreetMap' : 'Web research',
   v: r.v || 'Needs check',
-  map_eligible: r.lat != null ? 'yes' : 'no',
+  map_eligible: r.lat != null && !r._delivery ? 'yes' : 'no',
   rg: '',
 }[c])).join(','));
 fs.writeFileSync(OUT, [COLS.join(','), ...lines].join('\n') + '\n');
@@ -424,5 +450,5 @@ merged.forEach((r) => { const k = `${r.category} / ${r.g}`; by[k] = by[k] || { r
 console.log(`\n${merged.length} places → ${path.relative(ROOT, OUT)}`);
 Object.entries(by).forEach(([k, v]) => console.log(`  ${k.padEnd(32)} ${String(v.rows).padStart(4)}  (${v.pinned} pinned)`));
 console.log(`  ${stats.spiritual} spiritual/religious organisations left out, ${stats.osmSkipped} OSM clinics/hospitals left out, ${stats.outsideAd} skipped for an address outside the city, ${stats.dupes} duplicates merged, ${stats.noG} skipped for an unknown sub-category, ${stats.badCoords} coordinates outside the city re-looked up`);
-console.log(`  ${stats.closed} closed places left out, ${stats.sharedPin} pins shared within a building, ${stats.farPins} source pins far from their area re-looked up, ${stats.geocoded} pinned by lookup, ${stats.geoMiss} left without a pin, ${stats.areaFilled} areas filled from OSM`);
+console.log(`  ${stats.keptPin} pins kept from the live sheet, ${stats.closed} closed places left out, ${stats.sharedPin} pins shared within a building, ${stats.farPins} source pins far from their area re-looked up, ${stats.geocoded} pinned by lookup, ${stats.geoMiss} left without a pin, ${stats.areaFilled} areas filled from OSM`);
 console.log(`  ${cc.communities.length} communities in the Communities tab`);
