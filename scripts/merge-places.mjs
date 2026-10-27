@@ -109,7 +109,7 @@ const metres = (a, b) => Math.hypot((a[0] - b[0]) * 104900, (a[1] - b[1]) * 1106
 const num = (v) => (v === '' || v == null || Number.isNaN(Number(v)) ? null : Number(v));
 
 /* ---------- tidy ---------- */
-const OUTSIDE = /\b(4011\d\d|4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(bhiwandi|kalyan(?!\s*(jewel|nagar))|dombivli|ambernath|badlapur|ulhasnagar|kharghar|kamothe|kalamboli|ulwe|taloja|mira road|bhayan[dt]ar(?!\s*pada)|bhayander(?!\s*pada)|vasai|virar)\b/i;
+const OUTSIDE = /\b(4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(bhiwandi|kalyan(?!\s*(jewel|nagar))|dombivli|ambernath|badlapur|ulhasnagar|kharghar|kamothe|kalamboli|ulwe|taloja|vasai|virar)\b/i;
 const OSM_SKIP = new Set(['clinic', 'hospital']);
 const stats = { spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
 rows = rows.filter((r) => {
@@ -125,9 +125,9 @@ rows = rows.filter((r) => {
   if (!r.g || !SUBCAT[r.g]) { stats.noG++; console.log(`  skipped (unknown g ${JSON.stringify(r.g)}): ${r.n} [${r._file}]`); return false; }
   r.category = r.category || G_CATEGORY[r.g];
   r.out = r.out === '1' || r.out === 1 ? 1 : 0;
-  /* An address in Bhiwandi, Kalyan-Dombivli, Panvel MC (Kharghar, Ulwe…),
-     Mira-Bhayandar or Vasai-Virar is outside the city whatever its pin says.
-     Mumbai, Navi Mumbai and Thane are all in. */
+  /* An address in Bhiwandi, Kalyan-Dombivli, Panvel MC (Kharghar, Ulwe…)
+     or Vasai-Virar is outside the city whatever its pin says. Mumbai, Navi
+     Mumbai, Thane and Mira-Bhayandar are all in. */
   if (!r.out && OUTSIDE.test(r.ad || '')) { stats.outsideAd++; console.log(`  skipped (address outside BMC): ${r.n} — ${r.ad}`); return false; }
   let lat = num(r.lat), lon = num(r.lon);
   /* Swapped coordinates are a common slip: Mumbai is about 19 N, 72.8 E. */
@@ -227,9 +227,10 @@ const JUNK = /^(shop|unit|office|flat|gala|plot|no\.?|ground|first|second|third|
 const NAVI = /navi mumbai|vashi|sanpada|juinagar|turbhe|nerul|seawoods|belapur|kopar ?khairane|ghansoli|rabale|airoli|digha|mahape/i;
 const cityOf = (r) => {
   const t = `${r.ad || ''} ${r.a || ''}`;
+  if (/mira road|mira-bhayandar|mira bhayandar|bhayandar|bhayander|kashimira|uttan/i.test(t) && !/bhayandar ?pada/i.test(t)) return 'Mira-Bhayandar';
   return NAVI.test(t) ? 'Navi Mumbai' : /\bthane\b|ghodbunder|majiwada|kalwa|mumbra|diva\b|kasarvadavali|naupada|kolshet|manpada|vartak nagar|wagle/i.test(t) ? 'Thane' : 'Mumbai';
 };
-const CITY_CENTRE = { Mumbai: [72.88, 19.08], Thane: [72.97, 19.2], 'Navi Mumbai': [73.02, 19.06] };
+const CITY_CENTRE = { Mumbai: [72.88, 19.08], Thane: [72.97, 19.2], 'Navi Mumbai': [73.02, 19.06], 'Mira-Bhayandar': [72.86, 19.29] };
 function queries(r) {
   const c = cityOf(r);
   const city = r.out ? '' : (new RegExp(`\\b${c}\\b`, 'i').test(r.ad || '') ? '' : `, ${c}`);

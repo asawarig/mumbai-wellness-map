@@ -44,7 +44,7 @@ export function validateEntries() {
       /* Inside the gazetted box, or explicitly flagged as a day trip beyond it.
          A silent typo in a coordinate is the one error that looks fine. */
       else if (!r.out && (r.lat < S || r.lat > N || r.lon < W || r.lon > E)) {
-        say(`lat/lon ${r.lat},${r.lon} fall outside Mumbai, Navi Mumbai and Thane — set "out": 1 if that is intended`);
+        say(`lat/lon ${r.lat},${r.lon} fall outside Mumbai, Navi Mumbai, Thane and Mira-Bhayandar — set "out": 1 if that is intended`);
       }
     }
 

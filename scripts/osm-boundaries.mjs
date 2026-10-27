@@ -30,7 +30,7 @@ import { CITY_RELS } from './city.mjs';
 
 const DATA = new URL('../src/data/', import.meta.url);
 const UA = 'mumbai-wellness-map/1.0 (boundary build script)';
-const CORP_REL = { South: 7888969, Central: 7888968, West: 7888967, NorthWest: 7888966, East: 7888965, NorthEast: 7888964, NaviMumbai: 13180880, Thane: 7120000 };
+const CORP_REL = { South: 7888969, Central: 7888968, West: 7888967, NorthWest: 7888966, East: 7888965, NorthEast: 7888964, NaviMumbai: 13180880, Thane: 7120000, MiraBhayandar: 13180677 };
 
 const read = (f) => JSON.parse(readFileSync(new URL(f, DATA), 'utf8'));
 const write = (f, j, pretty = false) => {
@@ -319,7 +319,7 @@ write('city.json', {
   ...city,
   box: [+S.toFixed(5), +W.toFixed(5), +N.toFixed(5), +E.toFixed(5)],
   gba_km2: Math.round(km2(cityPolys)),
-  source: `OpenStreetMap relations ${CITY_RELS.join(' + ')} (Mumbai City and Mumbai Suburban districts, the BMC area, Navi Mumbai and Thane municipal corporations), fetched ${new Date().toISOString().slice(0, 10)}`,
+  source: `OpenStreetMap relations ${CITY_RELS.join(' + ')} (Mumbai City and Mumbai Suburban districts, the BMC area, Navi Mumbai, Thane and Mira-Bhayandar municipal corporations), fetched ${new Date().toISOString().slice(0, 10)}`,
 });
 /* Hand-edited (the hue families live here), so it stays readable. */
 write('corporations.json', corps.map((c) => ({ ...c, km2: Math.round(km2(corpPolys[c.k])) })), true);

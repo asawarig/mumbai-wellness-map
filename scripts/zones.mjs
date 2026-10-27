@@ -18,6 +18,7 @@ export const RG_ALIAS = {
   'Northern Western Suburbs': 'NorthWest', 'North-west': 'NorthWest', 'North West': 'NorthWest', 'Northwest': 'NorthWest', 'Zone 4': 'NorthWest',
   'Eastern Suburbs': 'East', 'East Mumbai': 'East', 'Zone 5': 'East',
   Thane: 'Thane', TMC: 'Thane', 'Zone 8': 'Thane',
+  'Mira-Bhayandar': 'MiraBhayandar', 'Mira Bhayandar': 'MiraBhayandar', MBMC: 'MiraBhayandar', 'Zone 9': 'MiraBhayandar',
   'Navi Mumbai': 'NaviMumbai', NMMC: 'NaviMumbai', 'Zone 7': 'NaviMumbai',
   'Northern Eastern Suburbs': 'NorthEast', 'North-east': 'NorthEast', 'North East': 'NorthEast', 'Northeast': 'NorthEast', 'Zone 6': 'NorthEast',
 };

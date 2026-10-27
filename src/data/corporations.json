@@ -54,5 +54,12 @@
     "c": "#C7E3A9",
     "tone": "#4E7A1E",
     "km2": 142
+  },
+  {
+    "k": "MiraBhayandar",
+    "label": "Mira-Bhayandar",
+    "c": "#F2C4E0",
+    "tone": "#9B3A78",
+    "km2": 89
   }
 ]
