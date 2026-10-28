@@ -227,7 +227,11 @@ const isMapsUrl = (u) => isReal(u)
 const placeIdOf = (u) => (String(u || '').match(/place_id[:=]([A-Za-z0-9_-]{20,})/) || [])[1] || '';
 function mapsUrlFor(r) {
   const name = String(r.n || '').replace(/\s+—\s+.*$/, '').trim();
-  const where = r.ad || [r.a, 'Mumbai'].filter(Boolean).join(', ');
+  /* With no street address the search is the name, the area and the city,
+     and Thane, Navi Mumbai and Mira-Bhayandar are cities of their own: a
+     Vashi gym searched "…, Vashi, Mumbai" can land on a namesake. */
+  const city = { Thane: 'Thane', NaviMumbai: 'Navi Mumbai', MiraBhayandar: 'Mira-Bhayandar' }[r.rg] || 'Mumbai';
+  const where = (r.ad && !/^\s*mumbai\s*$/i.test(r.ad)) ? r.ad : [r.a, city].filter(Boolean).join(', ');
   const pid = placeIdOf(r.gm);
   if (!pid && isMapsUrl(r.gm) && !/[?&]q=place_id|query=Google&/.test(r.gm)) return r.gm;
   const q = encodeURIComponent(where ? `${name}, ${where}` : name);
