@@ -504,6 +504,25 @@ export function setGreenRoads(glMap, data, part = 'far') {
    layer itself holds only the protected areas. */
 const PARK_FILTER = ['in', ['get', 'subclass'], ['literal', ['park', 'garden', 'recreation_ground']]];
 
+/* Greens that hold still while the map zooms.
+ *
+ * Vector tiles leave out polygons that are small for their zoom, and the
+ * suburbs' greens are mostly small: grounds, gardens, pitches, grass. While
+ * the map zooms it draws the coarser tiles it already has until the finer
+ * ones arrive, so that green blinked out and back. Under the tiles' own
+ * greens this draws the city's greens from the detailed tiles, once, as a
+ * file (scripts/steady-greens.mjs), so the same green is there at every zoom
+ * whatever has loaded. Faded out from 13.5 to 14, where the tiles carry
+ * every green themselves. */
+export function addSteadyGreens(glMap, url) {
+  if (glMap.getSource('steady-greens') || !glMap.getLayer('farm')) return;
+  glMap.addSource('steady-greens', { type: 'geojson', data: url, attribution: VECTOR_CREDIT });
+  glMap.addLayer({
+    id: 'steady-greens', type: 'fill', source: 'steady-greens', maxzoom: 14,
+    paint: { 'fill-color': PAPER_PARK, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 1, 14, 0] },
+  }, 'farm');
+}
+
 function paperStyle(regions) {
   /* Area names show, set in the paper map's spaced capitals; street names
      stay off, so the roads read as clean white channels. */

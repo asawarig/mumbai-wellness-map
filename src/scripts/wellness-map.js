@@ -73,7 +73,7 @@ import COMMUNITY_CATEGORIES from '../data/community-categories.json';
 import THEMED_DAYS from '../data/themed-days.json';
 import DAY_ROUTES from '../data/themed-day-routes.json';
 import { SUBCATEGORIES } from '../lib/subcategories.js';
-import { glStyle, setTone, setSelectedArea, selectedRoadLayers, LABEL_LAYERS, RASTER, setZones, POSTER, setGreenRoads, BASEMAP, REGION_BBOX } from '../lib/basemap.js';
+import { glStyle, setTone, setSelectedArea, selectedRoadLayers, LABEL_LAYERS, RASTER, setZones, POSTER, setGreenRoads, BASEMAP, REGION_BBOX, addSteadyGreens } from '../lib/basemap.js';
 import { addOutsideVeil } from '../lib/outside-veil.js';
 import { addRoadFillets, setRoadRegions } from '../lib/road-fillets.js';
 import { INTENTS, MAP_INTENTS, INTENT_BY_K, intentMeta, iconUrl, pinColour, SUGGEST_FORM } from '../lib/intents.js';
@@ -6636,6 +6636,8 @@ if (map) {
       if (POSTER) addRoadFillets(map);
       /* Beyond the city limits, less colour and a touch of softness. */
       if (BASEMAP === 'paper') addOutsideVeil(map);
+      /* Greens that do not blink while the map zooms (basemap.js). */
+      if (BASEMAP === 'paper') addSteadyGreens(map, `${DATA_BASE}steady-greens.json${DATA_V}`);
       /* After the fillets, so the picked area's streets keep their cream: the
          fillets pass recolours everything drawn before it. Before the labels,
          so street names still sit on top. */
