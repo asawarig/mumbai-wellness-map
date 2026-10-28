@@ -245,15 +245,14 @@ function mapsUrlFor(r) {
   const where = (r.ad && !/^\s*mumbai\s*$/i.test(r.ad)) ? streetOf(r.ad) : [r.a, city].filter(Boolean).join(', ');
   const pid = placeIdOf(r.gm);
   if (!pid && isMapsUrl(r.gm) && !/[?&]q=place_id|query=Google&/.test(r.gm) && !isBarePoint(r.gm)) return r.gm;
-  /* Without a place ID or a link to the listing itself, a search cannot be
-     trusted to land on the place: a chain's name opens a list of branches,
-     and a studio Google does not know opens other studios. Nearly every pin
-     here came with the place's own coordinates, so Directions goes to the
-     pin; only a pin found by looking the address up searches by name. */
-  if (!pid && r.lat != null && !r.pinApprox) {
-    return `https://www.google.com/maps/dir/?api=1&destination=${(+r.lat).toFixed(6)},${(+r.lon).toFixed(6)}`;
-  }
-  const q = encodeURIComponent(where ? `${name}, ${where}` : name);
+  /* The button opens the place on Google Maps, as Bengaluru's does — there
+     every row carries a place ID and the link is the listing itself. Without
+     one the search is the next best thing, and it keeps the branch: "Cult
+     Bandra West" opens Bandra's Cult, where "Cult" opened a list across the
+     country. Routing to the pin instead was tried and is not what the button
+     is for: it opened turn-by-turn directions, not the place. */
+  const branch = String(r.n || '').replace(/\s+—\s+/, ' ').trim();
+  const q = encodeURIComponent(where ? `${pid ? name : branch}, ${where}` : branch);
   return `https://www.google.com/maps/search/?api=1&query=${q}${pid ? `&query_place_id=${pid}` : ''}`;
 }
 /* A trail has no place of its own on Google Maps, so its link is directions
