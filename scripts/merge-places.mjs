@@ -111,6 +111,8 @@ const num = (v) => (v === '' || v == null || Number.isNaN(Number(v)) ? null : Nu
 /* ---------- tidy ---------- */
 const OUTSIDE = /\b(4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(bhiwandi|kalyan(?!\s*(jewel|nagar|kendra))|dombivli|ambernath|badlapur|ulhasnagar|kharghar|kamothe|kalamboli|ulwe|taloja|vasai|virar)\b/i;
 const OSM_SKIP = new Set(['clinic', 'hospital']);
+/* Places taken off by hand (not public, junk, not wellness): kept off by name. */
+const REMOVED = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'sources/entries/removed-places.json'), 'utf8')).names.map((n) => n.toLowerCase()));
 const PLAYO_REMOVED = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'sources/entries/playo-removed.json'), 'utf8')).venueIds);
 const stats = { keptPin: 0, closed: 0, sharedPin: 0, spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
 rows = rows.filter((r) => {
@@ -119,6 +121,7 @@ rows = rows.filter((r) => {
      the map is for health, and some of these border on cults. Healthcare
      run by a religious trust (a mission hospital, a Jain medical centre)
      stays; the organisations themselves do not. */
+  if (REMOVED.has(r.n.toLowerCase())) { stats.closed++; return false; }
   if (CLOSED.test(r.n)) { stats.closed++; console.log(`  skipped (closed): ${r.n}`); return false; }
   if (MEMBERS_ONLY.test(r.n) || /\bmembers[- ]only\b/i.test(r.tg || '')) { stats.closed++; console.log(`  skipped (members only): ${r.n}`); return false; }
   /* Unrated, enquiry-only Playo listings with nothing else behind them
