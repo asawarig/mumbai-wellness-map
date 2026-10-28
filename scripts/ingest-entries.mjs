@@ -225,6 +225,10 @@ for (const row of body) {
   };
 
   if (cat) { entry.cat = cat; stats.categorised++; }
+  /* A pin placed by looking its address up (merge-places, pin_missing) is only
+     as good as the lookup, so Directions searches by name for it instead of
+     routing to the point (mapsUrlFor in wellness-map.js). */
+  if (lat != null && /pin from (Photon|Nominatim|lookup)|shared (pin|building)/i.test(get(row, 'notes'))) entry.pinApprox = 1;
 
   /* Route rows carry three extra fields the place card reads. */
   const mode = get(row, 'mode');

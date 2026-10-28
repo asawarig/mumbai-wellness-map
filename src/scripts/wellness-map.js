@@ -225,15 +225,34 @@ const isMapsUrl = (u) => isReal(u)
    searched for Google itself. With the name and address as the search, the
    worst case is a search that finds the place by name. */
 const placeIdOf = (u) => (String(u || '').match(/place_id[:=]([A-Za-z0-9_-]{20,})/) || [])[1] || '';
+/* A link that is only a point — "search/?query=19.21,72.82", "?daddr=19.17,72.84",
+   "place/19.13,72.82" — opens Google Maps on a dropped pin labelled with its
+   latitude, not on the gym or clinic there. 900-odd Mumbai rows came from
+   listings that give coordinates rather than a Google link, so those rows
+   search by name like the ones with no link at all. */
+const isBarePoint = (u) => /(query=|daddr=|q=|place\/)-?\d{1,3}\.\d+,\s*-?\d{1,3}\.\d+/i.test(String(u || ''));
+/* An address as a search: "Shop 12, 2nd Floor, Room No.7" and the like make
+   Google's search miss a place its name and street would find. */
+const streetOf = (ad) => String(ad || '').replace(/^start:\s*/i, '').split(',').map((s) => s.trim())
+  .filter((s) => s && !/^(shop|unit|office|flat|gala|plot|room|premises|block|wing|no\.?|ground|first|second|third|\d+(st|nd|rd|th)?\s*floor|floor|[a-z]?-?\d+[a-z]?)\b/i.test(s))
+  .join(', ');
 function mapsUrlFor(r) {
   const name = String(r.n || '').replace(/\s+—\s+.*$/, '').trim();
   /* With no street address the search is the name, the area and the city,
      and Thane, Navi Mumbai and Mira-Bhayandar are cities of their own: a
      Vashi gym searched "…, Vashi, Mumbai" can land on a namesake. */
   const city = { Thane: 'Thane', NaviMumbai: 'Navi Mumbai', MiraBhayandar: 'Mira-Bhayandar' }[r.rg] || 'Mumbai';
-  const where = (r.ad && !/^\s*mumbai\s*$/i.test(r.ad)) ? r.ad : [r.a, city].filter(Boolean).join(', ');
+  const where = (r.ad && !/^\s*mumbai\s*$/i.test(r.ad)) ? streetOf(r.ad) : [r.a, city].filter(Boolean).join(', ');
   const pid = placeIdOf(r.gm);
-  if (!pid && isMapsUrl(r.gm) && !/[?&]q=place_id|query=Google&/.test(r.gm)) return r.gm;
+  if (!pid && isMapsUrl(r.gm) && !/[?&]q=place_id|query=Google&/.test(r.gm) && !isBarePoint(r.gm)) return r.gm;
+  /* Without a place ID or a link to the listing itself, a search cannot be
+     trusted to land on the place: a chain's name opens a list of branches,
+     and a studio Google does not know opens other studios. Nearly every pin
+     here came with the place's own coordinates, so Directions goes to the
+     pin; only a pin found by looking the address up searches by name. */
+  if (!pid && r.lat != null && !r.pinApprox) {
+    return `https://www.google.com/maps/dir/?api=1&destination=${(+r.lat).toFixed(6)},${(+r.lon).toFixed(6)}`;
+  }
   const q = encodeURIComponent(where ? `${name}, ${where}` : name);
   return `https://www.google.com/maps/search/?api=1&query=${q}${pid ? `&query_place_id=${pid}` : ''}`;
 }
