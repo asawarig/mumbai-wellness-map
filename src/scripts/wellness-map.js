@@ -2976,7 +2976,10 @@ const narrowed = () => state.area !== 'all'
  * Narrowing, searching or pressing Plum Perks all lift the cap: each of those
  * is a request for a specific answer, and a capped answer would be a wrong
  * one. */
-const OPENING_CAP = 650;
+/* 650 was Bengaluru's, about a quarter of its ~2,370 pins. Mumbai has ~3,400,
+   so the same share is ~900; and since the cap now lifts at district zoom,
+   it only shapes the whole-city view, where pins cluster anyway. */
+const OPENING_CAP = 900;
 let openingTotal = 0;
 
 /* Every category spread evenly down the whole list.
@@ -3034,8 +3037,24 @@ function openingSample(items) {
   return keep.concat(spread.slice(0, Math.max(0, OPENING_CAP - keep.length)));
 }
 
-/* Everything on, the whole city, no search: the one view the cap applies to. */
-const openingView = () => !narrowed() && !state.perksOnly;
+/* Everything on, the whole city, no search: the one view the cap applies to.
+   And only while the city is what is on screen. The cap keeps the whole-city
+   view legible; it was never meant to thin a neighbourhood, but it was drawn
+   once for the city and kept at every zoom, so zooming into Bandra showed
+   about one place in five. Past OPENING_FULL_ZOOM every pin draws, and coming
+   back out restores the sample. */
+const OPENING_FULL_ZOOM = 12;
+/* `map` is declared further down; a render before then is a citywide one. */
+const zoomedIn = () => { try { return !!map && map.getZoom() >= OPENING_FULL_ZOOM; } catch { return false; } };
+const openingView = () => !narrowed() && !state.perksOnly && !zoomedIn();
+/* Crossing the line in either direction redraws, without moving the camera. */
+let wasZoomedIn = false;
+function syncOpeningZoom() {
+  const now = zoomedIn();
+  if (now === wasZoomedIn) return;
+  wasZoomedIn = now;
+  if (!narrowed() && !state.perksOnly) scheduleRender({ fit: false });
+}
 
 function pool(){
   const keys = selectedMapIntents();
@@ -3616,6 +3635,7 @@ function syncRuler(){
 }
 map?.on('zoom', syncZoomUI);
 map?.on('zoomend', syncRuler);
+map?.on('zoomend', syncOpeningZoom);
 map?.on('moveend', syncRuler);
 
 /* ---------- basemap ----------
