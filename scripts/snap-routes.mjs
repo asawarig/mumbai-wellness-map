@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Snap BLR-RT-* geometries to the path/road network.
+ * Snap route geometries to the path/road network.
  *
  * Lake / park loops  → Overpass footways near the start, stitched into a ring
  * Point-to-point     → public OSRM (foot or bike)
@@ -9,7 +9,7 @@
  * snapped line yet (or all of them with --all). Rows on hold are skipped, and a
  * route that still cannot be drawn is left as a pin with no line.
  *
- *   node scripts/snap-routes.mjs [sources/routes/wellness-map-routes-v2.csv] [--all]
+ *   node scripts/snap-routes.mjs [sources/routes/wellness-map-routes-v2.csv] [--all] [--cached-only]
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -20,11 +20,14 @@ const CSV = path.resolve(ROOT, process.argv.slice(2).find((a) => !a.startsWith('
 const ALL = process.argv.includes('--all');
 const ROUTES = path.join(ROOT, 'src/data/routes.json');
 const CACHE = path.join(ROOT, '.cache/snap-routes');
-const OSRM = 'https://router.project-osrm.org';
+/* The public OSRM demo answers every profile with its car graph, so a "foot"
+   route came back on the carriageway and round the one-way system. FOSSGIS
+   runs real foot and bike graphs. */
+const OSRM = 'https://routing.openstreetmap.de';
 fs.mkdirSync(CACHE, { recursive: true });
 const OVERPASS_ENDPOINTS = [
-  'https://overpass-api.de/api/interpreter',
   'https://overpass.kumi.systems/api/interpreter',
+  'https://overpass-api.de/api/interpreter',
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -41,8 +44,13 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
    cheap (1-3 s each when a slot is free) — waiting is the whole job. */
 const BACKOFF_MS = [5000, 15000, 45000];
 
+/* --cached-only: answer Overpass from the cache and give up on anything else,
+   so a run on a day the public servers are down still draws the routed lines. */
+const CACHED_ONLY = process.argv.includes('--cached-only');
+
 async function overpass(query, key) {
   return cachedJson(`op_${key}`, async () => {
+    if (CACHED_ONLY) throw new Error('not cached (--cached-only)');
     let lastErr;
     for (let attempt = 0; attempt <= BACKOFF_MS.length; attempt++) {
       for (const endpoint of OVERPASS_ENDPOINTS) {
@@ -50,9 +58,11 @@ async function overpass(query, key) {
           const res = await fetch(endpoint, {
             method: 'POST',
             body: `data=${encodeURIComponent(query)}`,
+            /* A query that hangs is a busy server, not a slow answer. */
+            signal: AbortSignal.timeout(90000),
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
-              'User-Agent': 'bangalorehealthmap/1.0 (route snap; local build)',
+              'User-Agent': 'mumbai-wellness-map/1.0 (route snap; local build)',
               Accept: 'application/json',
             },
           });
@@ -499,10 +509,10 @@ async function osrmRoute(profile, points) {
   const uniq = points.filter((p, i) => i === 0 || p[0] !== points[i - 1][0] || p[1] !== points[i - 1][1]);
   if (uniq.length < 2) return null;
   const pathCoords = uniq.map((p) => `${p[0]},${p[1]}`).join(';');
-  const url = `${OSRM}/route/v1/${profile}/${pathCoords}?overview=full&geometries=geojson&continue_straight=true`;
-  const key = `osrm_${profile}_${pathCoords}`.slice(0, 140);
+  const url = `${OSRM}/routed-${profile}/route/v1/driving/${pathCoords}?overview=full&geometries=geojson&continue_straight=true`;
+  const key = `fossgis_${profile}_${pathCoords}`.slice(0, 140);
   const data = await cachedJson(key, async () => {
-    const res = await fetch(url);
+    const res = await fetch(url, { headers: { 'User-Agent': 'mumbai-wellness-map/1.0 (route snap; local build)' } });
     if (!res.ok) throw new Error(`OSRM ${res.status}`);
     await new Promise((r) => setTimeout(r, 400));
     return res.json();
@@ -629,14 +639,17 @@ async function main() {
        checked, not just the lake one — a route drawn at four times its stated
        distance is worse than a route with no line at all, because the card goes
        on quoting the honest number beside it. */
-    if (expectKm && (km > expectKm * 1.6 || km < expectKm * 0.5)) {
-      console.warn(`  REJECT ${result.source}  ~${km} km against a stated ${expectKm} km — keeping the straight line`);
+    /* An out-and-back is drawn one way and its stated distance is both ways. */
+    const outAndBack = /out and back/i.test(row.route_type);
+    const oneWayKm = outAndBack ? expectKm / 2 : expectKm;
+    if (oneWayKm && (km > oneWayKm * 1.6 || km < oneWayKm * 0.5)) {
+      console.warn(`  REJECT ${result.source}  ~${km} km against a stated ${oneWayKm} km — keeping the straight line`);
       continue;
     }
     feat.geometry = { type: 'LineString', coordinates: result.coords };
     feat.properties = {
       ...feat.properties,
-      km: parseFloat(row.dist_km) || km,
+      km: parseFloat(row.dist_km) || +(outAndBack ? km * 2 : km).toFixed(1),
       snapped_km: km,
       source: result.source,
       provisional: false,

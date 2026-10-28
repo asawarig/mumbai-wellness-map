@@ -425,6 +425,14 @@ A loop gets one marker; a point-to-point route gets **A** at the start and
 **B** at the finish. Coordinates are `[longitude, latitude]`, GeoJSON's order,
 which is the reverse of the `lat`/`lon` fields on an entry.
 
+Mumbai's lines come from
+[`sources/routes/mumbai-routes.csv`](sources/routes/mumbai-routes.csv): each
+route's start, turn points and end, traced by `scripts/snap-routes.mjs`
+against OpenStreetMap (FOSSGIS foot and bike routing for roads and seafronts,
+Overpass footways and park or lake outlines for loops). Every trace was looked
+at on a map; rows marked `hold` were traced wrong and stay as pins. When
+Overpass is down, `--cached-only` redraws everything it has already answered.
+
 **Do not import routes from MapMyRun, Strava or Komoot.** Those are user
 uploads under terms that do not allow republishing the geometry. The best
 source is the club that runs the route, which also comes with permission.
