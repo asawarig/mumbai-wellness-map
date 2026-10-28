@@ -69,23 +69,23 @@ MUM-2618,Uttan Road ride (Bhayandar West to Uttan),Bhayandar West → Uttan,Cycl
 MUM-2243,Yeoor Hills ride,Yeoor Hills,Cycle,out and back,,19.224294,72.947287,19.23,72.926,,,,
 PARK-19.18878_72.83976,Aarogyam Dhanasampada,,Walk,loop,,19.18878,72.83976,19.18878,72.83976,,,,way/911451399
 PARK-19.02851_73.02261,Adi Shankaracharaya Park,,Walk,loop,,19.02851,73.02261,19.02851,73.02261,,,,way/575027977
-PARK-19.15689_72.83582,Annabhau Sathe Maidan,,Walk,loop,,19.15689,72.83582,19.15689,72.83582,,,,way/556798306
+PARK-19.15689_72.83582,Annabhau Sathe Maidan,,Walk,loop,,19.15689,72.83582,19.15689,72.83582,,,"hold: checked on the map, trace was wrong",way/556798306
 PARK-18.96233_72.81011,August Kranti Maidan,,Walk,loop,,18.96233,72.81011,18.96233,72.81011,,,,way/40748778
 PARK-18.93963_72.83131,Azad Maidan,,Walk,loop,,18.93963,72.83131,18.93963,72.83131,,,,relation/20401140
 PARK-18.91661_72.82075,Bayview Marina,,Walk,loop,,18.91661,72.82075,18.91661,72.82075,,,,way/263226690
 PARK-19.07470_72.88582,Bharat Ratna Indira Gandhi Udyan & Dr. Abdul Kalam Udyan,,Walk,loop,,19.0747,72.88582,19.0747,72.88582,,,,way/961788662
 PARK-19.12330_72.88587,Bharatvan,,Walk,loop,,19.1233,72.88587,19.1233,72.88587,,,,way/113700140
 PARK-19.17342_72.83319,BMC Forest Theme Garden,,Walk,loop,,19.17342,72.83319,19.17342,72.83319,,,,way/202661513
-PARK-19.04947_72.83581,BWSL Promenade,,Walk,loop,,19.04947,72.83581,19.04947,72.83581,,,,way/487790870
+PARK-19.04947_72.83581,BWSL Promenade,,Walk,loop,,19.04947,72.83581,19.04947,72.83581,,,"hold: checked on the map, trace was wrong",way/487790870
 PARK-19.11496_73.00458,Central Park,,Walk,loop,,19.11496,73.00458,19.11496,73.00458,,,,way/576981879
 PARK-19.25723_72.97987,Central Park,,Walk,loop,,19.25723,72.97987,19.25723,72.97987,,,,way/102388308
-PARK-19.14551_72.82112,Chattrapati Shivaji Joggers Park,,Walk,loop,,19.14551,72.82112,19.14551,72.82112,,,,way/202556929
+PARK-19.14551_72.82112,Chattrapati Shivaji Joggers Park,,Walk,loop,,19.14551,72.82112,19.14551,72.82112,,,"hold: checked on the map, trace was wrong",way/202556929
 PARK-19.05423_72.87016,Chhatrapati Shivaji Maharaj Park,,Walk,loop,,19.05423,72.87016,19.05423,72.87016,,,,way/486697314
 PARK-19.10622_73.00412,Chikaleshwar Garden,,Walk,loop,,19.10622,73.00412,19.10622,73.00412,,,,way/606557879
 PARK-19.14922_72.99595,Chinchwali Garden,,Walk,loop,,19.14922,72.99595,19.14922,72.99595,,,,way/785602854
 PARK-19.04269_73.01677,CIDCO Garden,,Walk,loop,,19.04269,73.01677,19.04269,73.01677,,,,way/363309583
 PARK-19.14854_72.98589,Coastal & Marine Biodiversity Centre,,Walk,loop,,19.14854,72.98589,19.14854,72.98589,,,,way/1126271813
-PARK-18.93723_72.82966,Cross Maidan,,Walk,loop,,18.93723,72.82966,18.93723,72.82966,,,,way/49002056
+PARK-18.93723_72.82966,Cross Maidan,,Walk,loop,,18.93723,72.82966,18.93723,72.82966,,,"hold: checked on the map, trace was wrong",way/49002056
 PARK-18.93373_72.82947,Cross Maidan Garden,,Walk,loop,,18.93373,72.82947,18.93373,72.82947,,,,way/1288957913
 PARK-18.91815_72.81651,Cuffe Parade Park,,Walk,loop,,18.91815,72.81651,18.91815,72.81651,,,,way/1013261678
 PARK-19.12887_72.89711,Dr. Babasaheb Ambedkar Udyan,,Walk,loop,,19.12887,72.89711,19.12887,72.89711,,,,way/496706048
@@ -94,7 +94,7 @@ PARK-19.02947_72.84574,Dyaneshwar Udhyodhan Park,,Walk,loop,,19.02947,72.84574,1
 PARK-19.21869_72.84574,Ekta Ground,,Walk,loop,,19.21869,72.84574,19.21869,72.84574,,,,way/662725595
 PARK-19.21265_72.87560,Evershine Dream Park,,Walk,loop,,19.21265,72.8756,19.21265,72.8756,,,,way/758559013
 PARK-19.16516_72.88289,Film City Ground,,Walk,loop,,19.16516,72.88289,19.16516,72.88289,,,,way/1471908159
-PARK-19.28877_72.94217,Gaimukh Chowpatty,,Walk,loop,,19.28877,72.94217,19.28877,72.94217,,,,way/952462005
+PARK-19.28877_72.94217,Gaimukh Chowpatty,,Walk,loop,,19.28877,72.94217,19.28877,72.94217,,,"hold: checked on the map, trace was wrong",way/952462005
 PARK-19.15777_72.83740,Ganesh Maidan,,Walk,loop,,19.15777,72.8374,19.15777,72.8374,,,,way/621466308
 PARK-19.03943_73.01096,Gaondevi Park,,Walk,loop,,19.03943,73.01096,19.03943,73.01096,,,,way/561157352
 PARK-19.01897_73.00875,Grass Park,,Walk,loop,,19.01897,73.00875,19.01897,73.00875,,,,way/560475812
@@ -115,7 +115,7 @@ PARK-19.05160_72.87992,Maasaheb Meenatai Thackarey Botanical Garden,,Walk,loop,,
 PARK-19.11079_72.88460,Mahatapasvi Acharya Shri Mahashramanji City Park,,Walk,loop,,19.11079,72.8846,19.11079,72.8846,,,,way/1410354480
 PARK-19.02628_73.03992,Mango Park,,Walk,loop,,19.02628,73.03992,19.02628,73.03992,,,,way/291156489
 PARK-19.01599_73.04413,Mangrove Park,,Walk,loop,,19.01599,73.04413,19.01599,73.04413,,,,way/1289190979
-PARK-19.00754_73.03614,Mangrove Park,,Walk,loop,,19.00754,73.03614,19.00754,73.03614,,,,way/1289191060
+PARK-19.00754_73.03614,Mangrove Park,,Walk,loop,,19.00754,73.03614,19.00754,73.03614,,,"hold: checked on the map, trace was wrong",way/1289191060
 PARK-19.12698_72.82698,Manish Nagar Ground,,Walk,loop,,19.12698,72.82698,19.12698,72.82698,,,,way/1031592302
 PARK-19.13524_72.87158,Matoshree Minatai Thakrey Shilpgram,,Walk,loop,,19.13524,72.87158,19.13524,72.87158,,,,way/1330724364
 PARK-19.12218_72.89428,MCGM Park,,Walk,loop,,19.12218,72.89428,19.12218,72.89428,,,,way/959572917
@@ -140,7 +140,7 @@ PARK-19.09554_72.91648,Pankheshah Baba Garden,,Walk,loop,,19.09554,72.91648,19.0
 PARK-19.17904_72.99251,Patni Ground,,Walk,loop,,19.17904,72.99251,19.17904,72.99251,,,,way/469422382
 PARK-18.95660_72.80490,Pherozeshah Mehta Gardens (Hanging Gardens),,Walk,loop,,18.9566,72.8049,18.9566,72.8049,,,,way/38883141
 PARK-19.13728_72.88250,Picnic Point Garden,,Walk,loop,,19.13728,72.8825,19.13728,72.8825,,,,way/628887315
-PARK-19.10835_72.91665,Prabodhankar Thakre Manoranjan Udyan,,Walk,loop,,19.10835,72.91665,19.10835,72.91665,,,,way/483179389
+PARK-19.10835_72.91665,Prabodhankar Thakre Manoranjan Udyan,,Walk,loop,,19.10835,72.91665,19.10835,72.91665,,,"hold: checked on the map, trace was wrong",way/483179389
 PARK-19.24279_72.96704,Pramod Mahajan Nature Garden,,Walk,loop,,19.24279,72.96704,19.24279,72.96704,,,,way/892256759
 PARK-19.20813_72.85990,Pramod Navalkar Udyan,,Walk,loop,,19.20813,72.8599,19.20813,72.8599,,,,way/821600341
 PARK-19.03301_73.02644,R.R Patil Garden,,Walk,loop,,19.03301,73.02644,19.03301,73.02644,,,,way/561970762
@@ -156,9 +156,9 @@ PARK-19.07775_72.83065,Rotary Park,,Walk,loop,,19.07775,72.83065,19.07775,72.830
 PARK-19.05487_72.88365,Sahajeevan Park,,Walk,loop,,19.05487,72.88365,19.05487,72.88365,,,,way/1126997786
 PARK-19.11637_72.93858,Sambhaji Maidan,,Walk,loop,,19.11637,72.93858,19.11637,72.93858,,,,way/853334264
 PARK-19.18060_72.93878,Sardar Pratap Singh Garden,,Walk,loop,,19.1806,72.93878,19.1806,72.93878,,,,way/391919542
-PARK-19.03770_73.02268,Sardar Vallabhai Patel Park,,Walk,loop,,19.0377,73.02268,19.0377,73.02268,,,,way/563558939
+PARK-19.03770_73.02268,Sardar Vallabhai Patel Park,,Walk,loop,,19.0377,73.02268,19.0377,73.02268,,,"hold: checked on the map, trace was wrong",way/563558939
 PARK-19.02435_73.02601,Science Park,,Walk,loop,,19.02435,73.02601,19.02435,73.02601,,,,way/1050561440
-PARK-19.00325_73.01484,Seawoods Estates Main Lawn / Park,,Walk,loop,,19.00325,73.01484,19.00325,73.01484,,,,way/469381997
+PARK-19.00325_73.01484,Seawoods Estates Main Lawn / Park,,Walk,loop,,19.00325,73.01484,19.00325,73.01484,,,"hold: checked on the map, trace was wrong",way/469381997
 PARK-19.02227_73.02465,Sec 27 Park,,Walk,loop,,19.02227,73.02465,19.02227,73.02465,,,,way/1385110461
 PARK-18.98919_72.84290,Shaheed Bhagat Singh Maidan,,Walk,loop,,18.98919,72.8429,18.98919,72.8429,,,,way/113561037
 PARK-19.17952_72.87632,Sheila Raheja Garden,,Walk,loop,,19.17952,72.87632,19.17952,72.87632,,,,way/514261518
