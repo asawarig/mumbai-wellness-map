@@ -3002,7 +3002,9 @@ function openingSample(items) {
      are not what makes a map look crowded; pins are. */
   const keep = [];
   const rest = [];
-  for (const r of items) (hasPerkCallout(r) || TRAIL[r.id] ? keep : rest).push(r);
+  /* A park's walk (scripts/snap-routes.mjs, parkWalk) is not one of those:
+     a hundred of them would take a hundred places from the opening view. */
+  for (const r of items) (hasPerkCallout(r) || (TRAIL[r.id] && r.g !== 'park') ? keep : rest).push(r);
   if (keep.length + rest.length <= OPENING_CAP) return items;
   const byName = [...rest].sort((a, b) => ((b.v === 'Verified') - (a.v === 'Verified'))
     || String(a.n || '').localeCompare(String(b.n || '')));

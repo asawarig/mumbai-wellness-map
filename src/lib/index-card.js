@@ -99,7 +99,9 @@ export const isPerkPartner = (r) => (r.tg || []).includes('plum-perks');
    Only where the row says so. This used to fall back to "any Play venue whose
    glyph is a turf or a court", which put a Plum Perks chip on 290 venues nobody
    had checked were on Playo — a perk claim the data could not support. */
-export const isPlayoVenue = (r) => (r.tg || []).includes('playo') || /playo/i.test(r.d || '');
+/* The tag alone: a description that mentions Playo may be saying the venue
+   takes enquiries there, not bookings (scripts/merge-places.mjs). */
+export const isPlayoVenue = (r) => (r.tg || []).includes('playo');
 export const hasPerkCallout = (r) => isPerkPartner(r) || isPlayoVenue(r);
 
 /* One chip for both, at Plum's instruction: a partner and a Playo-bookable venue

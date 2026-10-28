@@ -504,6 +504,51 @@ function sampleRing(coords, n) {
   return out;
 }
 
+/* A walk round a park from the parks layer (src/data/parks.json), which keeps
+   each park's OSM element but only its centre point. The centre is no gate,
+   so the gate-anchored search above does not apply: ask for the park's own
+   outline and the paths inside it, and take the longest closed circuit of
+   those paths that is a fair share of the outline. A park whose paths do not
+   close into one gets nothing — the outline alone is a fence line, and a
+   line along a fence is not a walk anyone can be sure of. */
+async function parkWalk(osm, centre) {
+  const [type, ref] = osm.split('/');
+  if (!/^(way|relation)$/.test(type) || !/^\d+$/.test(ref)) return null;
+  const q = `
+  [out:json][timeout:90];
+  ${type}(${ref})->.p;
+  .p out geom;
+  .p map_to_area->.a;
+  way(area.a)["highway"~"${PATHS}|service"];
+  out geom;
+  `;
+  const data = await overpass(q, `parkwalk_${type}_${ref}`);
+  const els = data.elements || [];
+  const park = els.find((e) => e.type === type && String(e.id) === ref);
+  const outline = park?.geometry?.length ? park.geometry.map((g) => [g.lon, g.lat])
+    : (park?.members || []).filter((m) => m.role === 'outer' && m.geometry).flatMap((m) => m.geometry.map((g) => [g.lon, g.lat]));
+  if (!outline?.length) return null;
+  const perim = lengthM(closeLoop(outline));
+  const paths = els.filter((e) => e.type === 'way' && e !== park && e.geometry?.length > 1)
+    .map((e) => e.geometry.map((g) => [g.lon, g.lat]));
+  if (!paths.length) return null;
+  const seeds = paths.map((s, i) => [lengthM(s), i]).sort((a, b) => b[0] - a[0]).slice(0, 20);
+  let best = null;
+  for (const [, i] of seeds) {
+    const line = stitch([paths[i], ...paths.filter((_, j) => j !== i)], 15, true);
+    if (!line || line.length < 4) continue;
+    const len = lengthM(line);
+    const gap = haversine(line[0], line[line.length - 1]);
+    if (gap > Math.min(40, len * 0.08)) continue;
+    /* A circuit, not a stub: at least a third of the outline, and not longer
+       than the outline itself by much (a ring of the streets outside is). */
+    if (len < perim * 0.35 || len > perim * 1.3 || len < 250) continue;
+    if (!best || len > best.len) best = { line, len };
+  }
+  if (!best) return null;
+  return { coords: simplify(orientToStart(closeLoop(best.line), centre), 4), source: 'overpass:park-paths' };
+}
+
 async function osrmRoute(profile, points) {
   /* points: [lon,lat][] */
   const uniq = points.filter((p, i) => i === 0 || p[0] !== points[i - 1][0] || p[1] !== points[i - 1][1]);
@@ -566,7 +611,7 @@ async function main() {
           id,
           name: row.n.trim(),
           area: (row.a || '').trim(),
-          g: /cycle/i.test(row.mode) ? 'cycle' : 'run',
+          g: /cycle/i.test(row.mode) ? 'cycle' : /walk/i.test(row.mode) ? 'walk' : 'run',
           km: parseFloat(row.dist_km) || 0,
           loop: isLoop,
           geom_type: isLoop ? 'loop' : /out and back/i.test(row.route_type) ? 'out-and-back' : 'point-to-point',
@@ -607,8 +652,12 @@ async function main() {
       if (id === 'BLR-RT-14' && cubbon) {
         result = { coords: orientToStart(cubbon.geometry.coordinates, start), source: 'reuse:BLR-001' };
       }
+      /* A park from the parks layer, named by its OSM element: walk its own paths. */
+      if (!result && row.osm) {
+        result = await parkWalk(row.osm, start);
+      }
       /* A lake or park loop given only its gate: ring the water, or stitch the footways. */
-      if (!result && loop && !wps.length) {
+      if (!result && loop && !wps.length && !row.osm) {
         result = await loopFromFootways(+row.start_lat, +row.start_lon, {
           radius: 700, expectKm, park: /park loop/i.test(row.s || ''),
         });

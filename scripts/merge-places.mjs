@@ -28,7 +28,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { SUBCAT } from '../src/lib/categories.js';
-import { NOT_WELLNESS, CLOSED } from './exclusions.mjs';
+import { NOT_WELLNESS, CLOSED, NOT_ON_PLAYO } from './exclusions.mjs';
 import { decodePlusCode, plusCodeIn } from './pluscode.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -111,6 +111,7 @@ const num = (v) => (v === '' || v == null || Number.isNaN(Number(v)) ? null : Nu
 /* ---------- tidy ---------- */
 const OUTSIDE = /\b(4012\d\d|4013\d\d|4102\d\d|4107\d\d)\b|\b(bhiwandi|kalyan(?!\s*(jewel|nagar|kendra))|dombivli|ambernath|badlapur|ulhasnagar|kharghar|kamothe|kalamboli|ulwe|taloja|vasai|virar)\b/i;
 const OSM_SKIP = new Set(['clinic', 'hospital']);
+const PLAYO_REMOVED = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'sources/entries/playo-removed.json'), 'utf8')).venueIds);
 const stats = { keptPin: 0, closed: 0, sharedPin: 0, spiritual: 0, farPins: 0, osmSkipped: 0, outsideAd: 0, noG: 0, badCoords: 0, dupes: 0, geocoded: 0, geoMiss: 0, areaFilled: 0 };
 rows = rows.filter((r) => {
   if (!r.n) return false;
@@ -119,6 +120,10 @@ rows = rows.filter((r) => {
      run by a religious trust (a mission hospital, a Jain medical centre)
      stays; the organisations themselves do not. */
   if (CLOSED.test(r.n)) { stats.closed++; console.log(`  skipped (closed): ${r.n}`); return false; }
+  /* Unrated, enquiry-only Playo listings with nothing else behind them
+     (sources/entries/playo-removed.json): residents found some did not exist. */
+  const playoId = (r.w || '').match(/venueId=([0-9a-f-]+)/i)?.[1];
+  if (playoId && PLAYO_REMOVED.has(playoId)) { stats.closed++; return false; }
   if (NOT_WELLNESS.test(r.n) || NOT_WELLNESS.test(r.d || '') && r.g === 'alttherapy') { stats.spiritual++; console.log(`  skipped (spiritual/religious): ${r.n}`); return false; }
   /* OSM tags hundreds of nursing homes and doctors' rooms in Mumbai as
      hospitals and clinics; those come from research only. */
@@ -394,10 +399,20 @@ for (const r of merged) {
    branches is one too, whoever found it (the OSM sweep finds Apollo
    Pharmacies the research did not). */
 const PERK_BRANDS = /\beat\.? ?fit\b|^(cult\.?fit|cult\b|healthkart|apollo pharmacy|clove dental|sabka dentist|vijaya diagnostic|cloudnine|qi spine|the wellness co|amaha|the sleep company|vetic|tagda raho|studio oura|ultrahuman|praan health|dr\.? paws|arva health)/i;
+const PLAYO_BOOKABLE = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'sources/entries/playo-bookable.json'), 'utf8')).venueIds);
 let perkTagged = 0, playoTagged = 0;
 for (const r of merged) {
   const tags = new Set(String(r.tg || '').split('|').map((t) => t.trim()).filter(Boolean));
-  const playo = r.perk_id === 'PLUM-054' || /playo\.co/i.test(r.w || '') || /on playo/i.test(r.notes || '');
+  /* A Playo venue is one Playo will take a booking for. Most of Mumbai's
+     Playo listings are enquiry-only (isBookable false, an "Enquire Now!"
+     button): 185 of the 269 rows tagged before 2026-10-28 were, and the card
+     promised "book on Playo" for all of them. The tag now follows Playo's own
+     flag, kept in sources/entries/playo-bookable.json. */
+  const venueId = (r.w || '').match(/venueId=([0-9a-f-]+)/i)?.[1];
+  const playo = !NOT_ON_PLAYO.test(r.n)
+    && ((venueId && PLAYO_BOOKABLE.has(venueId)) || /playo\.co\/games\//i.test(r.w || ''));
+  if (!playo) tags.delete('playo');
+  if (!playo && r.perk_id === 'PLUM-054') r.perk_id = '';
   const partner = !playo && ((r.perk_partner || '').toLowerCase() === 'yes' || /^PLUM-/.test(r.perk_id || '') || PERK_BRANDS.test(r.n));
   if (playo && !tags.has('playo')) { tags.add('playo'); playoTagged++; }
   if (partner && !tags.has('plum-perks')) { tags.add('plum-perks'); perkTagged++; }

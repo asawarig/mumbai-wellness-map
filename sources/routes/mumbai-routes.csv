@@ -1,69 +1,178 @@
-id,n,a,mode,route_type,dist_km,start_lat,start_lon,end_lat,end_lon,waypoints,s,geom_status
-MUM-3430,Ambe Ghosale Lake,Thane West,Run,loop,0.65,19.204973,72.979462,19.204973,72.979462,,,
-MUM-3431,APJ Abdul Kalam Entertainment Park,Thane East,Run,loop,0.8,19.174412,72.974331,19.174412,72.974331,,park loop,"hold: checked on the map, trace was wrong"
-MUM-3432,August Kranti Maidan (Gowalia Tank),Grant Road West,Run,loop,,18.9628,72.8098,18.9628,72.8098,,park loop,
-MUM-3433,Azad Maidan,Fort,Run,loop,,18.9388,72.8322,18.9388,72.8322,,park loop,
-MUM-3435,Barku Govind Patil Udyan,Mulund West,Run,loop,0.5,19.182148,72.956213,19.182148,72.956213,,park loop,"hold: checked on the map, trace was wrong"
-MUM-0004,"Bhakti Park, Wadala",Wadala East,Run,loop,,19.025787,72.878707,19.025787,72.878707,,park loop,
-MUM-3436,Brahmala Lake (Bramhala Talao),Thane West,Run,loop,0.5,19.20269,72.975236,19.20269,72.975236,,,"hold: checked on the map, trace was wrong"
-MUM-0007,Chintamani Garden walking loop,Mulund East,Run,loop,0.32,19.17323,72.960075,19.17323,72.960075,,park loop,"hold: checked on the map, trace was wrong"
-MUM-3438,Colaba Woods,Colaba,Run,loop,,18.913461,72.819025,18.913461,72.819025,,park loop,
-MUM-3439,Damodar Park,Ghatkopar West,Run,loop,0.5,19.094891,72.913591,19.094891,72.913591,,park loop,"hold: checked on the map, trace was wrong"
-MUM-0010,"Diamond Garden (NG Acharya Udyan), Chembur",Chembur East,Run,loop,,19.053128,72.900482,19.053128,72.900482,,park loop,
-MUM-0011,"DK Sandu Udyan, Chembur",Chembur East,Run,loop,,19.056102,72.897765,19.056102,72.897765,,park loop,
-MUM-0012,Five Gardens loop,Matunga / Dadar East,Run,loop,,19.019537,72.853788,19.019537,72.853788,,park loop,
-MUM-3441,"Forest Park, Hiranandani Gardens",Powai,Run,loop,,19.11505,72.908833,19.11505,72.908833,,park loop,
-MUM-0013,"Gandhi Maidan, Chembur",Chembur East,Run,loop,,19.058128,72.899295,19.058128,72.899295,,park loop,
-MUM-2811,Godrej Play Area & Jogging Track — Vikhroli East,Vikhroli East,Run,loop,,19.10357,72.92725,19.10357,72.92725,,park loop,
-MUM-0015,Hanging Gardens and Kamala Nehru Park,Malabar Hill,Run,loop,,18.951701,72.801655,18.951701,72.801655,,park loop,
-MUM-3443,"Heritage Garden, Hiranandani",Powai,Run,loop,,19.114405,72.91105,19.114405,72.91105,,park loop,
-MUM-2238,Hiranandani Estate Joggers Park,Hiranandani Estate,Run,loop,,19.256891,72.980609,19.256891,72.980609,,park loop,
-MUM-1838,Jewel of Navi Mumbai — Nerul,Nerul,Run,loop,,19.022757,73.011463,19.022757,73.011463,,,
-MUM-0016,Jijamata Udyaan (Rani Baug) walk,Byculla,Run,loop,,18.97949,72.833908,18.97949,72.833908,,park loop,
-MUM-0017,"Joggers Park, Bandra",Bandra West,Run,loop,0.4,19.059,72.821,19.059,72.821,,park loop,
-MUM-0018,"Joggers Park, Juhu",Juhu,Run,loop,1,19.104748,72.830307,19.104748,72.830307,,park loop,
-MUM-2812,Joseph Baptista Gardens (Mazgaon Hill),Mazgaon,Run,loop,,18.967037,72.8429,18.967037,72.8429,,park loop,
-MUM-3446,Kachrali Lake (Kacharali Talao),Thane West (Panchpakhadi),Run,loop,0.65,19.196116,72.968041,19.196116,72.968041,,,
-MUM-0020,Mahalaxmi Race Course track,Mahalaxmi,Run,loop,2.2,18.97854,72.814452,18.97854,72.814452,,park loop,
-MUM-0021,Maharashtra Nature Park trails,Dharavi,Run,loop,,19.052598,72.861579,19.052598,72.861579,,park loop,
-MUM-0025,"Millennium Garden, Ghatkopar",Ghatkopar East,Run,loop,,19.078528,72.908758,19.078528,72.908758,,park loop,
-MUM-0026,"Mindspace Landscape Garden, Malad",Malad West,Run,loop,,19.187958,72.840782,19.187958,72.840782,,park loop,
-MUM-1840,Nerul (Seawoods) Lake loop,Nerul / Seawoods,Run,loop,2.7,19.026523,73.008486,19.026523,73.008486,,,
-MUM-0027,"Nirvana Park, Powai",Powai,Run,loop,,19.122469,72.911948,19.122469,72.911948,,park loop,
-MUM-0028,Oval Maidan perimeter,Fort / Churchgate,Run,loop,,18.929594,72.828937,18.929594,72.828937,,park loop,
-MUM-3449,Patwardhan Park,Khar West,Run,loop,,19.065355,72.834478,19.065355,72.834478,,park loop,
-MUM-0030,Priyadarshini Park (PDP) running track,Malabar Hill,Run,loop,0.5,18.957873,72.799137,18.957873,72.799137,,park loop,
-MUM-0031,Rajawadi Garden walking loop,Ghatkopar East,Run,loop,0.32,19.080864,72.904332,19.080864,72.904332,,park loop,
-MUM-2614,Ramdev Park — Rambhau Mhalgi Udyan,"Ramdev Park, Mira Road East",Run,loop,,19.292608,72.866572,19.292608,72.866572,,park loop,
-MUM-1843,Rock Garden — Nerul,Nerul,Run,loop,,19.030362,73.01971,19.030362,73.01971,,park loop,
-MUM-3452,Sagar Upvan (Bombay Port Trust Garden),Colaba,Run,loop,0.65,18.911808,72.823462,18.911808,72.823462,,park loop,
-MUM-0032,"Sambhaji Park (Sambhaji Raje Maidan), Mulund East",Mulund East,Run,loop,0.7,19.16818,72.964412,19.16818,72.964412,,park loop,
-MUM-3455,"Tata Garden, Breach Candy",Breach Candy,Run,loop,,18.973507,72.80862,18.973507,72.80862,,park loop,
-MUM-3456,Tilak Nagar Municipal Ground,"Tilak Nagar, Chembur / Kurla East",Run,loop,0.65,19.066818,72.89447,19.066818,72.89447,,park loop,
-MUM-0035,"Veer Savarkar Udyan, Borivali",Borivali West,Run,loop,1.5,19.228552,72.852147,19.228552,72.852147,,park loop,
-MUM-0034,Shivaji Park perimeter,Dadar West,Run,loop,1.3,19.026724,72.838047,19.026724,72.838047,,park loop,
-MUM-1845,Wonders Park (Seven Wonders) — Nerul,Nerul,Run,loop,,19.025496,73.025956,19.025496,73.025956,,park loop,
-MUM-2239,Masunda Lake (Talao Pali),"Talao Pali, Naupada",Run,loop,,19.193,72.974,19.193,72.974,,,
-MUM-2240,Railadevi Lake,Wagle Estate (Road No. 4),Run,loop,,19.1893,72.9571,19.1893,72.9571,,,
-MUM-2241,Upvan Lake,"Upvan, Pokhran Road 2",Run,loop,,19.221558,72.956014,19.221558,72.956014,,,
-MUM-0024,Marine Drive promenade,Marine Drive / Churchgate,Run,point to point,3.6,18.9535,72.816,18.9258,72.821,"(18.94, 72.8235)",,
-MUM-0003,Bandstand Promenade,Bandra West,Run,out and back,2.4,19.0468,72.8199,19.0419,72.8187,,,
-MUM-0005,Carter Road promenade to Bandstand,Bandra West,Run,point to point,,19.07,72.8232,19.042,72.819,"(19.0598, 72.8215) (19.047, 72.8222)",,
-MUM-0037,Worli Sea Face,Worli,Run,point to point,2.75,19.0165,72.8165,19,72.8152,,,
-MUM-0008,Coastal Road Promenade (Breach Candy to Worli),Breach Candy / Worli,Run,point to point,5.25,18.97,72.8048,19.0005,72.8155,"(18.9822, 72.8118)",,"hold: checked on the map, trace was wrong"
-MUM-0029,Powai Lake promenade and Hiranandani Garden,Powai,Run,loop,5.5,19.119205,72.907268,19.119205,72.907268,"(19.1245, 72.9055) (19.125, 72.8965)",,
-MUM-0033,SGNP main gate to Kanheri Caves,Borivali East,Run,out and back,12,19.2297,72.8573,19.2058,72.9066,,,
-MUM-0001,Aarey Colony road loop,Goregaon East,Run,out and back,,19.166,72.862,19.155,72.874,,,"hold: checked on the map, trace was wrong"
-MUM-2242,Yeoor Hills road,Yeoor Hills,Run,out and back,,19.224294,72.947287,19.23,72.926,,,
-MUM-1841,Palm Beach Road,Nerul / Seawoods,Run,out and back,7,19.054593,73.00531,19.029,73.012,,,
-MUM-0038,Aarey Colony: Goregaon East to Powai,Goregaon East / Aarey,Cycle,point to point,9.6,19.166,72.862,19.131,72.892,"(19.155, 72.874)",,
-MUM-3459,Carter Road cycling track,Bandra West,Cycle,point to point,,19.07,72.8232,19.06,72.8217,,,
-MUM-0039,Coastal Road Promenade cycle track,Breach Candy / Worli,Cycle,point to point,5.25,18.97,72.8048,19.0005,72.8155,"(18.9822, 72.8118)",,"hold: checked on the map, trace was wrong"
-MUM-3460,Eastern Express Highway ride to Thane,Sion → Thane,Cycle,point to point,,19.0435,72.864,19.194,72.963,"(19.087, 72.915) (19.111, 72.933) (19.173, 72.956)",,
-MUM-2617,Madh Island coastal ride: Madh jetty to Marve jetty,Madh Island / Malad West,Cycle,point to point,,19.134,72.799,19.194,72.837,"(19.161, 72.786) (19.176, 72.796)",,"hold: checked on the map, trace was wrong"
-MUM-0041,Marine Drive to Fort and Colaba loop,Marine Drive / Fort / Colaba,Cycle,loop,15,18.9535,72.816,18.9535,72.816,"(18.9258, 72.821) (18.9352, 72.827) (18.9285, 72.832) (18.912, 72.818) (18.922, 72.8347) (18.94, 72.835) (18.952, 72.819)",,"hold: checked on the map, trace was wrong"
-MUM-3462,Night ride: Colaba to Bandra (Regal to Mount Mary),Colaba → Bandra West,Cycle,point to point,25,18.923,72.832,19.0468,72.8225,"(18.922, 72.8347) (18.94, 72.8235) (18.9535, 72.816) (19.008, 72.8155) (19.026, 72.836) (19.044, 72.84)",,
-MUM-3463,Palm Beach Road ride (Vashi to Belapur),Vashi / Nerul / CBD Belapur,Cycle,point to point,,19.075,72.998,19.017,73.03,"(19.0546, 73.0053) (19.029, 73.012)",,
-MUM-0043,SGNP: main gate to Kanheri Caves,Borivali East (SGNP),Cycle,out and back,14,19.2297,72.8573,19.2058,72.9066,,,
-MUM-2618,Uttan Road ride (Bhayandar West to Uttan),Bhayandar West → Uttan,Cycle,point to point,8,19.311,72.851,19.29,72.786,"(19.304, 72.815)",,
-MUM-2243,Yeoor Hills ride,Yeoor Hills,Cycle,out and back,,19.224294,72.947287,19.23,72.926,,,
+id,n,a,mode,route_type,dist_km,start_lat,start_lon,end_lat,end_lon,waypoints,s,geom_status,osm
+MUM-3430,Ambe Ghosale Lake,Thane West,Run,loop,0.65,19.204973,72.979462,19.204973,72.979462,,,,
+MUM-3431,APJ Abdul Kalam Entertainment Park,Thane East,Run,loop,0.8,19.174412,72.974331,19.174412,72.974331,,park loop,"hold: checked on the map, trace was wrong",
+MUM-3432,August Kranti Maidan (Gowalia Tank),Grant Road West,Run,loop,,18.9628,72.8098,18.9628,72.8098,,park loop,,
+MUM-3433,Azad Maidan,Fort,Run,loop,,18.9388,72.8322,18.9388,72.8322,,park loop,,
+MUM-3435,Barku Govind Patil Udyan,Mulund West,Run,loop,0.5,19.182148,72.956213,19.182148,72.956213,,park loop,"hold: checked on the map, trace was wrong",
+MUM-0004,"Bhakti Park, Wadala",Wadala East,Run,loop,,19.025787,72.878707,19.025787,72.878707,,park loop,,
+MUM-3436,Brahmala Lake (Bramhala Talao),Thane West,Run,loop,0.5,19.20269,72.975236,19.20269,72.975236,,,"hold: checked on the map, trace was wrong",
+MUM-0007,Chintamani Garden walking loop,Mulund East,Run,loop,0.32,19.17323,72.960075,19.17323,72.960075,,park loop,"hold: checked on the map, trace was wrong",
+MUM-3438,Colaba Woods,Colaba,Run,loop,,18.913461,72.819025,18.913461,72.819025,,park loop,,
+MUM-3439,Damodar Park,Ghatkopar West,Run,loop,0.5,19.094891,72.913591,19.094891,72.913591,,park loop,"hold: checked on the map, trace was wrong",
+MUM-0010,"Diamond Garden (NG Acharya Udyan), Chembur",Chembur East,Run,loop,,19.053128,72.900482,19.053128,72.900482,,park loop,,
+MUM-0011,"DK Sandu Udyan, Chembur",Chembur East,Run,loop,,19.056102,72.897765,19.056102,72.897765,,park loop,,
+MUM-0012,Five Gardens loop,Matunga / Dadar East,Run,loop,,19.019537,72.853788,19.019537,72.853788,,park loop,,
+MUM-3441,"Forest Park, Hiranandani Gardens",Powai,Run,loop,,19.11505,72.908833,19.11505,72.908833,,park loop,,
+MUM-0013,"Gandhi Maidan, Chembur",Chembur East,Run,loop,,19.058128,72.899295,19.058128,72.899295,,park loop,,
+MUM-2811,Godrej Play Area & Jogging Track — Vikhroli East,Vikhroli East,Run,loop,,19.10357,72.92725,19.10357,72.92725,,park loop,,
+MUM-0015,Hanging Gardens and Kamala Nehru Park,Malabar Hill,Run,loop,,18.951701,72.801655,18.951701,72.801655,,park loop,,
+MUM-3443,"Heritage Garden, Hiranandani",Powai,Run,loop,,19.114405,72.91105,19.114405,72.91105,,park loop,,
+MUM-2238,Hiranandani Estate Joggers Park,Hiranandani Estate,Run,loop,,19.256891,72.980609,19.256891,72.980609,,park loop,,
+MUM-1838,Jewel of Navi Mumbai — Nerul,Nerul,Run,loop,,19.022757,73.011463,19.022757,73.011463,,,,
+MUM-0016,Jijamata Udyaan (Rani Baug) walk,Byculla,Run,loop,,18.97949,72.833908,18.97949,72.833908,,park loop,,
+MUM-0017,"Joggers Park, Bandra",Bandra West,Run,loop,0.4,19.059,72.821,19.059,72.821,,park loop,,
+MUM-0018,"Joggers Park, Juhu",Juhu,Run,loop,1,19.104748,72.830307,19.104748,72.830307,,park loop,,
+MUM-2812,Joseph Baptista Gardens (Mazgaon Hill),Mazgaon,Run,loop,,18.967037,72.8429,18.967037,72.8429,,park loop,,
+MUM-3446,Kachrali Lake (Kacharali Talao),Thane West (Panchpakhadi),Run,loop,0.65,19.196116,72.968041,19.196116,72.968041,,,,
+MUM-0020,Mahalaxmi Race Course track,Mahalaxmi,Run,loop,2.2,18.97854,72.814452,18.97854,72.814452,,park loop,,
+MUM-0021,Maharashtra Nature Park,Dharavi,Run,loop,,19.052598,72.861579,19.052598,72.861579,,park loop,"hold: checked on the map, trace was wrong",
+MUM-0025,"Millennium Garden, Ghatkopar",Ghatkopar East,Run,loop,,19.078528,72.908758,19.078528,72.908758,,park loop,,
+MUM-0026,"Mindspace Landscape Garden, Malad",Malad West,Run,loop,,19.187958,72.840782,19.187958,72.840782,,park loop,,
+MUM-1840,Nerul (Seawoods) Lake loop,Nerul / Seawoods,Run,loop,2.7,19.026523,73.008486,19.026523,73.008486,,,,
+MUM-0027,"Nirvana Park, Powai",Powai,Run,loop,,19.122469,72.911948,19.122469,72.911948,,park loop,,
+MUM-0028,Oval Maidan perimeter,Fort / Churchgate,Run,loop,,18.929594,72.828937,18.929594,72.828937,,park loop,,
+MUM-3449,Patwardhan Park,Khar West,Run,loop,,19.065355,72.834478,19.065355,72.834478,,park loop,,
+MUM-0030,Priyadarshini Park (PDP) running track,Malabar Hill,Run,loop,0.5,18.957873,72.799137,18.957873,72.799137,,park loop,,
+MUM-0031,Rajawadi Garden walking loop,Ghatkopar East,Run,loop,0.32,19.080864,72.904332,19.080864,72.904332,,park loop,,
+MUM-2614,Ramdev Park — Rambhau Mhalgi Udyan,"Ramdev Park, Mira Road East",Run,loop,,19.292608,72.866572,19.292608,72.866572,,park loop,,
+MUM-1843,Rock Garden — Nerul,Nerul,Run,loop,,19.030362,73.01971,19.030362,73.01971,,park loop,,
+MUM-3452,Sagar Upvan (Bombay Port Trust Garden),Colaba,Run,loop,0.65,18.911808,72.823462,18.911808,72.823462,,park loop,,
+MUM-0032,"Sambhaji Park (Sambhaji Raje Maidan), Mulund East",Mulund East,Run,loop,0.7,19.16818,72.964412,19.16818,72.964412,,park loop,,
+MUM-3455,"Tata Garden, Breach Candy",Breach Candy,Run,loop,,18.973507,72.80862,18.973507,72.80862,,park loop,,
+MUM-3456,Tilak Nagar Municipal Ground,"Tilak Nagar, Chembur / Kurla East",Run,loop,0.65,19.066818,72.89447,19.066818,72.89447,,park loop,,
+MUM-0035,"Veer Savarkar Udyan, Borivali",Borivali West,Run,loop,1.5,19.228552,72.852147,19.228552,72.852147,,park loop,,
+MUM-0034,Shivaji Park perimeter,Dadar West,Run,loop,1.3,19.026724,72.838047,19.026724,72.838047,,park loop,,
+MUM-1845,Wonders Park (Seven Wonders) — Nerul,Nerul,Run,loop,,19.025496,73.025956,19.025496,73.025956,,park loop,,
+MUM-2239,Masunda Lake (Talao Pali),"Talao Pali, Naupada",Run,loop,,19.193,72.974,19.193,72.974,,,,
+MUM-2240,Railadevi Lake,Wagle Estate (Road No. 4),Run,loop,,19.1893,72.9571,19.1893,72.9571,,,,
+MUM-2241,Upvan Lake,"Upvan, Pokhran Road 2",Run,loop,,19.221558,72.956014,19.221558,72.956014,,,,
+MUM-0024,Marine Drive promenade,Marine Drive / Churchgate,Run,point to point,3.6,18.9535,72.816,18.9258,72.821,"(18.94, 72.8235)",,,
+MUM-0003,Bandstand Promenade and Bandra Fort,Bandra West,Run,out and back,2.4,19.0468,72.8199,19.0419,72.8187,,,,
+MUM-0005,Carter Road promenade to Bandstand,Bandra West,Run,point to point,,19.07,72.8232,19.042,72.819,"(19.0598, 72.8215) (19.047, 72.8222)",,,
+MUM-0037,Worli Sea Face,Worli,Run,point to point,2.75,19.0165,72.8165,19,72.8152,,,,
+MUM-0008,Coastal Road Promenade (Breach Candy to Worli),Breach Candy / Worli,Run,point to point,5.25,18.97,72.8048,19.0005,72.8155,"(18.9822, 72.8118)",,"hold: checked on the map, trace was wrong",
+MUM-0029,Powai Lake promenade and Hiranandani Garden,Powai,Run,loop,5.5,19.119205,72.907268,19.119205,72.907268,"(19.1245, 72.9055) (19.125, 72.8965)",,,
+MUM-0033,SGNP main gate to Kanheri Caves,Borivali East,Run,out and back,12,19.2297,72.8573,19.2058,72.9066,,,,
+MUM-0001,Aarey Colony road loop,Goregaon East,Run,out and back,,19.166,72.862,19.155,72.874,,,"hold: checked on the map, trace was wrong",
+MUM-2242,Yeoor Hills road,Yeoor Hills,Run,out and back,,19.224294,72.947287,19.23,72.926,,,,
+MUM-1841,Palm Beach Road,Nerul / Seawoods,Run,out and back,7,19.054593,73.00531,19.029,73.012,,,,
+MUM-0038,Aarey Colony: Goregaon East to Powai,Goregaon East / Aarey,Cycle,point to point,9.6,19.166,72.862,19.131,72.892,"(19.155, 72.874)",,,
+MUM-3459,Carter Road cycling track,Bandra West,Cycle,point to point,,19.07,72.8232,19.06,72.8217,,,,
+MUM-0039,Coastal Road Promenade cycle track,Breach Candy / Worli,Cycle,point to point,5.25,18.97,72.8048,19.0005,72.8155,"(18.9822, 72.8118)",,"hold: checked on the map, trace was wrong",
+MUM-3460,Eastern Express Highway ride to Thane,Sion → Thane,Cycle,point to point,,19.0435,72.864,19.194,72.963,"(19.087, 72.915) (19.111, 72.933) (19.173, 72.956)",,,
+MUM-2617,Madh Island coastal ride: Madh jetty to Marve jetty,Madh Island / Malad West,Cycle,point to point,,19.134,72.799,19.194,72.837,"(19.161, 72.786) (19.176, 72.796)",,"hold: checked on the map, trace was wrong",
+MUM-0041,Marine Drive to Fort and Colaba loop,Marine Drive / Fort / Colaba,Cycle,loop,15,18.9535,72.816,18.9535,72.816,"(18.9258, 72.821) (18.9352, 72.827) (18.9285, 72.832) (18.912, 72.818) (18.922, 72.8347) (18.94, 72.835) (18.952, 72.819)",,"hold: checked on the map, trace was wrong",
+MUM-3462,Night ride: Colaba to Bandra (Regal to Mount Mary),Colaba → Bandra West,Cycle,point to point,25,18.923,72.832,19.0468,72.8225,"(18.922, 72.8347) (18.94, 72.8235) (18.9535, 72.816) (19.008, 72.8155) (19.026, 72.836) (19.044, 72.84)",,,
+MUM-3463,Palm Beach Road ride (Vashi to Belapur),Vashi / Nerul / CBD Belapur,Cycle,point to point,,19.075,72.998,19.017,73.03,"(19.0546, 73.0053) (19.029, 73.012)",,,
+MUM-0043,SGNP: main gate to Kanheri Caves,Borivali East (SGNP),Cycle,out and back,14,19.2297,72.8573,19.2058,72.9066,,,,
+MUM-2618,Uttan Road ride (Bhayandar West to Uttan),Bhayandar West → Uttan,Cycle,point to point,8,19.311,72.851,19.29,72.786,"(19.304, 72.815)",,,
+MUM-2243,Yeoor Hills ride,Yeoor Hills,Cycle,out and back,,19.224294,72.947287,19.23,72.926,,,,
+PARK-19.18878_72.83976,Aarogyam Dhanasampada,,Walk,loop,,19.18878,72.83976,19.18878,72.83976,,,,way/911451399
+PARK-19.02851_73.02261,Adi Shankaracharaya Park,,Walk,loop,,19.02851,73.02261,19.02851,73.02261,,,,way/575027977
+PARK-19.15689_72.83582,Annabhau Sathe Maidan,,Walk,loop,,19.15689,72.83582,19.15689,72.83582,,,,way/556798306
+PARK-18.96233_72.81011,August Kranti Maidan,,Walk,loop,,18.96233,72.81011,18.96233,72.81011,,,,way/40748778
+PARK-18.93963_72.83131,Azad Maidan,,Walk,loop,,18.93963,72.83131,18.93963,72.83131,,,,relation/20401140
+PARK-18.91661_72.82075,Bayview Marina,,Walk,loop,,18.91661,72.82075,18.91661,72.82075,,,,way/263226690
+PARK-19.07470_72.88582,Bharat Ratna Indira Gandhi Udyan & Dr. Abdul Kalam Udyan,,Walk,loop,,19.0747,72.88582,19.0747,72.88582,,,,way/961788662
+PARK-19.12330_72.88587,Bharatvan,,Walk,loop,,19.1233,72.88587,19.1233,72.88587,,,,way/113700140
+PARK-19.17342_72.83319,BMC Forest Theme Garden,,Walk,loop,,19.17342,72.83319,19.17342,72.83319,,,,way/202661513
+PARK-19.04947_72.83581,BWSL Promenade,,Walk,loop,,19.04947,72.83581,19.04947,72.83581,,,,way/487790870
+PARK-19.11496_73.00458,Central Park,,Walk,loop,,19.11496,73.00458,19.11496,73.00458,,,,way/576981879
+PARK-19.25723_72.97987,Central Park,,Walk,loop,,19.25723,72.97987,19.25723,72.97987,,,,way/102388308
+PARK-19.14551_72.82112,Chattrapati Shivaji Joggers Park,,Walk,loop,,19.14551,72.82112,19.14551,72.82112,,,,way/202556929
+PARK-19.05423_72.87016,Chhatrapati Shivaji Maharaj Park,,Walk,loop,,19.05423,72.87016,19.05423,72.87016,,,,way/486697314
+PARK-19.10622_73.00412,Chikaleshwar Garden,,Walk,loop,,19.10622,73.00412,19.10622,73.00412,,,,way/606557879
+PARK-19.14922_72.99595,Chinchwali Garden,,Walk,loop,,19.14922,72.99595,19.14922,72.99595,,,,way/785602854
+PARK-19.04269_73.01677,CIDCO Garden,,Walk,loop,,19.04269,73.01677,19.04269,73.01677,,,,way/363309583
+PARK-19.14854_72.98589,Coastal & Marine Biodiversity Centre,,Walk,loop,,19.14854,72.98589,19.14854,72.98589,,,,way/1126271813
+PARK-18.93723_72.82966,Cross Maidan,,Walk,loop,,18.93723,72.82966,18.93723,72.82966,,,,way/49002056
+PARK-18.93373_72.82947,Cross Maidan Garden,,Walk,loop,,18.93373,72.82947,18.93373,72.82947,,,,way/1288957913
+PARK-18.91815_72.81651,Cuffe Parade Park,,Walk,loop,,18.91815,72.81651,18.91815,72.81651,,,,way/1013261678
+PARK-19.12887_72.89711,Dr. Babasaheb Ambedkar Udyan,,Walk,loop,,19.12887,72.89711,19.12887,72.89711,,,,way/496706048
+PARK-19.07310_72.90499,Dr. Keshav Baliram Hedgewar Garden,,Walk,loop,,19.0731,72.90499,19.0731,72.90499,,,,way/416521085
+PARK-19.02947_72.84574,Dyaneshwar Udhyodhan Park,,Walk,loop,,19.02947,72.84574,19.02947,72.84574,,,,way/113792251
+PARK-19.21869_72.84574,Ekta Ground,,Walk,loop,,19.21869,72.84574,19.21869,72.84574,,,,way/662725595
+PARK-19.21265_72.87560,Evershine Dream Park,,Walk,loop,,19.21265,72.8756,19.21265,72.8756,,,,way/758559013
+PARK-19.16516_72.88289,Film City Ground,,Walk,loop,,19.16516,72.88289,19.16516,72.88289,,,,way/1471908159
+PARK-19.28877_72.94217,Gaimukh Chowpatty,,Walk,loop,,19.28877,72.94217,19.28877,72.94217,,,,way/952462005
+PARK-19.15777_72.83740,Ganesh Maidan,,Walk,loop,,19.15777,72.8374,19.15777,72.8374,,,,way/621466308
+PARK-19.03943_73.01096,Gaondevi Park,,Walk,loop,,19.03943,73.01096,19.03943,73.01096,,,,way/561157352
+PARK-19.01897_73.00875,Grass Park,,Walk,loop,,19.01897,73.00875,19.01897,73.00875,,,,way/560475812
+PARK-19.13633_72.86641,Hemant Karkare Park,,Walk,loop,,19.13633,72.86641,19.13633,72.86641,,,,way/562942560
+PARK-19.03680_72.92514,Homi Bhabha Park,,Walk,loop,,19.0368,72.92514,19.0368,72.92514,,,,way/1239406336
+PARK-18.93198_72.83503,Horniman Circle Garden,,Walk,loop,,18.93198,72.83503,18.93198,72.83503,,,,way/40743182
+PARK-19.19848_72.98528,Jogger's Park,,Walk,loop,,19.19848,72.98528,19.19848,72.98528,,,,way/1084297710
+PARK-19.27477_72.85796,Joggers Park,,Walk,loop,,19.27477,72.85796,19.27477,72.85796,,,,way/363871469
+PARK-19.15284_72.82906,Kamalakarpant Walawalkar Udyan,,Walk,loop,,19.15284,72.82906,19.15284,72.82906,,,,way/74877091
+PARK-19.01125_72.83621,Kamgar Stadium,,Walk,loop,,19.01125,72.83621,19.01125,72.83621,,,,way/113504604
+PARK-19.29809_72.84545,KG Park,,Walk,loop,,19.29809,72.84545,19.29809,72.84545,,,,way/344470206
+PARK-19.21994_72.85079,Kora Kendra Ground,,Walk,loop,,19.21994,72.85079,19.21994,72.85079,,,,way/544946331
+PARK-19.22059_72.84545,Kora Kendra Ground 2,,Walk,loop,,19.22059,72.84545,19.22059,72.84545,,,,way/544946679
+PARK-18.99900_72.81392,Lal Bahadur Shastri Udyan,,Walk,loop,,18.999,72.81392,18.999,72.81392,,,,way/38913637
+PARK-19.00344_72.84587,Local Park,,Walk,loop,,19.00344,72.84587,19.00344,72.84587,,,,way/700635434
+PARK-19.24662_72.85569,Loknete Gopinath Munde Shakti Ground,,Walk,loop,,19.24662,72.85569,19.24662,72.85569,,,,way/810196910
+PARK-19.05160_72.87992,Maasaheb Meenatai Thackarey Botanical Garden,,Walk,loop,,19.0516,72.87992,19.0516,72.87992,,,,way/924439406
+PARK-19.11079_72.88460,Mahatapasvi Acharya Shri Mahashramanji City Park,,Walk,loop,,19.11079,72.8846,19.11079,72.8846,,,,way/1410354480
+PARK-19.02628_73.03992,Mango Park,,Walk,loop,,19.02628,73.03992,19.02628,73.03992,,,,way/291156489
+PARK-19.01599_73.04413,Mangrove Park,,Walk,loop,,19.01599,73.04413,19.01599,73.04413,,,,way/1289190979
+PARK-19.00754_73.03614,Mangrove Park,,Walk,loop,,19.00754,73.03614,19.00754,73.03614,,,,way/1289191060
+PARK-19.12698_72.82698,Manish Nagar Ground,,Walk,loop,,19.12698,72.82698,19.12698,72.82698,,,,way/1031592302
+PARK-19.13524_72.87158,Matoshree Minatai Thakrey Shilpgram,,Walk,loop,,19.13524,72.87158,19.13524,72.87158,,,,way/1330724364
+PARK-19.12218_72.89428,MCGM Park,,Walk,loop,,19.12218,72.89428,19.12218,72.89428,,,,way/959572917
+PARK-19.20628_72.87588,Mcgm playground at thakur village,,Walk,loop,,19.20628,72.87588,19.20628,72.87588,,,,way/786919122
+PARK-19.28802_72.95572,Metro Garden,,Walk,loop,,19.28802,72.95572,19.28802,72.95572,,,,way/1485374395
+PARK-19.17482_72.83062,Mindscape Landscape,,Walk,loop,,19.17482,72.83062,19.17482,72.83062,,,,way/202661505
+PARK-19.16158_73.00242,Mindspace Garden,,Walk,loop,,19.16158,73.00242,19.16158,73.00242,,,,way/363282664
+PARK-19.17773_73.02491,Mittal Cricket Ground,,Walk,loop,,19.17773,73.02491,19.17773,73.02491,,,,way/207778534
+PARK-19.08209_72.83164,Muktanand Park,,Walk,loop,,19.08209,72.83164,19.08209,72.83164,,,,way/151256440
+PARK-19.09698_72.91828,N Ward Park,,Walk,loop,,19.09698,72.91828,19.09698,72.91828,,,,way/436218412
+PARK-19.26199_72.86532,N.L.Garden,,Walk,loop,,19.26199,72.86532,19.26199,72.86532,,,,way/469637400
+PARK-19.10948_72.89987,Nahar Nature Park,,Walk,loop,,19.10948,72.89987,19.10948,72.89987,,,,way/1192694258
+PARK-19.21075_72.84671,Netaji Subhashchandra Bose Kirdangan,,Walk,loop,,19.21075,72.84671,19.21075,72.84671,,,,way/1144636822
+PARK-19.09493_72.99618,Nisarg UDHYAN,,Walk,loop,,19.09493,72.99618,19.09493,72.99618,,,,way/606563074
+PARK-19.00911_73.03431,NMMC Park,,Walk,loop,,19.00911,73.03431,19.00911,73.03431,,,,way/363309590
+PARK-19.16235_72.87314,Observation Post (Chotta Kashmir),,Walk,loop,,19.16235,72.87314,19.16235,72.87314,,,,way/102519589
+PARK-19.10475_72.83138,Open Gardenal Spaces,,Walk,loop,,19.10475,72.83138,19.10475,72.83138,,,,way/73052817
+PARK-19.29630_72.87614,Ostwal Garden,,Walk,loop,,19.2963,72.87614,19.2963,72.87614,,,,way/980677024
+PARK-19.04637_72.86765,P. Jawaharlal Nehru Park,,Walk,loop,,19.04637,72.86765,19.04637,72.86765,,,,way/49681810
+PARK-19.29516_72.86558,Padmabhushan Major Dhyanchand Ground,,Walk,loop,,19.29516,72.86558,19.29516,72.86558,,,,way/1000202104
+PARK-19.09554_72.91648,Pankheshah Baba Garden,,Walk,loop,,19.09554,72.91648,19.09554,72.91648,,,,way/151581959
+PARK-19.17904_72.99251,Patni Ground,,Walk,loop,,19.17904,72.99251,19.17904,72.99251,,,,way/469422382
+PARK-18.95660_72.80490,Pherozeshah Mehta Gardens (Hanging Gardens),,Walk,loop,,18.9566,72.8049,18.9566,72.8049,,,,way/38883141
+PARK-19.13728_72.88250,Picnic Point Garden,,Walk,loop,,19.13728,72.8825,19.13728,72.8825,,,,way/628887315
+PARK-19.10835_72.91665,Prabodhankar Thakre Manoranjan Udyan,,Walk,loop,,19.10835,72.91665,19.10835,72.91665,,,,way/483179389
+PARK-19.24279_72.96704,Pramod Mahajan Nature Garden,,Walk,loop,,19.24279,72.96704,19.24279,72.96704,,,,way/892256759
+PARK-19.20813_72.85990,Pramod Navalkar Udyan,,Walk,loop,,19.20813,72.8599,19.20813,72.8599,,,,way/821600341
+PARK-19.03301_73.02644,R.R Patil Garden,,Walk,loop,,19.03301,73.02644,19.03301,73.02644,,,,way/561970762
+PARK-18.98386_72.81974,Racecourse Ground,,Walk,loop,,18.98386,72.81974,18.98386,72.81974,,,,way/1341472135
+PARK-19.17941_72.87627,Raheja Garden,,Walk,loop,,19.17941,72.87627,19.17941,72.87627,,,,way/1342073695
+PARK-19.18288_72.84606,Rai Pada,,Walk,loop,,19.18288,72.84606,19.18288,72.84606,,,,way/469425895
+PARK-19.08709_73.00556,Rajiv Gandhi Park,,Walk,loop,,19.08709,73.00556,19.08709,73.00556,,,,way/220421977
+PARK-19.15837_72.99481,Rajiv Gandhi Udyan,,Walk,loop,,19.15837,72.99481,19.15837,72.99481,,,,way/363282660
+PARK-19.03967_73.01324,"Ramleela Ground,Nerul",,Walk,loop,,19.03967,73.01324,19.03967,73.01324,,,,way/563546834
+PARK-19.23969_72.84112,Rani Laxmi Bai Park,,Walk,loop,,19.23969,72.84112,19.23969,72.84112,,,,way/814661377
+PARK-19.25827_72.98692,Rodas Enclave Common Park,,Walk,loop,,19.25827,72.98692,19.25827,72.98692,,,,way/557981749
+PARK-19.07775_72.83065,Rotary Park,,Walk,loop,,19.07775,72.83065,19.07775,72.83065,,,,way/151256449
+PARK-19.05487_72.88365,Sahajeevan Park,,Walk,loop,,19.05487,72.88365,19.05487,72.88365,,,,way/1126997786
+PARK-19.11637_72.93858,Sambhaji Maidan,,Walk,loop,,19.11637,72.93858,19.11637,72.93858,,,,way/853334264
+PARK-19.18060_72.93878,Sardar Pratap Singh Garden,,Walk,loop,,19.1806,72.93878,19.1806,72.93878,,,,way/391919542
+PARK-19.03770_73.02268,Sardar Vallabhai Patel Park,,Walk,loop,,19.0377,73.02268,19.0377,73.02268,,,,way/563558939
+PARK-19.02435_73.02601,Science Park,,Walk,loop,,19.02435,73.02601,19.02435,73.02601,,,,way/1050561440
+PARK-19.00325_73.01484,Seawoods Estates Main Lawn / Park,,Walk,loop,,19.00325,73.01484,19.00325,73.01484,,,,way/469381997
+PARK-19.02227_73.02465,Sec 27 Park,,Walk,loop,,19.02227,73.02465,19.02227,73.02465,,,,way/1385110461
+PARK-18.98919_72.84290,Shaheed Bhagat Singh Maidan,,Walk,loop,,18.98919,72.8429,18.98919,72.8429,,,,way/113561037
+PARK-19.17952_72.87632,Sheila Raheja Garden,,Walk,loop,,19.17952,72.87632,19.17952,72.87632,,,,way/514261518
+PARK-19.21654_72.81821,Shree Duttguru Sangharsh Park,,Walk,loop,,19.21654,72.81821,19.21654,72.81821,,,,way/821248092
+PARK-19.21649_72.87122,Shrikant Thakrey BMC Park,,Walk,loop,,19.21649,72.87122,19.21649,72.87122,,,,way/363871513
+PARK-18.94938_72.82211,SK Patil Garden,,Walk,loop,,18.94938,72.82211,18.94938,72.82211,,,,way/288439040
+PARK-19.19769_72.86177,Sports Authority of India Ground,,Walk,loop,,19.19769,72.86177,19.19769,72.86177,,,,way/594262076
+PARK-19.19421_72.87679,Step Up Garden,,Walk,loop,,19.19421,72.87679,19.19421,72.87679,,,,way/1424411756
+PARK-19.29742_72.84006,Subhash Chandra Bose Ground,,Walk,loop,,19.29742,72.84006,19.29742,72.84006,,,,way/497662315
+PARK-19.20823_72.87512,Thakur Stadium,,Walk,loop,,19.20823,72.87512,19.20823,72.87512,,,,way/363871523
+PARK-19.26649_72.96407,TMC Biodiversity Park,,Walk,loop,,19.26649,72.96407,19.26649,72.96407,,,,way/846604986
+PARK-19.07561_73.01559,Turbhe Park,,Walk,loop,,19.07561,73.01559,19.07561,73.01559,,,,way/561970760
+PARK-19.28931_72.86675,Vardhaman Fantasy,,Walk,loop,,19.28931,72.86675,19.28931,72.86675,,,,way/361114268
+PARK-19.04345_72.88995,VES ground,,Walk,loop,,19.04345,72.88995,19.04345,72.88995,,,,way/430028106
+PARK-19.19839_72.87562,Vilasrao Deshmukh Park,,Walk,loop,,19.19839,72.87562,19.19839,72.87562,,,,way/810408512
+PARK-19.16680_72.83200,Vishnu Hanuman Park,,Walk,loop,,19.1668,72.832,19.1668,72.832,,,,way/1031528351
+PARK-19.26031_72.98156,Westview Park,,Walk,loop,,19.26031,72.98156,19.26031,72.98156,,,,way/842112082
