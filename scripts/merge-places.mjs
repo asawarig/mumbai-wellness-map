@@ -28,7 +28,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { SUBCAT } from '../src/lib/categories.js';
-import { NOT_WELLNESS, CLOSED, NOT_ON_PLAYO } from './exclusions.mjs';
+import { NOT_WELLNESS, CLOSED, NOT_ON_PLAYO, MEMBERS_ONLY } from './exclusions.mjs';
 import { decodePlusCode, plusCodeIn } from './pluscode.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -120,6 +120,7 @@ rows = rows.filter((r) => {
      run by a religious trust (a mission hospital, a Jain medical centre)
      stays; the organisations themselves do not. */
   if (CLOSED.test(r.n)) { stats.closed++; console.log(`  skipped (closed): ${r.n}`); return false; }
+  if (MEMBERS_ONLY.test(r.n) || /\bmembers[- ]only\b/i.test(r.tg || '')) { stats.closed++; console.log(`  skipped (members only): ${r.n}`); return false; }
   /* Unrated, enquiry-only Playo listings with nothing else behind them
      (sources/entries/playo-removed.json): residents found some did not exist. */
   const playoId = (r.w || '').match(/venueId=([0-9a-f-]+)/i)?.[1];

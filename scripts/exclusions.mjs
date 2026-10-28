@@ -16,3 +16,8 @@ export const CLOSED = /^(birdsong\b|picklepro club breach candy\b)/i;
 /* Venues Playo shows only as a landmark: they appear in its search but cannot
  * be booked there, so they must not carry the Playo tag. */
 export const NOT_ON_PLAYO = /^willingdon sports club\b/i;
+
+/* Members-only clubs: the map lists places the public can use. The user had
+ * these taken off on 2026-10-28; a stadium a club owns (Brabourne) stays as
+ * a place to watch a match. */
+export const MEMBERS_ONLY = /^(the )?(willingdon sports club|otters club|bombay gymkhana|cricket club of india|gcc members club|p\.? ?j\.? hindu gymkhana|parsee gymkhana|shivaji park gymkhana|islam gymkhana)\b/i;
