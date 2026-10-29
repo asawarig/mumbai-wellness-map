@@ -3522,3 +3522,8 @@ p.desc-cta a{color:#571541;text-decoration:underline;text-underline-offset:3px}
 
 /* A place with no pin of its own says so, under its description. */
 .pp-nopin{margin:8px 0 0;font:400 12.5px/1.45 var(--sans);color:var(--text-3)}
+
+/* The Plum Perks list, like the explore list: each row's category as a strip
+   down its left edge, in the category's own colour, run to the drawer's edge. */
+.perks-drawer .pd-body,.is-paper .perks-drawer .pd-body,.is-paper .perks-drawer.is-open .pd-body{padding-left:0}
+.perks-drawer .prow-perk .card-main{box-shadow:inset 5px 0 0 var(--c);padding-left:17px!important;border-radius:0}
