@@ -6519,7 +6519,7 @@ document.getElementById('k-3d')?.addEventListener('click', () => set3D(!state.th
   /* Every link to the two forms, wherever it is on the map (the list's
      "Suggest a place", the perks drawer's "Become a Plum partner"), opens
      the form in the Plum window instead of on Tally's own page. */
-  const FORMS = [[/tally\.so\/r\/gDEb24/, 'suggest'], [/tally\.so\/r\/mDeKVZ/, 'partner']];
+  const FORMS = [[/tally\.so\/r\/dbbOLK/, 'suggest'], [/tally\.so\/r\/mDeKVZ/, 'partner']];
   document.addEventListener('click', (e) => {
     const a = e.target.closest?.('a[href]');
     if (!a || !wins.about || a.closest('#win-about')) return;

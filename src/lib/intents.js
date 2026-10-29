@@ -27,7 +27,7 @@ import PINS from '../data/intent-pins.json';
 
 /* Where a reader tells us what we missed. Used by the About copy and by the
    note an empty locality shows. */
-export const SUGGEST_FORM = 'https://tally.so/r/gDEb24';
+export const SUGGEST_FORM = 'https://tally.so/r/dbbOLK';
 
 export const VISION = '#571541';
 export const PROMISE = '#FFEBDB';
