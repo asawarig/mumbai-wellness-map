@@ -4,7 +4,7 @@ An interactive map of places, routes, clinics, kitchens and communities for
 looking after yourself in Mumbai, built as an [Astro](https://astro.build)
 site. Built by the marketing team at [Plum](https://plumhq.com).
 
-It is a copy of the [Bengaluru Wellness Map](https://www.plumhq.com/health-map/bengaluru),
+It is a copy of the [Bengaluru Wellness Map](https://www.plumhq.com/health-map/mumbai),
 with the city swapped. Most of this README was written for Bengaluru and still
 describes the code accurately; where it names Bengaluru's data, read Mumbai's.
 
@@ -140,13 +140,13 @@ does not run the flattening hook and does not reflect production routing.
 To see the file layout a mounted deployment produces:
 
 ```bash
-BASE_PATH=/health-map/bengaluru npm run build
+BASE_PATH=/health-map/mumbai npm run build
 ```
 
 Every asset URL in the code is built from `import.meta.env.BASE_URL`, so the
 whole map moves under the mount path with nothing else to change. Note that
 `wrangler dev` serves from the root, so a build with `BASE_PATH` set renders
-unstyled locally — the page asks for `/health-map/bengaluru/…` while the assets
+unstyled locally — the page asks for `/health-map/mumbai/…` while the assets
 sit at `/…`. That is a local-only artefact of there being no mount prefix.
 Check status codes locally, appearance in production.
 
@@ -163,8 +163,8 @@ Webflow forces a trailing slash onto every static HTML asset it serves, and
 then 301s that slash straight back off at its own edge:
 
 ```
-/health-map/bengaluru/embed   -> 307 -> /health-map/bengaluru/embed/   (Cloudflare asset handler)
-/health-map/bengaluru/embed/  -> 301 -> /health-map/bengaluru/embed    (Webflow's edge)
+/health-map/mumbai/embed   -> 307 -> /health-map/mumbai/embed/   (Cloudflare asset handler)
+/health-map/mumbai/embed/  -> 301 -> /health-map/mumbai/embed    (Webflow's edge)
 ```
 
 That is an unbreakable loop, and it is what made the first two deploys hang
@@ -210,8 +210,8 @@ then serves `dist/client` from the mount path, applying the prefix a second
 time:
 
 ```
-disk dist/client/health-map/bengaluru/X  ->  URL /health-map/bengaluru/health-map/bengaluru/X   (wrong)
-disk dist/client/X                       ->  URL /health-map/bengaluru/X                        (wanted)
+disk dist/client/health-map/mumbai/X  ->  URL /health-map/mumbai/health-map/mumbai/X   (wrong)
+disk dist/client/X                       ->  URL /health-map/mumbai/X                        (wanted)
 ```
 
 Setting `base: '/'` fixes this locally and is silently discarded in production —
@@ -225,7 +225,7 @@ The directory it flattens is read from the **resolved** config, not a constant,
 so it always matches whatever `base` the build actually ran with — including the
 one Webflow injects. Changing the mount path in the Webflow dashboard therefore
 needs no change here. It also walks up and removes every level it emptied, so a
-mount path of two or more segments (`/health-map/bengaluru` is two) does not
+mount path of two or more segments (`/health-map/mumbai` is two) does not
 leave an orphan directory behind.
 
 ### 3. Verifying a deploy
@@ -237,14 +237,14 @@ number being served is the one you expect *before* concluding anything about a
 fix.
 
 ```bash
-curl -sS https://www.plumhq.com/health-map/bengaluru/build.json
+curl -sS https://www.plumhq.com/health-map/mumbai/build.json
 ```
 
 Then the actual health check:
 
 ```bash
 curl -sS -o /dev/null -w "%{http_code} hops=%{num_redirects}\n" -L \
-  https://www.plumhq.com/health-map/bengaluru
+  https://www.plumhq.com/health-map/mumbai
 ```
 
 - `200 hops=0` — healthy.
@@ -252,7 +252,7 @@ curl -sS -o /dev/null -w "%{http_code} hops=%{num_redirects}\n" -L \
   back. Something is being served as a static HTML file; check that no page has
   gained a `prerender = true`, and that `find dist/client -name '*.html'` after
   a build returns nothing.
-- `404` — check whether `/health-map/bengaluru/health-map/bengaluru/` responds.
+- `404` — check whether `/health-map/mumbai/health-map/mumbai/` responds.
   If it does, the flattening hook did not run.
 
 ## Publishing it on Webflow Cloud
@@ -264,7 +264,7 @@ domain. [`webflow.json`](webflow.json) names the framework;
 
 1. **Create the app.** In the Webflow site settings, Webflow Cloud → Install
    the GitHub App → pick this repository, then create an environment: a branch
-   (`main`) and a **mount path** (`/health-map/bengaluru`).
+   (`main`) and a **mount path** (`/health-map/mumbai`).
 2. **Set `SITE_URL`** on the environment (Environment → Variables) to the
    published address (`https://www.plumhq.com`). That is the only thing the
    build cannot work out on its own; it feeds the canonical and `og:url` tags
@@ -276,8 +276,8 @@ domain. [`webflow.json`](webflow.json) names the framework;
 5. **Check it** with the two commands under
    [Verifying a deploy](#3-verifying-a-deploy).
 
-The map is then at `https://www.plumhq.com/health-map/bengaluru` and the
-iframe copy at `https://www.plumhq.com/health-map/bengaluru/embed` — **no
+The map is then at `https://www.plumhq.com/health-map/mumbai` and the
+iframe copy at `https://www.plumhq.com/health-map/mumbai/embed` — **no
 trailing slash**, on either.
 
 ## Putting the map inside a Webflow page
