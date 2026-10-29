@@ -1147,10 +1147,11 @@ const branchOf = (r) => (String(r.n || '').match(/\s+—\s+(.*)$/)?.[1] || r.a |
 function aboutLine(r) {
   const d = firstSentence(descText(r.d || '')).replace(/[.!?]$/, '');
   const where = SHARED_NAME.get(shownName(r.n).toLowerCase()) > 1 ? branchOf(r) : '';
-  /* With a place to name, the kind of place is enough before it, so the
-     area is never the part cut off. */
+  /* Same-name branches lead with their area — "Neelam Nagar, Mulund ·
+     Pharmacy" — since the area is what tells one Apollo from the next, and
+     the kind of place is enough after it. */
   const what = where ? (r.s || d) : (d || r.s || '');
-  const line = where ? [what, where].filter(Boolean).join(' · ') : what;
+  const line = where ? [where, what].filter(Boolean).join(' · ') : what;
   return line.length > 70 ? `${line.slice(0, 68).replace(/\s+\S*$/, '')}…` : line;
 }
 /* The paper listing: a small square in the category's colour, the name, then
