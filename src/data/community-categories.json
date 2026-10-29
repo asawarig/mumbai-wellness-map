@@ -368,6 +368,26 @@
       "category": "Social & Creative",
       "name": "The Bombay Poetry Crawl",
       "url": "https://www.instagram.com/thebombaypoetrycrawl/"
+    },
+    {
+      "category": "Running",
+      "name": "Skechers Run Club — Shivaji Park",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJZ-LAEQDP5zsRRjZ7sF3EHks"
+    },
+    {
+      "category": "Cycling",
+      "name": "Mumbai Midnight Cycling — Colaba",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJa2yWQDfR5zsR6BqGHYlGWf4"
+    },
+    {
+      "category": "Running",
+      "name": "Racers Group — Mahalaxmi Race Course",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJhTi_XgDP5zsR42u_Lol5Ees"
+    },
+    {
+      "category": "Running",
+      "name": "Sprinters Sports Club — Churchgate",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ7dkqetnR5zsRIT1LRKzq_dY"
     }
   ]
 }
