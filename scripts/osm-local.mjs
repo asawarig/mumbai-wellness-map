@@ -10,11 +10,80 @@
  * to one feature per line (a line's fast and slow, up and down relations run
  * on parallel tracks a few metres apart, so they draw as one). The Vasai–Diva
  * line runs almost entirely outside the city and is left out.
+ *
+ * Lines and stations are cut to the city's outline (mask.json), so the
+ * locals stop where the map's city stops instead of running on to Virar,
+ * Kasara or Karjat.
+ *
+ *   node scripts/osm-local.mjs --clip    # re-cut the files already built
  */
 
 import { writeFileSync, readFileSync } from 'node:fs';
 
 const UA = 'mumbai-wellness-map/1.0 (local lines build script)';
+const RAIL = new URL('../src/data/local-rail.json', import.meta.url);
+const STATIONS = new URL('../src/data/local-stations.json', import.meta.url);
+
+/* The city's outline: mask.json holds it as the holes in a world polygon. */
+const mask = JSON.parse(readFileSync(new URL('../src/data/mask.json', import.meta.url), 'utf8'));
+const RINGS = mask.features[0].geometry.coordinates.slice(1);
+const EDGES = RINGS.flatMap((r) => r.slice(1).map((p, i) => [r[i], p]));
+function inCity([x, y]) {
+  let inside = false;
+  for (const [[x1, y1], [x2, y2]] of EDGES) {
+    if ((y1 > y) !== (y2 > y) && x < ((x2 - x1) * (y - y1)) / (y2 - y1) + x1) inside = !inside;
+  }
+  return inside;
+}
+/* Where segment a→b crosses the outline, as fractions along it. */
+function crossings(a, b) {
+  const ts = [];
+  const dx = b[0] - a[0], dy = b[1] - a[1];
+  for (const [p, q] of EDGES) {
+    const ex = q[0] - p[0], ey = q[1] - p[1];
+    const den = dx * ey - dy * ex;
+    if (!den) continue;
+    const t = ((p[0] - a[0]) * ey - (p[1] - a[1]) * ex) / den;
+    const u = ((p[0] - a[0]) * dy - (p[1] - a[1]) * dx) / den;
+    if (t > 0 && t < 1 && u >= 0 && u <= 1) ts.push(t);
+  }
+  return ts.sort((m, n) => m - n);
+}
+const at = (a, b, t) => [+(a[0] + (b[0] - a[0]) * t).toFixed(5), +(a[1] + (b[1] - a[1]) * t).toFixed(5)];
+/* A line cut to the city: the pieces of it that run inside the outline. */
+function clipLine(line) {
+  const pieces = [];
+  let cur = [];
+  for (let i = 1; i < line.length; i++) {
+    const a = line[i - 1], b = line[i];
+    const cuts = [0, ...crossings(a, b), 1];
+    for (let k = 1; k < cuts.length; k++) {
+      const p = at(a, b, cuts[k - 1]), q = at(a, b, cuts[k]);
+      if (inCity(at(a, b, (cuts[k - 1] + cuts[k]) / 2))) {
+        if (!cur.length) cur.push(p);
+        cur.push(q);
+      } else if (cur.length) { pieces.push(cur); cur = []; }
+    }
+  }
+  if (cur.length) pieces.push(cur);
+  return pieces.filter((c) => c.length > 1);
+}
+function clipToCity(features, stations) {
+  const lines = features.map((f) => ({ ...f, geometry: { ...f.geometry, coordinates: f.geometry.coordinates.flatMap(clipLine) } }))
+    .filter((f) => f.geometry.coordinates.length);
+  return [lines, stations.filter((s) => inCity(s.geometry.coordinates))];
+}
+function write(features, stations) {
+  const [lines, kept] = clipToCity(features, stations);
+  writeFileSync(RAIL, JSON.stringify({ type: 'FeatureCollection', features: lines }) + '\n');
+  writeFileSync(STATIONS, JSON.stringify({ type: 'FeatureCollection', features: kept }) + '\n');
+  console.log(lines.map((f) => `${f.properties.name}: ${f.geometry.coordinates.length} pieces`).join('\n'));
+  console.log(`${kept.length} of ${stations.length} stations inside the city`);
+}
+if (process.argv.includes('--clip')) {
+  write(JSON.parse(readFileSync(RAIL, 'utf8')).features, JSON.parse(readFileSync(STATIONS, 'utf8')).features);
+  process.exit(0);
+}
 const region = JSON.parse(readFileSync(new URL('../src/data/region.json', import.meta.url), 'utf8'));
 const [W, S, E, N] = region.properties?.bbox || region.bbox;
 
@@ -108,7 +177,4 @@ node["railway"~"^(station|halt)$"]["station"!~"subway|light_rail|monorail"]["net
   }
 }
 
-writeFileSync(new URL('../src/data/local-rail.json', import.meta.url), JSON.stringify({ type: 'FeatureCollection', features }) + '\n');
-writeFileSync(new URL('../src/data/local-stations.json', import.meta.url), JSON.stringify({ type: 'FeatureCollection', features: [...stations.values()] }) + '\n');
-console.log(features.map((f) => `${f.properties.name}: ${f.geometry.coordinates.length} ways`).join('\n'));
-console.log(`${stations.size} stations`);
+write(features, [...stations.values()]);
