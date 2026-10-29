@@ -233,29 +233,36 @@ const placeIdOf = (u) => (String(u || '').match(/place_id[:=]([A-Za-z0-9_-]{20,}
    listings that give coordinates rather than a Google link, so those rows
    search by name like the ones with no link at all. */
 const isBarePoint = (u) => /(query=|daddr=|q=|place\/)-?\d{1,3}\.\d+,\s*-?\d{1,3}\.\d+/i.test(String(u || ''));
-/* An address as a search: "Shop 12, 2nd Floor, Room No.7" and the like make
-   Google's search miss a place its name and street would find. */
-const streetOf = (ad) => String(ad || '').replace(/^start:\s*/i, '').split(',').map((s) => s.trim())
-  .filter((s) => s && !/^(shop|unit|office|flat|gala|plot|room|premises|block|wing|no\.?|ground|first|second|third|\d+(st|nd|rd|th)?\s*floor|floor|[a-z]?-?\d+[a-z]?)\b/i.test(s))
-  .join(', ');
+/* The road from an address: one short part that names a road, "M. G. Road"
+   or "Linking Rd", with flat, wing and landmark detail dropped. The whole
+   address as the search ("A Wing, Satyam Shopping Centre. Landmark: Opposite
+   Nivaran Diagnostic Centre, M. G. Road, …") matched nothing exactly, and
+   Google answered with a list of businesses nearby. */
+const ROAD = /\b(road|rd|marg|street|st|lane|path|highway|hwy|chowk|nagar road)\b\.?$/i;
+const roadOf = (ad) => String(ad || '').replace(/^start:\s*/i, '').split(/,|;|\.\s+(?=landmark\b)/i)
+  .map((s) => s.replace(/^\s*(landmark|near|opp\.?|opposite|behind|next to)\b:?\s*/i, '').trim())
+  .find((s) => ROAD.test(s) && /\s/.test(s) && s.split(/\s+/).length <= 5 && !/^\d/.test(s)) || '';
 function mapsUrlFor(r) {
-  const name = String(r.n || '').replace(/\s+—\s+.*$/, '').trim();
-  /* With no street address the search is the name, the area and the city,
-     and Thane, Navi Mumbai and Mira-Bhayandar are cities of their own: a
-     Vashi gym searched "…, Vashi, Mumbai" can land on a namesake. */
-  const city = { Thane: 'Thane', NaviMumbai: 'Navi Mumbai', MiraBhayandar: 'Mira-Bhayandar' }[r.rg] || 'Mumbai';
-  const where = (r.ad && !/^\s*mumbai\s*$/i.test(r.ad)) ? streetOf(r.ad) : [r.a, city].filter(Boolean).join(', ');
   const pid = placeIdOf(r.gm);
   if (!pid && isMapsUrl(r.gm) && !/[?&]q=place_id|query=Google&/.test(r.gm) && !isBarePoint(r.gm)) return r.gm;
   /* The button opens the place on Google Maps, as Bengaluru's does — there
      every row carries a place ID and the link is the listing itself. Without
-     one the search is the next best thing, and it keeps the branch: "Cult
+     one it is a search, kept short so Google lands on one place: the name,
+     its road, its area and its city. The area keeps the branch ("Cult,
      Bandra West" opens Bandra's Cult, where "Cult" opened a list across the
-     country. Routing to the pin instead was tried and is not what the button
-     is for: it opened turn-by-turn directions, not the place. */
-  const branch = String(r.n || '').replace(/\s+—\s+/, ' ').trim();
-  const q = encodeURIComponent(where ? `${pid ? name : branch}, ${where}` : branch);
-  return `https://www.google.com/maps/search/?api=1&query=${q}${pid ? `&query_place_id=${pid}` : ''}`;
+     country); a long one, every word of the name and address, opened a list
+     of nearby businesses instead. Routing to the pin instead was tried and is
+     not what the button is for: it opened turn-by-turn directions. Thane,
+     Navi Mumbai and Mira-Bhayandar are cities of their own: a Vashi gym
+     searched "…, Vashi, Mumbai" can land on a namesake. */
+  /* After the dash is usually the area, sometimes the clinic or centre the
+     person practises at ("Ms. Monica Magoo — Dietitian, Skintillating Clinic,
+     Ghatkopar East"), which is what Google lists them under. */
+  const [name, ...rest] = String(r.n || '').split(/\s+—\s+/);
+  const at = rest.join(', ').split(/,\s*/).filter((s) => s && s.toLowerCase() !== String(r.a || '').toLowerCase());
+  const city = { Thane: 'Thane', NaviMumbai: 'Navi Mumbai', MiraBhayandar: 'Mira-Bhayandar' }[r.rg] || 'Mumbai';
+  const q = [...new Set([name.trim(), ...at, roadOf(r.ad), r.a, city].filter(Boolean))].join(', ');
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}${pid ? `&query_place_id=${pid}` : ''}`;
 }
 /* A trail has no place of its own on Google Maps, so its link is directions
    along its own line: start to end (or round to the start, for a loop),
