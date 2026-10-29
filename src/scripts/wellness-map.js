@@ -602,7 +602,11 @@ function fillPerksDrawer(partners) {
   const changed = pdAsked !== null && asked !== pdAsked;
   pdAsked = asked;
   if (perksDrawer.classList.contains('is-open') && (changed || !partners.length)) setDrawerOpen(false);
-  const list = [...partners].sort((a, b) => (b.lat != null) - (a.lat != null));
+  /* Pinned partners first, as before, and within each the categories dealt
+     out evenly (interleave): the list arrived in sheet order, so a run of
+     badminton courts filled the top in one colour band before any gym. */
+  const mix = (rows) => interleave(rows, (r) => INTENT_OF.get(r.id));
+  const list = [...mix(partners.filter((r) => r.lat != null)), ...mix(partners.filter((r) => r.lat == null))];
   const html = list.length
     ? list.slice(0, pdShowAll ? list.length : PD_MAX).map((r) => paperRowHtml(r, ' prow-perk')).join('')
       + (list.length > PD_MAX && !pdShowAll ? `<button type="button" class="pd-all" data-pd-all="1">See all ${list.length} partners</button>` : '')
