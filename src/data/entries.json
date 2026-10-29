@@ -73150,10 +73150,10 @@
     "a": "Parel",
     "raw": "Parel",
     "ad": "2nd Floor, Parel Premises, Sayani & Gokhale Road South Junction, opp. Motilal Oswal Towers, Parel West, Mumbai 400025",
-    "lat": null,
-    "lon": null,
-    "rg": "",
-    "gm": "",
+    "lat": 19.010718,
+    "lon": 72.831349,
+    "rg": "Central",
+    "gm": "https://www.google.com/maps?cid=10612715318413508119",
     "w": "https://sportsmed.in/",
     "d": "Sports-medicine centre founded by Dr Anant Joshi, with arthroscopy, musculoskeletal imaging and the Sportsmed Activ rehab wing, which runs sports-performance assessments.",
     "p": "₹₹₹",
@@ -73167,7 +73167,8 @@
     "src": "Web research",
     "v": "Verified",
     "out": 0,
-    "cat": "care"
+    "cat": "care",
+    "pinApprox": 1
   },
   {
     "id": "MUM-1090",
