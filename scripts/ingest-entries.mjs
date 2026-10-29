@@ -130,6 +130,12 @@ const num = (v) => { const n = Number(v); return v === '' || Number.isNaN(n) ? n
 const S_FIX = {
   'BLR-458': 'Unconventional therapy', // VAURA Wellness (Cryotherapy)
 };
+/* Only the places cleared for the map are published (published.json, from
+   the Google sweep's ready-to-publish files and the checked additions). The
+   rest stay in the sheet, held off the map, the list and search until a
+   cleaned list clears them. Communities without a pin and parked hospitals
+   are not part of that sweep and are kept as before. */
+const PUBLISHED = new Set(JSON.parse(fs.readFileSync(path.join(path.dirname(CSV), 'published.json'), 'utf8')).ids);
 const stats = { rows: 0, fixedCategory: 0, categorised: 0, parkedHospitals: 0, outside: 0, fixedRg: 0, droppedRg: 0, unmapped: 0, noCoords: 0 };
 const seen = new Set();
 const entries = [];
@@ -166,6 +172,8 @@ for (const row of body) {
   let lat = num(get(row, 'lat'));
   let lon = num(get(row, 'lon'));
   if (parkHospital) { lat = null; lon = null; }
+  const unpinnedCommunity = cat === 'people' && lat == null;
+  if (!PUBLISHED.has(id) && !parkHospital && !unpinnedCommunity) { stats.held = (stats.held || 0) + 1; continue; }
   /* A retired duplicate (map_eligible=no and merged into another row) is not
      a place of its own: it leaves the list too, or it shows there with no pin
      while its original is pinned beside it. */
@@ -248,6 +256,7 @@ const removed = [...previous.keys()].filter((id) => !seen.has(id)).length;
 console.log(`entries.json <- ${path.basename(CSV)}`);
 console.log(`  ${stats.rows} rows  (+${added} new, -${removed} gone, ${previous.size} before)`);
 console.log(`  ${stats.rows - stats.noCoords} pinned, ${stats.noCoords} without coordinates`);
+console.log(`  ${stats.held || 0} rows held back, not in published.json`);
 console.log(`  ${stats.unmapped} pinned rows set aside by map_eligible=no`);
 console.log(`  ${stats.outside} outside the city box, flagged out=1`);
 console.log(`  ${stats.fixedCategory} categories corrected from the sub-category`);

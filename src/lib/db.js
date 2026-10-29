@@ -288,7 +288,9 @@ export { ZONES, MASK, ROUTES, ICONS, LABELS, METRO, PARKS, PARK_AMENITIES };
 export const COUNTS = {
   total: entries.length,
   mapped: entries.filter((r) => r.lat != null).length,
-  verified: entries.filter((r) => r.v === 'Verified').length,
+  /* Verified: matched to its Google listing in the 2026 sweep (it carries the
+     listing's place ID), not the research sheet's own "Verified" mark. */
+  verified: entries.filter((r) => r.lat != null && /place_id/.test(r.gm || '')).length,
   outside: entries.filter((r) => r.out).length,
   parks: parkEntries.length,
 };

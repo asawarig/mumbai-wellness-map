@@ -1697,11 +1697,13 @@ const surprisePlaces = document.getElementById('surprise-places');
 const surpriseDays = document.getElementById('surprise-days');
 const surpriseNote = document.getElementById('surprise-note');
 const openSurpriseBtn = document.getElementById('open-surprise');
+/* A day shows only while every one of its stops is on the map: a day missing
+   its swim or its salad no longer is the day its name promises. */
 const DAYS = THEMED_DAYS
-  .map((t) => ({ ...t, stops: t.stops.map((id) => BY_ID.get(id)).filter((r) => r?.lat != null),
+  .map((t) => ({ ...t, planned: t.stops.length, stops: t.stops.map((id) => BY_ID.get(id)).filter((r) => r?.lat != null),
     /* Stops to book ahead of turning up (a class, a float, a court). */
     book: (t.book || []).map((id) => BY_ID.get(id)).filter(Boolean) }))
-  .filter((t) => t.stops.length >= 2);
+  .filter((t) => t.stops.length >= 2 && t.stops.length === t.planned);
 /* "15 min walk · about 80 kcal", plus any leg too far to walk, as a ride. */
 /* The set days in loud pairs, a ground and an ink that clash on purpose
    (yellow and orange, periwinkle and lime, maroon and green), each day keeping
