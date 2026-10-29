@@ -57,7 +57,9 @@ const HOLD = new Set(['MUM-3431', 'MUM-3435', 'MUM-3436', 'MUM-0007', 'MUM-3439'
   'MUM-0001', 'MUM-2617', 'MUM-0041', 'MUM-0021', 'MUM-0035',
   // No reliable outline: left as pins at the user's call (2026-10-28).
   'MUM-2240', 'MUM-0018', 'MUM-2238', 'MUM-0025', 'MUM-0026', 'MUM-0032', 'MUM-3455', 'MUM-2811', 'MUM-0012',
-  'MUM-0020', 'MUM-0011', 'MUM-0030']);
+  'MUM-0020', 'MUM-0011', 'MUM-0030',
+  // Outline matched by name sat 300–650 m from the place's pin: not sure it is the same garden.
+  'MUM-0015', 'MUM-0031', 'MUM-3456']);
 // Outlines looked at on the map and refused: thin strips (a loop up and back a
 // promenade), a stray-armed outline, a private estate lawn, a bare sports ground.
 const OSM_FOR = {
@@ -68,11 +70,9 @@ const OSM_FOR = {
  "MUM-0011": "way/152314740",
  "MUM-3441": "way/559429510",
  "MUM-0013": "way/152314268",
- "MUM-0015": "way/39181022",
  "MUM-2812": "way/40638190",
  "MUM-0028": "way/42352120",
  "MUM-0030": "way/38757942",
- "MUM-0031": "way/465343064",
  "MUM-2614": "way/1063930017",
  "MUM-3452": "way/49176399",
  "MUM-1845": "way/235978553",
