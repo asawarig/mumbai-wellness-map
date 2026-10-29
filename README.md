@@ -4,7 +4,7 @@ An interactive map of places, routes, clinics, kitchens and communities for
 looking after yourself in Mumbai, built as an [Astro](https://astro.build)
 site. Built by the marketing team at [Plum](https://plumhq.com).
 
-It is a copy of the [Bengaluru Wellness Map](https://www.plumhq.com/health-map/mumbai),
+It is a copy of the [Bengaluru Wellness Map](https://www.plumhq.com/health-map/bengaluru),
 with the city swapped. Most of this README was written for Bengaluru and still
 describes the code accurately; where it names Bengaluru's data, read Mumbai's.
 
