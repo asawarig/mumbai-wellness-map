@@ -5068,8 +5068,9 @@ function drawSelection(pinned){
 
 /* ---------- metro ----------
    Only the lines that are running (scripts/osm-metro.mjs), each in its own
-   colour over a white casing. Off until the toolbar turns it on. */
-let metroOn = false;
+   colour over a white casing, with the local trains under them. On from the
+   start; the toolbar turns them off. */
+let metroOn = true;
 function toggleMetro(){
   metroOn = !metroOn;
   document.getElementById('l-metro')?.setAttribute('aria-pressed', metroOn);

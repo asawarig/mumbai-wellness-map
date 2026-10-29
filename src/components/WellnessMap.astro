@@ -107,7 +107,7 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
           <button type="button" class="tool tool-label" id="l-routes" aria-pressed="false" aria-label="Running and cycling routes">
             <Fragment set:html={svg('routes')} /><Fragment set:html={ticker('Trails', 'Running and cycling routes')} />
           </button>
-          <button type="button" class="tool tool-label" id="l-metro" aria-pressed="false" aria-label="Local and metro lines">
+          <button type="button" class="tool tool-label" id="l-metro" aria-pressed="true" aria-label="Local and metro lines">
             <Fragment set:html={svg('metro')} /><Fragment set:html={ticker('Local and metro', 'Local and metro lines')} />
           </button>
           <button type="button" class="tool tool-label" id="l-regions" aria-pressed="false" aria-label="Corporation colours">
@@ -441,7 +441,7 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
         </svg>
         <span class="mk-label">Trails<small>run · ride</small></span>
       </button>
-      <button type="button" class="mk-row" id="k-metro" aria-pressed="false">
+      <button type="button" class="mk-row" id="k-metro" aria-pressed="true">
         <svg class="mk-swatch" viewBox="0 0 34 14" aria-hidden="true">
           <path d="M2 3h30" stroke="#E2393B" stroke-width="2.6"/>
           <path d="M2 7h30" stroke="#303888" stroke-width="2.6"/>
@@ -536,7 +536,7 @@ const PLUM_MARK = '<svg class="plum-mark" viewBox="0 0 144 69" aria-hidden="true
           {/* Zoom is the map's own pinch; the menu keeps only the layers. */}
           <div class="menu-tray">
             <button type="button" class="menu-row" id="m-routes" aria-pressed="false">Running and cycling routes</button>
-            <button type="button" class="menu-row" id="m-metro" aria-pressed="false">Local and metro lines</button>
+            <button type="button" class="menu-row" id="m-metro" aria-pressed="true">Local and metro lines</button>
             <button type="button" class="menu-row" id="m-regions" aria-pressed="false">Corporation colours</button>
           </div>
         </div>
