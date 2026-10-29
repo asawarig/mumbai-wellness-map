@@ -1,6 +1,7 @@
 {
  "why": "Not open to the public (housing-society, staff or members-only facilities), closed, junk OSM entries, or not wellness (DMIT 'tests'); removed 2026-10-28. merge-places.mjs skips these names.",
  "names": [
+  "20 GMS Protein — Vashi",
   "ARWA Gym centre",
   "ASA Tennis Academy — Belapur",
   "Acres Club",
@@ -34,6 +35,7 @@
   "GSC",
   "Goregaon Sport Complex",
   "Goregaon Sports Club",
+  "Great Indian Khichdi by EatFit — Vashi",
   "Gym",
   "Gym Food Diet — Malad West",
   "Health by Mondo — Dahisar West",
@@ -95,6 +97,7 @@
   "The Club Mumbai",
   "The Dance Foundation India(TDFI) — Andheri West",
   "The Diet Bowl — Prabhadevi",
+  "The Fit Wokk — Vartak Nagar",
   "The Salad Factory — Chembur",
   "Timezone — Growel's 101 Kandivali",
   "Tisekar Lab",
@@ -127,6 +130,7 @@
   "WeFit — Nerul Sector 42A",
   "WeFit — Sanpada Sector 14",
   "WeFit — Sion (Shivkoliwada)",
+  "WeFit — Vashi",
   "Yoga and Medidation Place",
   "boAt Exclusive Service Center — Ghatkopar West",
   "eat.fit — Chembur (Khardev Nagar)",
