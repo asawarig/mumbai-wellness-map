@@ -68,6 +68,8 @@ import PERKS from '../data/perks.json';
 import PERK_OFFERS from '../data/perk-offers.json';
 import PERK_LOGOS from '../data/perk-logos.json';
 import METRO_STATIONS from '../data/metro-stations.json';
+import LOCAL_RAIL from '../data/local-rail.json';
+import LOCAL_STATIONS from '../data/local-stations.json';
 /* The card's tab icons: Phosphor's filled set (not drawn here). */
 import COMMUNITY_CATEGORIES from '../data/community-categories.json';
 import THEMED_DAYS from '../data/themed-days.json';
@@ -4301,6 +4303,9 @@ function addOverlays(){
   map.addSource('trail-caps', { type: 'geojson', data: EMPTY });
   map.addSource('metro', { type: 'geojson', data: METRO });
   map.addSource('metro-stations', { type: 'geojson', data: METRO_STATIONS });
+  /* The suburban railway (scripts/osm-local.mjs), switched on with the metro. */
+  map.addSource('local-rail', { type: 'geojson', data: LOCAL_RAIL });
+  map.addSource('local-stations', { type: 'geojson', data: LOCAL_STATIONS });
   map.addSource('places', {
     type: 'geojson', data: EMPTY,
     cluster: true,
@@ -4354,6 +4359,20 @@ function addOverlays(){
       layout: { ...LINE_TEXT, 'text-field': ['upcase', ['get', 'name']], 'text-size': 9.5, 'symbol-spacing': 320,
         'text-offset': [0, -0.85] },
       paint: { ...LINE_TEXT_PAINT, 'text-color': TRAIL_BLUE } }] : []),
+    /* The locals under the metro, a little heavier: a railway, in its line's
+       colour on a white casing, its stations as hollow rings so they read
+       apart from the metro's ink dots. */
+    { id: 'local-casing', type: 'line', source: 'local-rail', layout: { ...round, visibility: metro },
+      paint: { 'line-color': WHITE, 'line-width': PAPER_LINES ? 6 : 5, 'line-opacity': 0.95 } },
+    { id: 'local-line', type: 'line', source: 'local-rail', layout: { ...round, visibility: metro },
+      paint: { 'line-color': ['get', 'colour'], 'line-width': PAPER_LINES ? 3.2 : 2.6, 'line-opacity': 0.9 } },
+    ...(PAPER_LINES ? [{ id: 'local-stations', type: 'circle', source: 'local-stations', minzoom: 11.5,
+      layout: { visibility: metro },
+      paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 11.5, 2.5, 15, 4.5], 'circle-color': WHITE,
+        'circle-stroke-width': 1.6, 'circle-stroke-color': '#1E1B18' } }] : []),
+    ...(PAPER_LINES ? [{ id: 'local-labels', type: 'symbol', source: 'local-rail',
+      layout: { visibility: metro, ...LINE_TEXT, 'text-field': ['upcase', ['get', 'name']], 'symbol-spacing': 520 },
+      paint: { ...LINE_TEXT_PAINT, 'text-color': '#4A4540' } }] : []),
     { id: 'metro-casing', type: 'line', source: 'metro', layout: { ...round, visibility: metro },
       paint: { 'line-color': WHITE, 'line-width': PAPER_LINES ? 5 : 4.5, 'line-opacity': 0.95 } },
     { id: 'metro-line', type: 'line', source: 'metro', layout: { ...round, visibility: metro },
@@ -5049,7 +5068,7 @@ function toggleMetro(){
   document.getElementById('l-metro')?.setAttribute('aria-pressed', metroOn);
   document.getElementById('m-metro')?.setAttribute('aria-pressed', metroOn);
   document.getElementById('k-metro')?.setAttribute('aria-pressed', metroOn);
-  ['metro-casing', 'metro-line', 'metro-labels', 'metro-stations'].forEach((id) => {
+  ['local-casing', 'local-line', 'local-stations', 'local-labels', 'metro-casing', 'metro-line', 'metro-labels', 'metro-stations'].forEach((id) => {
     if (map?.getLayer(id)) map.setLayoutProperty(id, 'visibility', metroOn ? 'visible' : 'none');
   });
 }
