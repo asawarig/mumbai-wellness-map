@@ -37,6 +37,9 @@ const canonical = Astro.site
    astro.config.mjs. It keeps the real site's canonical, and asks to be left out
    of the index rather than compete with it. */
 const staging = import.meta.env.PUBLIC_STAGING === '1';
+/* Plum's analytics only where the public visits: a production build that is
+   not the Vercel preview, so the team's own looks there stay out of GA4. */
+const tags = import.meta.env.PROD && !staging;
 const noindexed = embed || noindex || staging;
 
 /* Staging is served from another host entirely, and the production domain has
@@ -72,10 +75,10 @@ const social = !embed;
         G-2QS7K5X34L) comes through the Tag Manager container's own Google
         tag, so the page does not load it again: that would count every
         visit twice. */}
-    {import.meta.env.PROD && <script is:inline fetchpriority="low" set:html={"(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NRWNV4G');"} />}
-    {import.meta.env.PROD && <script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key="ItUz8HwzBdaLPj8QnqrHAg" async></script>}
-    {import.meta.env.PROD && <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-657297943" fetchpriority="low"></script>}
-    {import.meta.env.PROD && <script is:inline fetchpriority="low" set:html={"window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-657297943');"} />}
+    {tags && <script is:inline fetchpriority="low" set:html={"(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NRWNV4G');"} />}
+    {tags && <script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key="ItUz8HwzBdaLPj8QnqrHAg" async></script>}
+    {tags && <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-657297943" fetchpriority="low"></script>}
+    {tags && <script is:inline fetchpriority="low" set:html={"window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-657297943');"} />}
     {/* The fonts, loaded without blocking the first paint. media="print" keeps the
         sheet out of the render path; onload promotes it once it has arrived,
         and the fallback stack in --sans is what the page paints with until
