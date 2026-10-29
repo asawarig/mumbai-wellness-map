@@ -337,6 +337,12 @@ function planMapsUrl(stops) {
 }
 const igUrl = h => 'https://instagram.com/' + h.replace(/^@/,'');
 const hostOf = (u) => { try { return new URL(u).host.replace(/^www\./, ''); } catch { return 'Website'; } };
+/* A community's own website, or nothing. Most run clubs' "website" is their
+   listing on endorfin.run, a club directory whose one button is the club's
+   Instagram, and one is an Instagram URL filed as a website: shown beside
+   the Instagram link, both went to the same Instagram page. */
+const NOT_A_SITE = /(^|\.)(endorfin\.run|instagram\.com|linktr\.ee)$/i;
+const ownSite = (r) => (r.w && !NOT_A_SITE.test(hostOf(r.w)) ? r.w : '');
 
 /* Tags and thumbs take their tint from the intent's colour family. */
 
@@ -833,7 +839,12 @@ function editDay(ids) {
 }
 let dayDragged = false;
 cardsEl?.addEventListener('pointerdown', (e) => {
-  const grip = e.target.closest('.prow.is-stop .prow-no');
+  /* With a mouse or trackpad the whole row is the handle: a stop is picked up
+     where a reader reaches for it, its name, not only by its small number. A
+     plain click still opens it (dayDragged only swallows a click that moved).
+     On touch the number alone, so a finger can still scroll the list. */
+  const grip = e.target.closest('.prow.is-stop .prow-no')
+    || (e.pointerType !== 'touch' && !e.target.closest('[data-plan-drop]') && e.target.closest('.prow.is-stop'));
   if (!grip || !state.planIds.size || e.button > 0) return;
   const row = grip.closest('.prow');
   const rows = [...cardsEl.querySelectorAll('.prow.is-stop')];
@@ -1270,8 +1281,9 @@ function rowHtml(r) {
 /* A community: what it is in one line, and where to find it — its website
    (often the event page), else Instagram, else Google Maps. */
 function personHtml(r) {
-  const link = r.w ? [r.w, hostOf(r.w)]
+  const link = ownSite(r) ? [r.w, hostOf(r.w)]
     : r.ig ? [igUrl(r.ig), r.ig.startsWith('@') ? r.ig : '@' + r.ig]
+    : r.w ? [r.w, hostOf(r.w)]
     : isMapsUrl(r.gm) ? [mapsUrlFor(r), 'Google Maps'] : null;
   return `<div class="person">
     ${thumbHtml(r)}
@@ -1401,10 +1413,12 @@ function flyerHtml(r) {
   for (const ch of String(r.n || '')) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
   const [bg, ink] = COMMUNITY_PAIRS[communityCategory(r)] || DAY_PAIRS[h % DAY_PAIRS.length];
   const tilt = ((h >> 4) % 31) / 10 - 1.5;
-  /* Its website and its Instagram, each its own link where it has them. */
+  /* Its own website and its Instagram, each its own link where it has them;
+     a directory listing only when there is no Instagram to go to instead. */
   const links = [
-    r.w && [r.w, 'website'],
+    ownSite(r) && [r.w, 'website'],
     r.ig && [igUrl(r.ig), r.ig.startsWith('@') ? r.ig : `@${r.ig}`],
+    !ownSite(r) && !r.ig && r.w && [r.w, 'website'],
     !r.w && !r.ig && isMapsUrl(r.gm) && [mapsUrlFor(r), 'Google Maps'],
   ].filter(Boolean);
   const about = aboutLine(r);
@@ -2654,19 +2668,16 @@ function showStory(i) {
   clearPuzzle('plan');
   /* The Plum Perks card shows only the partners, few enough to stay stars
      much further out than the full map can: its clusters stop forming two
-     levels sooner, and the camera goes out as far as that allows, up to the
-     whole city. Where the city does not fit it centres on the middle partner
-     (the median, which a few far-off ones cannot drag away). */
+     levels sooner, and the camera frames the whole city. */
   const perkCard = perks === '1' && !area;
   setPlaceClusterZoom(perkCard ? STORY_PERK_CLUSTER_MAX : CLUSTER_MAX_ZOOM);
   if (perkCard) {
-    const pts = E.filter((r) => r.lat != null && !r.out && hasPerkCallout(r));
-    const mid = (k) => pts.map((r) => r[k]).sort((a, b) => a - b)[pts.length >> 1];
     const cam = map.cameraForBounds(CITY, { padding: storyPadding() });
     if (cam) {
-      const center = pts.length ? [mid('lon'), mid('lat')] : cam.center;
-      const zoom = Math.max(cam.zoom, STORY_PERK_CLUSTER_MAX + 1);
-      map.easeTo({ center: zoom > cam.zoom ? center : cam.center, zoom, bearing: 0, pitch: 0, duration: storyMoved ? 900 : 0 });
+      /* Mumbai is long and narrow: zooming in to where the stars stop
+         clustering showed a patch of the city round the middle partner, not
+         the city the card speaks of. The last card shows the whole city. */
+      map.easeTo({ center: cam.center, zoom: cam.zoom, bearing: 0, pitch: 0, duration: storyMoved ? 900 : 0 });
       storyMoved = true;
       return;
     }

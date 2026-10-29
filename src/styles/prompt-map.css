@@ -3527,3 +3527,6 @@ p.desc-cta a{color:#571541;text-decoration:underline;text-underline-offset:3px}
    down its left edge, in the category's own colour, run to the drawer's edge. */
 .perks-drawer .pd-body,.is-paper .perks-drawer .pd-body,.is-paper .perks-drawer.is-open .pd-body{padding-left:0}
 .perks-drawer .prow-perk .card-main{box-shadow:inset 16px 0 0 var(--c);padding-left:30px!important;border-radius:0}
+
+/* A planned day's stops can be picked up by the whole row with a pointer. */
+@media (hover:hover) and (pointer:fine){ .prow.is-stop .card-main{cursor:grab} .prow.is-stop.is-dragging .card-main{cursor:grabbing} }
