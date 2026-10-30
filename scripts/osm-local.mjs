@@ -13,9 +13,14 @@
  *
  * Lines and stations are cut to the city's outline (mask.json), so the
  * locals stop where the map's city stops instead of running on to Virar,
- * Kasara or Karjat.
+ * Kasara or Karjat. A stretch that leaves the outline and comes back into it
+ * within CROSSING_KM is kept: that is a line crossing water between two parts
+ * of the city, as the Harbour line does over Thane Creek to Vashi, and the
+ * outline, drawn on land, has nothing under the bridge.
  *
- *   node scripts/osm-local.mjs --clip    # re-cut the files already built
+ * The uncut lines are kept in sources/rail/, so the cut can be redone:
+ *
+ *   node scripts/osm-local.mjs --clip    # re-cut from sources/rail/
  */
 
 import { writeFileSync, readFileSync } from 'node:fs';
@@ -23,6 +28,9 @@ import { writeFileSync, readFileSync } from 'node:fs';
 const UA = 'mumbai-wellness-map/1.0 (local lines build script)';
 const RAIL = new URL('../src/data/local-rail.json', import.meta.url);
 const STATIONS = new URL('../src/data/local-stations.json', import.meta.url);
+const RAIL_OSM = new URL('../sources/rail/local-rail-osm.json', import.meta.url);
+const STATIONS_OSM = new URL('../sources/rail/local-stations-osm.json', import.meta.url);
+const CROSSING_KM = 4;
 
 /* The city's outline: mask.json holds it as the holes in a world polygon. */
 const mask = JSON.parse(readFileSync(new URL('../src/data/mask.json', import.meta.url), 'utf8'));
@@ -50,30 +58,65 @@ function crossings(a, b) {
   return ts.sort((m, n) => m - n);
 }
 const at = (a, b, t) => [+(a[0] + (b[0] - a[0]) * t).toFixed(5), +(a[1] + (b[1] - a[1]) * t).toFixed(5)];
-/* A line cut to the city: the pieces of it that run inside the outline. */
-function clipLine(line) {
-  const pieces = [];
-  let cur = [];
+/* A line cut at the outline: the pieces inside it, and the pieces outside it
+   with whether each end is a cut (where the line crosses the outline) or the
+   line's own end. */
+function splitLine(line) {
+  const inside = [], outside = [];
+  let cur = [], curIn = null, startCut = false;
+  const close = (endCut) => {
+    if (cur.length > 1) (curIn ? inside : outside).push({ c: cur, startCut, endCut });
+    cur = [];
+  };
   for (let i = 1; i < line.length; i++) {
     const a = line[i - 1], b = line[i];
     const cuts = [0, ...crossings(a, b), 1];
     for (let k = 1; k < cuts.length; k++) {
       const p = at(a, b, cuts[k - 1]), q = at(a, b, cuts[k]);
-      if (inCity(at(a, b, (cuts[k - 1] + cuts[k]) / 2))) {
-        if (!cur.length) cur.push(p);
-        cur.push(q);
-      } else if (cur.length) { pieces.push(cur); cur = []; }
+      const isIn = inCity(at(a, b, (cuts[k - 1] + cuts[k]) / 2));
+      if (isIn !== curIn) { if (curIn !== null) close(true); curIn = isIn; startCut = cuts[k - 1] > 0; cur = [p]; }
+      cur.push(q);
     }
   }
-  if (cur.length) pieces.push(cur);
-  return pieces.filter((c) => c.length > 1);
+  close(false);
+  return { inside, outside };
+}
+const kmOf = (c) => c.slice(1).reduce((s, p, i) => s + Math.hypot((p[0] - c[i][0]) * 105, (p[1] - c[i][1]) * 111), 0);
+/* The outside pieces of one line, joined where they meet, kept where a chain
+   runs from one cut to another within CROSSING_KM: a crossing over water. */
+function crossingsOver(outside) {
+  const key = (p) => `${p[0]},${p[1]}`;
+  const left = outside.map((o) => ({ ...o }));
+  const chains = [];
+  while (left.length) {
+    let ch = left.pop();
+    for (let grown = true; grown;) {
+      grown = false;
+      for (let i = 0; i < left.length; i++) {
+        const o = left[i], a = ch.c, b = o.c;
+        let c = null, sc, ec;
+        if (key(a[a.length - 1]) === key(b[0]) && !ch.endCut) { c = [...a, ...b.slice(1)]; sc = ch.startCut; ec = o.endCut; }
+        else if (key(b[b.length - 1]) === key(a[0]) && !ch.startCut) { c = [...b, ...a.slice(1)]; sc = o.startCut; ec = ch.endCut; }
+        else if (key(a[a.length - 1]) === key(b[b.length - 1]) && !ch.endCut) { c = [...a, ...b.slice(0, -1).reverse()]; sc = ch.startCut; ec = o.startCut; }
+        else if (key(a[0]) === key(b[0]) && !ch.startCut) { c = [...b.slice().reverse(), ...a.slice(1)]; sc = o.endCut; ec = ch.endCut; }
+        if (c) { ch = { c, startCut: sc, endCut: ec }; left.splice(i, 1); grown = true; break; }
+      }
+    }
+    chains.push(ch);
+  }
+  return chains.filter((ch) => ch.startCut && ch.endCut && kmOf(ch.c) <= CROSSING_KM).map((ch) => ch.c);
 }
 function clipToCity(features, stations) {
-  const lines = features.map((f) => ({ ...f, geometry: { ...f.geometry, coordinates: f.geometry.coordinates.flatMap(clipLine) } }))
-    .filter((f) => f.geometry.coordinates.length);
+  const lines = features.map((f) => {
+    const parts = f.geometry.coordinates.map(splitLine);
+    const kept = [...parts.flatMap((p) => p.inside.map((o) => o.c)), ...crossingsOver(parts.flatMap((p) => p.outside))];
+    return { ...f, geometry: { ...f.geometry, coordinates: kept } };
+  }).filter((f) => f.geometry.coordinates.length);
   return [lines, stations.filter((s) => inCity(s.geometry.coordinates))];
 }
 function write(features, stations) {
+  writeFileSync(RAIL_OSM, JSON.stringify({ type: 'FeatureCollection', features }) + '\n');
+  writeFileSync(STATIONS_OSM, JSON.stringify({ type: 'FeatureCollection', features: stations }) + '\n');
   const [lines, kept] = clipToCity(features, stations);
   writeFileSync(RAIL, JSON.stringify({ type: 'FeatureCollection', features: lines }) + '\n');
   writeFileSync(STATIONS, JSON.stringify({ type: 'FeatureCollection', features: kept }) + '\n');
@@ -81,7 +124,7 @@ function write(features, stations) {
   console.log(`${kept.length} of ${stations.length} stations inside the city`);
 }
 if (process.argv.includes('--clip')) {
-  write(JSON.parse(readFileSync(RAIL, 'utf8')).features, JSON.parse(readFileSync(STATIONS, 'utf8')).features);
+  write(JSON.parse(readFileSync(RAIL_OSM, 'utf8')).features, JSON.parse(readFileSync(STATIONS_OSM, 'utf8')).features);
   process.exit(0);
 }
 const region = JSON.parse(readFileSync(new URL('../src/data/region.json', import.meta.url), 'utf8'));
