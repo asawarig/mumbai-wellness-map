@@ -1122,6 +1122,35 @@
     "cat": "move"
   },
   {
+    "id": "MUM-1841",
+    "n": "Palm Beach Road",
+    "c": "Activities",
+    "g": "run",
+    "s": "Running route / trail",
+    "a": "Sanpada / Nerul / Seawoods",
+    "raw": "Nerul / Seawoods",
+    "ad": "Start: Ahilya Gokul Patil Rd junction, Palm Beach Road, Nerul, Navi Mumbai",
+    "lat": 19.059603,
+    "lon": 73.001318,
+    "rg": "NaviMumbai",
+    "gm": "",
+    "w": "",
+    "d": "Navi Mumbai's favourite long, flat run: about 4.2 km down Palm Beach Marg from Sanpada to Seawoods, between the mangroves and the city, on a smooth, well-kept road with a footpath for much of it. Run it there and back for 8 km; go early, before the traffic builds.",
+    "p": "Free",
+    "b": "Distance runners, Solo, Running groups",
+    "t": "",
+    "tg": [
+      "road",
+      "waterfront",
+      "flat",
+      "long-run"
+    ],
+    "src": "Web research",
+    "v": "Verified",
+    "out": 0,
+    "cat": "move"
+  },
+  {
     "id": "MUM-3449",
     "n": "Patwardhan Park",
     "c": "Activities",
@@ -1149,6 +1178,35 @@
     "out": 0,
     "cat": "move",
     "pinApprox": 1
+  },
+  {
+    "id": "MUM-0029",
+    "n": "Powai Lake promenade",
+    "c": "Activities",
+    "g": "run",
+    "s": "Running route / trail",
+    "a": "Powai",
+    "raw": "Powai",
+    "ad": "Start: Hiranandani Garden, Hiranandani Gardens, Powai, Mumbai 400076",
+    "lat": 19.120527,
+    "lon": 72.906657,
+    "rg": "NorthEast",
+    "gm": "https://www.google.com/maps/place/?q=place_id:ChIJpedlhujH5zsRhKkhd87IUlw",
+    "w": "",
+    "d": "About 1.1 km along Powai Lake on Adi Shankaracharya Marg, from Hiranandani to the lake's western bend, with open water views the whole way. Go early, before the traffic. Hiranandani Garden is just off the start.",
+    "p": "Free",
+    "b": "Beginners, Solo, Families",
+    "t": "",
+    "tg": [
+      "lake",
+      "promenade",
+      "park",
+      "trail"
+    ],
+    "src": "Web research",
+    "v": "Verified",
+    "out": 0,
+    "cat": "move"
   },
   {
     "id": "MUM-3452",
@@ -1556,6 +1614,36 @@
     "v": "Needs check",
     "out": 0,
     "cat": "move"
+  },
+  {
+    "id": "MUM-3463",
+    "n": "Palm Beach Road ride (Vashi to Seawoods)",
+    "c": "Activities",
+    "g": "cycle",
+    "s": "Cycling route",
+    "a": "Vashi / Nerul / CBD Belapur",
+    "raw": "Vashi / Nerul / CBD Belapur",
+    "ad": "Palm Beach Road, starting Vashi, Navi Mumbai",
+    "lat": 19.074854,
+    "lon": 72.997885,
+    "rg": "NaviMumbai",
+    "gm": "https://www.google.com/maps/place/?q=place_id:ChIJzZFo8tXD5zsR_fLMUWQzIII",
+    "w": "",
+    "d": "A flat ride of about 6.3 km from Vashi down Palm Beach Marg to Seawoods, past the mangroves. Best at dawn, before the traffic.",
+    "p": "Free",
+    "b": "Road cyclists, Beginners, Groups",
+    "t": "",
+    "tg": [
+      "road-ride",
+      "coastal",
+      "flat",
+      "early-morning"
+    ],
+    "src": "Web research",
+    "v": "Needs check",
+    "out": 0,
+    "cat": "move",
+    "pinApprox": 1
   },
   {
     "id": "MUM-2244",
