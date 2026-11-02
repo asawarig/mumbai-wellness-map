@@ -63519,5 +63519,33 @@
     "v": "Verified",
     "out": 0,
     "cat": "move"
+  },
+  {
+    "id": "MUM-3775",
+    "n": "Cuffe Parade road run",
+    "c": "Activities",
+    "g": "run",
+    "s": "Running route / trail",
+    "a": "Cuffe Parade",
+    "raw": "Cuffe Parade",
+    "ad": "Start: Machimar Nagar end of Captain Prakash Pethe Marg, Cuffe Parade, Mumbai 400005",
+    "lat": 18.919136,
+    "lon": 72.82573,
+    "rg": "South",
+    "gm": "",
+    "w": "",
+    "d": "A straight, flat 1.5 km down Captain Prakash Pethe Marg from Machimar Nagar to the Backbay bus depot, past Colaba Woods. Run it there and back, and add a lap of Colaba Woods for more.",
+    "p": "Free",
+    "b": "Runners, Beginners",
+    "t": "",
+    "tg": [
+      "road",
+      "flat",
+      "out-and-back"
+    ],
+    "src": "OpenStreetMap",
+    "v": "Verified",
+    "out": 0,
+    "cat": "move"
   }
 ]
