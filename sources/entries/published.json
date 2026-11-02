@@ -1,6 +1,7 @@
 {
  "why": "The places cleared for the map: every row in mumbai-map-ready-to-publish (and its batch 2), the Cult.fit centres check and the women's health and routes-and-communities additions (Google Places, Oct 2026). ingest-entries.mjs keeps only these, plus the communities and hospitals that carry no pin. Everything else stays in mumbai-places.csv, held until a cleaned list clears it.",
  "ids": [
+  "MUM-0001",
   "MUM-0003",
   "MUM-0004",
   "MUM-0005",
@@ -2013,6 +2014,7 @@
   "MUM-3440",
   "MUM-3441",
   "MUM-3443",
+  "MUM-3444",
   "MUM-3445",
   "MUM-3446",
   "MUM-3449",

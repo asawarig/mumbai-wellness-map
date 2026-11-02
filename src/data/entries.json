@@ -1,5 +1,34 @@
 [
   {
+    "id": "MUM-0001",
+    "n": "Aarey Colony road loop",
+    "c": "Activities",
+    "g": "run",
+    "s": "Running route / trail",
+    "a": "Goregaon East",
+    "raw": "Goregaon East",
+    "ad": "Start: Aarey Milk Colony main gate, Goregaon East, Mumbai 400065",
+    "lat": 19.165821,
+    "lon": 72.862436,
+    "rg": "NorthWest",
+    "gm": "",
+    "w": "",
+    "d": "Quiet, green roads through Aarey Milk Colony from the main gate, about 4.5 km out to the middle of the colony on Aarey Colony Road with a steady climb; run back the same way for 9 km. Almost no traffic early in the morning.",
+    "p": "Free",
+    "b": "Distance runners, Hill training, Running groups",
+    "t": "",
+    "tg": [
+      "forest",
+      "road",
+      "hills",
+      "long-run"
+    ],
+    "src": "Web research",
+    "v": "Needs check",
+    "out": 0,
+    "cat": "move"
+  },
+  {
     "id": "MUM-3430",
     "n": "Ambe Ghosale Lake",
     "c": "Activities",
@@ -802,6 +831,34 @@
     "v": "Verified",
     "out": 0,
     "cat": "move"
+  },
+  {
+    "id": "MUM-3444",
+    "n": "Joggers Park, Lokhandwala",
+    "c": "Activities",
+    "g": "run",
+    "s": "Running route / trail",
+    "a": "Andheri West (Lokhandwala)",
+    "raw": "Andheri West (Lokhandwala)",
+    "ad": "Creek Road, Lokhandwala Complex, Andheri West, Mumbai",
+    "lat": 19.143922,
+    "lon": 72.819699,
+    "rg": "West",
+    "gm": "https://www.google.com/maps/place/?q=place_id:ChIJtxHanBO25zsRU0whXxKqqtU",
+    "w": "",
+    "d": "Lokhandwala's joggers' park; LBB notes a free running club meeting here at 6 AM on Sundays, Tuesdays and Thursdays.",
+    "p": "Free",
+    "b": "Runners, Walkers, Beginners",
+    "t": "",
+    "tg": [
+      "joggers-park",
+      "running-club"
+    ],
+    "src": "Web research",
+    "v": "Needs check",
+    "out": 0,
+    "cat": "move",
+    "pinApprox": 1
   },
   {
     "id": "MUM-3445",
