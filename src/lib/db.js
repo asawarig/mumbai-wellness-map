@@ -239,7 +239,21 @@ const parkEntries = PARKS.features.map((f) => {
     d: has.length ? `A public park with ${has.join(', ').toLowerCase()}.` : 'A public park.',
     park: { sqm: p.sqm || 0 },
   };
-});
+}).filter((r) => !sheetTwin(r));
+
+/* A park the sheet already has as a place of its own (the same name within
+   400 m: "Ramdev Park" and "Ramdev Park — Rambhau Mhalgi Udyan") is one pin,
+   the sheet's: it carries the Google listing, the description and the route. */
+function sheetTwin(park) {
+  const key = twinKey(park.n);
+  return key && entries.some((r) => r.lat != null && twinKey(r.n) === key
+    && Math.hypot((r.lon - park.lon) * 105000, (r.lat - park.lat) * 111000) < 400);
+}
+function twinKey(s) {
+  return String(s || '').toLowerCase().replace(/\(.*?\)|—.*$/g, ' ')
+    .replace(/\b(park|garden|gardens|udyan|udyaan|the|joggers|jogging|track|loop|walk|walking)\b/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ').trim();
+}
 
 /* Each row's group within its activity (src/lib/subcategories.js). */
 const allEntries = [...entries, ...parkEntries];

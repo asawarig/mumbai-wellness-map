@@ -1773,7 +1773,7 @@
       "properties": {
         "id": "MUM-3460",
         "name": "Eastern Express Highway ride to Thane",
-        "area": "Sion → Thane",
+        "area": "Sion \u2192 Thane",
         "g": "cycle",
         "km": 24.6,
         "loop": false,
@@ -2431,7 +2431,7 @@
       "properties": {
         "id": "MUM-3462",
         "name": "Night ride: Colaba to Bandra (Regal to Mount Mary)",
-        "area": "Colaba → Bandra West",
+        "area": "Colaba \u2192 Bandra West",
         "g": "cycle",
         "km": 25,
         "loop": false,
@@ -3587,7 +3587,7 @@
       "properties": {
         "id": "MUM-2618",
         "name": "Uttan Road ride (Bhayandar West to Uttan)",
-        "area": "Bhayandar West → Uttan",
+        "area": "Bhayandar West \u2192 Uttan",
         "g": "cycle",
         "km": 8,
         "loop": false,
@@ -4265,146 +4265,6 @@
           [
             73.022962,
             19.028403
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "PARK-18.96233_72.81011",
-      "properties": {
-        "id": "PARK-18.96233_72.81011",
-        "name": "August Kranti Maidan",
-        "area": "",
-        "g": "walk",
-        "km": 0.6,
-        "snapped_km": 0.55,
-        "loop": true,
-        "geom_type": "loop",
-        "mode": "Walk",
-        "source": "nominatim:way/40748778",
-        "provisional": false
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            72.809397,
-            18.962018
-          ],
-          [
-            72.810535,
-            18.961587
-          ],
-          [
-            72.811094,
-            18.962586
-          ],
-          [
-            72.809455,
-            18.963033
-          ],
-          [
-            72.809339,
-            18.962633
-          ],
-          [
-            72.809326,
-            18.962253
-          ],
-          [
-            72.809397,
-            18.962018
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "PARK-18.93963_72.83131",
-      "properties": {
-        "id": "PARK-18.93963_72.83131",
-        "name": "Azad Maidan",
-        "area": "",
-        "g": "walk",
-        "km": 1.1,
-        "snapped_km": 1.14,
-        "loop": true,
-        "geom_type": "loop",
-        "mode": "Walk",
-        "source": "nominatim:relation/20401140",
-        "provisional": false
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            72.831298,
-            18.940228
-          ],
-          [
-            72.830628,
-            18.940719
-          ],
-          [
-            72.830579,
-            18.94067
-          ],
-          [
-            72.83,
-            18.941156
-          ],
-          [
-            72.829869,
-            18.941143
-          ],
-          [
-            72.830381,
-            18.938671
-          ],
-          [
-            72.831149,
-            18.938765
-          ],
-          [
-            72.831544,
-            18.938708
-          ],
-          [
-            72.83187,
-            18.938627
-          ],
-          [
-            72.832206,
-            18.938404
-          ],
-          [
-            72.832855,
-            18.938749
-          ],
-          [
-            72.832574,
-            18.939122
-          ],
-          [
-            72.832812,
-            18.939276
-          ],
-          [
-            72.832189,
-            18.939784
-          ],
-          [
-            72.83248,
-            18.94013
-          ],
-          [
-            72.831693,
-            18.940704
-          ],
-          [
-            72.831298,
-            18.940228
           ]
         ]
       }
@@ -6777,9 +6637,9 @@
     },
     {
       "type": "Feature",
-      "id": "PARK-19.02628_73.03992",
+      "id": "MUM-1839",
       "properties": {
-        "id": "PARK-19.02628_73.03992",
+        "id": "MUM-1839",
         "name": "Mango Park",
         "area": "",
         "g": "walk",
@@ -10312,7 +10172,7 @@
       "id": "MUM-1838",
       "properties": {
         "id": "MUM-1838",
-        "name": "Jewel of Navi Mumbai — Nerul",
+        "name": "Jewel of Navi Mumbai \u2014 Nerul",
         "area": "Nerul",
         "g": "run",
         "km": 2.5,
@@ -10780,7 +10640,7 @@
       "id": "MUM-1843",
       "properties": {
         "id": "MUM-1843",
-        "name": "Rock Garden — Nerul",
+        "name": "Rock Garden \u2014 Nerul",
         "area": "Nerul",
         "g": "run",
         "km": 1,
@@ -11458,7 +11318,7 @@
       "id": "MUM-2614",
       "properties": {
         "id": "MUM-2614",
-        "name": "Ramdev Park — Rambhau Mhalgi Udyan",
+        "name": "Ramdev Park \u2014 Rambhau Mhalgi Udyan",
         "area": "Ramdev Park, Mira Road East",
         "g": "run",
         "km": 0.4,
@@ -11574,7 +11434,7 @@
       "id": "MUM-1845",
       "properties": {
         "id": "MUM-1845",
-        "name": "Wonders Park (Seven Wonders) — Nerul",
+        "name": "Wonders Park (Seven Wonders) \u2014 Nerul",
         "area": "Nerul",
         "g": "run",
         "km": 1.4,
