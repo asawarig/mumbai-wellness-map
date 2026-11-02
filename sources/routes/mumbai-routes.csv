@@ -11,7 +11,7 @@ MUM-3438,Colaba Woods,Colaba,Run,loop,,18.913461,72.819025,18.913461,72.819025,,
 MUM-3439,Damodar Park,Ghatkopar West,Run,loop,0.5,19.094891,72.913591,19.094891,72.913591,,park loop,"hold: checked on the map, trace was wrong",
 MUM-0010,"Diamond Garden (NG Acharya Udyan), Chembur",Chembur East,Run,loop,,19.053128,72.900482,19.053128,72.900482,,park loop,,way/22906436
 MUM-0011,"DK Sandu Udyan, Chembur",Chembur East,Run,loop,,19.056102,72.897765,19.056102,72.897765,,park loop,"hold: checked on the map, trace was wrong",way/152314740
-MUM-0012,Five Gardens loop,Matunga / Dadar East,Run,loop,,19.019537,72.853788,19.019537,72.853788,,park loop,"hold: checked on the map, trace was wrong",
+MUM-0012,Five Gardens loop,Matunga / Dadar East,Run,loop,0.85,19.019537,72.853788,19.019537,72.853788,,park loop,"drawn 2026-11-02: foot route round the ring road, waypoints by hand",
 MUM-3441,"Forest Park, Hiranandani Gardens",Powai,Run,loop,,19.11505,72.908833,19.11505,72.908833,,park loop,,way/559429510
 MUM-0013,"Gandhi Maidan, Chembur",Chembur East,Run,loop,,19.058128,72.899295,19.058128,72.899295,,park loop,,way/152314268
 MUM-2811,Godrej Play Area & Jogging Track — Vikhroli East,Vikhroli East,Run,loop,,19.10357,72.92725,19.10357,72.92725,,park loop,"hold: checked on the map, trace was wrong",
