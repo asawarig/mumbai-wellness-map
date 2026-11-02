@@ -1773,7 +1773,7 @@
       "properties": {
         "id": "MUM-3460",
         "name": "Eastern Express Highway ride to Thane",
-        "area": "Sion \u2192 Thane",
+        "area": "Sion → Thane",
         "g": "cycle",
         "km": 24.6,
         "loop": false,
@@ -2431,7 +2431,7 @@
       "properties": {
         "id": "MUM-3462",
         "name": "Night ride: Colaba to Bandra (Regal to Mount Mary)",
-        "area": "Colaba \u2192 Bandra West",
+        "area": "Colaba → Bandra West",
         "g": "cycle",
         "km": 25,
         "loop": false,
@@ -3587,7 +3587,7 @@
       "properties": {
         "id": "MUM-2618",
         "name": "Uttan Road ride (Bhayandar West to Uttan)",
-        "area": "Bhayandar West \u2192 Uttan",
+        "area": "Bhayandar West → Uttan",
         "g": "cycle",
         "km": 8,
         "loop": false,
@@ -10312,7 +10312,7 @@
       "id": "MUM-1838",
       "properties": {
         "id": "MUM-1838",
-        "name": "Jewel of Navi Mumbai \u2014 Nerul",
+        "name": "Jewel of Navi Mumbai — Nerul",
         "area": "Nerul",
         "g": "run",
         "km": 2.5,
@@ -10780,7 +10780,7 @@
       "id": "MUM-1843",
       "properties": {
         "id": "MUM-1843",
-        "name": "Rock Garden \u2014 Nerul",
+        "name": "Rock Garden — Nerul",
         "area": "Nerul",
         "g": "run",
         "km": 1,
@@ -11458,7 +11458,7 @@
       "id": "MUM-2614",
       "properties": {
         "id": "MUM-2614",
-        "name": "Ramdev Park \u2014 Rambhau Mhalgi Udyan",
+        "name": "Ramdev Park — Rambhau Mhalgi Udyan",
         "area": "Ramdev Park, Mira Road East",
         "g": "run",
         "km": 0.4,
@@ -11574,7 +11574,7 @@
       "id": "MUM-1845",
       "properties": {
         "id": "MUM-1845",
-        "name": "Wonders Park (Seven Wonders) \u2014 Nerul",
+        "name": "Wonders Park (Seven Wonders) — Nerul",
         "area": "Nerul",
         "g": "run",
         "km": 1.4,
@@ -14967,6 +14967,138 @@
           [
             73.007154,
             19.023904
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MUM-0019",
+      "properties": {
+        "id": "MUM-0019",
+        "name": "Juhu Beach",
+        "area": "Juhu",
+        "g": "run",
+        "km": 3.94,
+        "snapped_km": 3.94,
+        "loop": false,
+        "geom_type": "line",
+        "mode": "Run",
+        "source": "traced by hand along OpenStreetMap streets",
+        "provisional": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.826395,
+            19.08621
+          ],
+          [
+            72.82618,
+            19.090468
+          ],
+          [
+            72.825966,
+            19.094524
+          ],
+          [
+            72.825537,
+            19.098579
+          ],
+          [
+            72.825108,
+            19.102634
+          ],
+          [
+            72.82455,
+            19.10669
+          ],
+          [
+            72.823949,
+            19.110745
+          ],
+          [
+            72.823176,
+            19.113989
+          ],
+          [
+            72.822318,
+            19.116827
+          ],
+          [
+            72.821245,
+            19.118855
+          ],
+          [
+            72.820172,
+            19.120071
+          ],
+          [
+            72.819529,
+            19.120679
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MUM-0036",
+      "properties": {
+        "id": "MUM-0036",
+        "name": "Versova Beach",
+        "area": "Versova",
+        "g": "run",
+        "km": 0.78,
+        "snapped_km": 0.78,
+        "loop": false,
+        "geom_type": "line",
+        "mode": "Run",
+        "source": "traced by hand along OpenStreetMap streets",
+        "provisional": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.817973,
+            19.122869
+          ],
+          [
+            72.81749,
+            19.123781
+          ],
+          [
+            72.816954,
+            19.124744
+          ],
+          [
+            72.816417,
+            19.125555
+          ],
+          [
+            72.815881,
+            19.126163
+          ],
+          [
+            72.815452,
+            19.126569
+          ],
+          [
+            72.815076,
+            19.127025
+          ],
+          [
+            72.814701,
+            19.127582
+          ],
+          [
+            72.814432,
+            19.12819
+          ],
+          [
+            72.814164,
+            19.128849
           ]
         ]
       }
