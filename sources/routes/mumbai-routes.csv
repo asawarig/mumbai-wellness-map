@@ -24,7 +24,7 @@ MUM-0017,"Joggers Park, Bandra",Bandra West,Run,loop,0.4,19.059,72.821,19.059,72
 MUM-0018,"Joggers Park, Juhu",Juhu,Run,loop,1,19.104748,72.830307,19.104748,72.830307,,park loop,"hold: checked on the map, trace was wrong",
 MUM-2812,Joseph Baptista Gardens (Mazgaon Hill),Mazgaon,Run,loop,,18.967037,72.8429,18.967037,72.8429,,park loop,,way/40638190
 MUM-3446,Kachrali Lake (Kacharali Talao),Thane West (Panchpakhadi),Run,loop,0.65,19.196116,72.968041,19.196116,72.968041,,,,
-MUM-0020,Mahalaxmi Race Course track,Mahalaxmi,Run,loop,2.2,18.97854,72.814452,18.97854,72.814452,,park loop,"hold: checked on the map, trace was wrong",way/1289073486
+MUM-0020,Mahalaxmi Race Course track,Mahalaxmi,Run,loop,2.53,18.983551,72.815441,18.983551,72.815441,,park loop,drawn 2026-11-02 from the OSM running track (leisure=track),way/1289073486
 MUM-0021,Maharashtra Nature Park,Dharavi,Run,loop,,19.052598,72.861579,19.052598,72.861579,,park loop,"hold: checked on the map, trace was wrong",
 MUM-0025,"Millennium Garden, Ghatkopar",Ghatkopar East,Run,loop,,19.078528,72.908758,19.078528,72.908758,,park loop,"hold: checked on the map, trace was wrong",
 MUM-0026,"Mindspace Landscape Garden, Malad",Malad West,Run,loop,,19.187958,72.840782,19.187958,72.840782,,park loop,"hold: checked on the map, trace was wrong",
@@ -182,3 +182,8 @@ MUM-0019,Juhu Beach,,Run,point-to-point,3.94,19.086210,72.826395,19.120679,72.81
 MUM-0036,Versova Beach,,Run,point-to-point,0.78,19.122869,72.817973,19.128849,72.814164,,,drawn 2026-11-02 by hand along the sand (OSM),
 MUM-0022,Mahim Beach seafront,,Run,point-to-point,1.31,19.046480,72.837424,19.034615,72.837725,,,drawn 2026-11-02 by hand along the sand (OSM),
 MUM-3764,"Central Park, Kharghar",Kharghar,Run,loop,2.41,19.058838,73.064472,19.058838,73.064472,,,drawn 2026-11-02 from the OSM outline,relation/14983098
+MUM-0449,Wings Sports Centre - Bandra,,Run,loop,0.47,19.050370,72.830316,19.050370,72.830316,,,drawn 2026-11-02 from the OSM running track (leisure=track),
+MUM-0468,Mumbai University Grounds,,Run,loop,0.47,18.941194,72.824990,18.941194,72.824990,,,drawn 2026-11-02 from the OSM running track (leisure=track),
+MUM-3695,Somaiya Sports Academy athletics track,,Run,loop,0.47,19.074382,72.897871,19.074382,72.897871,,,drawn 2026-11-02 from the OSM running track (leisure=track),
+MUM-2292,Maulana Abul Kalaam Azad Sports Stadium,,Run,loop,0.49,19.170378,73.032260,19.170378,73.032260,,,drawn 2026-11-02 from the OSM running track (leisure=track),
+PARK-19.22205_72.83950,Chikoowadi Park,,Run,loop,0.24,19.221739,72.839291,19.221739,72.839291,,,drawn 2026-11-02 from the OSM running track (leisure=track),
