@@ -15102,6 +15102,68 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "id": "MUM-0022",
+      "properties": {
+        "id": "MUM-0022",
+        "name": "Mahim Beach seafront",
+        "area": "Mahim",
+        "g": "run",
+        "km": 1.31,
+        "snapped_km": 1.31,
+        "loop": false,
+        "geom_type": "line",
+        "mode": "Run",
+        "source": "traced by hand along OpenStreetMap streets",
+        "provisional": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.837424,
+            19.04648
+          ],
+          [
+            72.837489,
+            19.045162
+          ],
+          [
+            72.837532,
+            19.043742
+          ],
+          [
+            72.837574,
+            19.042525
+          ],
+          [
+            72.837617,
+            19.04141
+          ],
+          [
+            72.837617,
+            19.040294
+          ],
+          [
+            72.837639,
+            19.038874
+          ],
+          [
+            72.83766,
+            19.037454
+          ],
+          [
+            72.837682,
+            19.036034
+          ],
+          [
+            72.837725,
+            19.034615
+          ]
+        ]
+      }
     }
   ]
 }
