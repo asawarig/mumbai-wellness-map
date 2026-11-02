@@ -63490,5 +63490,34 @@
     "v": "Verified",
     "out": 0,
     "cat": "people"
+  },
+  {
+    "id": "MUM-3774",
+    "n": "BKC loop",
+    "c": "Activities",
+    "g": "run",
+    "s": "Running route / trail",
+    "a": "Bandra Kurla Complex",
+    "raw": "Bandra Kurla Complex",
+    "ad": "Start: Avenue 3 at Avenue 3 Lane 1, G Block, Bandra Kurla Complex, Mumbai 400051",
+    "lat": 19.059502,
+    "lon": 72.860341,
+    "rg": "West",
+    "gm": "",
+    "w": "",
+    "d": "A flat loop of about 2.3 km round BKC's G Block, past Jio Garden and the Diamond Bourse, on wide avenues that empty out early on weekends. Run it twice or more for a longer session.",
+    "p": "Free",
+    "b": "Runners, Running groups, Cyclists",
+    "t": "",
+    "tg": [
+      "road",
+      "flat",
+      "loop",
+      "weekend"
+    ],
+    "src": "OpenStreetMap",
+    "v": "Verified",
+    "out": 0,
+    "cat": "move"
   }
 ]
